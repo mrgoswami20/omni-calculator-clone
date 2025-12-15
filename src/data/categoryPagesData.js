@@ -1,0 +1,378 @@
+import { Atom, Dumbbell, BarChart3, MoreHorizontal, Star, Timer, GraduationCap, Dice5, Dna, Microscope, FlaskConical, Hammer, ArrowRightLeft, Ruler, Leaf, Recycle, Camera, Car, DollarSign, Briefcase, Utensils, ChefHat, Heart, Calculator, Percent } from 'lucide-react';
+
+export const categoryPagesData = {
+    physics: {
+        title: "Physics Calculators",
+        icon: Atom,
+        subtitle: "530 calculators",
+        description: "The well-known American author, Bill Bryson, once said: “Physics is really nothing more than a search for ultimate simplicity, but so far all we have is a kind of elegant messiness.” Physics is indeed the most fundamental of the sciences that tries to describe the whole nature with thousands of mathematical formulas. How not to get lost in all...",
+        sections: [
+            {
+                title: "Kinematics calculators — How things move",
+                icon: Timer,
+                iconColor: "#a16207",
+                groups: [
+                    [
+                        { label: "Arrow Speed Calculator", url: "#" },
+                        { label: "Ballistic Coefficient Calculator", url: "#" },
+                        { label: "Car Jump Distance Calculator", url: "#" },
+                    ],
+                    [
+                        { label: "Momentum Calculator", url: "#" },
+                        { label: "Muzzle Velocity Calculator", url: "#" },
+                        { label: "Polar Moment of Inertia Calculator", url: "#" },
+                    ]
+                ]
+            }
+        ]
+    },
+    sports: {
+        title: "Sports Calculators",
+        icon: Dumbbell,
+        subtitle: "109 calculators",
+        description: "Are you an amateur sportsperson? Maybe a professional athlete? Even if you do sport only occasionally, the category sports calculators is the area dedicated to you! We serve suited runners calculators, cycling calculators, as well as more calculators for other disciplines and sport-related topics. Want to know how good was the last season...",
+        sections: [
+            {
+                title: "Baseball calculators",
+                emoji: "⚾",
+                groups: [
+                    [
+                        { label: "Batting Average Calculator", url: "#" },
+                        { label: "ERA Calculator – Earned Run Average", url: "#" },
+                        { label: "Fielding Percentage Calculator", url: "#" },
+                    ],
+                    [
+                        { label: "On Base Percentage Calculator", url: "#" },
+                        { label: "Slugging Percentage Calculator", url: "#" },
+                        { label: "WAR Calculator (Wins Above Replacement)", url: "#" },
+                    ]
+                ]
+            }
+        ]
+    },
+    statistics: {
+        title: "Statistics Calculators",
+        icon: BarChart3,
+        subtitle: "191 calculators",
+        description: "What are the chances of winning the lottery? What is the risk of doing this? How many times do I have to roll a dice to get the number I want? All these questions are statistics problems. We provide simple statistics calculators to help you make better decisions and solve problems faster. From the odds calculator to the probability calculator, you'll...",
+        sections: [
+            {
+                title: "Probability theory and odds calculators",
+                icon: Dice5,
+                iconColor: "#a16207",
+                groups: [
+                    [
+                        { label: "Accuracy Calculator", url: "#" },
+                        { label: "ANOVA Calculator", url: "#" },
+                        { label: "Bayes' Theorem Calculator", url: "#" },
+                    ],
+                    [
+                        { label: "Implied Probability Calculator", url: "#" },
+                        { label: "Joint Probability Calculator", url: "#" },
+                        { label: "Lottery Calculator", url: "#" },
+                    ]
+                ]
+            }
+        ]
+    },
+    other: {
+        title: "Other Calculators",
+        icon: MoreHorizontal,
+        subtitle: "193 calculators",
+        description: "Congratulations, you just found the most random collection of calculators available on the Internet! Are you a hardcore geek? We’ll help you pick a motor for your drone. A travel junkie? Use our calculator to choose the optimal sunscreen SPF for holidays in Bali. A keen photographer? We’ll help you plan out a perfect star time lapse. A student...",
+        sections: [
+            {
+                title: "Education calculators",
+                icon: GraduationCap,
+                iconColor: "#a16207",
+                groups: [
+                    [
+                        { label: "ACT Score Calculator", url: "#" },
+                        { label: "Classroom Spacing Calculator - Coronavirus", url: "#" },
+                        { label: "College GPA Calculator", url: "#" },
+                    ],
+                    [
+                        { label: "GWA Calculator – General Weighted Average", url: "#" },
+                        { label: "High School GPA Calculator", url: "#" },
+                        { label: "IELTS Score Calculator", url: "#" },
+                    ]
+                ]
+            }
+        ]
+    },
+    "discover-omni": {
+        title: "Discover Omni",
+        icon: Star,
+        iconFill: "white",
+        subtitle: "41 calculators",
+        description: "We proudly present the collection of the most unique, crazy, knock-your-socks-off calculators on the Web! Here, you can discover Omni Calculator in its full glory, and get the full perspective on what we do and why. Trying to relax? Grab a sweet tea prepared with our chilled drink calculator, or lift up in the air on helium balloons. Hungry? We have...",
+        sections: [
+            {
+                groups: [
+                    [
+                        { label: "Addiction Calculator", url: "#" },
+                        { label: "Alien Civilization Calculator", url: "#" },
+                        { label: "Black Friday Calculator", url: "#" },
+                        { label: "Black Hole Collision Calculator", url: "#" },
+                        { label: "Harris-Benedict Calculator (Basal Metabolic Rate)", url: "#" },
+                    ],
+                    [
+                        { label: "Vampire Apocalypse Calculator", url: "#" },
+                        { label: "Ideal Egg Boiling Calculator", url: "#" },
+                        { label: "Korean Age Calculator", url: "#" },
+                        { label: "Lost Socks Calculator", url: "#" },
+                        { label: "Meat Footprint Calculator", url: "#" },
+                    ]
+                ]
+            }
+        ]
+    },
+    biology: {
+        title: "Biology Calculators",
+        icon: Dna,
+        subtitle: "105 calculators",
+        description: "This collection is a surprise even for us – it turns out that even in the science of life, there are lots of things to calculate! Here, you can find calculators for gardeners, farmers, pet owners, scientists, and nature enthusiasts! Do you need to know how many plants you need to create an organized and dense flower bed? Our mulch calculator...",
+        sections: [
+            {
+                title: "Bio laboratory calculators",
+                emoji: "🔬",
+                groups: [
+                    [
+                        { label: "Annealing Temperature Calculator", url: "/biology/annealing-temperature-calculator" },
+                        { label: "Generation Time Calculator", url: "#" },
+                        { label: "Cell Dilution Calculator", url: "#" },
+                    ],
+                    [
+                        { label: "DNA Concentration Calculator", url: "#" },
+                        { label: "Ligation Calculator", url: "#" },
+                        { label: "Log Reduction Calculator", url: "#" },
+                    ]
+                ]
+            }
+        ]
+    },
+    chemistry: {
+        title: "Chemistry Calculators",
+        icon: FlaskConical,
+        subtitle: "102 calculators",
+        description: "Chemistry might seem intimidating and counterintuitive at first, but it is also extremely useful. So how can you learn everything about chemistry without effort? We don't know the answer, but we can help you solve chemistry problems faster and more efficiently thanks to our chemistry calculators. From calculating concentrations to using...",
+        sections: [
+            {
+                title: "General chemistry calculators",
+                icon: Atom,
+                iconColor: "#a855f7",
+                groups: [
+                    [
+                        { label: "Atom Calculator", url: "#" },
+                        { label: "Atomic Mass Calculator", url: "#" },
+                        { label: "Average Atomic Mass Calculator", url: "#" },
+                    ],
+                    [
+                        { label: "Electron Configuration Calculator", url: "#" },
+                        { label: "Electronegativity Calculator", url: "#" },
+                        { label: "Molar Mass Calculator", url: "#" },
+                    ]
+                ]
+            }
+        ]
+    },
+    construction: {
+        title: "Construction Calculators",
+        icon: Hammer,
+        subtitle: "153 calculators",
+        description: "Whether you're renovating a house, planning out a swimming pool, or removing snow from your roof, we've got you covered. These online construction calculators were created specifically for carpenters, painters, bricklayers, roofers, and craftsmen alike who switch back and forth between square feet of driveways and pounds of cement on an...",
+        sections: [
+            {
+                title: "Construction converters",
+                emoji: "👷",
+                groups: [
+                    [
+                        { label: "Board Foot Calculator", url: "#" },
+                        { label: "Cubic Yard Calculator", url: "#" },
+                        { label: "Gallons per Square Foot Calculator", url: "#" },
+                    ],
+                    [
+                        { label: "Square Feet to Cubic Yards Calculator", url: "#" },
+                        { label: "Square Footage Calculator", url: "/construction/square-footage-calculator" },
+                        { label: "Square Yards Calculator", url: "#" },
+                    ]
+                ]
+            }
+        ]
+    },
+    conversion: {
+        title: "Conversion Calculators",
+        icon: ArrowRightLeft,
+        subtitle: "318 calculators",
+        description: "We all use length, weight, temperature, time, speed, and various other quantities in everyday life. But they aren't just plain numbers - they all have corresponding units. Moreover, the multitude of metric systems such as the International System of Units (SI) or the United States customary units (USC) complicates the situation even more. I...",
+        sections: [
+            {
+                title: "Length and area converters",
+                icon: Ruler,
+                iconColor: "#9ca3af",
+                groups: [
+                    [
+                        { label: "Acreage Calculator", url: "#" },
+                        { label: "Area Converter", url: "#" },
+                        { label: "Ares to hectares converter", url: "#" },
+                    ],
+                    [
+                        { label: "Height in Inches Calculator", url: "#" },
+                        { label: "Inches to Fraction Calculator", url: "#" },
+                        { label: "Length Converter", url: "#" },
+                    ]
+                ]
+            }
+        ]
+    },
+    ecology: {
+        title: "Ecology Calculators",
+        icon: Leaf,
+        subtitle: "34 calculators",
+        description: "You may think that this category is only for vegans, ecologists or nature lovers, but nothing could be further from the truth. Climate change and environmental degradation are one of the biggest threats of our times, which will affect each and every person. With these simple calculators, we're trying to increase the environmental awareness of the...",
+        sections: [
+            {
+                title: "Eco footprint calculators",
+                icon: Recycle,
+                iconColor: "#10b981",
+                groups: [
+                    [
+                        { label: "AI Water Footprint Calculator", url: "#" },
+                        { label: "Bag Footprint Calculator", url: "#" },
+                        { label: "Christmas Tree Footprint Calculator", url: "#" },
+                    ],
+                    [
+                        { label: "Hand Drying Footprint Calculator", url: "#" },
+                        { label: "Kaya Identity Calculator", url: "#" },
+                        { label: "Meat Footprint Calculator", url: "#" },
+                    ]
+                ]
+            }
+        ]
+    },
+    everyday_life: {
+        title: "Everyday life Calculators",
+        icon: Camera,
+        subtitle: "270 calculators",
+        description: "This unique collection of calculators gives you a hand in your everyday struggle of existence. We can help in finding the ways to save some money, with tools like our fuel cost calculator. We'll be on your side when you're racking your brain over commuting alternatives or planning with our time and date calculator. And when you're wasting your...",
+        sections: [
+            {
+                title: "Transportation calculators",
+                icon: Car,
+                iconColor: "#f87171",
+                groups: [
+                    [
+                        { label: "0-60 Calculator", url: "#" },
+                        { label: "Boat Speed Calculator", url: "#" },
+                        { label: "Boost Horsepower Calculator", url: "#" },
+                    ],
+                    [
+                        { label: "Miles per Year Calculator", url: "#" },
+                        { label: "Miles to Dollars Calculator", url: "#" },
+                        { label: "MPG Calculator", url: "#" },
+                    ]
+                ]
+            }
+        ]
+    },
+    finance: {
+        title: "Finance Calculators",
+        icon: DollarSign,
+        subtitle: "596 calculators",
+        description: "It doesn't matter whether you are the CEO of Google, a venture capitalist, a stockbroker, an entrepreneur or a simple student - we all have to admit that this world revolves around money. Almost every human interaction has something to do with finances: buying in a shop, providing services, borrowing, even going on a date. Sometimes, w...",
+        sections: [
+            {
+                title: "Business planning calculators",
+                icon: Briefcase,
+                iconColor: "#a16207",
+                groups: [
+                    [
+                        { label: "3D Printer - Buy vs Outsource Calculator", url: "#" },
+                        { label: "Absence Percentage Calculator", url: "#" },
+                        { label: "Accumulated Depreciation Calculator", url: "#" },
+                    ],
+                    [
+                        { label: "FIFO Calculator for Inventory", url: "#" },
+                        { label: "Full-time Equivalent (FTE) Calculator", url: "#" },
+                        { label: "GMROI Calculator — Gross Margin Return on Investment", url: "#" },
+                    ]
+                ]
+            }
+        ]
+    },
+    food: {
+        title: "Food Calculators",
+        icon: Utensils,
+        subtitle: "69 calculators",
+        description: "Food - naturally, the most essential (as well as controversial) part of our life. In this section, you can find calculators for food lovers, party organizers or calorie counting addicts, what perfectly reflects the complexity of feelings we have for the subject. Wondering if we have a pizza calculator? Nope - we have pizza calculators, plural! Check our...",
+        sections: [
+            {
+                title: "Cooking converters",
+                icon: ChefHat,
+                iconColor: "#a16207",
+                groups: [
+                    [
+                        { label: "Butter Calculator - How Much is a Stick of Butter?", url: "#" },
+                        { label: "Cake Pan Converter", url: "#" },
+                        { label: "Cooking Measurement Converter", url: "#" },
+                    ],
+                    [
+                        { label: "Grams to Tablespoons Converter", url: "#" },
+                        { label: "Grams to Teaspoons Converter", url: "#" },
+                        { label: "ml to Grams Calculator", url: "#" },
+                    ]
+                ]
+            }
+        ]
+    },
+    health: {
+        title: "Health Calculators",
+        icon: Heart,
+        subtitle: "431 calculators",
+        description: "Welcome to health calculators! Whether you are a doctor, a medical student or a patient, you will find answers to your medical questions here, as well as receive a lot of scientifically proven information. What is my renal function and what does it mean? How much blood do I have? How to dose medication to children? What is my risk of having...",
+        sections: [
+            {
+                title: "Body measurements calculators",
+                icon: Ruler,
+                iconColor: "#a16207",
+                groups: [
+                    [
+                        { label: "ABSI Calculator", url: "#" },
+                        { label: "Adjusted Body Weight Calculator", url: "#" },
+                        { label: "BAI Calculator - Body Adiposity Index", url: "#" },
+                    ],
+                    [
+                        { label: "FFMI Calculator (Fat-Free Mass Index)", url: "#" },
+                        { label: "Ideal Weight Calculator", url: "#" },
+                        { label: "Karvonen Formula Calculator", url: "#" },
+                    ]
+                ]
+            }
+        ]
+    },
+    math: {
+        title: "Math Calculators",
+        icon: Calculator,
+        subtitle: "671 calculators",
+        description: "Math can be exciting and easier than you think! With our collection of maths calculators, everyone can perform and understand useful mathematical calculations in seconds. Are you scared of trigonometry? Do you think geometry is “too complicated”? Fear not! Omni Calculator has your back, with a comprehensive array of calculators designed s...",
+        sections: [
+            {
+                title: "Percentages calculators",
+                icon: Percent,
+                iconColor: "#a16207",
+                groups: [
+                    [
+                        { label: "Average Percentage Calculator", url: "#" },
+                        { label: "Fraction to Percent Calculator", url: "#" },
+                        { label: "Decimal to Percent Converter", url: "#" },
+                    ],
+                    [
+                        { label: "Percentage Increase Classic", url: "#" },
+                        { label: "Percentage of a Percentage Calculator", url: "#" },
+                        { label: "Percentage Point Calculator", url: "#" },
+                    ]
+                ]
+            }
+        ]
+    }
+};

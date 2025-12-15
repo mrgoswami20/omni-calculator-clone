@@ -1,0 +1,158 @@
+.category-page {
+    background-color: #f9fbfd;
+    min-height: 100vh;
+}
+
+.category-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.main-layout {
+    display: flex;
+    gap: 40px;
+    margin-top: 40px;
+}
+
+.left-column {
+    flex: 2;
+}
+
+.right-column {
+    flex: 1;
+    display: none;
+    /* Hidden on mobile */
+}
+
+@media (min-width: 1024px) {
+    .right-column {
+        display: block;
+    }
+}
+
+.title-section {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 8px;
+}
+
+.icon-box {
+    background-color: #436cfe;
+    width: 40px;
+    height: 40px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.title-section h1 {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #111827;
+    margin: 0;
+}
+
+.subtitle {
+    color: #6b7280;
+    margin-top: 0;
+    margin-bottom: 24px;
+}
+
+.description-text p {
+    line-height: 1.6;
+    color: #374151;
+    margin-bottom: 8px;
+}
+
+.read-more {
+    color: #111827;
+    font-weight: 600;
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.category-group {
+    margin-top: 40px;
+}
+
+.group-header {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 20px;
+}
+
+.group-header h2 {
+    font-size: 1.5rem;
+    color: #111827;
+    margin: 0;
+}
+
+.emoji {
+    font-size: 1.5rem;
+    display: flex;
+    align-items: center;
+}
+
+.calculator-list {
+    display: flex;
+    flex-direction: column;
+}
+
+@media (min-width: 768px) {
+    .calculator-list {
+        flex-direction: row;
+        gap: 60px;
+    }
+}
+
+.calculator-list ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    flex: 1;
+}
+
+.calculator-list li {
+    margin-bottom: 12px;
+    position: relative;
+    padding-left: 16px;
+}
+
+.calculator-list li::before {
+    content: "•";
+    color: #111827;
+    position: absolute;
+    left: 0;
+    font-weight: bold;
+}
+
+.calculator-list a {
+    text-decoration: none;
+    color: #436cfe;
+    font-weight: 500;
+}
+
+.calculator-list a:hover {
+    text-decoration: underline;
+}
+
+/* Right column placeholder box */
+.info-box-placeholder {
+    background-color: #f3f4f6;
+    /* Light gray placeholder from screenshot */
+    height: 300px;
+    border-radius: 12px;
+    position: relative;
+}
+
+.info-icons {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    display: flex;
+    gap: 4px;
+}

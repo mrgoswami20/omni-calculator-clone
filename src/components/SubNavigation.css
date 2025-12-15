@@ -1,0 +1,44 @@
+.sub-nav-container {
+    background-color: white;
+    border-bottom: 1px solid #e5e7eb;
+    position: sticky;
+    top: 64px;
+    /* Height of header */
+    z-index: 40;
+}
+
+.sub-nav {
+    display: flex;
+    overflow-x: auto;
+    white-space: nowrap;
+    gap: 32px;
+    padding: 0 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+    scrollbar-width: none;
+    /* Hide scrollbar Firefox */
+}
+
+.sub-nav::-webkit-scrollbar {
+    display: none;
+    /* Hide scrollbar Chrome/Safari */
+}
+
+.sub-nav-link {
+    text-decoration: none;
+    color: #374151;
+    font-size: 0.9rem;
+    font-weight: 500;
+    padding: 16px 0;
+    border-bottom: 2px solid transparent;
+    transition: color 0.2s, border-color 0.2s;
+}
+
+.sub-nav-link:hover {
+    color: #111827;
+}
+
+.sub-nav-link.active {
+    color: #436cfe;
+    border-bottom-color: #436cfe;
+}

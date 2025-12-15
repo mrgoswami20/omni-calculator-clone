@@ -1,0 +1,42 @@
+.grid-section {
+    padding: 0 20px 60px;
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+}
+
+.grid-container {
+    width: 100%;
+    max-width: 1200px;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: 24px;
+}
+
+.no-results {
+    grid-column: 1 / -1;
+    text-align: center;
+    padding: 40px;
+    color: #6b7280;
+    font-size: 1.1rem;
+}
+
+@media (min-width: 640px) {
+    .grid-container {
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    }
+}
+
+@media (min-width: 1024px) {
+    .grid-container {
+        grid-template-columns: repeat(6, 1fr);
+        /* Force 6 columns on large screens to match screenshot if possible, or auto-fit */
+    }
+}
+
+/* Specific adjustment to match the screenshot's density */
+@media (min-width: 1280px) {
+    .grid-container {
+        grid-template-columns: repeat(6, 1fr);
+    }
+}

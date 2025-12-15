@@ -1,0 +1,151 @@
+.about-us-section {
+    padding: 100px 20px;
+    background-color: white;
+    text-align: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+}
+
+.about-content {
+    max-width: 900px;
+    margin: 0 auto 80px;
+}
+
+.about-title {
+    font-size: 1.5rem;
+    /* Increased size */
+    font-weight: 700;
+    color: #111827;
+    margin-bottom: 32px;
+}
+
+.about-text {
+    font-size: 1.15rem;
+    /* Slightly larger for readability */
+    line-height: 1.7;
+    color: #374151;
+    margin-bottom: 60px;
+    font-weight: 400;
+}
+
+.mission-statement {
+    font-size: 2.5rem;
+    /* Much larger as per screenshot */
+    font-weight: 900;
+    /* Extra bold */
+    color: #000;
+    /* Pitch black */
+    line-height: 1.25;
+    margin-bottom: 24px;
+    letter-spacing: -0.02em;
+}
+
+.asterisk {
+    color: #ef4444;
+    vertical-align: top;
+    font-size: 0.6em;
+    margin-left: 4px;
+    position: relative;
+    top: 0.2em;
+}
+
+.mission-footnote {
+    text-align: right;
+    font-size: 0.9rem;
+    font-family: 'Courier New', Courier, monospace;
+    /* Distinct monospace */
+    color: #111827;
+    margin-bottom: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 8px;
+    font-weight: 600;
+}
+
+.joker-emoji {
+    font-size: 1.4rem;
+}
+
+.read-more-btn {
+    background-color: #111827;
+    color: white;
+    border: none;
+    padding: 14px 28px;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 1rem;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    transition: transform 0.2s, background-color 0.2s;
+}
+
+.read-more-btn:hover {
+    background-color: #000;
+    transform: translateY(-2px);
+}
+
+/* Team Images Grid */
+.team-images-grid {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    gap: 32px;
+}
+
+@media (min-width: 768px) {
+    .team-images-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+.team-card {
+    height: 300px;
+    /* Taller images */
+    border-radius: 16px;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+}
+
+.card-yellow {
+    background-color: #fbbf24;
+}
+
+.card-blue {
+    background-color: #3b82f6;
+}
+
+.card-red {
+    background-color: #ef4444;
+}
+
+.fake-image-content {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 75%;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.2), transparent);
+}
+
+/* Decorative Curves - simplified approximation */
+.curve-overlay {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 120%;
+    height: 120%;
+    opacity: 0.3;
+    pointer-events: none;
+}
+
+/* Specific curve approximations using borders */
+.yellow-curve {
+    border: 40px solid white;
+    border-radius: 50%;
+    top: -50%;
+}
