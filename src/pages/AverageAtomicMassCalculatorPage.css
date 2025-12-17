@@ -1,0 +1,195 @@
+.average-atomic-mass-page .isotopes-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+}
+
+/* On mobile, stack them */
+@media (max-width: 640px) {
+    .average-atomic-mass-page .isotopes-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+.average-atomic-mass-page .input-group {
+    margin-bottom: 1rem;
+}
+
+.average-atomic-mass-page .label-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.25rem;
+}
+
+.average-atomic-mass-page .label-row label {
+    font-size: 0.85rem;
+    color: #374151;
+    font-weight: 400;
+}
+
+.average-atomic-mass-page .more-options {
+    color: #9ca3af;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.average-atomic-mass-page .input-wrapper,
+.average-atomic-mass-page .select-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+    background-color: #f3f4f6;
+    /* gray-100 */
+    border-radius: 6px;
+    border: 1px solid transparent;
+    transition: all 0.2s;
+}
+
+.average-atomic-mass-page .input-wrapper:hover,
+.average-atomic-mass-page .select-wrapper:hover {
+    background-color: #e5e7eb;
+    /* gray-200 */
+}
+
+.average-atomic-mass-page .input-wrapper:focus-within,
+.average-atomic-mass-page .select-wrapper:focus-within {
+    background-color: #fff;
+    border-color: #436cfe;
+    box-shadow: 0 0 0 2px rgba(67, 108, 254, 0.2);
+}
+
+.average-atomic-mass-page .calc-input,
+.average-atomic-mass-page .calc-select {
+    width: 100%;
+    padding: 0.6rem 0.75rem;
+    padding-right: 2.5rem;
+    /* Space for unit */
+    background: transparent;
+    border: none;
+    outline: none;
+    font-size: 1rem;
+    color: #111827;
+    font-weight: 500;
+}
+
+.average-atomic-mass-page .unit-label {
+    position: absolute;
+    right: 0.75rem;
+    color: #6b7280;
+    font-size: 0.9rem;
+    pointer-events: none;
+}
+
+.average-atomic-mass-page .select-arrow {
+    position: absolute;
+    right: 0.75rem;
+    color: #6b7280;
+    pointer-events: none;
+}
+
+.average-atomic-mass-page .warning-box {
+    background-color: #fef3c7;
+    /* amber-100 */
+    color: #92400e;
+    /* amber-800 */
+    padding: 1rem;
+    border-radius: 6px;
+    margin-bottom: 1.5rem;
+    font-size: 0.9rem;
+    line-height: 1.4;
+}
+
+.average-atomic-mass-page .result-input {
+    color: #436cfe;
+    font-weight: 600;
+}
+
+.average-atomic-mass-page .calc-actions {
+    margin-top: 2rem;
+    border-top: 1px solid #e5e7eb;
+    padding-top: 1.5rem;
+}
+
+.average-atomic-mass-page .share-result-btn {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    background-color: #fff;
+    border: 1px solid #e5e7eb;
+    color: #111827;
+    padding: 0.75rem;
+    border-radius: 9999px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+    margin-bottom: 1rem;
+}
+
+.average-atomic-mass-page .share-result-btn:hover {
+    background-color: #f9fafb;
+    border-color: #d1d5db;
+}
+
+.average-atomic-mass-page .share-icon-circle {
+    width: 24px;
+    height: 24px;
+    background-color: #ef4444;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+}
+
+.average-atomic-mass-page .secondary-actions {
+    display: flex;
+    gap: 1rem;
+}
+
+.average-atomic-mass-page .secondary-btn {
+    flex: 1;
+    background: transparent;
+    border: 1px solid #e5e7eb;
+    color: #6b7280;
+    padding: 0.6rem;
+    border-radius: 6px;
+    font-size: 0.85rem;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.average-atomic-mass-page .secondary-btn:hover {
+    background-color: #f3f4f6;
+    color: #374151;
+}
+
+.average-atomic-mass-page .feedback-section {
+    margin-top: 2rem;
+    background-color: #f9fafb;
+    padding: 1.5rem;
+    border-radius: 8px;
+    text-align: center;
+}
+
+.average-atomic-mass-page .feedback-btns {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.average-atomic-mass-page .feedback-btns button {
+    padding: 0.5rem 2rem;
+    border: 1px solid #d1d5db;
+    background: #fff;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.average-atomic-mass-page .feedback-btns button:hover {
+    border-color: #9ca3af;
+}

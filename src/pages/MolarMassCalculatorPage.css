@@ -1,0 +1,276 @@
+.molar-mass-page .element-row-card {
+    border: 1px solid #e5e7eb;
+    border-radius: 8px;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    background-color: #fff;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+}
+
+.molar-mass-page .row-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.molar-mass-page .row-header label {
+    font-weight: 600;
+    color: #111827;
+}
+
+.molar-mass-page .remove-btn {
+    background: transparent;
+    border: none;
+    color: #ef4444;
+    cursor: pointer;
+    padding: 4px;
+    border-radius: 4px;
+}
+
+.molar-mass-page .remove-btn:hover {
+    background-color: #fee2e2;
+}
+
+.molar-mass-page .row-inputs {
+    display: flex;
+    gap: 1rem;
+}
+
+.molar-mass-page .input-group.flex-grow {
+    flex: 1;
+}
+
+.molar-mass-page .input-group.qty-group {
+    width: 100px;
+}
+
+.molar-mass-page .label-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.25rem;
+}
+
+.molar-mass-page .label-row label {
+    font-size: 0.85rem;
+    color: #374151;
+    font-weight: 400;
+}
+
+.molar-mass-page .more-options {
+    color: #9ca3af;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.molar-mass-page .input-wrapper,
+.molar-mass-page .select-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+    background-color: #f3f4f6;
+    /* gray-100 */
+    border-radius: 6px;
+    border: 1px solid transparent;
+    transition: all 0.2s;
+}
+
+.molar-mass-page .input-wrapper:hover,
+.molar-mass-page .select-wrapper:hover {
+    background-color: #e5e7eb;
+    /* gray-200 */
+}
+
+.molar-mass-page .input-wrapper:focus-within,
+.molar-mass-page .select-wrapper:focus-within {
+    background-color: #fff;
+    border-color: #436cfe;
+    box-shadow: 0 0 0 2px rgba(67, 108, 254, 0.2);
+}
+
+.molar-mass-page .calc-input,
+.molar-mass-page .calc-select {
+    width: 100%;
+    padding: 0.6rem 0.75rem;
+    background: transparent;
+    border: none;
+    outline: none;
+    font-size: 1rem;
+    color: #111827;
+    font-weight: 500;
+}
+
+.molar-mass-page .select-arrow {
+    position: absolute;
+    right: 0.75rem;
+    color: #6b7280;
+    pointer-events: none;
+}
+
+.molar-mass-page .add-element-btn {
+    width: 100%;
+    padding: 0.75rem;
+    background-color: #f3f4f6;
+    border: 1px dashed #d1d5db;
+    border-radius: 8px;
+    color: #4b5563;
+    font-weight: 500;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    margin-bottom: 2rem;
+    transition: all 0.2s;
+}
+
+.molar-mass-page .add-element-btn:hover {
+    background-color: #e5e7eb;
+    border-color: #9ca3af;
+    color: #111827;
+}
+
+.molar-mass-page .results-container {
+    padding-top: 1rem;
+    border-top: 1px solid #e5e7eb;
+}
+
+.molar-mass-page .results-container h3 {
+    font-size: 1rem;
+    font-weight: 600;
+    color: #111827;
+    margin-bottom: 1rem;
+}
+
+.molar-mass-page .total-mass-display,
+.molar-mass-page .formula-display {
+    margin-bottom: 1rem;
+    font-size: 0.95rem;
+    color: #374151;
+}
+
+.molar-mass-page .total-mass-display strong,
+.molar-mass-page .formula-display strong {
+    color: #111827;
+    font-weight: 700;
+}
+
+.molar-mass-page .breakdown-table {
+    margin-top: 1.5rem;
+    font-size: 0.9rem;
+    border: 1px solid #e5e7eb;
+    border-radius: 6px;
+    overflow: hidden;
+}
+
+.molar-mass-page .table-header {
+    display: grid;
+    grid-template-columns: 1fr 1fr 2fr 1.5fr;
+    background-color: #f9fafb;
+    padding: 0.75rem;
+    border-bottom: 1px solid #e5e7eb;
+    font-weight: 600;
+    color: #374151;
+}
+
+.molar-mass-page .table-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr 2fr 1.5fr;
+    padding: 0.75rem;
+    border-bottom: 1px solid #f3f4f6;
+    color: #4b5563;
+}
+
+.molar-mass-page .table-row:last-child {
+    border-bottom: none;
+}
+
+.molar-mass-page .calc-actions {
+    margin-top: 2rem;
+    border-top: 1px solid #e5e7eb;
+    padding-top: 1.5rem;
+}
+
+.molar-mass-page .share-result-btn {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    background-color: #fff;
+    border: 1px solid #e5e7eb;
+    color: #111827;
+    padding: 0.75rem;
+    border-radius: 9999px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+    margin-bottom: 1rem;
+}
+
+.molar-mass-page .share-result-btn:hover {
+    background-color: #f9fafb;
+    border-color: #d1d5db;
+}
+
+.molar-mass-page .share-icon-circle {
+    width: 24px;
+    height: 24px;
+    background-color: #ef4444;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+}
+
+.molar-mass-page .secondary-actions {
+    display: flex;
+    gap: 1rem;
+}
+
+.molar-mass-page .secondary-btn {
+    flex: 1;
+    background: transparent;
+    border: 1px solid #e5e7eb;
+    color: #6b7280;
+    padding: 0.6rem;
+    border-radius: 6px;
+    font-size: 0.85rem;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.molar-mass-page .secondary-btn:hover {
+    background-color: #f3f4f6;
+    color: #374151;
+}
+
+.molar-mass-page .feedback-section {
+    margin-top: 2rem;
+    background-color: #f9fafb;
+    padding: 1.5rem;
+    border-radius: 8px;
+    text-align: center;
+}
+
+.molar-mass-page .feedback-btns {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.molar-mass-page .feedback-btns button {
+    padding: 0.5rem 2rem;
+    border: 1px solid #d1d5db;
+    background: #fff;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.molar-mass-page .feedback-btns button:hover {
+    border-color: #9ca3af;
+}

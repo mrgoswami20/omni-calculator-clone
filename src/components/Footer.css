@@ -1,83 +1,73 @@
+/* Main Footer Container */
 .footer {
-    background-color: white;
-    padding-top: 60px;
-    overflow: hidden;
-    font-family: 'Inter', sans-serif;
-    border-top: 1px solid #f3f4f6;
+    background-color: #ffffff;
+    padding-top: 80px;
+    /* More breathing room */
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    border-top: 1px solid #e5e7eb;
+    color: #1f2937;
 }
 
+/* Content Wrapper - Grid Layout */
 .footer-content {
-    max-width: 1200px;
+    max-width: 1280px;
     margin: 0 auto;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 60px;
-    padding: 0 20px 60px;
+    padding: 0 24px 60px;
+    display: grid;
+    grid-template-columns: 350px 1fr;
+    /* Brand | Links */
+    gap: 64px;
 }
 
-@media (max-width: 600px) {
-    .footer-content {
-        gap: 40px;
-        padding-bottom: 40px;
-    }
-}
-
-/* BRAND SECTION (Left) */
+/* --- Brand Section (Left) --- */
 .footer-brand-section {
-    flex: 0 0 300px;
     position: relative;
-    /* Ensure SVG sits behind */
+    /* Isolate stacking context */
 }
 
-@media (max-width: 900px) {
-    .footer-brand-section {
-        flex: 1 1 100%;
-        /* Take full width on tablets/mobile */
-        margin-bottom: 40px;
-    }
-}
-
+/* Abstract decorations */
 .brand-curve-container {
     position: absolute;
-    top: -80px;
-    left: -80px;
-    width: 350px;
-    height: 350px;
+    top: -100px;
+    left: -100px;
+    width: 400px;
+    height: 400px;
     z-index: 0;
     opacity: 1;
+    pointer-events: none;
 }
 
 .brand-curve-svg {
     width: 100%;
     height: 100%;
-    transform: rotate(-30deg);
+    transform: rotate(-20deg);
 }
 
 .brand-content {
     position: relative;
     z-index: 2;
-    padding-top: 40px;
     padding-left: 20px;
+    /* Indent slightly from edge */
 }
 
 .brand-slogan {
-    font-size: 2.5rem;
-    /* Larger */
-    font-weight: 900;
+    font-size: 3rem;
+    font-weight: 800;
     line-height: 1.1;
     color: #111827;
-    margin-bottom: 20px;
-    letter-spacing: -0.02em;
+    margin-bottom: 24px;
+    letter-spacing: -0.03em;
 }
 
 .footer-logo {
-    font-size: 1.4rem;
+    font-size: 1.5rem;
     font-weight: 500;
-    color: #436cfe;
-    margin-bottom: 40px;
+    color: #1d4ed8;
+    /* Bolder blue */
+    margin-bottom: 32px;
     display: flex;
     align-items: center;
-    gap: 4px;
+    gap: 6px;
 }
 
 .logo-omni {
@@ -87,195 +77,227 @@
 
 .social-icons {
     display: flex;
-    gap: 20px;
-    /* More spacing */
+    gap: 16px;
+    justify-content: flex-start;
 }
 
 .social-icons a {
-    color: #374151;
-    /* Darker gray */
+    color: #4b5563;
     background: #f3f4f6;
-    width: 40px;
-    height: 40px;
+    width: 44px;
+    height: 44px;
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
-    transition: background-color 0.2s, color 0.2s;
+    transition: all 0.2s ease;
 }
 
 .social-icons a:hover {
-    background-color: #111827;
+    background-color: #2563eb;
     color: white;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
 }
 
 
-/* LINKS SECTION (Right) */
+/* --- Links Section (Right) --- */
 .footer-links-section {
-    flex: 1;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 80px;
-    /* More space between columns */
-    padding-top: 40px;
-}
-
-@media (max-width: 900px) {
-    .footer-links-section {
-        padding-top: 0;
-        /* Removing top padding when stacked */
-        gap: 40px;
-    }
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    /* Categories (wide) | Press | Meet */
+    gap: 40px;
 }
 
 .column-title {
-    font-size: 1rem;
-    font-weight: 800;
-    color: #111827;
-    margin-bottom: 32px;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    font-weight: 700;
+    color: #9ca3af;
+    /* Muted label style */
+    margin-bottom: 24px;
 }
 
-.categories-column {
-    flex: 3;
-    min-width: 280px;
-    /* Reduced from 400px to fit on smaller screens */
-}
-
-@media (max-width: 600px) {
-    .categories-column {
-        flex: 1 1 100%;
-        min-width: auto;
-    }
-}
-
+/* Categories Grid */
 .categories-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: 16px 40px;
-    /* Row gap 16, Col gap 40 */
-}
-
-@media (max-width: 600px) {
-    .categories-grid {
-        grid-template-columns: repeat(1, 1fr);
-        /* Single column for very small screens */
-        gap: 12px;
-    }
-}
-
-@media (min-width: 900px) {
-    .categories-grid {
-        grid-template-columns: repeat(3, 1fr);
-    }
+    /* 2 columns for categories */
+    gap: 12px 24px;
 }
 
 .categories-grid a {
     display: flex;
     align-items: center;
-    gap: 12px;
-    color: #374151;
+    gap: 10px;
+    color: #4b5563;
     text-decoration: none;
     font-size: 0.95rem;
-    font-weight: 400;
+    font-weight: 500;
     transition: color 0.2s;
+    padding: 4px 0;
 }
 
 .categories-grid a:hover {
-    color: #436cfe;
+    color: #2563eb;
 }
 
 .categories-grid a svg {
-    color: #436cfe;
-    /* Icon color */
-    opacity: 0.8;
+    color: #9ca3af;
+    transition: color 0.2s;
 }
 
+.categories-grid a:hover svg {
+    color: #2563eb;
+}
+
+/* Secondary Links Groups (Press, Meet) */
 .links-group-secondary {
-    flex: 2;
-    display: flex;
-    gap: 80px;
-}
-
-@media (max-width: 768px) {
-    .links-group-secondary {
-        gap: 40px;
-        flex-wrap: wrap;
-    }
-}
-
-@media (max-width: 480px) {
-    .links-group-secondary {
-        flex-direction: column;
-        gap: 30px;
-    }
+    display: contents;
+    /* Let children participate in the parent grid */
 }
 
 .links-column a {
     display: block;
-    color: #374151;
+    color: #4b5563;
     text-decoration: none;
     font-size: 0.95rem;
-    margin-bottom: 16px;
+    margin-bottom: 12px;
     transition: color 0.2s;
+    font-weight: 500;
 }
 
 .links-column a:hover {
     color: #111827;
-    text-decoration: none;
 }
 
 .hiring-link {
-    color: #436cfe !important;
-    font-weight: 600;
+    color: #2563eb !important;
+    font-weight: 600 !important;
+    margin-top: 24px;
+    display: inline-block;
 }
 
-
-/* BOTTOM BAR */
+/* --- Bottom Bar --- */
 .footer-bottom {
-    border-top: 1px solid #e5e7eb;
-    padding: 24px 20px;
-    max-width: 1200px;
+    border-top: 1px solid #f3f4f6;
+    background-color: #ffffff;
+    padding: 24px 0;
+    margin-top: 0;
+}
+
+.footer-bottom-content {
+    max-width: 1280px;
     margin: 0 auto;
+    padding: 0 24px;
     display: flex;
-    flex-direction: column;
+    justify-content: space-between;
     align-items: center;
-    gap: 16px;
     font-size: 0.85rem;
     color: #6b7280;
 }
 
-@media (min-width: 768px) {
-    .footer-bottom {
-        flex-direction: row;
-        justify-content: space-between;
-    }
-}
-
 .language-selector {
-    display: flex;
+    display: inline-flex;
     align-items: center;
     gap: 8px;
-    background-color: #f9fafb;
-    padding: 8px 16px;
+    padding: 6px 12px;
     border-radius: 6px;
     font-weight: 500;
     color: #374151;
     cursor: pointer;
-    border: 1px solid #e5e7eb;
+    transition: background 0.2s;
+}
+
+.language-selector:hover {
+    background-color: #f3f4f6;
 }
 
 .legal-links {
     display: flex;
-    flex-wrap: wrap;
-    align-items: center;
     gap: 24px;
+    align-items: center;
 }
 
 .legal-links a {
     color: #6b7280;
     text-decoration: none;
+    transition: color 0.2s;
 }
 
-.copyright {
-    color: #9ca3af;
+.legal-links a:hover {
+    color: #111827;
+}
+
+
+/* --- Responsive Media Queries --- */
+
+/* Tablet (Vertical Stack of Main Sections) */
+@media (max-width: 1024px) {
+    .footer-content {
+        grid-template-columns: 1fr;
+        gap: 60px;
+    }
+
+    .footer-brand-section {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .brand-content {
+        padding-left: 0;
+    }
+
+    .social-icons {
+        justify-content: center;
+    }
+
+    .footer-links-section {
+        /* Keep grid but maybe adjust ratio */
+        grid-template-columns: 1fr 1fr 1fr;
+    }
+}
+
+/* Mobile (Full Stack) */
+@media (max-width: 768px) {
+    .footer {
+        padding-top: 40px;
+    }
+
+    .footer-content {
+        padding: 0 20px 40px;
+        gap: 40px;
+    }
+
+    /* Stack the links section vertically */
+    .footer-links-section {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+
+    /* Allow categories to keep 2-col grid inside the stack for compactness */
+    .categories-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    /* Sub-groups (Press, Meet) behave as normal blocks now */
+    /* .links-group-secondary handled by parent grid */
+
+    .brand-slogan {
+        font-size: 2.25rem;
+    }
+
+    .footer-bottom-content {
+        flex-direction: column;
+        gap: 16px;
+        text-align: center;
+    }
+
+    .legal-links {
+        flex-direction: column;
+        gap: 12px;
+    }
 }

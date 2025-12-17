@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import {
     Facebook,
     Youtube,
@@ -34,24 +35,31 @@ const Footer = () => {
                     <div className="brand-curve-container">
                         <svg viewBox="0 0 200 200" className="brand-curve-svg">
                             {/* Yellow Top Segment */}
-                            <path d="M 20 100 A 80 80 0 0 1 100 20" fill="none" stroke="#fbbf24" strokeWidth="24" strokeLinecap="round" />
                             {/* Red Right Segment */}
-                            <path d="M 100 20 A 80 80 0 0 1 180 100" fill="none" stroke="#ef4444" strokeWidth="24" strokeLinecap="round" strokeDasharray="1 15" />
                             {/* The screenshot curve is actually a bit more complex/abstract. It's a large arc.
                    Let's try to match the visible segments: Yellow (top-left ish), Red (top-right), Blue (bottom-right).
                    It looks like a broken circle.
                 */}
+                            <defs>
+                                <linearGradient id="gradYellow" x1="0%" y1="0%" x2="100%" y2="100%">
+                                    <stop offset="0%" stopColor="#fbbf24" />
+                                    <stop offset="100%" stopColor="#d97706" />
+                                </linearGradient>
+                                <linearGradient id="gradRed" x1="0%" y1="0%" x2="100%" y2="100%">
+                                    <stop offset="0%" stopColor="#f87171" />
+                                    <stop offset="100%" stopColor="#dc2626" />
+                                </linearGradient>
+                                <linearGradient id="gradBlue" x1="0%" y1="0%" x2="100%" y2="100%">
+                                    <stop offset="0%" stopColor="#60a5fa" />
+                                    <stop offset="100%" stopColor="#2563eb" />
+                                </linearGradient>
+                            </defs>
+
                             <circle cx="100" cy="100" r="80" fill="none" stroke="#e5e7eb" strokeWidth="0" />
 
-                            {/* Re-drawing based on the "C" shape in screenshot */}
-                            {/* Yellow squiggle */}
-                            <path d="M 40 140 Q 20 100 50 60" fill="none" stroke="#fbbf24" strokeWidth="20" strokeLinecap="round" />
-                            {/* This is hard to guess perfectly. Let's use the nice 3-colored arc from the brand. */}
-
-                            {/* Let's Try a 3-part ring which looks very "Omni" */}
-                            <path d="M 30 150 A 90 90 0 0 1 120 40" fill="none" stroke="#fbbf24" strokeWidth="20" strokeLinecap="round" />
-                            <path d="M 120 40 A 90 90 0 0 1 180 120" fill="none" stroke="#ef4444" strokeWidth="20" strokeLinecap="round" />
-                            <path d="M 180 120 A 90 90 0 0 1 100 190" fill="none" stroke="#3b82f6" strokeWidth="20" strokeLinecap="round" />
+                            <path d="M 30 150 A 90 90 0 0 1 120 40" fill="none" stroke="url(#gradYellow)" strokeWidth="20" strokeLinecap="round" />
+                            <path d="M 120 40 A 90 90 0 0 1 180 120" fill="none" stroke="url(#gradRed)" strokeWidth="20" strokeLinecap="round" />
+                            <path d="M 180 120 A 90 90 0 0 1 100 190" fill="none" stroke="url(#gradBlue)" strokeWidth="20" strokeLinecap="round" />
                         </svg>
                     </div>
 
@@ -77,21 +85,21 @@ const Footer = () => {
                     <div className="links-column categories-column">
                         <h3 className="column-title">Calculator Categories</h3>
                         <div className="categories-grid">
-                            <a href="#"><Dna size={16} /> Biology</a>
-                            <a href="#"><FlaskConical size={16} /> Chemistry</a>
-                            <a href="#"><Hammer size={16} /> Construction</a>
-                            <a href="#"><ArrowRightLeft size={16} /> Conversion</a>
-                            <a href="#"><Leaf size={16} /> Ecology</a>
-                            <a href="#"><Coffee size={16} /> Everyday life</a>
-                            <a href="#"><DollarSign size={16} /> Finance</a>
-                            <a href="#"><Utensils size={16} /> Food</a>
-                            <a href="#"><Heart size={16} /> Health</a>
-                            <a href="#"><Calculator size={16} /> Math</a>
-                            <a href="#"><Atom size={16} /> Physics</a>
-                            <a href="#"><Dumbbell size={16} /> Sports</a>
-                            <a href="#"><BarChart size={16} /> Statistics</a>
-                            <a href="#"><MoreHorizontal size={16} /> Other</a>
-                            <a href="#"><Star size={16} /> Discover Omni</a>
+                            <Link to="/biology"><Dna size={16} /> Biology</Link>
+                            <Link to="/chemistry"><FlaskConical size={16} /> Chemistry</Link>
+                            <Link to="/construction"><Hammer size={16} /> Construction</Link>
+                            <Link to="/conversion"><ArrowRightLeft size={16} /> Conversion</Link>
+                            <Link to="/ecology"><Leaf size={16} /> Ecology</Link>
+                            <Link to="/everyday-life"><Coffee size={16} /> Everyday life</Link>
+                            <Link to="/finance"><DollarSign size={16} /> Finance</Link>
+                            <Link to="/food"><Utensils size={16} /> Food</Link>
+                            <Link to="/health"><Heart size={16} /> Health</Link>
+                            <Link to="/math"><Calculator size={16} /> Math</Link>
+                            <Link to="/physics"><Atom size={16} /> Physics</Link>
+                            <Link to="/sports"><Dumbbell size={16} /> Sports</Link>
+                            <Link to="/statistics"><BarChart size={16} /> Statistics</Link>
+                            <Link to="/other"><MoreHorizontal size={16} /> Other</Link>
+                            <Link to="/discover-omni"><Star size={16} /> Discover Omni</Link>
                         </div>
                     </div>
 
@@ -104,10 +112,9 @@ const Footer = () => {
 
                         <div className="links-column meet-column">
                             <h3 className="column-title">Meet Omni</h3>
-                            <a href="#">About</a>
+                            <Link to="/about-us">About</Link>
                             <a href="#">Resource library</a>
                             <a href="#">Collections</a>
-                            <a href="#">Contact</a>
                             <a href="#">Contact</a>
                             <a href="#" className="hiring-link">We're hiring!</a>
                         </div>
@@ -116,13 +123,15 @@ const Footer = () => {
             </div>
 
             <div className="footer-bottom">
-                <div className="language-selector">
-                    <span role="img" aria-label="US Flag">🇺🇸</span> English <ChevronDown size={14} />
-                </div>
+                <div className="footer-bottom-content">
+                    <div className="language-selector">
+                        <span role="img" aria-label="US Flag">🇺🇸</span> English <ChevronDown size={14} />
+                    </div>
 
-                <div className="legal-links">
-                    <a href="#">Privacy, Cookies & Terms of Service</a>
-                    <span className="copyright">Copyright by Omni Calculator sp. z o.o.</span>
+                    <div className="legal-links">
+                        <a href="#">Privacy, Cookies & Terms of Service</a>
+                        <span className="copyright">Copyright by Omni Calculator sp. z o.o.</span>
+                    </div>
                 </div>
             </div>
         </footer >

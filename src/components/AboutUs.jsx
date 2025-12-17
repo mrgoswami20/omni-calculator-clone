@@ -2,6 +2,9 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowRight, Smile } from 'lucide-react';
 import './AboutUs.css';
+import YellowPerson from '../assets/Yellow omni-people.webp';
+import BluePerson from '../assets/Blue omni-people.webp';
+import RedPerson from '../assets/Red omni-people.webp';
 
 const AboutUs = () => {
     return (
@@ -30,18 +33,17 @@ const AboutUs = () => {
                 {/* Placeholder cards simulating the team photos */}
                 <div className="team-card card-yellow">
                     <div className="curve-overlay yellow-curve"></div>
-                    {/* In a real app, <img /> would be here */}
-                    <div className="fake-image-content"></div>
+                    <img src={YellowPerson} alt="Team Member" className="team-image" />
                 </div>
 
                 <div className="team-card card-blue">
                     <div className="curve-overlay blue-curve"></div>
-                    <div className="fake-image-content"></div>
+                    <img src={BluePerson} alt="Team Member" className="team-image" />
                 </div>
 
                 <div className="team-card card-red">
                     <div className="curve-overlay red-curve"></div>
-                    <div className="fake-image-content"></div>
+                    <img src={RedPerson} alt="Team Member" className="team-image" />
                 </div>
             </div>
         </section>

@@ -1,4 +1,4 @@
-import { Atom, Dumbbell, BarChart3, MoreHorizontal, Star, Timer, GraduationCap, Dice5, Dna, Microscope, FlaskConical, Hammer, ArrowRightLeft, Ruler, Leaf, Recycle, Camera, Car, DollarSign, Briefcase, Utensils, ChefHat, Heart, Calculator, Percent } from 'lucide-react';
+import { Atom, Dumbbell, BarChart3, MoreHorizontal, Star, Timer, GraduationCap, Dice5, Dna, Microscope, FlaskConical, Hammer, ArrowRightLeft, Ruler, Leaf, Recycle, Camera, Car, DollarSign, Briefcase, Utensils, ChefHat, Heart, Calculator, Percent, User } from 'lucide-react';
 
 export const categoryPagesData = {
     physics: {
@@ -163,14 +163,14 @@ export const categoryPagesData = {
                 iconColor: "#a855f7",
                 groups: [
                     [
-                        { label: "Atom Calculator", url: "#" },
-                        { label: "Atomic Mass Calculator", url: "#" },
-                        { label: "Average Atomic Mass Calculator", url: "#" },
+                        { label: "Atom Calculator", url: "/chemistry/atom-calculator" },
+                        { label: "Atomic Mass Calculator", url: "/chemistry/atomic-mass-calculator" },
+                        { label: "Average Atomic Mass Calculator", url: "/chemistry/average-atomic-mass-calculator" },
                     ],
                     [
-                        { label: "Electron Configuration Calculator", url: "#" },
-                        { label: "Electronegativity Calculator", url: "#" },
-                        { label: "Molar Mass Calculator", url: "#" },
+                        { label: "Electron Configuration Calculator", url: "/chemistry/electron-configuration-calculator" },
+                        { label: "Electronegativity Calculator", url: "/chemistry/electronegativity-calculator" },
+                        { label: "Molar Mass Calculator", url: "/chemistry/molar-mass-calculator" },
                     ]
                 ]
             }
@@ -212,14 +212,14 @@ export const categoryPagesData = {
                 iconColor: "#9ca3af",
                 groups: [
                     [
-                        { label: "Acreage Calculator", url: "#" },
-                        { label: "Area Converter", url: "#" },
-                        { label: "Ares to hectares converter", url: "#" },
+                        { label: "Acreage Calculator", url: "/conversion/acreage-calculator" },
+                        { label: "Area Converter", url: "/conversion/area-converter" },
+                        { label: "Ares to hectares converter", url: "/conversion/ares-to-hectares-converter" },
                     ],
                     [
-                        { label: "Height in Inches Calculator", url: "#" },
-                        { label: "Inches to Fraction Calculator", url: "#" },
-                        { label: "Length Converter", url: "#" },
+                        { label: "Height in Inches Calculator", url: "/conversion/height-in-inches-calculator" },
+                        { label: "Inches to Fraction Calculator", url: "/conversion/inches-to-fraction-calculator" },
+                        { label: "Length Converter", url: "/conversion/length-converter" },
                     ]
                 ]
             }
@@ -262,14 +262,14 @@ export const categoryPagesData = {
                 iconColor: "#f87171",
                 groups: [
                     [
-                        { label: "0-60 Calculator", url: "#" },
-                        { label: "Boat Speed Calculator", url: "#" },
-                        { label: "Boost Horsepower Calculator", url: "#" },
+                        { label: "0-60 Calculator", url: "/everyday-life/0-60-calculator" },
+                        { label: "Miles per Year Calculator", url: "/everyday-life/miles-per-year-calculator" },
+                        { label: "Boat Speed Calculator", url: "/everyday-life/boat-speed-calculator" },
                     ],
                     [
-                        { label: "Miles per Year Calculator", url: "#" },
-                        { label: "Miles to Dollars Calculator", url: "#" },
-                        { label: "MPG Calculator", url: "#" },
+                        { label: "Boost Horsepower Calculator", url: "/everyday-life/boost-horsepower-calculator" },
+                        { label: "Miles to Dollars Calculator", url: "/everyday-life/miles-to-dollars-calculator" },
+                        { label: "MPG Calculator", url: "/everyday-life/mpg-calculator" },
                     ]
                 ]
             }
@@ -376,3 +376,14 @@ export const categoryPagesData = {
         ]
     }
 };
+
+const deepFreeze = (obj) => {
+    Object.keys(obj).forEach((prop) => {
+        if (typeof obj[prop] === 'object' && obj[prop] !== null && !Object.isFrozen(obj[prop])) {
+            deepFreeze(obj[prop]);
+        }
+    });
+    return Object.freeze(obj);
+};
+
+deepFreeze(categoryPagesData);

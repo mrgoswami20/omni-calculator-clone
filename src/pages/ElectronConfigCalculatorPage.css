@@ -1,0 +1,74 @@
+.electron-config-page .input-group {
+    margin-bottom: 24px;
+}
+
+.element-select {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #d1d5db;
+    border-radius: 6px;
+    font-size: 1rem;
+    color: #111827;
+    background-color: white;
+    cursor: pointer;
+}
+
+.element-select:focus {
+    outline: none;
+    border-color: #2563eb;
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+}
+
+.instructions-list ul {
+    list-style-type: disc;
+    padding-left: 20px;
+    color: #4b5563;
+    font-size: 0.95rem;
+    line-height: 1.5;
+    margin-bottom: 32px;
+}
+
+.instructions-list li {
+    margin-bottom: 8px;
+}
+
+.result-list-section {
+    margin-top: 32px;
+    margin-bottom: 32px;
+    text-align: left;
+    color: #374151;
+}
+
+.result-item {
+    margin-bottom: 24px;
+    font-size: 1rem;
+    line-height: 1.5;
+}
+
+.result-item.column-layout {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.result-label {
+    color: #4b5563;
+    /* Gray text for labels */
+}
+
+.result-value {
+    font-weight: 700;
+    color: #111827;
+    /* Darker black for values */
+    font-family: 'Inter', sans-serif;
+}
+
+.config-value {
+    font-size: 1.1rem;
+    font-family: 'Inter', sans-serif;
+}
+
+.result-value sup {
+    font-size: 0.75em;
+    vertical-align: super;
+}

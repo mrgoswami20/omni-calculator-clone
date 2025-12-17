@@ -1,0 +1,192 @@
+.electronegativity-page .input-group {
+    margin-bottom: 1rem;
+}
+
+.electronegativity-page .label-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.25rem;
+}
+
+.electronegativity-page .label-row label {
+    font-size: 0.85rem;
+    color: #374151;
+    font-weight: 400;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.electronegativity-page .more-options {
+    color: #9ca3af;
+    cursor: pointer;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+.electronegativity-page .input-wrapper,
+.electronegativity-page .select-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+    background-color: #f3f4f6;
+    /* gray-100 */
+    border-radius: 6px;
+    border: 1px solid transparent;
+    transition: all 0.2s;
+}
+
+.electronegativity-page .input-wrapper:hover,
+.electronegativity-page .select-wrapper:hover {
+    background-color: #e5e7eb;
+    /* gray-200 */
+}
+
+.electronegativity-page .input-wrapper:focus-within,
+.electronegativity-page .select-wrapper:focus-within {
+    background-color: #fff;
+    border-color: #436cfe;
+    box-shadow: 0 0 0 2px rgba(67, 108, 254, 0.2);
+}
+
+.electronegativity-page .calc-input,
+.electronegativity-page .calc-select {
+    width: 100%;
+    padding: 0.6rem 0.75rem;
+    padding-right: 2rem;
+    background: transparent;
+    border: none;
+    outline: none;
+    font-size: 1rem;
+    color: #111827;
+    font-weight: 500;
+    appearance: none;
+    /* Hide default arrow */
+    cursor: pointer;
+}
+
+.electronegativity-page .calc-input[readonly] {
+    cursor: default;
+}
+
+.select-arrow {
+    position: absolute;
+    right: 0.75rem;
+    color: #6b7280;
+    pointer-events: none;
+}
+
+.result-input {
+    color: #436cfe;
+    /* Highlight result in brand color */
+    font-weight: 600;
+}
+
+.bond-result {
+    margin-top: 1.5rem;
+    margin-bottom: 2rem;
+    font-size: 1rem;
+    color: #374151;
+    line-height: 1.5;
+}
+
+.bond-result strong {
+    font-weight: 700;
+}
+
+.calc-actions {
+    margin-top: 2rem;
+    border-top: 1px solid #e5e7eb;
+    padding-top: 1.5rem;
+}
+
+.share-result-btn {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    background-color: #fff;
+    border: 1px solid #e5e7eb;
+    color: #111827;
+    padding: 0.75rem;
+    border-radius: 9999px;
+    /* Pill */
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+    margin-bottom: 1rem;
+}
+
+.share-result-btn:hover {
+    background-color: #f9fafb;
+    border-color: #d1d5db;
+}
+
+.share-icon-circle {
+    width: 24px;
+    height: 24px;
+    background-color: #ef4444;
+    /* red-500 */
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+}
+
+.secondary-actions {
+    display: flex;
+    gap: 1rem;
+}
+
+.secondary-btn {
+    flex: 1;
+    background: transparent;
+    border: 1px solid #e5e7eb;
+    color: #6b7280;
+    padding: 0.6rem;
+    border-radius: 6px;
+    font-size: 0.85rem;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.secondary-btn:hover {
+    background-color: #f3f4f6;
+    color: #374151;
+}
+
+.feedback-section {
+    margin-top: 2rem;
+    background-color: #f9fafb;
+    padding: 1.5rem;
+    border-radius: 8px;
+    text-align: center;
+}
+
+.feedback-section p {
+    margin-bottom: 1rem;
+    color: #374151;
+    font-weight: 500;
+}
+
+.feedback-btns {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.feedback-btns button {
+    padding: 0.5rem 2rem;
+    border: 1px solid #d1d5db;
+    background: #fff;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.feedback-btns button:hover {
+    border-color: #9ca3af;
+}

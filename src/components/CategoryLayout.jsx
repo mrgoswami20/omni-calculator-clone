@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import SubNavigation from './SubNavigation';
 import { MoreVertical, Info } from 'lucide-react';
 import './CategoryLayout.css';
@@ -50,7 +51,7 @@ const CategoryLayout = ({ data }) => {
                                             <ul key={groupIndex}>
                                                 {group.map((link, linkIndex) => (
                                                     <li key={linkIndex}>
-                                                        <a href={link.url}>{link.label}</a>
+                                                        <Link to={link.url}>{link.label}</Link>
                                                     </li>
                                                 ))}
                                             </ul>

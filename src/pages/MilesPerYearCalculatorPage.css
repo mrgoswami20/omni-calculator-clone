@@ -1,0 +1,202 @@
+.miles-per-year-page .input-group {
+    margin-bottom: 1rem;
+}
+
+.miles-per-year-page .label-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.25rem;
+}
+
+.miles-per-year-page .label-row label {
+    font-size: 0.85rem;
+    color: #374151;
+    font-weight: 400;
+}
+
+.miles-per-year-page .more-options {
+    color: #9ca3af;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.miles-per-year-page .input-wrapper,
+.miles-per-year-page .select-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+    background-color: #f3f4f6;
+    border-radius: 6px;
+    border: 1px solid transparent;
+    transition: all 0.2s;
+}
+
+.miles-per-year-page .input-wrapper:hover,
+.miles-per-year-page .select-wrapper:hover {
+    background-color: #e5e7eb;
+}
+
+.miles-per-year-page .input-wrapper:focus-within,
+.miles-per-year-page .select-wrapper:focus-within {
+    background-color: #fff;
+    border-color: #436cfe;
+    box-shadow: 0 0 0 2px rgba(67, 108, 254, 0.2);
+}
+
+.miles-per-year-page .calc-input,
+.miles-per-year-page .calc-select {
+    width: 100%;
+    padding: 0.6rem 0.75rem;
+    background: transparent;
+    border: none;
+    outline: none;
+    font-size: 1rem;
+    color: #111827;
+    font-weight: 500;
+    min-width: 0;
+}
+
+.miles-per-year-page .select-arrow {
+    position: absolute;
+    right: 0.75rem;
+    color: #6b7280;
+    pointer-events: none;
+}
+
+/* Unit Select */
+.miles-per-year-page .unit-select-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+    border-left: 1px solid #e5e7eb;
+    padding: 0 4px;
+}
+
+.miles-per-year-page .unit-select {
+    appearance: none;
+    background: transparent;
+    border: none;
+    outline: none;
+    padding: 0.6rem 2rem 0.6rem 0.8rem;
+    font-size: 0.9rem;
+    color: #436cfe;
+    font-weight: 500;
+    cursor: pointer;
+    text-align: right;
+}
+
+.miles-per-year-page .unit-arrow {
+    position: absolute;
+    right: 8px;
+    color: #436cfe;
+    pointer-events: none;
+}
+
+.miles-per-year-page .unit-label-static {
+    padding: 0 0.75rem;
+    color: #436cfe;
+    font-size: 0.9rem;
+    font-weight: 500;
+    pointer-events: none;
+}
+
+.miles-per-year-page .calc-actions {
+    margin-top: 2rem;
+    border-top: 1px solid #e5e7eb;
+    padding-top: 1.5rem;
+}
+
+.miles-per-year-page .share-result-btn {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    background-color: #fff;
+    border: 1px solid #e5e7eb;
+    color: #111827;
+    padding: 0.75rem;
+    border-radius: 9999px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+    margin-bottom: 1rem;
+}
+
+.miles-per-year-page .share-result-btn:hover {
+    background-color: #f9fafb;
+    border-color: #d1d5db;
+}
+
+.miles-per-year-page .share-icon-circle {
+    width: 24px;
+    height: 24px;
+    background-color: #ef4444;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+}
+
+.miles-per-year-page .secondary-actions {
+    display: flex;
+    gap: 1rem;
+}
+
+.miles-per-year-page .secondary-btn {
+    flex: 1;
+    background: transparent;
+    border: 1px solid #e5e7eb;
+    color: #6b7280;
+    padding: 0.6rem;
+    border-radius: 6px;
+    font-size: 0.85rem;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.miles-per-year-page .secondary-btn:hover {
+    background-color: #f3f4f6;
+    color: #374151;
+}
+
+.miles-per-year-page .feedback-section {
+    margin-top: 2rem;
+    background-color: #f9fafb;
+    padding: 1.5rem;
+    border-radius: 8px;
+    text-align: center;
+}
+
+.miles-per-year-page .feedback-btns {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.miles-per-year-page .feedback-btns button {
+    padding: 0.5rem 2rem;
+    border: 1px solid #d1d5db;
+    background: #fff;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.miles-per-year-page .feedback-btns button:hover {
+    border-color: #9ca3af;
+}
+
+.miles-per-year-page .check-out-box {
+    margin-top: 2rem;
+    background-color: #fefce8;
+    /* yellow-50 */
+    padding: 1rem;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    color: #111827;
+    border-left: 4px solid #facc15;
+}

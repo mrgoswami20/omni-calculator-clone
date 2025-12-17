@@ -9,7 +9,8 @@ const CalculatorLayout = ({
     reviewers,
     tocItems = [],
     children,
-    similarCalculators = 7
+    similarCalculators = 7,
+    articleContent
 }) => {
     return (
         <div className="calculator-page">
@@ -79,6 +80,12 @@ const CalculatorLayout = ({
                                 ))}
                             </ul>
                         </div>
+
+                        {articleContent && (
+                            <div className="article-content" style={{ marginTop: '32px', lineHeight: '1.6', color: '#374151' }}>
+                                {articleContent}
+                            </div>
+                        )}
                     </div>
 
                     {/* Right Content Area (Standard Wrapper) */}
