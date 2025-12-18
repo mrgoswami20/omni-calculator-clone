@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { useLocation } from 'react-router-dom';
 import SubNavigation from './SubNavigation';
 import { Share2, ThumbsUp, ThumbsDown, MessageSquare, Box, Code, Quote } from 'lucide-react';
 import './CalculatorLayout.css'; // We'll move common styles here
@@ -12,6 +13,28 @@ const CalculatorLayout = ({
     similarCalculators = 7,
     articleContent
 }) => {
+    const location = useLocation();
+
+    useEffect(() => {
+        if (title && location.pathname) {
+            try {
+                const stored = JSON.parse(localStorage.getItem('omni_last_used') || '[]');
+                // Create new item
+                const newItem = { title, url: location.pathname };
+
+                // Remove duplicates (by URL)
+                const filtered = stored.filter(item => item.url !== newItem.url);
+
+                // Add to front and limit to 3 (User strict requirement)
+                const updated = [newItem, ...filtered].slice(0, 3);
+
+                localStorage.setItem('omni_last_used', JSON.stringify(updated));
+            } catch (e) {
+                console.error("Failed to update last used calculators", e);
+            }
+        }
+    }, [title, location]);
+
     return (
         <div className="calculator-page">
             <SubNavigation />

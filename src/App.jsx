@@ -34,6 +34,30 @@ import SigFigCalculatorPage from './pages/SigFigCalculatorPage';
 import ScientificNotationCalculatorPage from './pages/ScientificNotationCalculatorPage';
 import SquareFootageCalculatorPage from './pages/SquareFootageCalculatorPage';
 import PercentageIncreaseCalculatorPage from './pages/PercentageIncreaseCalculatorPage';
+import FractionToPercentCalculatorPage from './pages/FractionToPercentCalculatorPage';
+import PercentageOfPercentageCalculatorPage from './pages/PercentageOfPercentageCalculatorPage';
+import DecimalToPercentConverterPage from './pages/DecimalToPercentConverterPage';
+import PercentagePointCalculatorPage from './pages/PercentagePointCalculatorPage';
+import BattingAverageCalculatorPage from './pages/BattingAverageCalculatorPage';
+import OnBasePercentageCalculatorPage from './pages/OnBasePercentageCalculatorPage';
+import ERACalculatorPage from './pages/ERACalculatorPage';
+import SluggingPercentageCalculatorPage from './pages/SluggingPercentageCalculatorPage';
+import FieldingPercentageCalculatorPage from './pages/FieldingPercentageCalculatorPage';
+import WARCalculatorPage from './pages/WARCalculatorPage';
+import ACTScoreCalculatorPage from './pages/ACTScoreCalculatorPage';
+import GWACalculatorPage from './pages/GWACalculatorPage';
+import SemesterGradeCalculatorPage from './pages/SemesterGradeCalculatorPage';
+import HighSchoolGPACalculatorPage from './pages/HighSchoolGPACalculatorPage';
+import IELTSScoreCalculatorPage from './pages/IELTSScoreCalculatorPage';
+import PTEScoreCalculatorPage from './pages/PTEScoreCalculatorPage';
+import ButterCalculatorPage from './pages/ButterCalculatorPage';
+import GramsToTablespoonsPage from './pages/GramsToTablespoonsPage';
+import CakePanConverterPage from './pages/CakePanConverterPage';
+import GramsToTeaspoonsPage from './pages/GramsToTeaspoonsPage';
+import CookingMeasurementConverterPage from './pages/CookingMeasurementConverterPage';
+import MlToGramsCalculatorPage from './pages/MlToGramsCalculatorPage';
+import AveragePercentageCalculatorPage from './pages/AveragePercentageCalculatorPage';
+
 import AuthModal from './components/AuthModal';
 import Footer from './components/Footer';
 import './index.css';
@@ -92,16 +116,40 @@ function App() {
           <Route path="/everyday-life/boat-speed-calculator" element={<BoatSpeedCalculatorPage />} />
           <Route path="/everyday-life/boost-horsepower-calculator" element={<BoostHorsepowerCalculatorPage />} />
           <Route path="/everyday-life/mpg-calculator" element={<MpgCalculatorPage />} />
+          <Route path="/sports/batting-average-calculator" element={<BattingAverageCalculatorPage />} />
+          <Route path="/sports/on-base-percentage-calculator" element={<OnBasePercentageCalculatorPage />} />
+          <Route path="/sports/era-calculator" element={<ERACalculatorPage />} />
+          <Route path="/sports/slugging-percentage-calculator" element={<SluggingPercentageCalculatorPage />} />
+          <Route path="/sports/fielding-percentage-calculator" element={<FieldingPercentageCalculatorPage />} />
+          <Route path="/sports/war-calculator" element={<WARCalculatorPage />} />
           <Route path="/everyday-life/miles-to-dollars-calculator" element={<MilesToDollarsCalculatorPage />} />
           <Route path="/finance/sales-tax-calculator" element={<SalesTaxCalculatorPage />} />
           <Route path="/statistics/p-value-calculator" element={<PValueCalculatorPage />} />
           <Route path="/statistics/confidence-interval-calculator" element={<ConfidenceIntervalCalculatorPage />} />
-          <Route path="/other/test-grade-calculator" element={<TestGradeCalculatorPage />} />
+          <Route path="/other/grade-calculator" element={<TestGradeCalculatorPage />} />
+          <Route path="/other/act-score-calculator" element={<ACTScoreCalculatorPage />} />
+          <Route path="/other/gwa-calculator" element={<GWACalculatorPage />} />
+          <Route path="/other/semester-grade-calculator" element={<SemesterGradeCalculatorPage />} />
+          <Route path="/other/high-school-gpa-calculator" element={<HighSchoolGPACalculatorPage />} />
+          <Route path="/other/ielts-score-calculator" element={<IELTSScoreCalculatorPage />} />
+          <Route path="/other/pte-score-calculator" element={<PTEScoreCalculatorPage />} />
           <Route path="/math/log-calculator" element={<LogCalculatorPage />} />
           <Route path="/math/sig-fig-calculator" element={<SigFigCalculatorPage />} />
           <Route path="/math/scientific-notation-calculator" element={<ScientificNotationCalculatorPage />} />
           <Route path="/construction/square-footage-calculator" element={<SquareFootageCalculatorPage />} />
           <Route path="/math/percentage-increase-calculator" element={<PercentageIncreaseCalculatorPage />} />
+          <Route path="/math/fraction-to-percent-calculator" element={<FractionToPercentCalculatorPage />} />
+          <Route path="/math/percentage-of-percentage-calculator" element={<PercentageOfPercentageCalculatorPage />} />
+          <Route path="/math/decimal-to-percent-converter" element={<DecimalToPercentConverterPage />} />
+          <Route path="/math/percentage-point-calculator" element={<PercentagePointCalculatorPage />} />
+          <Route path="/food/butter-calculator" element={<ButterCalculatorPage />} />
+          <Route path="/food/grams-to-tablespoons-converter" element={<GramsToTablespoonsPage />} />
+          <Route path="/food/cake-pan-converter" element={<CakePanConverterPage />} />
+          <Route path="/food/grams-to-teaspoons-converter" element={<GramsToTeaspoonsPage />} />
+          <Route path="/food/cooking-measurement-converter" element={<CookingMeasurementConverterPage />} />
+          <Route path="/food/ml-to-grams-calculator" element={<MlToGramsCalculatorPage />} />
+          <Route path="/math/average-percentage-calculator" element={<AveragePercentageCalculatorPage />} />
+
         </Routes>
         <Footer />
 

@@ -1,0 +1,214 @@
+.hs-gpa-calculator-page {
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.hs-gpa-calculator-page .section-card {
+    background-color: white;
+    border-radius: 12px;
+    padding: 1.5rem;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    margin-bottom: 1.5rem;
+    border: 1px solid #e5e7eb;
+}
+
+/* Card Header */
+.hs-gpa-calculator-page .card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+    cursor: pointer;
+    /* collapsible cards often implied */
+}
+
+.hs-gpa-calculator-page .header-left {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.hs-gpa-calculator-page .card-title {
+    font-size: 1.05rem;
+    font-weight: 600;
+    color: #111827;
+}
+
+.hs-gpa-calculator-page .more-options {
+    color: #9ca3af;
+    cursor: pointer;
+    font-size: 1.25rem;
+    line-height: 0.5;
+}
+
+/* Radio Groups */
+.hs-gpa-calculator-page .radio-group {
+    margin-bottom: 1rem;
+}
+
+.hs-gpa-calculator-page .group-label {
+    font-size: 0.875rem;
+    color: #4b5563;
+    margin-bottom: 0.5rem;
+    display: flex;
+    justify-content: space-between;
+}
+
+.hs-gpa-calculator-page .radio-option {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 0.5rem;
+    cursor: pointer;
+}
+
+.hs-gpa-calculator-page .radio-circle {
+    width: 18px;
+    height: 18px;
+    border: 2px solid #d1d5db;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s;
+}
+
+.hs-gpa-calculator-page .radio-circle.selected {
+    border-color: #3b82f6;
+    background-color: white;
+}
+
+.hs-gpa-calculator-page .radio-circle.selected::after {
+    content: '';
+    width: 10px;
+    height: 10px;
+    background-color: #3b82f6;
+    border-radius: 50%;
+}
+
+.hs-gpa-calculator-page .radio-text {
+    font-size: 0.95rem;
+    color: #374151;
+}
+
+/* Course List */
+.hs-gpa-calculator-page .course-row {
+    margin-bottom: 1.25rem;
+}
+
+.hs-gpa-calculator-page .course-label {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 0.5rem;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #374151;
+}
+
+.hs-gpa-calculator-page .check-icon {
+    color: #8b5cf6;
+    /* Purple/Blueish check */
+}
+
+.hs-gpa-calculator-page .select-wrapper {
+    position: relative;
+    width: 100%;
+}
+
+.hs-gpa-calculator-page .course-select {
+    width: 100%;
+    padding: 0.75rem;
+    background-color: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-radius: 6px;
+    font-size: 1rem;
+    color: #334155;
+    appearance: none;
+    cursor: pointer;
+    font-weight: 600;
+    color: #3b82f6;
+    /* Blue text */
+}
+
+.hs-gpa-calculator-page .course-select:focus {
+    outline: none;
+    border-color: #3b82f6;
+    background-color: #eff6ff;
+}
+
+.hs-gpa-calculator-page .select-arrow {
+    position: absolute;
+    right: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+    pointer-events: none;
+    color: #3b82f6;
+}
+
+/* Cumulative Checkbox */
+.hs-gpa-calculator-page .checkbox-row {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-top: 1rem;
+}
+
+.hs-gpa-calculator-page .checkbox-box {
+    width: 18px;
+    height: 18px;
+    border: 2px solid #d1d5db;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+/* Result Section */
+.hs-gpa-calculator-page .result-info {
+    margin-bottom: 0.5rem;
+    font-size: 0.95rem;
+    color: #374151;
+}
+
+.hs-gpa-calculator-page .result-grade-text {
+    font-size: 0.95rem;
+    color: #374151;
+}
+
+.hs-gpa-calculator-page .result-grade-text strong {
+    font-weight: 700;
+}
+
+.hs-gpa-calculator-page .calc-actions {
+    margin-top: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.hs-gpa-calculator-page .share-result-btn {
+    width: 100%;
+    background-color: white;
+    border: 1px solid #e5e7eb;
+    border-radius: 0.375rem;
+    padding: 0.875rem;
+    font-weight: 500;
+    color: #374151;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    cursor: pointer;
+    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+}
+
+.hs-gpa-calculator-page .share-icon-circle {
+    background-color: #ef4444;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+}

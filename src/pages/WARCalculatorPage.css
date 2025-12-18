@@ -1,0 +1,172 @@
+.war-calculator-page .section-card {
+    background-color: #fff;
+    border: 1px solid #e5e7eb;
+    border-radius: 0.5rem;
+    padding: 1.5rem;
+    margin-bottom: 1rem;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+}
+
+.war-calculator-page .section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+    cursor: pointer;
+}
+
+.war-calculator-page .section-title {
+    font-size: 1rem;
+    font-weight: 600;
+    color: #111827;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.war-calculator-page .input-group {
+    margin-bottom: 1.25rem;
+}
+
+.war-calculator-page .label-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.375rem;
+    font-size: 0.9rem;
+    color: #4b5563;
+}
+
+.war-calculator-page .more-options {
+    color: #9ca3af;
+    cursor: pointer;
+}
+
+.war-calculator-page .input-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.war-calculator-page .calc-input {
+    width: 100%;
+    padding: 0.75rem;
+    padding-right: 1rem;
+    border: 1px solid #d1d5db;
+    border-radius: 0.5rem;
+    font-size: 1rem;
+    outline: none;
+    transition: all 0.2s;
+    background-color: #f9fafb;
+    color: #111827;
+}
+
+.war-calculator-page .calc-input:focus {
+    border-color: #3b82f6;
+    background-color: #fff;
+    box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.1);
+}
+
+.war-calculator-page .calc-select {
+    width: 100%;
+    padding: 0.75rem;
+    padding-right: 2rem;
+    border: 1px solid #d1d5db;
+    border-radius: 0.5rem;
+    font-size: 1rem;
+    appearance: none;
+    background-color: #f9fafb;
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%236b7280' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3e%3c/svg%3e");
+    background-position: right 0.5rem center;
+    background-repeat: no-repeat;
+    background-size: 1.5em 1.5em;
+    color: #111827;
+    font-weight: 600;
+}
+
+.war-calculator-page .calc-select:focus {
+    border-color: #3b82f6;
+    background-color: #fff;
+    box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.1);
+}
+
+.war-calculator-page .calc-actions {
+    margin-top: 1.5rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid #e5e7eb;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.war-calculator-page .share-result-btn {
+    width: 100%;
+    padding: 0.75rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    background-color: transparent;
+    border: 1px solid #e5e7eb;
+    border-radius: 0.5rem;
+    font-weight: 700;
+    color: #374151;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.war-calculator-page .share-result-btn:hover {
+    background-color: #f9fafb;
+}
+
+.war-calculator-page .share-icon-circle {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background-color: #fca5a5;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+}
+
+.war-calculator-page .secondary-actions {
+    display: flex;
+    gap: 1rem;
+}
+
+.war-calculator-page .secondary-btn {
+    flex: 1;
+    padding: 0.75rem;
+    background-color: transparent;
+    border: 1px solid #e5e7eb;
+    border-radius: 0.5rem;
+    color: #4b5563;
+    font-size: 0.9rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.war-calculator-page .secondary-btn:hover {
+    background-color: #f9fafb;
+    border-color: #d1d5db;
+}
+
+.war-calculator-page .feedback-section {
+    margin-top: 2rem;
+    text-align: center;
+    padding-top: 1.5rem;
+    border-top: 1px solid #f3f4f6;
+}
+
+.war-calculator-page .feedback-btn {
+    padding: 0.5rem 1.5rem;
+    border: 1px solid #e5e7eb;
+    border-radius: 0.25rem;
+    background-color: #fff;
+    cursor: pointer;
+    font-size: 0.9rem;
+    color: #4b5563;
+    margin: 0 0.5rem;
+}

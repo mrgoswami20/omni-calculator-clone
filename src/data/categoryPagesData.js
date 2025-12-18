@@ -37,14 +37,14 @@ export const categoryPagesData = {
                 emoji: "⚾",
                 groups: [
                     [
-                        { label: "Batting Average Calculator", url: "#" },
-                        { label: "ERA Calculator – Earned Run Average", url: "#" },
-                        { label: "Fielding Percentage Calculator", url: "#" },
+                        { label: "Batting Average Calculator", url: "/sports/batting-average-calculator" },
+                        { label: "ERA Calculator – Earned Run Average", url: "/sports/era-calculator" },
+                        { label: "Fielding Percentage Calculator", url: "/sports/fielding-percentage-calculator" },
                     ],
                     [
-                        { label: "On Base Percentage Calculator", url: "#" },
-                        { label: "Slugging Percentage Calculator", url: "#" },
-                        { label: "WAR Calculator (Wins Above Replacement)", url: "#" },
+                        { label: "On Base Percentage Calculator", url: "/sports/on-base-percentage-calculator" },
+                        { label: "Slugging Percentage Calculator", url: "/sports/slugging-percentage-calculator" },
+                        { label: "WAR Calculator (Wins Above Replacement)", url: "/sports/war-calculator" },
                     ]
                 ]
             }
@@ -87,14 +87,14 @@ export const categoryPagesData = {
                 iconColor: "#a16207",
                 groups: [
                     [
-                        { label: "ACT Score Calculator", url: "#" },
-                        { label: "Classroom Spacing Calculator - Coronavirus", url: "#" },
-                        { label: "College GPA Calculator", url: "#" },
+                        { label: "ACT Score Calculator", url: "/other/act-score-calculator" },
+                        { label: "Semester Grade Calculator", url: "/other/semester-grade-calculator" },
+                        { label: "PTE Score Calculator", url: "/other/pte-score-calculator" },
                     ],
                     [
-                        { label: "GWA Calculator – General Weighted Average", url: "#" },
-                        { label: "High School GPA Calculator", url: "#" },
-                        { label: "IELTS Score Calculator", url: "#" },
+                        { label: "GWA Calculator – General Weighted Average", url: "/other/gwa-calculator" },
+                        { label: "High School GPA Calculator", url: "/other/high-school-gpa-calculator" },
+                        { label: "IELTS Score Calculator", url: "/other/ielts-score-calculator" },
                     ]
                 ]
             }
@@ -312,14 +312,14 @@ export const categoryPagesData = {
                 iconColor: "#a16207",
                 groups: [
                     [
-                        { label: "Butter Calculator - How Much is a Stick of Butter?", url: "#" },
-                        { label: "Cake Pan Converter", url: "#" },
-                        { label: "Cooking Measurement Converter", url: "#" },
+                        { label: "Butter Calculator - How Much is a Stick of Butter?", url: "/food/butter-calculator" },
+                        { label: "Cake Pan Converter", url: "/food/cake-pan-converter" },
+                        { label: "Cooking Measurement Converter", url: "/food/cooking-measurement-converter" },
                     ],
                     [
-                        { label: "Grams to Tablespoons Converter", url: "#" },
-                        { label: "Grams to Teaspoons Converter", url: "#" },
-                        { label: "ml to Grams Calculator", url: "#" },
+                        { label: "Grams to Tablespoons Converter", url: "/food/grams-to-tablespoons-converter" },
+                        { label: "Grams to Teaspoons Converter", url: "/food/grams-to-teaspoons-converter" },
+                        { label: "ml to Grams Calculator", url: "/food/ml-to-grams-calculator" },
                     ]
                 ]
             }
@@ -362,14 +362,14 @@ export const categoryPagesData = {
                 iconColor: "#a16207",
                 groups: [
                     [
-                        { label: "Average Percentage Calculator", url: "#" },
-                        { label: "Fraction to Percent Calculator", url: "#" },
-                        { label: "Decimal to Percent Converter", url: "#" },
+                        { label: "Average Percentage Calculator", url: "/math/average-percentage-calculator" },
+                        { label: "Fraction to Percent Calculator", url: "/math/fraction-to-percent-calculator" },
+                        { label: "Decimal to Percent Converter", url: "/math/decimal-to-percent-converter" },
                     ],
                     [
-                        { label: "Percentage Increase Classic", url: "#" },
-                        { label: "Percentage of a Percentage Calculator", url: "#" },
-                        { label: "Percentage Point Calculator", url: "#" },
+                        { label: "Percentage Increase Calculator", url: "/math/percentage-increase-calculator" },
+                        { label: "Percentage of a Percentage Calculator", url: "/math/percentage-of-percentage-calculator" },
+                        { label: "Percentage Point Calculator", url: "/math/percentage-point-calculator" },
                     ]
                 ]
             }
