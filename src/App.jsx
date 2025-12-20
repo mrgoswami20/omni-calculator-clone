@@ -57,6 +57,13 @@ import GramsToTeaspoonsPage from './pages/GramsToTeaspoonsPage';
 import CookingMeasurementConverterPage from './pages/CookingMeasurementConverterPage';
 import MlToGramsCalculatorPage from './pages/MlToGramsCalculatorPage';
 import AveragePercentageCalculatorPage from './pages/AveragePercentageCalculatorPage';
+import AddictionCalculatorPage from './pages/AddictionCalculatorPage';
+import VampireApocalypseCalculatorPage from './pages/VampireApocalypseCalculatorPage';
+import AlienCivilizationCalculatorPage from './pages/AlienCivilizationCalculatorPage';
+import BlackFridayCalculatorPage from './pages/BlackFridayCalculatorPage';
+import IdealEggBoilingCalculatorPage from './pages/IdealEggBoilingCalculatorPage';
+import KoreanAgeCalculatorPage from './pages/DiscoverOmni/KoreanAgeCalculatorPage';
+import MeatFootprintCalculatorPage from './pages/DiscoverOmni/MeatFootprintCalculatorPage';
 
 import AuthModal from './components/AuthModal';
 import Footer from './components/Footer';
@@ -149,7 +156,13 @@ function App() {
           <Route path="/food/cooking-measurement-converter" element={<CookingMeasurementConverterPage />} />
           <Route path="/food/ml-to-grams-calculator" element={<MlToGramsCalculatorPage />} />
           <Route path="/math/average-percentage-calculator" element={<AveragePercentageCalculatorPage />} />
-
+          <Route path="/discover-omni/addiction-calculator" element={<AddictionCalculatorPage />} />
+          <Route path="/discover-omni/vampire-apocalypse-calculator" element={<VampireApocalypseCalculatorPage />} />
+          <Route path="/discover-omni/alien-civilization-calculator" element={<AlienCivilizationCalculatorPage />} />
+          <Route path="/discover-omni/black-friday-calculator" element={<BlackFridayCalculatorPage />} />
+          <Route path="/discover-omni/ideal-egg-boiling-calculator" element={<IdealEggBoilingCalculatorPage />} />
+          <Route path="/discover-omni/korean-age-calculator" element={<KoreanAgeCalculatorPage />} />
+          <Route path="/discover-omni/meat-footprint-calculator" element={<MeatFootprintCalculatorPage />} />
         </Routes>
         <Footer />
 

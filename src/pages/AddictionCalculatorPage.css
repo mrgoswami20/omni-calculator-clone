@@ -1,0 +1,307 @@
+/* AddictionCalculatorPage.css */
+
+.addiction-calculator {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 24px;
+    background-color: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+    border: 1px solid #f3f4f6;
+}
+
+.input-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.label-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: #4b5563;
+    /* Gray-600 */
+    margin-bottom: 4px;
+}
+
+.more-options {
+    color: #9ca3af;
+    cursor: pointer;
+    font-size: 1.25rem;
+    line-height: 0.5;
+    font-weight: 700;
+}
+
+.addiction-calculator {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    /* Increased gap */
+    padding: 24px;
+    background-color: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.08), 0 2px 4px -1px rgba(0, 0, 0, 0.04);
+    border: 1px solid #e5e7eb;
+}
+
+.calc-input,
+.calc-select {
+    width: 100%;
+    padding: 12px 14px;
+    font-size: 1rem;
+    border: 1px solid #e5e7eb;
+    border-radius: 8px;
+    background-color: #f9fafb;
+    outline: none;
+    transition: all 0.2s;
+    color: #111827;
+}
+
+.calc-select {
+    appearance: none;
+    font-weight: 600;
+    background-color: #f9fafb;
+    cursor: pointer;
+}
+
+.main-select {
+    font-weight: 700;
+}
+
+.select-wrapper {
+    position: relative;
+}
+
+.select-arrow {
+    position: absolute;
+    right: 14px;
+    top: 50%;
+    transform: translateY(-50%);
+    pointer-events: none;
+    color: #2563eb;
+    /* Blue arrow per screenshot */
+}
+
+/* Wrapper for composite input (Value + Unit) */
+.input-with-unit {
+    display: flex;
+    align-items: center;
+    border: 1px solid #e5e7eb;
+    border-radius: 6px;
+    background-color: #f3f4f6;
+    /* Gray background for the unit area effectively */
+    overflow: hidden;
+    height: 42px;
+    /* Fixed height for consistency */
+}
+
+.input-with-unit:focus-within {
+    border-color: #3b82f6;
+    box-shadow: 0 0 0 2px #dbeafe;
+}
+
+.input-with-unit .calc-input {
+    border: none;
+    background-color: #f3f4f6;
+    /* Match the wrapper background from screenshot input looks light gray */
+    border-radius: 0;
+    flex: 1;
+    color: #2563eb;
+    /* Blue text */
+    font-weight: 600;
+    padding: 0 12px;
+    height: 100%;
+    font-size: 1.05rem;
+}
+
+/* Unit Selector Section */
+.unit-select-wrapper {
+    display: flex;
+    align-items: center;
+    position: relative;
+    padding: 0 8px;
+    /* Padding for the arrow area mainly */
+    min-width: fit-content;
+    height: 100%;
+}
+
+.unit-select {
+    appearance: none;
+    border: none;
+    background: transparent;
+    padding: 0 24px 0 4px;
+    /* Room for arrow */
+    font-size: 0.9rem;
+    color: #2563eb;
+    font-weight: 600;
+    cursor: pointer;
+    text-align: right;
+    outline: none;
+    height: 100%;
+    position: relative;
+    z-index: 10;
+    /* Ensure it's clickable */
+}
+
+.unit-arrow {
+    position: absolute;
+    right: 4px;
+    /* Tighter arrow */
+    pointer-events: none;
+    color: #2563eb;
+}
+
+.unit-suffix {
+    color: #4b5563;
+    font-size: 0.9rem;
+    margin-right: 12px;
+    /* Margin from right edge of container */
+    margin-left: 4px;
+    /* Separation from select wrapper */
+    white-space: nowrap;
+    font-weight: 400;
+}
+
+.plain-suffix {
+    color: #3b82f6;
+    font-weight: 500;
+    padding: 0 12px;
+    font-size: 0.9rem;
+}
+
+/* RESULTS STYLING */
+.results-divider {
+    height: 1px;
+    background-color: #e5e7eb;
+    margin: 8px 0 16px;
+}
+
+.result-display-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border: 1px solid #bfdbfe;
+    border-radius: 6px;
+    padding: 0;
+    background-color: #eff6ff;
+    /* Light blue tint for the WHOLE result box */
+    overflow: hidden;
+    height: 48px;
+    /* Slightly taller for results */
+}
+
+.result-value {
+    flex: 1;
+    padding: 0 12px;
+    font-size: 1.15rem;
+    font-weight: 600;
+    color: #1d4ed8;
+    background-color: transparent;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    height: 100%;
+}
+
+/* Multi-unit display style */
+.result-value span.val {
+    color: #1d4ed8;
+    font-weight: 700;
+}
+
+.result-value span.lbl {
+    color: #6b7280;
+    /* Gray-500 */
+    font-size: 0.9rem;
+    font-weight: 400;
+    margin-right: 4px;
+}
+
+/* Unit separator */
+.result-value span.sep {
+    color: #d1d5db;
+    /* Gray-300 */
+    font-weight: 300;
+    margin: 0 4px;
+}
+
+/* Unit selector in result (right side) */
+.unit-select-wrapper.simple {
+    background-color: transparent;
+    /* Seamless with bg */
+    border-left: none;
+    /* No separator line in screenshot for results? Or subtle one */
+    /* Screenshot shows just the arrow on the right, no visible border separation */
+    height: 100%;
+    min-width: 40px;
+    padding-right: 4px;
+    position: relative;
+    /* Ensure positioning context */
+}
+
+/* This makes the select element an invisible overlay so the Arrow is visible underneath,
+   but clicking opens the native dropdown with correct text colors */
+.unit-select.no-bg {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    cursor: pointer;
+    color: #111827;
+    /* Reset color so options are visible */
+    background-color: transparent;
+    appearance: none;
+    padding: 0;
+    margin: 0;
+}
+
+.unit-select option {
+    color: #111827;
+    /* Explicitly set option color */
+    background-color: #ffffff;
+}
+
+.unit-select-wrapper.simple .unit-arrow {
+    position: absolute;
+    right: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #2563eb;
+    pointer-events: none;
+}
+
+/* Notes and Disclaimer */
+.calc-notes-section {
+    margin-top: 16px;
+    font-size: 0.85rem;
+    color: #4b5563;
+    line-height: 1.5;
+}
+
+.calc-note {
+    margin-bottom: 16px;
+    font-size: 0.95rem;
+    /* Slightly larger for the main note */
+    color: #111827;
+}
+
+.calc-disclaimer {
+    font-size: 0.75rem;
+    /* Smaller for fine print */
+    color: #6b7280;
+    font-style: italic;
+    line-height: 1.4;
+}
+
+/* Action Buttons */
+.calc-actions {
+    margin-top: 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}

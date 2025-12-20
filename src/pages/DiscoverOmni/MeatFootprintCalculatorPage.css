@@ -1,0 +1,422 @@
+/* --- Meat Footprint Calculator Styles --- */
+
+.meat-footprint-calculator {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    /* Increased gap for better separation */
+    padding-bottom: 2rem;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
+
+/* --- Typography & Colors --- */
+h4 {
+    margin: 0;
+    font-size: 1rem;
+    font-weight: 600;
+    color: #111827;
+}
+
+/* --- Section Cards usually handled by Layout, but internal content needs padding --- */
+.settings-content,
+.consumption-content,
+.results-content {
+    padding: 0 1.25rem 1.25rem;
+}
+
+/* --- Settings Section --- */
+.setting-label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: #374151;
+}
+
+.radio-group-vertical {
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+}
+
+.radio-item {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    cursor: pointer;
+    font-size: 0.95rem;
+    color: #4b5563;
+}
+
+.radio-item input[type="radio"] {
+    accent-color: #3b82f6;
+    width: 1.1rem;
+    height: 1.1rem;
+    margin: 0;
+}
+
+.separator {
+    height: 1px;
+    background-color: #e5e7eb;
+    margin: 1rem 0;
+}
+
+/* --- Consumption Listing --- */
+.consumption-item {
+    margin-bottom: 1.25rem;
+}
+
+.consumption-item:last-child {
+    margin-bottom: 0;
+}
+
+.consumption-label {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 0.5rem;
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: #374151;
+}
+
+.info-icon {
+    color: #9ca3af;
+    cursor: pointer;
+    opacity: 0.8;
+    transition: opacity 0.2s;
+}
+
+.info-icon:hover {
+    opacity: 1;
+}
+
+/* --- Input Fields (The Critical Part) --- */
+.input-with-unit {
+    display: flex;
+    align-items: center;
+    background-color: #f9fafb;
+    /* Light Gray #f9fafb based on snap */
+    border: 1px solid #e5e7eb;
+    /* Subtle border */
+    border-radius: 4px;
+    /* Squarer inputs ~4px */
+    height: 40px;
+    /* Slightly compact */
+    overflow: hidden;
+    transition: all 0.2s ease;
+    width: 100%;
+}
+
+.input-with-unit:hover {
+    border-color: #d1d5db;
+}
+
+.input-with-unit:focus-within {
+    border-color: #3b82f6;
+    background-color: #ffffff;
+    box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.1);
+}
+
+.calc-input-qty {
+    flex: 1;
+    min-width: 0;
+    border: none !important;
+    background: transparent !important;
+    box-shadow: none !important;
+    padding-left: 12px;
+    padding-right: 4px;
+    font-size: 15px;
+    font-weight: 500;
+    color: #111827;
+    outline: none;
+    height: 100%;
+    margin: 0;
+}
+
+/* Unit Wrapper */
+.unit-wrapper {
+    display: flex;
+    align-items: center;
+    padding-right: 12px;
+    padding-left: 8px;
+    background-color: transparent;
+    height: 100%;
+    cursor: pointer;
+    user-select: none;
+}
+
+.unit-gray {
+    font-size: 13px;
+    color: #6b7280;
+    white-space: pre;
+}
+
+.unit-blue {
+    font-size: 13px;
+    color: #2563eb;
+    font-weight: 500;
+}
+
+.unit-chevron {
+    color: #2563eb;
+    /* Blue chevron */
+    margin-left: 4px;
+}
+
+/* --- Highlighted Result Box (Protein) --- */
+.result-box-highlight {
+    background-color: #eff6ff;
+    /* blue-50 */
+    border-color: #dbeafe;
+    /* blue-100 */
+}
+
+.result-box-highlight .calc-input-qty {
+    color: #2563eb;
+    font-weight: 600;
+}
+
+.result-box-highlight .unit-label {
+    color: #60a5fa;
+}
+
+/* --- Action Buttons (Updated to match Snap) --- */
+.action-buttons-container {
+    display: grid;
+    grid-template-columns: 1fr 1.5fr;
+    gap: 12px;
+    margin-top: 24px;
+    margin-bottom: 24px;
+}
+
+.btn-share-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: #ffffff;
+    border: 1px solid #e5e7eb;
+    border-radius: 8px;
+    padding: 16px;
+    cursor: pointer;
+    transition: all 0.2s;
+    height: 100%;
+    /* Fill height */
+    min-height: 100px;
+}
+
+.btn-share-box:hover {
+    background-color: #f9fafb;
+    border-color: #d1d5db;
+}
+
+.share-icon-circle {
+    background-color: #ff4d6d;
+    /* Pinkish Red from snap */
+    color: white;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 8px;
+}
+
+.btn-share-box span {
+    color: #111827;
+    font-weight: 600;
+    font-size: 14px;
+}
+
+.action-stack {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.btn-action-rect {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #ffffff;
+    border: 1px solid #e5e7eb;
+    border-radius: 8px;
+    padding: 0 16px;
+    height: 44px;
+    /* Fixed height for buttons */
+    cursor: pointer;
+    color: #111827;
+    font-weight: 600;
+    font-size: 14px;
+    transition: all 0.2s;
+    width: 100%;
+}
+
+.btn-action-rect:hover {
+    background-color: #f9fafb;
+    border-color: #d1d5db;
+}
+
+/* --- Feedback Section --- */
+.feedback-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 16px;
+    padding-top: 16px;
+    /* border-top: 1px solid #f3f4f6; Optional separator if needed */
+}
+
+.feedback-text {
+    color: #4b5563;
+    font-size: 14px;
+}
+
+.feedback-buttons {
+    display: flex;
+    gap: 8px;
+}
+
+.btn-feedback {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    background: #ffffff;
+    border: 1px solid #e5e7eb;
+    border-radius: 6px;
+    padding: 6px 12px;
+    font-size: 13px;
+    font-weight: 500;
+    color: #374151;
+    cursor: pointer;
+}
+
+.btn-feedback:hover {
+    background-color: #f9fafb;
+    border-color: #d1d5db;
+}
+
+
+
+/* --- Environment & Health Results --- */
+.results-content {
+    gap: 1.5rem;
+}
+
+.result-block {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.result-main-line {
+    display: flex;
+    align-items: center;
+    /* Top align usually better if text wraps, but center for single line */
+    gap: 0.75rem;
+    margin-bottom: 0.25rem;
+}
+
+.result-icon-main {
+    flex-shrink: 0;
+}
+
+.result-icon-square {
+    width: 24px;
+    height: 24px;
+    border-radius: 6px;
+}
+
+.result-value {
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: #111827;
+}
+
+.result-unit {
+    font-size: 1rem;
+    color: #111827;
+    font-weight: 500;
+}
+
+.result-subtext {
+    font-size: 0.95rem;
+    color: #4b5563;
+    line-height: 1.6;
+}
+
+.result-subtext strong {
+    color: #111827;
+}
+
+/* Lists */
+.result-list {
+    list-style: none;
+    padding: 0.25rem 0 0 1rem;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+}
+
+.result-list li {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    font-size: 0.95rem;
+    color: #4b5563;
+}
+
+.result-list li span {
+    font-weight: 600;
+    color: #374151;
+}
+
+/* Health List */
+.result-list-health {
+    margin-top: 0.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.result-list-health li {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.health-icon-wrapper {
+    width: 24px;
+    display: flex;
+    justify-content: center;
+}
+
+/* Alerts */
+.result-alert {
+    padding: 0.75rem 0;
+    border-radius: 6px;
+    font-size: 0.95rem;
+    line-height: 1.5;
+    margin-top: 0.5rem;
+}
+
+.main-alert {
+    color: #4b5563;
+    /* Normal text */
+    /* Screenshot: "Your meat footprint..." plain text */
+}
+
+.health-alert {
+    display: flex;
+    gap: 0.75rem;
+    padding: 1rem;
+    background-color: #fef2f2;
+    /* Red-50 */
+    border-left: 4px solid #ef4444;
+    /* Red-500 */
+    color: #991b1b;
+    /* Red-800 */
+}

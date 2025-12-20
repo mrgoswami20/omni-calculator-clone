@@ -110,18 +110,18 @@ export const categoryPagesData = {
             {
                 groups: [
                     [
-                        { label: "Addiction Calculator", url: "#" },
-                        { label: "Alien Civilization Calculator", url: "#" },
-                        { label: "Black Friday Calculator", url: "#" },
+                        { label: "Addiction Calculator", url: "/discover-omni/addiction-calculator", icon: "💊" },
+                        { label: "Vampire Apocalypse Calculator", url: "/discover-omni/vampire-apocalypse-calculator", icon: "🧛" },
+                        { label: "Alien Civilization Calculator", url: "/discover-omni/alien-civilization-calculator", icon: "👽" },
+                        { label: "Black Friday Calculator", url: "/discover-omni/black-friday-calculator" },
                         { label: "Black Hole Collision Calculator", url: "#" },
                         { label: "Harris-Benedict Calculator (Basal Metabolic Rate)", url: "#" },
                     ],
                     [
-                        { label: "Vampire Apocalypse Calculator", url: "#" },
-                        { label: "Ideal Egg Boiling Calculator", url: "#" },
-                        { label: "Korean Age Calculator", url: "#" },
+                        { label: "Ideal Egg Boiling Calculator", url: "/discover-omni/ideal-egg-boiling-calculator" },
+                        { label: "Korean Age Calculator", url: "/discover-omni/korean-age-calculator" },
                         { label: "Lost Socks Calculator", url: "#" },
-                        { label: "Meat Footprint Calculator", url: "#" },
+                        { label: "Meat Footprint Calculator", url: "/discover-omni/meat-footprint-calculator" },
                     ]
                 ]
             }
