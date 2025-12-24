@@ -1,0 +1,153 @@
+.accuracy-calculator-page .method-selection {
+    margin-bottom: 24px;
+    background: #ffffff;
+    padding: 16px;
+    border-radius: 8px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.accuracy-calculator-page .method-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12px;
+    font-size: 0.9rem;
+    color: #4b5563;
+}
+
+.accuracy-calculator-page .radio-group {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.accuracy-calculator-page .radio-option {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+    font-size: 0.95rem;
+    color: #374151;
+}
+
+.accuracy-calculator-page .radio-option input[type="radio"] {
+    width: 18px;
+    height: 18px;
+    accent-color: #3b82f6;
+}
+
+.accuracy-calculator-page .matrix-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin-bottom: 24px;
+}
+
+.accuracy-calculator-page .matrix-cell {
+    display: flex;
+    flex-direction: column;
+}
+
+.accuracy-calculator-page .matrix-cell label {
+    font-size: 0.9rem;
+    color: #374151;
+    margin-bottom: 6px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.accuracy-calculator-page .matrix-cell .more-dots {
+    color: #9ca3af;
+    cursor: pointer;
+}
+
+.accuracy-calculator-page .matrix-cell input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #d1d5db;
+    border-radius: 6px;
+    font-size: 1rem;
+    outline: none;
+    transition: border-color 0.2s;
+}
+
+.accuracy-calculator-page .matrix-cell input:focus {
+    border-color: #3b82f6;
+    box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.1);
+}
+
+.accuracy-calculator-page .results-section {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin-top: 8px;
+}
+
+.accuracy-calculator-page .result-row {
+    position: relative;
+}
+
+.accuracy-calculator-page .result-row label {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 6px;
+    color: #374151;
+    font-size: 0.9rem;
+}
+
+.accuracy-calculator-page .input-wrapper-result {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.accuracy-calculator-page .input-wrapper-result input {
+    width: 100%;
+    padding: 10px;
+    padding-right: 30px;
+    background-color: #f9fafb;
+    border: 1px solid #e5e7eb;
+    border-radius: 6px;
+    color: #111827;
+    font-weight: 500;
+}
+
+.accuracy-calculator-page .checkbox-wrapper {
+    margin-top: 16px;
+    padding-top: 12px;
+    border-top: 1px solid #e5e7eb;
+}
+
+.accuracy-calculator-page .checkbox-option {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+    font-size: 0.95rem;
+    color: #4b5563;
+}
+
+.accuracy-calculator-page .checkbox-option input[type="checkbox"] {
+    width: 16px;
+    height: 16px;
+    accent-color: #3b82f6;
+    border-radius: 4px;
+}
+
+.accuracy-calculator-page .prevalence-input-section {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.accuracy-calculator-page .input-group {
+    margin-bottom: 6px;
+}
+
+.accuracy-calculator-page .label-row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 6px;
+    font-size: 0.9rem;
+    color: #374151;
+}

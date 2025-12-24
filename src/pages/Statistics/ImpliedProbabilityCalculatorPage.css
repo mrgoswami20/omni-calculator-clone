@@ -1,0 +1,145 @@
+.implied-probability-calculator .section-card {
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    padding: 24px;
+    margin-bottom: 24px;
+}
+
+.implied-probability-calculator .radio-group-vertical {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-top: 12px;
+}
+
+.implied-probability-calculator .radio-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    cursor: pointer;
+    font-size: 16px;
+    color: #374151;
+}
+
+.implied-probability-calculator .radio-item input[type="radio"] {
+    width: 20px;
+    height: 20px;
+    accent-color: #2563eb;
+    margin: 0;
+}
+
+.implied-probability-calculator .input-group {
+    margin-bottom: 24px;
+}
+
+.implied-probability-calculator .input-label-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 8px;
+}
+
+.implied-probability-calculator .input-label {
+    font-size: 14px;
+    color: #6b7280;
+    font-weight: 500;
+}
+
+.implied-probability-calculator .input-wrapper {
+    display: flex;
+    align-items: center;
+    border: 1px solid #d1d5db;
+    border-radius: 8px;
+    background-color: white;
+    overflow: hidden;
+    transition: border-color 0.2s;
+}
+
+.implied-probability-calculator .input-wrapper:focus-within {
+    border-color: #2563eb;
+    box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.2);
+}
+
+.implied-probability-calculator .calc-input {
+    flex: 1;
+    border: none;
+    padding: 12px;
+    font-size: 16px;
+    color: #111827;
+    outline: none;
+    min-width: 0;
+}
+
+.implied-probability-calculator .unit-display {
+    padding: 0 16px;
+    color: #6b7280;
+    font-size: 16px;
+    font-weight: 500;
+    background-color: #f9fafb;
+    border-left: 1px solid #d1d5db;
+    height: 48px;
+    display: flex;
+    align-items: center;
+}
+
+.implied-probability-calculator .result-group {
+    margin-top: 32px;
+    padding-top: 24px;
+    border-top: 1px solid #e5e7eb;
+}
+
+.implied-probability-calculator .action-buttons {
+    display: flex;
+    gap: 12px;
+    margin-top: 32px;
+}
+
+.implied-probability-calculator .btn-action {
+    flex: 1;
+    padding: 10px;
+    border: 1px solid #d1d5db;
+    background-color: white;
+    border-radius: 6px;
+    font-size: 14px;
+    font-weight: 500;
+    color: #374151;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.implied-probability-calculator .btn-action:hover {
+    background-color: #f9fafb;
+    border-color: #9ca3af;
+}
+
+.implied-probability-calculator .btn-share {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 16px;
+    border: 1px solid #e5e7eb;
+    border-radius: 8px;
+    background-color: white;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.implied-probability-calculator .btn-share:hover {
+    border-color: #2563eb;
+    color: #2563eb;
+}
+
+.implied-probability-calculator .share-icon-circle {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: #eff6ff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #2563eb;
+}

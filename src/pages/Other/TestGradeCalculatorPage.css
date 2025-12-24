@@ -1,0 +1,589 @@
+/* ... Existing Styles ... */
+.test-grade-calculator-page {
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    color: #111827;
+}
+
+/* ... Keep existing styles ... */
+
+.test-grade-calculator-page .section-card {
+    background: white;
+    border-radius: 8px;
+    padding: 1.5rem;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    margin-bottom: 1rem;
+    border: 1px solid #e5e7eb;
+}
+
+/* ... headers ... */
+.test-grade-calculator-page .card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0;
+    padding-bottom: 0;
+    cursor: pointer;
+}
+
+.test-grade-calculator-page .card-header.expanded {
+    margin-bottom: 1rem;
+}
+
+.test-grade-calculator-page .header-left {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.test-grade-calculator-page .card-title {
+    font-size: 1rem;
+    font-weight: 600;
+    color: #111827;
+}
+
+/* Inputs */
+.test-grade-calculator-page .input-group-row {
+    margin-bottom: 1rem;
+}
+
+.test-grade-calculator-page .input-label-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.35rem;
+}
+
+.test-grade-calculator-page .input-label-row label {
+    font-size: 0.875rem;
+    color: #374151;
+    display: flex;
+    align-items: center;
+    gap: 0.35rem;
+    font-weight: 500;
+}
+
+.test-grade-calculator-page .input-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.test-grade-calculator-page .calc-input {
+    width: 100%;
+    padding: 0.5rem 0.75rem;
+    font-size: 1.1rem;
+    line-height: 1.5;
+    color: #111827;
+    background-color: #f9fafb;
+    border: 1px solid #d1d5db;
+    border-radius: 6px;
+    transition: box-shadow 0.15s ease-in-out, border-color 0.15s ease-in-out;
+}
+
+.test-grade-calculator-page .calc-input.input-blue {
+    color: #3b82f6;
+    font-weight: 500;
+}
+
+.test-grade-calculator-page .calc-input:focus {
+    outline: none;
+    border-color: #3b82f6;
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+    background-color: white;
+}
+
+.test-grade-calculator-page .input-icon-right {
+    position: absolute;
+    right: 12px;
+    color: #6b7280;
+    pointer-events: none;
+    font-size: 0.9rem;
+}
+
+/* Result Text */
+.test-grade-calculator-page .grade-result-text {
+    margin-top: 1.5rem;
+    font-size: 1rem;
+    color: #1f2937;
+    text-align: left;
+    margin-left: 0.25rem;
+}
+
+.test-grade-calculator-page .grade-result-text strong {
+    font-size: 1.1rem;
+    font-weight: 700;
+}
+
+/* WARNING BANNER */
+.test-grade-calculator-page .warning-banner {
+    margin-top: 0.75rem;
+    background-color: #fffbeb;
+    /* amber-50 */
+    border-radius: 6px;
+    padding: 0.75rem 1rem;
+    display: flex;
+    align-items: flex-start;
+    gap: 0.75rem;
+    color: #b45309;
+    /* amber-700/800 */
+    font-size: 0.875rem;
+    line-height: 1.4;
+    animation: fadeIn 0.3s ease-out;
+}
+
+.test-grade-calculator-page .warning-banner svg {
+    flex-shrink: 0;
+    color: #d97706;
+    /* amber-600 */
+    margin-top: 0.1rem;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-5px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Grade Table High-Fidelity */
+.grade-table-container {
+    border: 1px solid #e5e7eb;
+    border-radius: 8px;
+    overflow: hidden;
+    margin-top: 1rem;
+    position: relative;
+    background: white;
+}
+
+.grade-table-header {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1.5fr 1fr;
+    background-color: #f8fafc;
+    /* Brand/Light Gray */
+    padding: 0.75rem 1rem;
+    font-weight: 700;
+    font-size: 0.85rem;
+    color: #1e293b;
+    border-bottom: 2px solid #e2e8f0;
+    text-align: center;
+    /* Centered labels as requested */
+    align-items: center;
+}
+
+.grade-table-body {
+    max-height: 400px;
+    overflow-y: auto;
+    background: white;
+}
+
+.grade-table-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1.5fr 1fr;
+    padding: 0.5rem 1rem;
+    /* Compact padding */
+    font-size: 0.9rem;
+    color: #475569;
+    align-items: center;
+    text-align: center;
+    /* Center data */
+    border-bottom: 1px solid #f1f5f9;
+    transition: background-color 0.15s ease;
+}
+
+.grade-table-row:nth-child(even) {
+    background-color: #f8fafc;
+    /* Zebra striping */
+}
+
+/* Active Row Highlight */
+.grade-table-row.active-row {
+    background-color: #eff6ff !important;
+    /* Blue-50 */
+    box-shadow: inset 3px 0 0 0 #3b82f6;
+    /* Blue left border indicator */
+    font-weight: 600;
+    color: #1e3a8a;
+}
+
+/* Badges */
+.grade-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.15rem 0.5rem;
+    border-radius: 9999px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    min-width: 32px;
+}
+
+.grade-badge.badge-success {
+    background-color: #dcfce7;
+    color: #15803d;
+}
+
+.grade-badge.badge-blue {
+    background-color: #dbeafe;
+    color: #1d4ed8;
+}
+
+.grade-badge.badge-warning {
+    background-color: #fef9c3;
+    color: #a16207;
+}
+
+.grade-badge.badge-danger {
+    background-color: #fee2e2;
+    color: #b91c1c;
+}
+
+.grade-table-row:last-child {
+    border-bottom: none;
+}
+
+/* Custom Scrollbar for the table body */
+.grade-table-body::-webkit-scrollbar {
+    width: 6px;
+}
+
+.grade-table-body::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.grade-table-body::-webkit-scrollbar-thumb {
+    background-color: #cbd5e1;
+    border-radius: 3px;
+}
+
+.grade-table-body::-webkit-scrollbar-thumb:hover {
+    background-color: #94a3b8;
+}
+
+/* Icons */
+.icon-red {
+    color: #ef4444;
+}
+
+.icon-green {
+    color: #10b981;
+}
+
+/* Actions */
+/* Actions Footer */
+.calc-actions {
+    display: grid;
+    grid-template-columns: 1fr 1.3fr;
+    /* Share left, Stack right */
+    gap: 1rem;
+    padding: 0.5rem 0;
+    margin-top: 1.5rem;
+}
+
+.share-result-btn {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 1.5rem 1rem;
+    background-color: #fff;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.2s;
+    height: 100%;
+    color: #1f2937;
+    font-weight: 600;
+    font-size: 1rem;
+    gap: 0.75rem;
+}
+
+.share-result-btn:hover {
+    border-color: #3b82f6;
+    background-color: #f8fafc;
+}
+
+.share-icon-circle {
+    width: 48px;
+    height: 48px;
+    background-color: #ff3b3b;
+    /* Red bg */
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 6px rgba(255, 59, 59, 0.25);
+    margin-bottom: 0.25rem;
+}
+
+/* Right Stack (Reload & Clear) */
+.actions-right-stack {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    justify-content: center;
+}
+
+.secondary-btn {
+    width: 100%;
+    padding: 0.8rem 1rem;
+    background-color: #fff;
+    border: 1px solid #e2e8f0;
+    border-radius: 6px;
+    font-size: 0.95rem;
+    color: #111827;
+    /* Darker for Reload */
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s;
+    text-align: center;
+    white-space: nowrap;
+}
+
+.secondary-btn:hover {
+    background-color: #f9fafb;
+    border-color: #94a3b8;
+}
+
+/* Specific style for Clear button to match snap (lighter text) */
+.clear-btn {
+    color: #9ca3af;
+    /* Lighter gray */
+}
+
+.clear-btn:hover {
+    color: #4b5563;
+    /* Darken on hover */
+}
+
+/* Feedback Section */
+.feedback-section {
+    margin-top: 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    /* Align to right based on snap flow or center? Snap shows inline. */
+    gap: 1rem;
+    padding-top: 1rem;
+    /* border-top: 1px solid #f1f5f9; Optional separator */
+    justify-content: center;
+    /* Actually snap shows it centered relative to card */
+}
+
+.feedback-text {
+    font-size: 0.9rem;
+    color: #4b5563;
+}
+
+.feedback-btn {
+    padding: 0.4rem 1rem;
+    border: 1px solid #d1d5db;
+    background-color: #fff;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    color: #374151;
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    transition: all 0.2s;
+    font-weight: 500;
+}
+
+.feedback-btn:hover {
+    background-color: #f3f4f6;
+    border-color: #9ca3af;
+}
+
+.test-grade-calculator-page .share-result-btn:hover {
+    background-color: #f9fafb;
+    border-color: #d1d5db;
+}
+
+.test-grade-calculator-page .share-icon-circle {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: #ef4444;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 0.25rem;
+}
+
+.test-grade-calculator-page .secondary-btn {
+    padding: 0.6rem 1rem;
+    background: white;
+    border: 1px solid #e5e7eb;
+    border-radius: 6px;
+    color: #374151;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.test-grade-calculator-page .secondary-btn:hover {
+    background-color: #f9fafb;
+    border-color: #d1d5db;
+}
+
+/* Quick Adjust Section */
+.quick-adjust-section {
+    margin-top: 1rem;
+    padding-top: 1rem;
+    border-top: 1px solid #f1f5f9;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.quick-adjust-header {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #374151;
+}
+
+.increment-control-group {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+/* The "Increment by" input matching screenshot */
+.increment-input-wrapper {
+    display: flex;
+    align-items: center;
+}
+
+.increment-input {
+    width: 60px;
+    padding: 0.4rem;
+    text-align: center;
+    border: 1px solid #d1d5db;
+    border-radius: 6px;
+    font-size: 1rem;
+    color: #111827;
+}
+
+/* The +/- Control Module */
+.adjust-module {
+    display: flex;
+    align-items: center;
+    border: 1px solid #d1d5db;
+    border-radius: 6px;
+    background: white;
+    overflow: hidden;
+}
+
+.adjust-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    background: #f9fafb;
+    border: none;
+    cursor: pointer;
+    color: #4b5563;
+    transition: all 0.1s;
+}
+
+.adjust-btn:svg {
+    width: 16px;
+    height: 16px;
+}
+
+.adjust-btn:hover:not(:disabled) {
+    background-color: #e5e7eb;
+    color: #111827;
+}
+
+.adjust-btn:active:not(:disabled) {
+    transform: scale(0.95);
+}
+
+/* Updated Grade Scale Styles */
+.grade-config-item {
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+    /* Slight increase for breathing room */
+}
+
+.grade-label-row {
+    display: flex;
+    justify-content: space-between;
+    /* Pushes label left, menu right */
+    align-items: center;
+    font-size: 0.9rem;
+    font-weight: 700;
+    /* Bold label */
+    color: #1f2937;
+    padding-right: 0.25rem;
+}
+
+.grade-input-wrapper {
+    position: relative;
+    width: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.grade-config-input {
+    width: 100%;
+    padding: 0.6rem 0.75rem;
+    padding-right: 2.5rem;
+    font-size: 1.1rem;
+    /* Bolder text */
+    border: 1px solid #dbeafe;
+    /* Light blue border */
+    border-radius: 6px;
+    background-color: #f8fafc;
+    /* Very light blue-gray */
+    outline: none;
+    transition: all 0.2s;
+    color: #111827;
+    font-weight: 500;
+}
+
+.grade-config-input:focus {
+    border-color: #3b82f6;
+    background-color: #eff6ff;
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.15);
+}
+
+.grade-input-suffix {
+    position: absolute;
+    right: 12px;
+    color: #4b5563;
+    font-size: 0.9rem;
+    pointer-events: none;
+    font-weight: 500;
+}
+
+.adjust-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.adjust-display {
+    width: 60px;
+    text-align: center;
+    font-size: 1rem;
+    font-weight: 500;
+    color: #111827;
+    border-left: 1px solid #e5e7eb;
+    border-right: 1px solid #e5e7eb;
+    line-height: 36px;
+    background: white;
+    cursor: default;
+}

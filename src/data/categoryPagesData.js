@@ -62,12 +62,12 @@ export const categoryPagesData = {
                 iconColor: "#a16207",
                 groups: [
                     [
-                        { label: "Accuracy Calculator", url: "#" },
+                        { label: "Accuracy Calculator", url: "/statistics/accuracy-calculator" },
                         { label: "ANOVA Calculator", url: "#" },
                         { label: "Bayes' Theorem Calculator", url: "#" },
                     ],
                     [
-                        { label: "Implied Probability Calculator", url: "#" },
+                        { label: "Implied Probability Calculator", url: "/statistics/implied-probability-calculator" },
                         { label: "Joint Probability Calculator", url: "#" },
                         { label: "Lottery Calculator", url: "#" },
                     ]
@@ -90,6 +90,7 @@ export const categoryPagesData = {
                         { label: "ACT Score Calculator", url: "/other/act-score-calculator" },
                         { label: "Semester Grade Calculator", url: "/other/semester-grade-calculator" },
                         { label: "PTE Score Calculator", url: "/other/pte-score-calculator" },
+                        { label: "Test Grade Calculator", url: "/other/test-grade-calculator" },
                     ],
                     [
                         { label: "GWA Calculator – General Weighted Average", url: "/other/gwa-calculator" },
@@ -121,7 +122,7 @@ export const categoryPagesData = {
                         { label: "Ideal Egg Boiling Calculator", url: "/discover-omni/ideal-egg-boiling-calculator" },
                         { label: "Korean Age Calculator", url: "/discover-omni/korean-age-calculator" },
                         { label: "Lost Socks Calculator", url: "#" },
-                        { label: "Meat Footprint Calculator", url: "/discover-omni/meat-footprint-calculator" },
+                        { label: "Meat Footprint Calculator", url: "/ecology/meat-footprint-calculator" },
                     ]
                 ]
             }
@@ -244,7 +245,7 @@ export const categoryPagesData = {
                     [
                         { label: "Hand Drying Footprint Calculator", url: "#" },
                         { label: "Kaya Identity Calculator", url: "#" },
-                        { label: "Meat Footprint Calculator", url: "#" },
+                        { label: "Meat Footprint Calculator", url: "/ecology/meat-footprint-calculator" },
                     ]
                 ]
             }
@@ -295,6 +296,16 @@ export const categoryPagesData = {
                         { label: "FIFO Calculator for Inventory", url: "#" },
                         { label: "Full-time Equivalent (FTE) Calculator", url: "#" },
                         { label: "GMROI Calculator — Gross Margin Return on Investment", url: "#" },
+                    ]
+                ]
+            },
+            {
+                title: "Tax calculators",
+                icon: DollarSign,
+                iconColor: "#10b981",
+                groups: [
+                    [
+                        { label: "Sales Tax Calculator", url: "/finance/sales-tax-calculator" },
                     ]
                 ]
             }

@@ -1,0 +1,554 @@
+
+> omni-calculator-clone@0.0.0 dev
+> vite
+
+
+  [32m[1mVITE[22m v5.4.21[39m  [2mready in [0m[1m1529[22m[2m[0m ms[22m
+
+  [32m➜[39m  [1mLocal[22m:   [36mhttp://localhost:[1m5173[22m/[39m
+[2m  [32m➜[39m  [1mNetwork[22m[2m: use [22m[1m--host[22m[2m to expose[22m
+[2m[32m  ➜[39m[22m[2m  press [22m[1mh + enter[22m[2m to show help[22m
+[2m9:58:58 pm[22m [31m[1m[vite][22m[39m Pre-transform error: Failed to resolve import "../components/CalculatorLayout.css" from "src/pages/Math/ScientificNotationCalculatorPage.jsx". Does the file exist?
+[2m9:58:58 pm[22m [31m[1m[vite][22m[39m Pre-transform error: Failed to resolve import "../data/periodicTable" from "src/pages/Chemistry/ElectronegativityCalculatorPage.jsx". Does the file exist?
+[2m9:58:58 pm[22m [31m[1m[vite][22m[39m Pre-transform error: Failed to resolve import "../data/periodicTable" from "src/pages/Chemistry/AtomicMassCalculatorPage.jsx". Does the file exist?
+[2m9:58:58 pm[22m [31m[1m[vite][22m[39m Pre-transform error: Failed to resolve import "../components/CalculatorLayout.css" from "src/pages/Statistics/PValueCalculatorPage.jsx". Does the file exist?
+[2m9:58:58 pm[22m [31m[1m[vite][22m[39m [31mInternal server error: Failed to resolve import "../data/periodicTable" from "src/pages/Chemistry/ElectronConfigCalculatorPage.jsx". Does the file exist?[39m
+  Plugin: [35mvite:import-analysis[39m
+  File: [36mE:/Freelancing_projects/Calculator_clone/src/pages/Chemistry/ElectronConfigCalculatorPage.jsx[39m:4:30
+[33m  19 |  import CalculatorLayout from "../../components/CalculatorLayout";
+  20 |  import { Share2 } from "lucide-react";
+  21 |  import { periodicTable } from "../data/periodicTable";
+     |                                 ^
+  22 |  import { getElectronConfiguration } from "../utils/electronPhysics";
+  23 |  import "./ElectronConfigCalculatorPage.css";[39m
+      at TransformPluginContext._formatError (file:///E:/Freelancing_projects/Calculator_clone/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:49258:41)
+      at TransformPluginContext.error (file:///E:/Freelancing_projects/Calculator_clone/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:49253:16)
+      at normalizeUrl (file:///E:/Freelancing_projects/Calculator_clone/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:64307:23)
+      at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+      at async file:///E:/Freelancing_projects/Calculator_clone/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:64439:39
+      at async Promise.all (index 6)
+      at async TransformPluginContext.transform (file:///E:/Freelancing_projects/Calculator_clone/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:64366:7)
+      at async PluginContainer.transform (file:///E:/Freelancing_projects/Calculator_clone/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:49099:18)
+      at async loadAndTransform (file:///E:/Freelancing_projects/Calculator_clone/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:51978:27)
+[2m9:58:58 pm[22m [31m[1m[vite][22m[39m Pre-transform error: Failed to resolve import "../data/periodicTable" from "src/pages/Chemistry/ElectronConfigCalculatorPage.jsx". Does the file exist?
+[2m9:58:58 pm[22m [31m[1m[vite][22m[39m [31mInternal server error: Failed to resolve import "../data/periodicTable" from "src/pages/Chemistry/AtomCalculatorPage.jsx". Does the file exist?[39m
+  Plugin: [35mvite:import-analysis[39m
+  File: [36mE:/Freelancing_projects/Calculator_clone/src/pages/Chemistry/AtomCalculatorPage.jsx[39m:4:30
+[33m  19 |  import CalculatorLayout from "../../components/CalculatorLayout";
+  20 |  import { ChevronDown, Share2 } from "lucide-react";
+  21 |  import { periodicTable } from "../data/periodicTable";
+     |                                 ^
+  22 |  import "./AtomCalculatorPage.css";
+  23 |  const AtomCalculatorPage = () => {[39m
+      at TransformPluginContext._formatError (file:///E:/Freelancing_projects/Calculator_clone/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:49258:41)
+      at TransformPluginContext.error (file:///E:/Freelancing_projects/Calculator_clone/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:49253:16)
+      at normalizeUrl (file:///E:/Freelancing_projects/Calculator_clone/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:64307:23)
+      at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+      at async file:///E:/Freelancing_projects/Calculator_clone/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:64439:39
+      at async Promise.all (index 6)
+      at async TransformPluginContext.transform (file:///E:/Freelancing_projects/Calculator_clone/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:64366:7)
+      at async PluginContainer.transform (file:///E:/Freelancing_projects/Calculator_clone/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:49099:18)
+      at async loadAndTransform (file:///E:/Freelancing_projects/Calculator_clone/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:51978:27)
+[2m9:58:58 pm[22m [31m[1m[vite][22m[39m Pre-transform error: Failed to resolve import "../components/CalculatorLayout.css" from "src/pages/Statistics/ConfidenceIntervalCalculatorPage.jsx". Does the file exist?
+[2m9:58:58 pm[22m [31m[1m[vite][22m[39m Pre-transform error: Failed to resolve import "../data/periodicTable" from "src/pages/Chemistry/AtomCalculatorPage.jsx". Does the file exist?
+[2m9:58:58 pm[22m [31m[1m[vite][22m[39m [31mInternal server error: Failed to resolve import "../data/periodicTable" from "src/pages/Chemistry/MolarMassCalculatorPage.jsx". Does the file exist?[39m
+  Plugin: [35mvite:import-analysis[39m
+  File: [36mE:/Freelancing_projects/Calculator_clone/src/pages/Chemistry/MolarMassCalculatorPage.jsx[39m:4:30
+[33m  19 |  import CalculatorLayout from "../../components/CalculatorLayout";
+  20 |  import { Share2, Info, ChevronDown, Plus, Trash2 } from "lucide-react";
+  21 |  import { periodicTable } from "../data/periodicTable";
+     |                                 ^
+  22 |  import "./MolarMassCalculatorPage.css";
+  23 |  const MolarMassCalculatorPage = () => {[39m
+      at TransformPluginContext._formatError (file:///E:/Freelancing_projects/Calculator_clone/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:49258:41)
+      at TransformPluginContext.error (file:///E:/Freelancing_projects/Calculator_clone/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:49253:16)
+      at normalizeUrl (file:///E:/Freelancing_projects/Calculator_clone/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:64307:23)
+      at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+      at async file:///E:/Freelancing_projects/Calculator_clone/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:64439:39
+      at async Promise.all (index 6)
+      at async TransformPluginContext.transform (file:///E:/Freelancing_projects/Calculator_clone/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:64366:7)
+      at async PluginContainer.transform (file:///E:/Freelancing_projects/Calculator_clone/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:49099:18)
+      at async loadAndTransform (file:///E:/Freelancing_projects/Calculator_clone/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:51978:27)
+[2m9:58:58 pm[22m [31m[1m[vite][22m[39m Pre-transform error: Failed to resolve import "../data/periodicTable" from "src/pages/Chemistry/MolarMassCalculatorPage.jsx". Does the file exist?
+[2m9:59:00 pm[22m [31m[1m[vite][22m[39m Pre-transform error: Failed to resolve import "../components/CalculatorLayout" from "src/pages/Construction/SquareFootageCalculatorPage.jsx". Does the file exist?
+[2m9:59:00 pm[22m [31m[1m[vite][22m[39m [31mInternal server error: Failed to resolve import "../data/periodicTable" from "src/pages/Chemistry/AtomicMassCalculatorPage.jsx". Does the file exist?[39m
+  Plugin: [35mvite:import-analysis[39m
+  File: [36mE:/Freelancing_projects/Calculator_clone/src/pages/Chemistry/AtomicMassCalculatorPage.jsx[39m:4:30
+[33m  19 |  import CalculatorLayout from "../../components/CalculatorLayout";
+  20 |  import { Share2, Info } from "lucide-react";
+  21 |  import { periodicTable } from "../data/periodicTable";
+     |                                 ^
+  22 |  import "./AtomicMassCalculatorPage.css";
+  23 |  const AtomicMassCalculatorPage = () => {[39m
+      at TransformPluginContext._formatError (file:///E:/Freelancing_projects/Calculator_clone/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:49258:41)
+      at TransformPluginContext.error (file:///E:/Freelancing_projects/Calculator_clone/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:49253:16)
+      at normalizeUrl (file:///E:/Freelancing_projects/Calculator_clone/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:64307:23)
+      at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+      at async file:///E:/Freelancing_projects/Calculator_clone/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:64439:39
+      at async Promise.all (index 6)
+      at async TransformPluginContext.transform (file:///E:/Freelancing_projects/Calculator_clone/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:64366:7)
+      at async PluginContainer.transform (file:///E:/Freelancing_projects/Calculator_clone/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:49099:18)
+      at async loadAndTransform (file:///E:/Freelancing_projects/Calculator_clone/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:51978:27)
+      at async viteTransformMiddleware (file:///E:/Freelancing_projects/Calculator_clone/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:62106:24)
+[2m9:59:00 pm[22m [31m[1m[vite][22m[39m [31mInternal server error: Failed to resolve import "../data/periodicTable" from "src/pages/Chemistry/ElectronegativityCalculatorPage.jsx". Does the file exist?[39m
+  Plugin: [35mvite:import-analysis[39m
+  File: [36mE:/Freelancing_projects/Calculator_clone/src/pages/Chemistry/ElectronegativityCalculatorPage.jsx[39m:4:30
+[33m  19 |  import CalculatorLayout from "../../components/CalculatorLayout";
+  20 |  import { Share2, Info, ChevronDown } from "lucide-react";
+  21 |  import { periodicTable } from "../data/periodicTable";
+     |                                 ^
+  22 |  import "./ElectronegativityCalculatorPage.css";
+  23 |  const ElectronegativityCalculatorPage = () => {[39m
+      at TransformPluginContext._formatError (file:///E:/Freelancing_projects/Calculator_clone/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:49258:41)
+      at TransformPluginContext.error (file:///E:/Freelancing_projects/Calculator_clone/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:49253:16)
+      at normalizeUrl (file:///E:/Freelancing_projects/Calculator_clone/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:64307:23)
+      at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+      at async file:///E:/Freelancing_projects/Calculator_clone/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:64439:39
+      at async Promise.all (index 6)
+      at async TransformPluginContext.transform (file:///E:/Freelancing_projects/Calculator_clone/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:64366:7)
+      at async PluginContainer.transform (file:///E:/Freelancing_projects/Calculator_clone/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:49099:18)
+      at async loadAndTransform (file:///E:/Freelancing_projects/Calculator_clone/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:51978:27)
+      at async viteTransformMiddleware (file:///E:/Freelancing_projects/Calculator_clone/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:62106:24)
+[2m9:59:00 pm[22m [31m[1m[vite][22m[39m [31mInternal server error: Failed to resolve import "../components/CalculatorLayout.css" from "src/pages/Statistics/PValueCalculatorPage.jsx". Does the file exist?[39m
+  Plugin: [35mvite:import-analysis[39m
+  File: [36mE:/Freelancing_projects/Calculator_clone/src/pages/Statistics/PValueCalculatorPage.jsx[39m:4:7
+[33m  19 |  import CalculatorLayout from "../../components/CalculatorLayout";
+  20 |  import { Share2, Pin } from "lucide-react";
+  21 |  import "../components/CalculatorLayout.css";
+     |          ^
+  22 |  const PValueCalculatorPage = () => {
+  23 |    _s();[39m
+      at TransformPluginContext._formatError (file:///E:/Freelancing_projects/Calculator_clone/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:49258:41)
+      at TransformPluginContext.error (file:///E:/Freelancing_projects/Calculator_clone/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:49253:16)
+      at normalizeUrl (file:///E:/Freelancing_projects/Calculator_clone/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:64307:23)
+      at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+      at async file:///E:/Freelancing_projects/Calculator_clone/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:64439:39
+      at async Promise.all (index 6)
+      at async TransformPluginContext.transform (file:///E:/Freelancing_projects/Calculator_clone/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:64366:7)
+      at async PluginContainer.transform (file:///E:/Freelancing_projects/Calculator_clone/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:49099:18)
+      at async loadAndTransform (file:///E:/Freelancing_projects/Calculator_clone/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:51978:27)
+      at async viteTransformMiddleware (file:///E:/Freelancing_projects/Calculator_clone/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:62106:24)
+[2m9:59:00 pm[22m [31m[1m[vite][22m[39m [31mInternal server error: Failed to resolve import "../components/CalculatorLayout.css" from "src/pages/Statistics/ConfidenceIntervalCalculatorPage.jsx". Does the file exist?[39m
+  Plugin: [35mvite:import-analysis[39m
+  File: [36mE:/Freelancing_projects/Calculator_clone/src/pages/Statistics/ConfidenceIntervalCalculatorPage.jsx[39m:3:7
+[33m  18 |  import React, { useState } from "react";
+  19 |  import CalculatorLayout from "../../components/CalculatorLayout";
+  20 |  import "../components/CalculatorLayout.css";
+     |          ^
+  21 |  const ConfidenceIntervalCalculatorPage = () => {
+  22 |    _s();[39m
+      at TransformPluginContext._formatError (file:///E:/Freelancing_projects/Calculator_clone/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:49258:41)
+      at TransformPluginContext.error (file:///E:/Freelancing_projects/Calculator_clone/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:49253:16)
+      at normalizeUrl (file:///E:/Freelancing_projects/Calculator_clone/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:64307:23)
+      at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+      at async file:///E:/Freelancing_projects/Calculator_clone/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:64439:39
+      at async Promise.all (index 5)
+      at async TransformPluginContext.transform (file:///E:/Freelancing_projects/Calculator_clone/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:64366:7)
+      at async PluginContainer.transform (file:///E:/Freelancing_projects/Calculator_clone/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:49099:18)
+      at async loadAndTransform (file:///E:/Freelancing_projects/Calculator_clone/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:51978:27)
+      at async viteTransformMiddleware (file:///E:/Freelancing_projects/Calculator_clone/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:62106:24)
+[2m9:59:00 pm[22m [31m[1m[vite][22m[39m [31mInternal server error: Failed to resolve import "../components/CalculatorLayout.css" from "src/pages/Math/ScientificNotationCalculatorPage.jsx". Does the file exist?[39m
+  Plugin: [35mvite:import-analysis[39m
+  File: [36mE:/Freelancing_projects/Calculator_clone/src/pages/Math/ScientificNotationCalculatorPage.jsx[39m:3:7
+[33m  18 |  import React, { useState } from "react";
+  19 |  import CalculatorLayout from "../../components/CalculatorLayout";
+  20 |  import "../components/CalculatorLayout.css";
+     |          ^
+  21 |  const ScientificNotationCalculatorPage = () => {
+  22 |    _s();[39m
+      at TransformPluginContext._formatError (file:///E:/Freelancing_projects/Calculator_clone/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:49258:41)
+      at TransformPluginContext.error (file:///E:/Freelancing_projects/Calculator_clone/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:49253:16)
+      at normalizeUrl (file:///E:/Freelancing_projects/Calculator_clone/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:64307:23)
+      at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+      at async file:///E:/Freelancing_projects/Calculator_clone/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:64439:39
+      at async Promise.all (index 5)
+      at async TransformPluginContext.transform (file:///E:/Freelancing_projects/Calculator_clone/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:64366:7)
+      at async PluginContainer.transform (file:///E:/Freelancing_projects/Calculator_clone/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:49099:18)
+      at async loadAndTransform (file:///E:/Freelancing_projects/Calculator_clone/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:51978:27)
+      at async viteTransformMiddleware (file:///E:/Freelancing_projects/Calculator_clone/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:62106:24)
+[2m9:59:00 pm[22m [31m[1m[vite][22m[39m [31mInternal server error: Failed to resolve import "../components/CalculatorLayout" from "src/pages/Construction/SquareFootageCalculatorPage.jsx". Does the file exist?[39m
+  Plugin: [35mvite:import-analysis[39m
+  File: [36mE:/Freelancing_projects/Calculator_clone/src/pages/Construction/SquareFootageCalculatorPage.jsx[39m:2:29
+[33m  17 |  var _s = $RefreshSig$();
+  18 |  import React, { useState, useEffect } from "react";
+  19 |  import CalculatorLayout from "../components/CalculatorLayout";
+     |                                ^
+  20 |  import "../components/CalculatorLayout.css";
+  21 |  const SquareFootageCalculatorPage = () => {[39m
+      at TransformPluginContext._formatError (file:///E:/Freelancing_projects/Calculator_clone/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:49258:41)
+      at TransformPluginContext.error (file:///E:/Freelancing_projects/Calculator_clone/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:49253:16)
+      at normalizeUrl (file:///E:/Freelancing_projects/Calculator_clone/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:64307:23)
+      at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+      at async file:///E:/Freelancing_projects/Calculator_clone/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:64439:39
+      at async Promise.all (index 4)
+      at async TransformPluginContext.transform (file:///E:/Freelancing_projects/Calculator_clone/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:64366:7)
+      at async PluginContainer.transform (file:///E:/Freelancing_projects/Calculator_clone/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:49099:18)
+      at async loadAndTransform (file:///E:/Freelancing_projects/Calculator_clone/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:51978:27)
+      at async viteTransformMiddleware (file:///E:/Freelancing_projects/Calculator_clone/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:62106:24)
+[2m9:59:19 pm[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/App.jsx[22m
+[2m9:59:19 pm[22m [31m[1m[vite][22m[39m Pre-transform error: Failed to resolve import "../data/periodicTable" from "src/pages/Chemistry/ElectronConfigCalculatorPage.jsx". Does the file exist?
+[2m9:59:19 pm[22m [31m[1m[vite][22m[39m Pre-transform error: Failed to resolve import "../components/CalculatorLayout" from "src/pages/Construction/SquareFootageCalculatorPage.jsx". Does the file exist?
+[2m9:59:19 pm[22m [31m[1m[vite][22m[39m Pre-transform error: Failed to resolve import "../components/CalculatorLayout.css" from "src/pages/Statistics/ConfidenceIntervalCalculatorPage.jsx". Does the file exist?
+[2m9:59:19 pm[22m [31m[1m[vite][22m[39m Pre-transform error: Failed to resolve import "../components/CalculatorLayout.css" from "src/pages/Statistics/PValueCalculatorPage.jsx". Does the file exist?
+[2m9:59:19 pm[22m [31m[1m[vite][22m[39m Pre-transform error: Failed to resolve import "../components/CalculatorLayout.css" from "src/pages/Math/ScientificNotationCalculatorPage.jsx". Does the file exist?
+[2m9:59:19 pm[22m [31m[1m[vite][22m[39m Pre-transform error: Failed to resolve import "../data/periodicTable" from "src/pages/Chemistry/ElectronegativityCalculatorPage.jsx". Does the file exist?
+[2m9:59:19 pm[22m [31m[1m[vite][22m[39m Pre-transform error: Failed to resolve import "../data/periodicTable" from "src/pages/Chemistry/MolarMassCalculatorPage.jsx". Does the file exist?
+[2m9:59:19 pm[22m [31m[1m[vite][22m[39m Pre-transform error: Failed to resolve import "../data/periodicTable" from "src/pages/Chemistry/AtomicMassCalculatorPage.jsx". Does the file exist?
+[2m9:59:19 pm[22m [31m[1m[vite][22m[39m Pre-transform error: Failed to resolve import "../data/periodicTable" from "src/pages/Chemistry/AtomCalculatorPage.jsx". Does the file exist?
+[2m9:59:19 pm[22m [31m[1m[vite][22m[39m [31mInternal server error: Failed to resolve import "../data/periodicTable" from "src/pages/Chemistry/AtomCalculatorPage.jsx". Does the file exist?[39m
+  Plugin: [35mvite:import-analysis[39m
+  File: [36mE:/Freelancing_projects/Calculator_clone/src/pages/Chemistry/AtomCalculatorPage.jsx[39m:4:30
+[33m  19 |  import CalculatorLayout from "../../components/CalculatorLayout";
+  20 |  import { ChevronDown, Share2 } from "lucide-react";
+  21 |  import { periodicTable } from "../data/periodicTable";
+     |                                 ^
+  22 |  import "./AtomCalculatorPage.css";
+  23 |  const AtomCalculatorPage = () => {[39m
+      at TransformPluginContext._formatError (file:///E:/Freelancing_projects/Calculator_clone/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:49258:41)
+      at TransformPluginContext.error (file:///E:/Freelancing_projects/Calculator_clone/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:49253:16)
+      at normalizeUrl (file:///E:/Freelancing_projects/Calculator_clone/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:64307:23)
+      at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+      at async file:///E:/Freelancing_projects/Calculator_clone/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:64439:39
+      at async Promise.all (index 6)
+      at async TransformPluginContext.transform (file:///E:/Freelancing_projects/Calculator_clone/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:64366:7)
+      at async PluginContainer.transform (file:///E:/Freelancing_projects/Calculator_clone/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:49099:18)
+      at async loadAndTransform (file:///E:/Freelancing_projects/Calculator_clone/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:51978:27)
+      at async viteTransformMiddleware (file:///E:/Freelancing_projects/Calculator_clone/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:62106:24)
+[2m9:59:19 pm[22m [31m[1m[vite][22m[39m [31mInternal server error: Failed to resolve import "../data/periodicTable" from "src/pages/Chemistry/ElectronConfigCalculatorPage.jsx". Does the file exist?[39m
+  Plugin: [35mvite:import-analysis[39m
+  File: [36mE:/Freelancing_projects/Calculator_clone/src/pages/Chemistry/ElectronConfigCalculatorPage.jsx[39m:4:30
+[33m  19 |  import CalculatorLayout from "../../components/CalculatorLayout";
+  20 |  import { Share2 } from "lucide-react";
+  21 |  import { periodicTable } from "../data/periodicTable";
+     |                                 ^
+  22 |  import { getElectronConfiguration } from "../utils/electronPhysics";
+  23 |  import "./ElectronConfigCalculatorPage.css";[39m
+      at TransformPluginContext._formatError (file:///E:/Freelancing_projects/Calculator_clone/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:49258:41)
+      at TransformPluginContext.error (file:///E:/Freelancing_projects/Calculator_clone/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:49253:16)
+      at normalizeUrl (file:///E:/Freelancing_projects/Calculator_clone/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:64307:23)
+      at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+      at async file:///E:/Freelancing_projects/Calculator_clone/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:64439:39
+      at async Promise.all (index 6)
+      at async TransformPluginContext.transform (file:///E:/Freelancing_projects/Calculator_clone/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:64366:7)
+      at async PluginContainer.transform (file:///E:/Freelancing_projects/Calculator_clone/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:49099:18)
+      at async loadAndTransform (file:///E:/Freelancing_projects/Calculator_clone/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:51978:27)
+      at async viteTransformMiddleware (file:///E:/Freelancing_projects/Calculator_clone/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:62106:24)
+[2m9:59:19 pm[22m [31m[1m[vite][22m[39m [31mInternal server error: Failed to resolve import "../data/periodicTable" from "src/pages/Chemistry/AtomicMassCalculatorPage.jsx". Does the file exist?[39m
+  Plugin: [35mvite:import-analysis[39m
+  File: [36mE:/Freelancing_projects/Calculator_clone/src/pages/Chemistry/AtomicMassCalculatorPage.jsx[39m:4:30
+[33m  19 |  import CalculatorLayout from "../../components/CalculatorLayout";
+  20 |  import { Share2, Info } from "lucide-react";
+  21 |  import { periodicTable } from "../data/periodicTable";
+     |                                 ^
+  22 |  import "./AtomicMassCalculatorPage.css";
+  23 |  const AtomicMassCalculatorPage = () => {[39m
+      at TransformPluginContext._formatError (file:///E:/Freelancing_projects/Calculator_clone/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:49258:41)
+      at TransformPluginContext.error (file:///E:/Freelancing_projects/Calculator_clone/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:49253:16)
+      at normalizeUrl (file:///E:/Freelancing_projects/Calculator_clone/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:64307:23)
+      at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+      at async file:///E:/Freelancing_projects/Calculator_clone/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:64439:39
+      at async Promise.all (index 6)
+      at async TransformPluginContext.transform (file:///E:/Freelancing_projects/Calculator_clone/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:64366:7)
+      at async PluginContainer.transform (file:///E:/Freelancing_projects/Calculator_clone/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:49099:18)
+      at async loadAndTransform (file:///E:/Freelancing_projects/Calculator_clone/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:51978:27)
+      at async viteTransformMiddleware (file:///E:/Freelancing_projects/Calculator_clone/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:62106:24)
+[2m9:59:19 pm[22m [31m[1m[vite][22m[39m [31mInternal server error: Failed to resolve import "../data/periodicTable" from "src/pages/Chemistry/ElectronegativityCalculatorPage.jsx". Does the file exist?[39m
+  Plugin: [35mvite:import-analysis[39m
+  File: [36mE:/Freelancing_projects/Calculator_clone/src/pages/Chemistry/ElectronegativityCalculatorPage.jsx[39m:4:30
+[33m  19 |  import CalculatorLayout from "../../components/CalculatorLayout";
+  20 |  import { Share2, Info, ChevronDown } from "lucide-react";
+  21 |  import { periodicTable } from "../data/periodicTable";
+     |                                 ^
+  22 |  import "./ElectronegativityCalculatorPage.css";
+  23 |  const ElectronegativityCalculatorPage = () => {[39m
+      at TransformPluginContext._formatError (file:///E:/Freelancing_projects/Calculator_clone/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:49258:41)
+      at TransformPluginContext.error (file:///E:/Freelancing_projects/Calculator_clone/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:49253:16)
+      at normalizeUrl (file:///E:/Freelancing_projects/Calculator_clone/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:64307:23)
+      at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+      at async file:///E:/Freelancing_projects/Calculator_clone/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:64439:39
+      at async Promise.all (index 6)
+      at async TransformPluginContext.transform (file:///E:/Freelancing_projects/Calculator_clone/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:64366:7)
+      at async PluginContainer.transform (file:///E:/Freelancing_projects/Calculator_clone/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:49099:18)
+      at async loadAndTransform (file:///E:/Freelancing_projects/Calculator_clone/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:51978:27)
+      at async viteTransformMiddleware (file:///E:/Freelancing_projects/Calculator_clone/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:62106:24)
+[2m9:59:19 pm[22m [31m[1m[vite][22m[39m [31mInternal server error: Failed to resolve import "../data/periodicTable" from "src/pages/Chemistry/MolarMassCalculatorPage.jsx". Does the file exist?[39m
+  Plugin: [35mvite:import-analysis[39m
+  File: [36mE:/Freelancing_projects/Calculator_clone/src/pages/Chemistry/MolarMassCalculatorPage.jsx[39m:4:30
+[33m  19 |  import CalculatorLayout from "../../components/CalculatorLayout";
+  20 |  import { Share2, Info, ChevronDown, Plus, Trash2 } from "lucide-react";
+  21 |  import { periodicTable } from "../data/periodicTable";
+     |                                 ^
+  22 |  import "./MolarMassCalculatorPage.css";
+  23 |  const MolarMassCalculatorPage = () => {[39m
+      at TransformPluginContext._formatError (file:///E:/Freelancing_projects/Calculator_clone/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:49258:41)
+      at TransformPluginContext.error (file:///E:/Freelancing_projects/Calculator_clone/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:49253:16)
+      at normalizeUrl (file:///E:/Freelancing_projects/Calculator_clone/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:64307:23)
+      at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+      at async file:///E:/Freelancing_projects/Calculator_clone/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:64439:39
+      at async Promise.all (index 6)
+      at async TransformPluginContext.transform (file:///E:/Freelancing_projects/Calculator_clone/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:64366:7)
+      at async PluginContainer.transform (file:///E:/Freelancing_projects/Calculator_clone/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:49099:18)
+      at async loadAndTransform (file:///E:/Freelancing_projects/Calculator_clone/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:51978:27)
+      at async viteTransformMiddleware (file:///E:/Freelancing_projects/Calculator_clone/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:62106:24)
+[2m9:59:19 pm[22m [31m[1m[vite][22m[39m [31mInternal server error: Failed to resolve import "../components/CalculatorLayout.css" from "src/pages/Statistics/PValueCalculatorPage.jsx". Does the file exist?[39m
+  Plugin: [35mvite:import-analysis[39m
+  File: [36mE:/Freelancing_projects/Calculator_clone/src/pages/Statistics/PValueCalculatorPage.jsx[39m:4:7
+[33m  19 |  import CalculatorLayout from "../../components/CalculatorLayout";
+  20 |  import { Share2, Pin } from "lucide-react";
+  21 |  import "../components/CalculatorLayout.css";
+     |          ^
+  22 |  const PValueCalculatorPage = () => {
+  23 |    _s();[39m
+      at TransformPluginContext._formatError (file:///E:/Freelancing_projects/Calculator_clone/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:49258:41)
+      at TransformPluginContext.error (file:///E:/Freelancing_projects/Calculator_clone/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:49253:16)
+      at normalizeUrl (file:///E:/Freelancing_projects/Calculator_clone/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:64307:23)
+      at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+      at async file:///E:/Freelancing_projects/Calculator_clone/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:64439:39
+      at async Promise.all (index 6)
+      at async TransformPluginContext.transform (file:///E:/Freelancing_projects/Calculator_clone/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:64366:7)
+      at async PluginContainer.transform (file:///E:/Freelancing_projects/Calculator_clone/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:49099:18)
+      at async loadAndTransform (file:///E:/Freelancing_projects/Calculator_clone/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:51978:27)
+      at async viteTransformMiddleware (file:///E:/Freelancing_projects/Calculator_clone/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:62106:24)
+[2m9:59:19 pm[22m [31m[1m[vite][22m[39m [31mInternal server error: Failed to resolve import "../components/CalculatorLayout.css" from "src/pages/Statistics/ConfidenceIntervalCalculatorPage.jsx". Does the file exist?[39m
+  Plugin: [35mvite:import-analysis[39m
+  File: [36mE:/Freelancing_projects/Calculator_clone/src/pages/Statistics/ConfidenceIntervalCalculatorPage.jsx[39m:3:7
+[33m  18 |  import React, { useState } from "react";
+  19 |  import CalculatorLayout from "../../components/CalculatorLayout";
+  20 |  import "../components/CalculatorLayout.css";
+     |          ^
+  21 |  const ConfidenceIntervalCalculatorPage = () => {
+  22 |    _s();[39m
+      at TransformPluginContext._formatError (file:///E:/Freelancing_projects/Calculator_clone/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:49258:41)
+      at TransformPluginContext.error (file:///E:/Freelancing_projects/Calculator_clone/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:49253:16)
+      at normalizeUrl (file:///E:/Freelancing_projects/Calculator_clone/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:64307:23)
+      at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+      at async file:///E:/Freelancing_projects/Calculator_clone/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:64439:39
+      at async Promise.all (index 5)
+      at async TransformPluginContext.transform (file:///E:/Freelancing_projects/Calculator_clone/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:64366:7)
+      at async PluginContainer.transform (file:///E:/Freelancing_projects/Calculator_clone/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:49099:18)
+      at async loadAndTransform (file:///E:/Freelancing_projects/Calculator_clone/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:51978:27)
+      at async viteTransformMiddleware (file:///E:/Freelancing_projects/Calculator_clone/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:62106:24)
+[2m9:59:19 pm[22m [31m[1m[vite][22m[39m [31mInternal server error: Failed to resolve import "../components/CalculatorLayout.css" from "src/pages/Math/ScientificNotationCalculatorPage.jsx". Does the file exist?[39m
+  Plugin: [35mvite:import-analysis[39m
+  File: [36mE:/Freelancing_projects/Calculator_clone/src/pages/Math/ScientificNotationCalculatorPage.jsx[39m:3:7
+[33m  18 |  import React, { useState } from "react";
+  19 |  import CalculatorLayout from "../../components/CalculatorLayout";
+  20 |  import "../components/CalculatorLayout.css";
+     |          ^
+  21 |  const ScientificNotationCalculatorPage = () => {
+  22 |    _s();[39m
+      at TransformPluginContext._formatError (file:///E:/Freelancing_projects/Calculator_clone/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:49258:41)
+      at TransformPluginContext.error (file:///E:/Freelancing_projects/Calculator_clone/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:49253:16)
+      at normalizeUrl (file:///E:/Freelancing_projects/Calculator_clone/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:64307:23)
+      at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+      at async file:///E:/Freelancing_projects/Calculator_clone/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:64439:39
+      at async Promise.all (index 5)
+      at async TransformPluginContext.transform (file:///E:/Freelancing_projects/Calculator_clone/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:64366:7)
+      at async PluginContainer.transform (file:///E:/Freelancing_projects/Calculator_clone/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:49099:18)
+      at async loadAndTransform (file:///E:/Freelancing_projects/Calculator_clone/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:51978:27)
+      at async viteTransformMiddleware (file:///E:/Freelancing_projects/Calculator_clone/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:62106:24)
+[2m9:59:19 pm[22m [31m[1m[vite][22m[39m [31mInternal server error: Failed to resolve import "../components/CalculatorLayout" from "src/pages/Construction/SquareFootageCalculatorPage.jsx". Does the file exist?[39m
+  Plugin: [35mvite:import-analysis[39m
+  File: [36mE:/Freelancing_projects/Calculator_clone/src/pages/Construction/SquareFootageCalculatorPage.jsx[39m:2:29
+[33m  17 |  var _s = $RefreshSig$();
+  18 |  import React, { useState, useEffect } from "react";
+  19 |  import CalculatorLayout from "../components/CalculatorLayout";
+     |                                ^
+  20 |  import "../components/CalculatorLayout.css";
+  21 |  const SquareFootageCalculatorPage = () => {[39m
+      at TransformPluginContext._formatError (file:///E:/Freelancing_projects/Calculator_clone/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:49258:41)
+      at TransformPluginContext.error (file:///E:/Freelancing_projects/Calculator_clone/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:49253:16)
+      at normalizeUrl (file:///E:/Freelancing_projects/Calculator_clone/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:64307:23)
+      at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+      at async file:///E:/Freelancing_projects/Calculator_clone/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:64439:39
+      at async Promise.all (index 4)
+      at async TransformPluginContext.transform (file:///E:/Freelancing_projects/Calculator_clone/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:64366:7)
+      at async PluginContainer.transform (file:///E:/Freelancing_projects/Calculator_clone/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:49099:18)
+      at async loadAndTransform (file:///E:/Freelancing_projects/Calculator_clone/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:51978:27)
+      at async viteTransformMiddleware (file:///E:/Freelancing_projects/Calculator_clone/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:62106:24)
+[2m9:59:29 pm[22m [31m[1m[vite][22m[39m [31mInternal server error: Failed to resolve import "../data/periodicTable" from "src/pages/Chemistry/AtomCalculatorPage.jsx". Does the file exist?[39m
+  Plugin: [35mvite:import-analysis[39m
+  File: [36mE:/Freelancing_projects/Calculator_clone/src/pages/Chemistry/AtomCalculatorPage.jsx[39m:4:30
+[33m  19 |  import CalculatorLayout from "../../components/CalculatorLayout";
+  20 |  import { ChevronDown, Share2 } from "lucide-react";
+  21 |  import { periodicTable } from "../data/periodicTable";
+     |                                 ^
+  22 |  import "./AtomCalculatorPage.css";
+  23 |  const AtomCalculatorPage = () => {[39m
+      at TransformPluginContext._formatError (file:///E:/Freelancing_projects/Calculator_clone/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:49258:41)
+      at TransformPluginContext.error (file:///E:/Freelancing_projects/Calculator_clone/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:49253:16)
+      at normalizeUrl (file:///E:/Freelancing_projects/Calculator_clone/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:64307:23)
+      at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+      at async file:///E:/Freelancing_projects/Calculator_clone/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:64439:39
+      at async Promise.all (index 6)
+      at async TransformPluginContext.transform (file:///E:/Freelancing_projects/Calculator_clone/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:64366:7)
+      at async PluginContainer.transform (file:///E:/Freelancing_projects/Calculator_clone/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:49099:18)
+      at async loadAndTransform (file:///E:/Freelancing_projects/Calculator_clone/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:51978:27)
+      at async viteTransformMiddleware (file:///E:/Freelancing_projects/Calculator_clone/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:62106:24)
+[2m9:59:29 pm[22m [31m[1m[vite][22m[39m [31mInternal server error: Failed to resolve import "../data/periodicTable" from "src/pages/Chemistry/ElectronConfigCalculatorPage.jsx". Does the file exist?[39m
+  Plugin: [35mvite:import-analysis[39m
+  File: [36mE:/Freelancing_projects/Calculator_clone/src/pages/Chemistry/ElectronConfigCalculatorPage.jsx[39m:4:30
+[33m  19 |  import CalculatorLayout from "../../components/CalculatorLayout";
+  20 |  import { Share2 } from "lucide-react";
+  21 |  import { periodicTable } from "../data/periodicTable";
+     |                                 ^
+  22 |  import { getElectronConfiguration } from "../utils/electronPhysics";
+  23 |  import "./ElectronConfigCalculatorPage.css";[39m
+      at TransformPluginContext._formatError (file:///E:/Freelancing_projects/Calculator_clone/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:49258:41)
+      at TransformPluginContext.error (file:///E:/Freelancing_projects/Calculator_clone/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:49253:16)
+      at normalizeUrl (file:///E:/Freelancing_projects/Calculator_clone/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:64307:23)
+      at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+      at async file:///E:/Freelancing_projects/Calculator_clone/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:64439:39
+      at async Promise.all (index 6)
+      at async TransformPluginContext.transform (file:///E:/Freelancing_projects/Calculator_clone/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:64366:7)
+      at async PluginContainer.transform (file:///E:/Freelancing_projects/Calculator_clone/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:49099:18)
+      at async loadAndTransform (file:///E:/Freelancing_projects/Calculator_clone/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:51978:27)
+      at async viteTransformMiddleware (file:///E:/Freelancing_projects/Calculator_clone/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:62106:24)
+[2m9:59:29 pm[22m [31m[1m[vite][22m[39m [31mInternal server error: Failed to resolve import "../data/periodicTable" from "src/pages/Chemistry/AtomicMassCalculatorPage.jsx". Does the file exist?[39m
+  Plugin: [35mvite:import-analysis[39m
+  File: [36mE:/Freelancing_projects/Calculator_clone/src/pages/Chemistry/AtomicMassCalculatorPage.jsx[39m:4:30
+[33m  19 |  import CalculatorLayout from "../../components/CalculatorLayout";
+  20 |  import { Share2, Info } from "lucide-react";
+  21 |  import { periodicTable } from "../data/periodicTable";
+     |                                 ^
+  22 |  import "./AtomicMassCalculatorPage.css";
+  23 |  const AtomicMassCalculatorPage = () => {[39m
+      at TransformPluginContext._formatError (file:///E:/Freelancing_projects/Calculator_clone/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:49258:41)
+      at TransformPluginContext.error (file:///E:/Freelancing_projects/Calculator_clone/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:49253:16)
+      at normalizeUrl (file:///E:/Freelancing_projects/Calculator_clone/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:64307:23)
+      at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+      at async file:///E:/Freelancing_projects/Calculator_clone/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:64439:39
+      at async Promise.all (index 6)
+      at async TransformPluginContext.transform (file:///E:/Freelancing_projects/Calculator_clone/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:64366:7)
+      at async PluginContainer.transform (file:///E:/Freelancing_projects/Calculator_clone/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:49099:18)
+      at async loadAndTransform (file:///E:/Freelancing_projects/Calculator_clone/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:51978:27)
+      at async viteTransformMiddleware (file:///E:/Freelancing_projects/Calculator_clone/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:62106:24)
+[2m9:59:29 pm[22m [31m[1m[vite][22m[39m [31mInternal server error: Failed to resolve import "../data/periodicTable" from "src/pages/Chemistry/ElectronegativityCalculatorPage.jsx". Does the file exist?[39m
+  Plugin: [35mvite:import-analysis[39m
+  File: [36mE:/Freelancing_projects/Calculator_clone/src/pages/Chemistry/ElectronegativityCalculatorPage.jsx[39m:4:30
+[33m  19 |  import CalculatorLayout from "../../components/CalculatorLayout";
+  20 |  import { Share2, Info, ChevronDown } from "lucide-react";
+  21 |  import { periodicTable } from "../data/periodicTable";
+     |                                 ^
+  22 |  import "./ElectronegativityCalculatorPage.css";
+  23 |  const ElectronegativityCalculatorPage = () => {[39m
+      at TransformPluginContext._formatError (file:///E:/Freelancing_projects/Calculator_clone/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:49258:41)
+      at TransformPluginContext.error (file:///E:/Freelancing_projects/Calculator_clone/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:49253:16)
+      at normalizeUrl (file:///E:/Freelancing_projects/Calculator_clone/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:64307:23)
+      at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+      at async file:///E:/Freelancing_projects/Calculator_clone/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:64439:39
+      at async Promise.all (index 6)
+      at async TransformPluginContext.transform (file:///E:/Freelancing_projects/Calculator_clone/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:64366:7)
+      at async PluginContainer.transform (file:///E:/Freelancing_projects/Calculator_clone/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:49099:18)
+      at async loadAndTransform (file:///E:/Freelancing_projects/Calculator_clone/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:51978:27)
+      at async viteTransformMiddleware (file:///E:/Freelancing_projects/Calculator_clone/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:62106:24)
+[2m9:59:29 pm[22m [31m[1m[vite][22m[39m [31mInternal server error: Failed to resolve import "../data/periodicTable" from "src/pages/Chemistry/MolarMassCalculatorPage.jsx". Does the file exist?[39m
+  Plugin: [35mvite:import-analysis[39m
+  File: [36mE:/Freelancing_projects/Calculator_clone/src/pages/Chemistry/MolarMassCalculatorPage.jsx[39m:4:30
+[33m  19 |  import CalculatorLayout from "../../components/CalculatorLayout";
+  20 |  import { Share2, Info, ChevronDown, Plus, Trash2 } from "lucide-react";
+  21 |  import { periodicTable } from "../data/periodicTable";
+     |                                 ^
+  22 |  import "./MolarMassCalculatorPage.css";
+  23 |  const MolarMassCalculatorPage = () => {[39m
+      at TransformPluginContext._formatError (file:///E:/Freelancing_projects/Calculator_clone/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:49258:41)
+      at TransformPluginContext.error (file:///E:/Freelancing_projects/Calculator_clone/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:49253:16)
+      at normalizeUrl (file:///E:/Freelancing_projects/Calculator_clone/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:64307:23)
+      at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+      at async file:///E:/Freelancing_projects/Calculator_clone/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:64439:39
+      at async Promise.all (index 6)
+      at async TransformPluginContext.transform (file:///E:/Freelancing_projects/Calculator_clone/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:64366:7)
+      at async PluginContainer.transform (file:///E:/Freelancing_projects/Calculator_clone/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:49099:18)
+      at async loadAndTransform (file:///E:/Freelancing_projects/Calculator_clone/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:51978:27)
+      at async viteTransformMiddleware (file:///E:/Freelancing_projects/Calculator_clone/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:62106:24)
+[2m9:59:29 pm[22m [31m[1m[vite][22m[39m [31mInternal server error: Failed to resolve import "../components/CalculatorLayout.css" from "src/pages/Statistics/PValueCalculatorPage.jsx". Does the file exist?[39m
+  Plugin: [35mvite:import-analysis[39m
+  File: [36mE:/Freelancing_projects/Calculator_clone/src/pages/Statistics/PValueCalculatorPage.jsx[39m:4:7
+[33m  19 |  import CalculatorLayout from "../../components/CalculatorLayout";
+  20 |  import { Share2, Pin } from "lucide-react";
+  21 |  import "../components/CalculatorLayout.css";
+     |          ^
+  22 |  const PValueCalculatorPage = () => {
+  23 |    _s();[39m
+      at TransformPluginContext._formatError (file:///E:/Freelancing_projects/Calculator_clone/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:49258:41)
+      at TransformPluginContext.error (file:///E:/Freelancing_projects/Calculator_clone/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:49253:16)
+      at normalizeUrl (file:///E:/Freelancing_projects/Calculator_clone/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:64307:23)
+      at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+      at async file:///E:/Freelancing_projects/Calculator_clone/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:64439:39
+      at async Promise.all (index 6)
+      at async TransformPluginContext.transform (file:///E:/Freelancing_projects/Calculator_clone/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:64366:7)
+      at async PluginContainer.transform (file:///E:/Freelancing_projects/Calculator_clone/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:49099:18)
+      at async loadAndTransform (file:///E:/Freelancing_projects/Calculator_clone/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:51978:27)
+      at async viteTransformMiddleware (file:///E:/Freelancing_projects/Calculator_clone/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:62106:24)
+[2m9:59:29 pm[22m [31m[1m[vite][22m[39m [31mInternal server error: Failed to resolve import "../components/CalculatorLayout.css" from "src/pages/Statistics/ConfidenceIntervalCalculatorPage.jsx". Does the file exist?[39m
+  Plugin: [35mvite:import-analysis[39m
+  File: [36mE:/Freelancing_projects/Calculator_clone/src/pages/Statistics/ConfidenceIntervalCalculatorPage.jsx[39m:3:7
+[33m  18 |  import React, { useState } from "react";
+  19 |  import CalculatorLayout from "../../components/CalculatorLayout";
+  20 |  import "../components/CalculatorLayout.css";
+     |          ^
+  21 |  const ConfidenceIntervalCalculatorPage = () => {
+  22 |    _s();[39m
+      at TransformPluginContext._formatError (file:///E:/Freelancing_projects/Calculator_clone/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:49258:41)
+      at TransformPluginContext.error (file:///E:/Freelancing_projects/Calculator_clone/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:49253:16)
+      at normalizeUrl (file:///E:/Freelancing_projects/Calculator_clone/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:64307:23)
+      at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+      at async file:///E:/Freelancing_projects/Calculator_clone/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:64439:39
+      at async Promise.all (index 5)
+      at async TransformPluginContext.transform (file:///E:/Freelancing_projects/Calculator_clone/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:64366:7)
+      at async PluginContainer.transform (file:///E:/Freelancing_projects/Calculator_clone/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:49099:18)
+      at async loadAndTransform (file:///E:/Freelancing_projects/Calculator_clone/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:51978:27)
+      at async viteTransformMiddleware (file:///E:/Freelancing_projects/Calculator_clone/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:62106:24)
+[2m9:59:29 pm[22m [31m[1m[vite][22m[39m [31mInternal server error: Failed to resolve import "../components/CalculatorLayout" from "src/pages/Construction/SquareFootageCalculatorPage.jsx". Does the file exist?[39m
+  Plugin: [35mvite:import-analysis[39m
+  File: [36mE:/Freelancing_projects/Calculator_clone/src/pages/Construction/SquareFootageCalculatorPage.jsx[39m:2:29
+[33m  17 |  var _s = $RefreshSig$();
+  18 |  import React, { useState, useEffect } from "react";
+  19 |  import CalculatorLayout from "../components/CalculatorLayout";
+     |                                ^
+  20 |  import "../components/CalculatorLayout.css";
+  21 |  const SquareFootageCalculatorPage = () => {[39m
+      at TransformPluginContext._formatError (file:///E:/Freelancing_projects/Calculator_clone/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:49258:41)
+      at TransformPluginContext.error (file:///E:/Freelancing_projects/Calculator_clone/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:49253:16)
+      at normalizeUrl (file:///E:/Freelancing_projects/Calculator_clone/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:64307:23)
+      at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+      at async file:///E:/Freelancing_projects/Calculator_clone/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:64439:39
+      at async Promise.all (index 4)
+      at async TransformPluginContext.transform (file:///E:/Freelancing_projects/Calculator_clone/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:64366:7)
+      at async PluginContainer.transform (file:///E:/Freelancing_projects/Calculator_clone/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:49099:18)
+      at async loadAndTransform (file:///E:/Freelancing_projects/Calculator_clone/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:51978:27)
+      at async viteTransformMiddleware (file:///E:/Freelancing_projects/Calculator_clone/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:62106:24)
+[2m9:59:29 pm[22m [31m[1m[vite][22m[39m [31mInternal server error: Failed to resolve import "../components/CalculatorLayout.css" from "src/pages/Math/ScientificNotationCalculatorPage.jsx". Does the file exist?[39m
+  Plugin: [35mvite:import-analysis[39m
+  File: [36mE:/Freelancing_projects/Calculator_clone/src/pages/Math/ScientificNotationCalculatorPage.jsx[39m:3:7
+[33m  18 |  import React, { useState } from "react";
+  19 |  import CalculatorLayout from "../../components/CalculatorLayout";
+  20 |  import "../components/CalculatorLayout.css";
+     |          ^
+  21 |  const ScientificNotationCalculatorPage = () => {
+  22 |    _s();[39m
+      at TransformPluginContext._formatError (file:///E:/Freelancing_projects/Calculator_clone/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:49258:41)
+      at TransformPluginContext.error (file:///E:/Freelancing_projects/Calculator_clone/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:49253:16)
+      at normalizeUrl (file:///E:/Freelancing_projects/Calculator_clone/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:64307:23)
+      at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+      at async file:///E:/Freelancing_projects/Calculator_clone/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:64439:39
+      at async Promise.all (index 5)
+      at async TransformPluginContext.transform (file:///E:/Freelancing_projects/Calculator_clone/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:64366:7)
+      at async PluginContainer.transform (file:///E:/Freelancing_projects/Calculator_clone/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:49099:18)
+      at async loadAndTransform (file:///E:/Freelancing_projects/Calculator_clone/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:51978:27)
+      at async viteTransformMiddleware (file:///E:/Freelancing_projects/Calculator_clone/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:62106:24)
+[2m10:01:14 pm[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/App.jsx[22m
+[2m10:01:16 pm[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/App.jsx[22m
+[2m10:02:52 pm[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/App.jsx[22m
+[2m10:05:59 pm[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/App.jsx[22m
+[2m10:06:02 pm[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/App.jsx[22m
+[2m10:06:03 pm[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/App.jsx[22m
+[2m10:06:05 pm[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/App.jsx[22m
+[2m10:06:07 pm[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/App.jsx[22m
+[2m10:06:09 pm[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/App.jsx[22m
+[2m10:06:12 pm[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/App.jsx[22m
+[2m10:06:14 pm[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/App.jsx[22m
+[2m10:18:07 pm[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/App.jsx[22m
+[2m10:18:09 pm[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/App.jsx[22m
+[2m10:18:52 pm[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/App.jsx[22m
+^C^C

@@ -6,64 +6,66 @@ import Home from './pages/Home';
 import CategoryLayout from './components/CategoryLayout';
 import { categoryPagesData } from './data/categoryPagesData';
 import AboutUsPage from './pages/AboutUsPage';
-import AtomCalculatorPage from './pages/AtomCalculatorPage';
-import ElectronConfigCalculatorPage from './pages/ElectronConfigCalculatorPage';
-import AtomicMassCalculatorPage from './pages/AtomicMassCalculatorPage';
-import ElectronegativityCalculatorPage from './pages/ElectronegativityCalculatorPage';
-import AverageAtomicMassCalculatorPage from './pages/AverageAtomicMassCalculatorPage';
-import MolarMassCalculatorPage from './pages/MolarMassCalculatorPage';
-import AcreageCalculatorPage from './pages/AcreageCalculatorPage';
-import HeightInInchesCalculatorPage from './pages/HeightInInchesCalculatorPage';
-import AreaConverterPage from './pages/AreaConverterPage';
-import InchesToFractionCalculatorPage from './pages/InchesToFractionCalculatorPage';
-import AresToHectaresConverterPage from './pages/AresToHectaresConverterPage';
-import LengthConverterPage from './pages/LengthConverterPage';
-import ZeroToSixtyCalculatorPage from './pages/ZeroToSixtyCalculatorPage';
-import MilesPerYearCalculatorPage from './pages/MilesPerYearCalculatorPage';
-import BoatSpeedCalculatorPage from './pages/BoatSpeedCalculatorPage';
-import BoostHorsepowerCalculatorPage from './pages/BoostHorsepowerCalculatorPage';
-import MpgCalculatorPage from './pages/MpgCalculatorPage';
-import MilesToDollarsCalculatorPage from './pages/MilesToDollarsCalculatorPage';
-import AnnealingCalculatorPage from './pages/AnnealingCalculatorPage';
-import SalesTaxCalculatorPage from './pages/SalesTaxCalculatorPage';
-import PValueCalculatorPage from './pages/PValueCalculatorPage';
-import ConfidenceIntervalCalculatorPage from './pages/ConfidenceIntervalCalculatorPage';
-import TestGradeCalculatorPage from './pages/TestGradeCalculatorPage';
-import LogCalculatorPage from './pages/LogCalculatorPage';
-import SigFigCalculatorPage from './pages/SigFigCalculatorPage';
-import ScientificNotationCalculatorPage from './pages/ScientificNotationCalculatorPage';
-import SquareFootageCalculatorPage from './pages/SquareFootageCalculatorPage';
-import PercentageIncreaseCalculatorPage from './pages/PercentageIncreaseCalculatorPage';
-import FractionToPercentCalculatorPage from './pages/FractionToPercentCalculatorPage';
-import PercentageOfPercentageCalculatorPage from './pages/PercentageOfPercentageCalculatorPage';
-import DecimalToPercentConverterPage from './pages/DecimalToPercentConverterPage';
-import PercentagePointCalculatorPage from './pages/PercentagePointCalculatorPage';
-import BattingAverageCalculatorPage from './pages/BattingAverageCalculatorPage';
-import OnBasePercentageCalculatorPage from './pages/OnBasePercentageCalculatorPage';
-import ERACalculatorPage from './pages/ERACalculatorPage';
-import SluggingPercentageCalculatorPage from './pages/SluggingPercentageCalculatorPage';
-import FieldingPercentageCalculatorPage from './pages/FieldingPercentageCalculatorPage';
-import WARCalculatorPage from './pages/WARCalculatorPage';
-import ACTScoreCalculatorPage from './pages/ACTScoreCalculatorPage';
-import GWACalculatorPage from './pages/GWACalculatorPage';
-import SemesterGradeCalculatorPage from './pages/SemesterGradeCalculatorPage';
-import HighSchoolGPACalculatorPage from './pages/HighSchoolGPACalculatorPage';
-import IELTSScoreCalculatorPage from './pages/IELTSScoreCalculatorPage';
-import PTEScoreCalculatorPage from './pages/PTEScoreCalculatorPage';
-import ButterCalculatorPage from './pages/ButterCalculatorPage';
-import GramsToTablespoonsPage from './pages/GramsToTablespoonsPage';
-import CakePanConverterPage from './pages/CakePanConverterPage';
-import GramsToTeaspoonsPage from './pages/GramsToTeaspoonsPage';
-import CookingMeasurementConverterPage from './pages/CookingMeasurementConverterPage';
-import MlToGramsCalculatorPage from './pages/MlToGramsCalculatorPage';
-import AveragePercentageCalculatorPage from './pages/AveragePercentageCalculatorPage';
-import AddictionCalculatorPage from './pages/AddictionCalculatorPage';
-import VampireApocalypseCalculatorPage from './pages/VampireApocalypseCalculatorPage';
-import AlienCivilizationCalculatorPage from './pages/AlienCivilizationCalculatorPage';
-import BlackFridayCalculatorPage from './pages/BlackFridayCalculatorPage';
-import IdealEggBoilingCalculatorPage from './pages/IdealEggBoilingCalculatorPage';
+import AtomCalculatorPage from './pages/Chemistry/AtomCalculatorPage';
+import ElectronConfigCalculatorPage from './pages/Chemistry/ElectronConfigCalculatorPage';
+import AtomicMassCalculatorPage from './pages/Chemistry/AtomicMassCalculatorPage';
+import ElectronegativityCalculatorPage from './pages/Chemistry/ElectronegativityCalculatorPage';
+import AverageAtomicMassCalculatorPage from './pages/Chemistry/AverageAtomicMassCalculatorPage';
+import MolarMassCalculatorPage from './pages/Chemistry/MolarMassCalculatorPage';
+import AcreageCalculatorPage from './pages/Conversion/AcreageCalculatorPage';
+import HeightInInchesCalculatorPage from './pages/Conversion/HeightInInchesCalculatorPage';
+import AreaConverterPage from './pages/Conversion/AreaConverterPage';
+import InchesToFractionCalculatorPage from './pages/Conversion/InchesToFractionCalculatorPage';
+import AresToHectaresConverterPage from './pages/Conversion/AresToHectaresConverterPage';
+import LengthConverterPage from './pages/Conversion/LengthConverterPage';
+import ZeroToSixtyCalculatorPage from './pages/EverydayLife/ZeroToSixtyCalculatorPage';
+import MilesPerYearCalculatorPage from './pages/EverydayLife/MilesPerYearCalculatorPage';
+import BoatSpeedCalculatorPage from './pages/EverydayLife/BoatSpeedCalculatorPage';
+import BoostHorsepowerCalculatorPage from './pages/EverydayLife/BoostHorsepowerCalculatorPage';
+import MpgCalculatorPage from './pages/EverydayLife/MpgCalculatorPage';
+import MilesToDollarsCalculatorPage from './pages/EverydayLife/MilesToDollarsCalculatorPage';
+import AnnealingCalculatorPage from './pages/Biology/AnnealingCalculatorPage';
+import SalesTaxCalculatorPage from './pages/Finance/SalesTaxCalculatorPage';
+import PValueCalculatorPage from './pages/Statistics/PValueCalculatorPage';
+import ConfidenceIntervalCalculatorPage from './pages/Statistics/ConfidenceIntervalCalculatorPage';
+import TestGradeCalculatorPage from './pages/Other/TestGradeCalculatorPage';
+import LogCalculatorPage from './pages/Math/LogCalculatorPage';
+import SigFigCalculatorPage from './pages/Math/SigFigCalculatorPage';
+import ScientificNotationCalculatorPage from './pages/Math/ScientificNotationCalculatorPage';
+import SquareFootageCalculatorPage from './pages/Construction/SquareFootageCalculatorPage';
+import PercentageIncreaseCalculatorPage from './pages/Math/PercentageIncreaseCalculatorPage';
+import FractionToPercentCalculatorPage from './pages/Math/FractionToPercentCalculatorPage';
+import PercentageOfPercentageCalculatorPage from './pages/Math/PercentageOfPercentageCalculatorPage';
+import DecimalToPercentConverterPage from './pages/Math/DecimalToPercentConverterPage';
+import PercentagePointCalculatorPage from './pages/Math/PercentagePointCalculatorPage';
+import BattingAverageCalculatorPage from './pages/Sports/BattingAverageCalculatorPage';
+import OnBasePercentageCalculatorPage from './pages/Sports/OnBasePercentageCalculatorPage';
+import ERACalculatorPage from './pages/Sports/ERACalculatorPage';
+import SluggingPercentageCalculatorPage from './pages/Sports/SluggingPercentageCalculatorPage';
+import FieldingPercentageCalculatorPage from './pages/Sports/FieldingPercentageCalculatorPage';
+import WARCalculatorPage from './pages/Sports/WARCalculatorPage';
+import ACTScoreCalculatorPage from './pages/Other/ACTScoreCalculatorPage';
+import GWACalculatorPage from './pages/Other/GWACalculatorPage';
+import SemesterGradeCalculatorPage from './pages/Other/SemesterGradeCalculatorPage';
+import HighSchoolGPACalculatorPage from './pages/Other/HighSchoolGPACalculatorPage';
+import IELTSScoreCalculatorPage from './pages/Other/IELTSScoreCalculatorPage';
+import PTEScoreCalculatorPage from './pages/Other/PTEScoreCalculatorPage';
+import ButterCalculatorPage from './pages/Food/ButterCalculatorPage';
+import GramsToTablespoonsPage from './pages/Food/GramsToTablespoonsPage';
+import CakePanConverterPage from './pages/Food/CakePanConverterPage';
+import GramsToTeaspoonsPage from './pages/Food/GramsToTeaspoonsPage';
+import CookingMeasurementConverterPage from './pages/Food/CookingMeasurementConverterPage';
+import MlToGramsCalculatorPage from './pages/Food/MlToGramsCalculatorPage';
+import AveragePercentageCalculatorPage from './pages/Math/AveragePercentageCalculatorPage';
+import AddictionCalculatorPage from './pages/DiscoverOmni/AddictionCalculatorPage';
+import VampireApocalypseCalculatorPage from './pages/DiscoverOmni/VampireApocalypseCalculatorPage';
+import AlienCivilizationCalculatorPage from './pages/DiscoverOmni/AlienCivilizationCalculatorPage';
+import BlackFridayCalculatorPage from './pages/DiscoverOmni/BlackFridayCalculatorPage';
+import IdealEggBoilingCalculatorPage from './pages/DiscoverOmni/IdealEggBoilingCalculatorPage';
 import KoreanAgeCalculatorPage from './pages/DiscoverOmni/KoreanAgeCalculatorPage';
-import MeatFootprintCalculatorPage from './pages/DiscoverOmni/MeatFootprintCalculatorPage';
+import MeatFootprintCalculatorPage from './pages/Ecology/MeatFootprintCalculatorPage';
+import ImpliedProbabilityCalculatorPage from './pages/Statistics/ImpliedProbabilityCalculatorPage';
+import AccuracyCalculatorPage from './pages/Statistics/AccuracyCalculatorPage';
 
 import AuthModal from './components/AuthModal';
 import Footer from './components/Footer';
@@ -133,7 +135,9 @@ function App() {
           <Route path="/finance/sales-tax-calculator" element={<SalesTaxCalculatorPage />} />
           <Route path="/statistics/p-value-calculator" element={<PValueCalculatorPage />} />
           <Route path="/statistics/confidence-interval-calculator" element={<ConfidenceIntervalCalculatorPage />} />
-          <Route path="/other/grade-calculator" element={<TestGradeCalculatorPage />} />
+          <Route path="/statistics/implied-probability-calculator" element={<ImpliedProbabilityCalculatorPage />} />
+          <Route path="/statistics/accuracy-calculator" element={<AccuracyCalculatorPage />} />
+          <Route path="/other/test-grade-calculator" element={<TestGradeCalculatorPage />} />
           <Route path="/other/act-score-calculator" element={<ACTScoreCalculatorPage />} />
           <Route path="/other/gwa-calculator" element={<GWACalculatorPage />} />
           <Route path="/other/semester-grade-calculator" element={<SemesterGradeCalculatorPage />} />
@@ -162,7 +166,7 @@ function App() {
           <Route path="/discover-omni/black-friday-calculator" element={<BlackFridayCalculatorPage />} />
           <Route path="/discover-omni/ideal-egg-boiling-calculator" element={<IdealEggBoilingCalculatorPage />} />
           <Route path="/discover-omni/korean-age-calculator" element={<KoreanAgeCalculatorPage />} />
-          <Route path="/discover-omni/meat-footprint-calculator" element={<MeatFootprintCalculatorPage />} />
+          <Route path="/ecology/meat-footprint-calculator" element={<MeatFootprintCalculatorPage />} />
         </Routes>
         <Footer />
 
