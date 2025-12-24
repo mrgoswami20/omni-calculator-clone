@@ -26,9 +26,11 @@ import MpgCalculatorPage from './pages/EverydayLife/MpgCalculatorPage';
 import MilesToDollarsCalculatorPage from './pages/EverydayLife/MilesToDollarsCalculatorPage';
 import AnnealingCalculatorPage from './pages/Biology/AnnealingCalculatorPage';
 import SalesTaxCalculatorPage from './pages/Finance/SalesTaxCalculatorPage';
+import SalaryToHourlyCalculatorPage from './pages/Finance/SalaryToHourlyCalculatorPage';
 import PValueCalculatorPage from './pages/Statistics/PValueCalculatorPage';
 import ConfidenceIntervalCalculatorPage from './pages/Statistics/ConfidenceIntervalCalculatorPage';
 import TestGradeCalculatorPage from './pages/Other/TestGradeCalculatorPage';
+import TimeUntilCalculatorPage from './pages/EverydayLife/TimeUntilCalculatorPage';
 import LogCalculatorPage from './pages/Math/LogCalculatorPage';
 import SigFigCalculatorPage from './pages/Math/SigFigCalculatorPage';
 import ScientificNotationCalculatorPage from './pages/Math/ScientificNotationCalculatorPage';
@@ -133,10 +135,12 @@ function App() {
           <Route path="/sports/war-calculator" element={<WARCalculatorPage />} />
           <Route path="/everyday-life/miles-to-dollars-calculator" element={<MilesToDollarsCalculatorPage />} />
           <Route path="/finance/sales-tax-calculator" element={<SalesTaxCalculatorPage />} />
+          <Route path="/finance/salary-to-hourly-calculator" element={<SalaryToHourlyCalculatorPage />} />
           <Route path="/statistics/p-value-calculator" element={<PValueCalculatorPage />} />
           <Route path="/statistics/confidence-interval-calculator" element={<ConfidenceIntervalCalculatorPage />} />
           <Route path="/statistics/implied-probability-calculator" element={<ImpliedProbabilityCalculatorPage />} />
           <Route path="/statistics/accuracy-calculator" element={<AccuracyCalculatorPage />} />
+          <Route path="/everyday-life/time-until-calculator" element={<TimeUntilCalculatorPage />} />
           <Route path="/other/test-grade-calculator" element={<TestGradeCalculatorPage />} />
           <Route path="/other/act-score-calculator" element={<ACTScoreCalculatorPage />} />
           <Route path="/other/gwa-calculator" element={<GWACalculatorPage />} />

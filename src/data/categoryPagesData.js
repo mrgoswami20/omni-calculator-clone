@@ -1,4 +1,4 @@
-import { Atom, Dumbbell, BarChart3, MoreHorizontal, Star, Timer, GraduationCap, Dice5, Dna, Microscope, FlaskConical, Hammer, ArrowRightLeft, Ruler, Leaf, Recycle, Camera, Car, DollarSign, Briefcase, Utensils, ChefHat, Heart, Calculator, Percent, User } from 'lucide-react';
+import { Atom, Dumbbell, BarChart3, MoreHorizontal, Star, Timer, GraduationCap, Dice5, Dna, Microscope, FlaskConical, Hammer, ArrowRightLeft, Ruler, Leaf, Recycle, Camera, Car, DollarSign, Briefcase, Utensils, ChefHat, Heart, Calculator, Percent, User, Calendar } from 'lucide-react';
 
 export const categoryPagesData = {
     physics: {
@@ -273,6 +273,16 @@ export const categoryPagesData = {
                         { label: "MPG Calculator", url: "/everyday-life/mpg-calculator" },
                     ]
                 ]
+            },
+            {
+                title: "Time and date calculators",
+                icon: Calendar,
+                iconColor: "#3b82f6",
+                groups: [
+                    [
+                        { label: "Time Until Calculator", url: "/everyday-life/time-until-calculator" },
+                    ]
+                ]
             }
         ]
     },
@@ -300,12 +310,13 @@ export const categoryPagesData = {
                 ]
             },
             {
-                title: "Tax calculators",
+                title: "Tax and salary Calculation",
                 icon: DollarSign,
                 iconColor: "#10b981",
                 groups: [
                     [
                         { label: "Sales Tax Calculator", url: "/finance/sales-tax-calculator" },
+                        { label: "Salary to Hourly Calculator", url: "/finance/salary-to-hourly-calculator" },
                     ]
                 ]
             }

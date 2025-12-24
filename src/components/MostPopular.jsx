@@ -60,6 +60,12 @@ const MostPopular = () => {
             description: "Percentage increase calculator determines the percentage increase from one value to another.",
             category: "Math",
             path: "/math/percentage-increase-calculator"
+        },
+        {
+            title: "Salary to Hourly Calculator",
+            description: "Find your hourly wage instantly with our Salary to Hourly Calculator. Ideal for job seekers and employees to convert annual, monthly, or weekly salaries.",
+            category: "Finance",
+            path: "/finance/salary-to-hourly-calculator"
         }
     ];
 
