@@ -25,7 +25,7 @@ const Hero = ({ searchTerm, setSearchTerm }) => {
                     <div className="hero-text">
                         <h1>
                             Your life in <br />
-                            <span className="highlight-text">3772 Paid </span>
+                            <span className="highlight-text">3776 free </span>
                             <span className="calculator-icon">➗</span>
                             <br />
                             calculators
