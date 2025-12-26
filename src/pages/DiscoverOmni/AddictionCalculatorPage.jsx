@@ -188,6 +188,18 @@ const AddictionCalculatorPage = () => {
         { name: "Lucja Zaborowska", role: "MD, PhD candidate" },
     ];
 
+    const [showShareTooltip, setShowShareTooltip] = useState(false);
+
+    const handleShare = async () => {
+        try {
+            await navigator.clipboard.writeText(window.location.href);
+            setShowShareTooltip(true);
+            setTimeout(() => setShowShareTooltip(false), 2000);
+        } catch (err) {
+            console.error('Failed to copy URL:', err);
+        }
+    };
+
     // Helper to render complex select options
     const renderUnitOptions = (types) => {
         // Types: time_short, time_long, time_mixed
@@ -368,9 +380,10 @@ const AddictionCalculatorPage = () => {
 
                 {/* Actions */}
                 <div className="calc-actions">
-                    <button className="share-result-btn">
+                    <button className="share-result-btn" onClick={handleShare}>
                         <div className="share-icon-circle"><Share2 size={16} /></div>
                         <span>Share result</span>
+                        {showShareTooltip && <span className="copied-tooltip">Copied!</span>}
                     </button>
                     <div className="right-actions">
                         <button className="secondary-btn">Reload calculator</button>

@@ -5,6 +5,17 @@ import './GWACalculatorPage.css';
 
 const GWACalculatorPage = () => {
     const [gradingSystem, setGradingSystem] = useState('scale_1_5'); // 'scale_1_5', 'scale_4_1', 'letter_1', 'letter_2'
+    const [showShareTooltip, setShowShareTooltip] = useState(false);
+
+    const handleShare = async () => {
+        try {
+            await navigator.clipboard.writeText(window.location.href);
+            setShowShareTooltip(true);
+            setTimeout(() => setShowShareTooltip(false), 2000);
+        } catch (err) {
+            console.error('Failed to copy URL:', err);
+        }
+    };
 
     // Initial 3 courses
     const [courses, setCourses] = useState([
@@ -206,9 +217,10 @@ const GWACalculatorPage = () => {
 
                     <div className="calc-actions">
                         <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem' }}>
-                            <button className="share-result-btn" style={{ flexDirection: 'column', padding: '1.5rem 0' }}>
+                            <button className="share-result-btn" style={{ flexDirection: 'column', padding: '1.5rem 0' }} onClick={handleShare}>
                                 <div className="share-icon-circle" style={{ width: '40px', height: '40px', fontSize: '1.25rem' }}><Share2 size={20} /></div>
                                 <span style={{ marginTop: '0.5rem' }}>Share result</span>
+                                {showShareTooltip && <span className="copied-tooltip">Copied!</span>}
                             </button>
                             <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
                                 <button className="secondary-btn" style={{ height: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>Reload calculator</button>

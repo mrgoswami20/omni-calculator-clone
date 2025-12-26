@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import CalculatorLayout from '../../components/CalculatorLayout';
+import { Share2 } from 'lucide-react';
 import '../../components/CalculatorLayout.css';
 
 const SquareFootageCalculatorPage = () => {
@@ -11,9 +12,20 @@ const SquareFootageCalculatorPage = () => {
         if (length && width) {
             const l = parseFloat(length);
             const w = parseFloat(width);
-            setArea((l * w).toFixed(2));
         }
     }, [length, width]);
+
+    const [showShareTooltip, setShowShareTooltip] = useState(false);
+
+    const handleShare = async () => {
+        try {
+            await navigator.clipboard.writeText(window.location.href);
+            setShowShareTooltip(true);
+            setTimeout(() => setShowShareTooltip(false), 2000);
+        } catch (err) {
+            console.error('Failed to copy URL:', err);
+        }
+    };
 
     return (
         <CalculatorLayout
@@ -42,6 +54,17 @@ const SquareFootageCalculatorPage = () => {
                     <div className="input-wrapper">
                         <input type="text" value={area} readOnly className="result-input" />
                         <div className="unit-display">sq ft</div>
+                    </div>
+                </div>
+
+                <div className="calc-actions">
+                    <button className="share-result-btn" onClick={handleShare}>
+                        <div className="share-icon-circle"><Share2 size={14} /></div>
+                        Share result
+                        {showShareTooltip && <span className="copied-tooltip">Copied!</span>}
+                    </button>
+                    <div className="secondary-actions">
+                        <button className="secondary-btn" onClick={() => window.location.reload()}>Reload calculator</button>
                     </div>
                 </div>
             </div>

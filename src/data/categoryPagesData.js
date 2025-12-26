@@ -63,7 +63,7 @@ export const categoryPagesData = {
                 groups: [
                     [
                         { label: "Accuracy Calculator", url: "/statistics/accuracy-calculator" },
-                        { label: "ANOVA Calculator", url: "#" },
+                        { label: "ANOVA Calculator", url: "/statistics/anova-calculator" },
                         { label: "Bayes' Theorem Calculator", url: "#" },
                     ],
                     [
@@ -317,6 +317,7 @@ export const categoryPagesData = {
                     [
                         { label: "Sales Tax Calculator", url: "/finance/sales-tax-calculator" },
                         { label: "Salary to Hourly Calculator", url: "/finance/salary-to-hourly-calculator" },
+                        { label: "Margin Calculator", url: "/finance/margin-calculator" },
                     ]
                 ]
             }

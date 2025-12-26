@@ -1,5 +1,6 @@
 :root {
-  --primary: #436cfe; /* Omni-like blue */
+  --primary: #436cfe;
+  /* Omni-like blue */
   --text-primary: #111827;
   --text-secondary: #6b7280;
   --bg-primary: #ffffff;
@@ -10,7 +11,8 @@
 body {
   margin: 0;
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
-  background-color: #f9fbfd; /* Subtle background from screenshot */
+  background-color: #f9fbfd;
+  /* Subtle background from screenshot */
   color: var(--text-primary);
   -webkit-font-smoothing: antialiased;
 }
@@ -19,6 +21,27 @@ body {
   box-sizing: border-box;
 }
 
+
 button {
   font-family: inherit;
+}
+
+.copied-tooltip {
+  margin-left: 8px;
+  font-size: 0.85rem;
+  color: #10b981;
+  font-weight: 600;
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(2px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }

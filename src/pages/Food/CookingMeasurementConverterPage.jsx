@@ -25,6 +25,17 @@ const CookingMeasurementConverterPage = () => {
     // Base mass in GRAMS serves as the single source of truth
     const [baseMass, setBaseMass] = useState('');
     const [isUpdating, setIsUpdating] = useState(false);
+    const [showShareTooltip, setShowShareTooltip] = useState(false);
+
+    const handleShare = async () => {
+        try {
+            await navigator.clipboard.writeText(window.location.href);
+            setShowShareTooltip(true);
+            setTimeout(() => setShowShareTooltip(false), 2000);
+        } catch (err) {
+            console.error('Failed to copy URL:', err);
+        }
+    };
 
     // Factors relative to grams
     const FACTORS_WEIGHT = {
@@ -371,9 +382,10 @@ const CookingMeasurementConverterPage = () => {
                     </div>
 
                     <div className="calc-actions">
-                        <button className="share-result-btn">
+                        <button className="share-result-btn" onClick={handleShare} style={{ position: 'relative' }}>
                             <div className="share-icon-circle"><Share2 size={14} /></div>
                             Share result
+                            {showShareTooltip && <span className="copied-tooltip" style={{ position: 'absolute', top: '-30px', left: '50%', transform: 'translateX(-50%)' }}>Copied!</span>}
                         </button>
                         <div className="secondary-actions">
                             <button className="secondary-btn">Reload calculator</button>

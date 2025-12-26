@@ -10,7 +10,18 @@ const IELTSScoreCalculatorPage = () => {
     const [speaking, setSpeaking] = useState('');
     const [writing, setWriting] = useState('');
     const [ieltsScore, setIeltsScore] = useState('');
-    const [showAverage, setShowAverage] = useState(false); // Checkbox for raw average?
+    const [showAverage, setShowAverage] = useState(false);
+    const [showShareTooltip, setShowShareTooltip] = useState(false);
+
+    const handleShare = async () => {
+        try {
+            await navigator.clipboard.writeText(window.location.href);
+            setShowShareTooltip(true);
+            setTimeout(() => setShowShareTooltip(false), 2000);
+        } catch (err) {
+            console.error('Failed to copy URL:', err);
+        }
+    };
     // Note: Screenshots show "Show average result" checkbox. Logic may differ slightly (show raw mean vs rounded band).
 
     // 2. Listening Points Converter
@@ -299,9 +310,10 @@ const IELTSScoreCalculatorPage = () => {
                     </div>
 
                     <div className="calc-actions">
-                        <button className="share-result-btn">
+                        <button className="share-result-btn" onClick={handleShare}>
                             <div className="share-icon-circle"><Share2 size={16} /></div>
                             Share result
+                            {showShareTooltip && <span className="copied-tooltip">Copied!</span>}
                         </button>
                         <div style={{ display: 'grid', gap: '0.75rem' }}>
                             <button className="secondary-btn" style={{ width: '100%' }}>Reload calculator</button>

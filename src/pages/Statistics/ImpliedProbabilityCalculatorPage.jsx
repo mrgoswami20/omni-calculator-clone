@@ -5,6 +5,17 @@ import './ImpliedProbabilityCalculatorPage.css';
 
 const ImpliedProbabilityCalculatorPage = () => {
     const [sign, setSign] = useState('positive');
+    const [showShareTooltip, setShowShareTooltip] = useState(false);
+
+    const handleShare = async () => {
+        try {
+            await navigator.clipboard.writeText(window.location.href);
+            setShowShareTooltip(true);
+            setTimeout(() => setShowShareTooltip(false), 2000);
+        } catch (err) {
+            console.error('Failed to copy URL:', err);
+        }
+    };
     const [odds, setOdds] = useState('');
     const [probability, setProbability] = useState('');
 
@@ -148,11 +159,12 @@ const ImpliedProbabilityCalculatorPage = () => {
 
                     <div className="action-buttons">
                         <div className="share-btn-wrapper" style={{ flex: 1 }}>
-                            <button className="btn-share">
+                            <button className="btn-share" onClick={handleShare} style={{ position: 'relative' }}>
                                 <div className="share-icon-circle">
                                     <Share2 size={20} />
                                 </div>
                                 <span>Share result</span>
+                                {showShareTooltip && <span className="copied-tooltip" style={{ position: 'absolute', top: '-30px', left: '50%', transform: 'translateX(-50%)' }}>Copied!</span>}
                             </button>
                         </div>
                         <div className="right-actions" style={{ flex: 1, display: 'flex', flexDirection: 'column', gap: '12px' }}>

@@ -153,10 +153,16 @@
     /* Red for logout */
 }
 
-.header-search {
+.header-search-container {
     flex: 1;
     max-width: 600px;
     margin: 0 40px;
+    position: relative;
+    z-index: 60;
+}
+
+.header-search {
+    width: 100%;
     background-color: #f3f4f6;
     border-radius: 99px;
     padding: 8px 16px;
@@ -180,9 +186,53 @@
     color: #374151;
 }
 
+/* Search Dropdown */
+.search-dropdown {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    border: 1px solid #e5e7eb;
+    margin-top: 8px;
+    overflow: hidden;
+    padding: 8px 0;
+}
+
+.search-item {
+    padding: 10px 16px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: background-color 0.1s;
+    font-size: 0.95rem;
+}
+
+.search-item:hover {
+    background-color: #f3f4f6;
+}
+
+.search-item-name {
+    color: #111827;
+    font-weight: 500;
+}
+
+.search-item-dot {
+    color: #9ca3af;
+    font-size: 0.8rem;
+}
+
+.search-item-cat {
+    color: #6b7280;
+    /* Gray/Red as per screenshot? Screenshot shows gray Finance. */
+    font-size: 0.9rem;
+}
+
 @media (max-width: 768px) {
-    .header-search {
+    .header-search-container {
         display: none;
-        /* Hide header search on mobile for now to save space */
     }
 }

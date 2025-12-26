@@ -8,6 +8,17 @@ const HighSchoolGPACalculatorPage = () => {
     const [weights, setWeights] = useState('equal'); // equal, different
     const [courseType, setCourseType] = useState('regular'); // regular, honors
     const [isCumulative, setIsCumulative] = useState(false);
+    const [showShareTooltip, setShowShareTooltip] = useState(false);
+
+    const handleShare = async () => {
+        try {
+            await navigator.clipboard.writeText(window.location.href);
+            setShowShareTooltip(true);
+            setTimeout(() => setShowShareTooltip(false), 2000);
+        } catch (err) {
+            console.error('Failed to copy URL:', err);
+        }
+    };
 
     // Prior Results
     const [priorGPA, setPriorGPA] = useState('');
@@ -281,9 +292,10 @@ const HighSchoolGPACalculatorPage = () => {
                     )}
 
                     <div className="calc-actions">
-                        <button className="share-result-btn">
+                        <button className="share-result-btn" onClick={handleShare}>
                             <div className="share-icon-circle"><Share2 size={16} /></div>
                             Share result
+                            {showShareTooltip && <span className="copied-tooltip">Copied!</span>}
                         </button>
                         <div style={{ display: 'grid', gap: '0.75rem' }}>
                             <button className="secondary-btn" style={{ width: '100%' }}>Reload calculator</button>

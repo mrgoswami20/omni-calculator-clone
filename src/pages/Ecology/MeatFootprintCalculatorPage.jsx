@@ -267,6 +267,18 @@ const MeatFootprintCalculatorPage = () => {
         "References & data sources"
     ];
 
+    const [showShareTooltip, setShowShareTooltip] = useState(false);
+
+    const handleShare = async () => {
+        try {
+            await navigator.clipboard.writeText(window.location.href);
+            setShowShareTooltip(true);
+            setTimeout(() => setShowShareTooltip(false), 2000);
+        } catch (err) {
+            console.error('Failed to copy URL:', err);
+        }
+    };
+
     const handleClear = () => {
         setChicken('0');
         setBeef('0');
@@ -405,11 +417,12 @@ const MeatFootprintCalculatorPage = () => {
 
                             {/* Action Buttons */}
                             <div className="action-buttons-container">
-                                <button className="btn-share-box">
+                                <button className="btn-share-box" onClick={handleShare}>
                                     <div className="share-icon-circle">
                                         <Share2 size={24} />
                                     </div>
                                     <span>Share result</span>
+                                    {showShareTooltip && <span className="copied-tooltip">Copied!</span>}
                                 </button>
                                 <div className="action-stack">
                                     <button className="btn-action-rect" onClick={() => window.location.reload()}>

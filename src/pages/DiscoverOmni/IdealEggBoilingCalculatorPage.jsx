@@ -235,6 +235,18 @@ const IdealEggBoilingCalculatorPage = () => {
         "FAQs"
     ];
 
+    const [showShareTooltip, setShowShareTooltip] = useState(false);
+
+    const handleShare = async () => {
+        try {
+            await navigator.clipboard.writeText(window.location.href);
+            setShowShareTooltip(true);
+            setTimeout(() => setShowShareTooltip(false), 2000);
+        } catch (err) {
+            console.error('Failed to copy URL:', err);
+        }
+    };
+
     const educationalContent = (
         <div className="educational-content">
             <p>
@@ -600,11 +612,12 @@ const IdealEggBoilingCalculatorPage = () => {
 
                 <div className="footer-actions">
                     <div style={{ display: 'flex', gap: '16px' }}>
-                        <button type="button" className="btn-share">
+                        <button type="button" className="btn-share" onClick={handleShare} style={{ position: 'relative' }}>
                             <div style={{ backgroundColor: '#ff4f6e', padding: '8px', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
                                 <Share2 size={24} color="white" />
                             </div>
                             <span style={{ fontWeight: '600', color: '#111827' }}>Share result</span>
+                            {showShareTooltip && <span className="copied-tooltip" style={{ position: 'absolute', top: '10px', right: '10px', backgroundColor: '#333', color: 'white', padding: '4px 8px', borderRadius: '4px', fontSize: '12px' }}>Copied!</span>}
                         </button>
                         <div style={{ flex: 1, display: 'flex', flexDirection: 'column', gap: '12px' }}>
                             <button type="button" onClick={() => window.location.reload()} className="btn-secondary">

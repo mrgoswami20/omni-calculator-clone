@@ -12,6 +12,17 @@ const SemesterGradeCalculatorPage = () => {
     const [finalGrade, setFinalGrade] = useState('');
     const [finalWeight, setFinalWeight] = useState('');
     const [semesterGrade, setSemesterGrade] = useState('');
+    const [showShareTooltip, setShowShareTooltip] = useState(false);
+
+    const handleShare = async () => {
+        try {
+            await navigator.clipboard.writeText(window.location.href);
+            setShowShareTooltip(true);
+            setTimeout(() => setShowShareTooltip(false), 2000);
+        } catch (err) {
+            console.error('Failed to copy URL:', err);
+        }
+    };
 
     // Colors for Legend and Chart
     const colorQ1 = '#3b82f6'; // Blue
@@ -259,9 +270,10 @@ const SemesterGradeCalculatorPage = () => {
                     </div>
 
                     <div className="calc-actions">
-                        <button className="share-result-btn">
+                        <button className="share-result-btn" onClick={handleShare}>
                             <div className="share-icon-circle"><Share2 size={16} /></div>
                             Share result
+                            {showShareTooltip && <span className="copied-tooltip">Copied!</span>}
                         </button>
                         <div style={{ display: 'grid', gap: '0.75rem' }}>
                             <button className="secondary-btn" style={{ width: '100%' }}>Reload calculator</button>

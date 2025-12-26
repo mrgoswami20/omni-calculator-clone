@@ -3,6 +3,32 @@ import CalculatorLayout from '../../components/CalculatorLayout';
 import { Share2, ChevronDown, MoreVertical, RotateCcw } from 'lucide-react';
 import './SalaryToHourlyCalculatorPage.css';
 
+
+// Reusable Input Component for Grid
+const CalcInput = ({ label, value, field, unit = 'INR', onChange }) => (
+    <div className="input-row">
+        <div className="label-wrapper">
+            <label>{label}</label>
+            <MoreVertical size={16} className="dots-icon" />
+        </div>
+        <div className="field-wrapper">
+            <input
+                type="number"
+                className="sc-input"
+                value={value}
+                onChange={(e) => onChange(field, e.target.value)}
+                onWheel={(e) => e.target.blur()}
+            />
+            {unit && (
+                <div className="unit-badge">
+                    <span>{unit}</span>
+                    <ChevronDown size={14} />
+                </div>
+            )}
+        </div>
+    </div>
+);
+
 const SalaryToHourlyCalculatorPage = () => {
     // Core State: We store everything to allow independent editing, 
     // but we use 'hourly' and 'hoursPerWeek' as the source of truth for calculations when 'hoursPerWeek' changes.
@@ -11,7 +37,7 @@ const SalaryToHourlyCalculatorPage = () => {
     // Using strings for inputs to allow empty states
     const [values, setValues] = useState({
         hourly: '',
-        hoursPerWeek: '',
+        hoursPerWeek: '40',
         annual: '',
         monthly: '',
         weekly: '',
@@ -65,7 +91,7 @@ const SalaryToHourlyCalculatorPage = () => {
         const perSecond = hourly / 3600;
 
         return {
-            hourly: hourlyStr,
+            hourly: toFixed(hourlyStr),
             hoursPerWeek: hoursPerWeekStr,
             annual: toFixed(annual),
             monthly: toFixed(monthly),
@@ -82,60 +108,66 @@ const SalaryToHourlyCalculatorPage = () => {
         // Then calculate 'hourly' from it (if not hourly), then update all.
 
         let newValues = { ...values, [field]: val };
+        // If hoursPerWeek is empty, default to 40 for calculations, but keep 'val' as is for display
         const hours = parseFloat(newValues.hoursPerWeek) || 40;
 
-        if (val === '') {
-            setValues(newValues);
-            return;
-        }
+        // If the value is empty, we still want to calculate (to clear other fields)
+        // treating empty input as clearing the value.
 
-        const numVal = parseFloat(val);
-        if (isNaN(numVal)) return; // Should be handled by input type, but safety first
+        let numVal = parseFloat(val);
+        // If val is empty string, numVal is NaN.
 
-        let derivedHourly = 0;
+        // If the input is NOT empty but IS NaN (e.g. invalid chars), return. 
+        // But for type="number", usually browsers handle this.
+        if (val !== '' && isNaN(numVal)) return;
 
-        // Reverse Calculate Hourly
-        switch (field) {
-            case 'hourly':
-                derivedHourly = numVal;
-                break;
-            case 'hoursPerWeek':
-                // Special case: if hours change, we usually keep the Annual salary constant? 
-                // Or keep Hourly constant? Omni usually keeps Hourly constant unless specified.
-                // Let's keep Hourly constant and recalculate others.
-                derivedHourly = parseFloat(values.hourly) || 0;
-                break;
-            case 'annual':
-                derivedHourly = numVal / (WEEKS_PER_YEAR * hours);
-                break;
-            case 'monthly':
-                derivedHourly = (numVal * MONTHS_PER_YEAR) / (WEEKS_PER_YEAR * hours);
-                break;
-            case 'weekly':
-                derivedHourly = numVal / hours;
-                break;
-            case 'biweekly':
-                derivedHourly = (numVal / 2) / hours;
-                break;
-            case 'daily':
-                derivedHourly = (numVal * DAYS_PER_WEEK) / hours;
-                break;
-            case 'perMinute':
-                derivedHourly = numVal * 60;
-                break;
-            case 'perSecond':
-                derivedHourly = numVal * 3600;
-                break;
-            default:
-                break;
+        let derivedHourly = '';
+
+        if (val !== '') {
+            // Reverse Calculate Hourly
+            switch (field) {
+                case 'hourly':
+                    derivedHourly = numVal;
+                    break;
+                case 'hoursPerWeek':
+                    // Special case: if hours change, we usually keep the Annual salary constant? 
+                    // Or keep Hourly constant? Omni usually keeps Hourly constant unless specified.
+                    // Let's keep Hourly constant and recalculate others.
+                    derivedHourly = parseFloat(values.hourly) || 0;
+                    break;
+                case 'annual':
+                    derivedHourly = numVal / (WEEKS_PER_YEAR * hours);
+                    break;
+                case 'monthly':
+                    derivedHourly = (numVal * MONTHS_PER_YEAR) / (WEEKS_PER_YEAR * hours);
+                    break;
+                case 'weekly':
+                    derivedHourly = numVal / hours;
+                    break;
+                case 'biweekly':
+                    derivedHourly = (numVal / 2) / hours;
+                    break;
+                case 'daily':
+                    derivedHourly = (numVal * DAYS_PER_WEEK) / hours;
+                    break;
+                case 'perMinute':
+                    derivedHourly = numVal * 60;
+                    break;
+                case 'perSecond':
+                    derivedHourly = numVal * 3600;
+                    break;
+                default:
+                    break;
+            }
         }
 
         if (field === 'hoursPerWeek') {
             // If hours change, we update everything based on CURRENT hourly rate (preserving rate)
-            // UNLESS we want to preserve Annual? Usually preserving Rate is safer for "Salary to Hourly".
             const newData = updateAllFromHourly(values.hourly, val);
             setValues(newData);
         } else {
+            // If val is empty, derivedHourly is empty string.
+            // updateAllFromHourly handles empty string hourly by returning all empty strings.
             const newData = updateAllFromHourly(derivedHourly, newValues.hoursPerWeek);
             // setValues(newData); // This overwrites the field we are typing in if rounding differs!
             // To prevent cursor jumping or rounding fighting, we should preserve the exact input string for the edited field.
@@ -168,7 +200,7 @@ const SalaryToHourlyCalculatorPage = () => {
     const handleReload = () => {
         setValues({
             hourly: '',
-            hoursPerWeek: '',
+            hoursPerWeek: '40',
             annual: '',
             monthly: '',
             weekly: '',
@@ -179,6 +211,8 @@ const SalaryToHourlyCalculatorPage = () => {
         });
         window.scrollTo({ top: 0, behavior: 'smooth' });
     };
+
+
 
     const articleContent = (
         <div className="article-content">
@@ -199,31 +233,6 @@ const SalaryToHourlyCalculatorPage = () => {
         </div>
     );
 
-    // Reusable Input Component for Grid
-    const CalcInput = ({ label, value, field, unit = 'INR' }) => (
-        <div className="input-row">
-            <div className="label-wrapper">
-                <label>{label}</label>
-                <MoreVertical size={16} className="dots-icon" />
-            </div>
-            <div className="field-wrapper">
-                <input
-                    type="number"
-                    className="sc-input"
-                    value={value}
-                    onChange={(e) => handleInputChange(field, e.target.value)}
-                    onWheel={(e) => e.target.blur()}
-                />
-                {unit && (
-                    <div className="unit-badge">
-                        <span>{unit}</span>
-                        <ChevronDown size={14} />
-                    </div>
-                )}
-            </div>
-        </div>
-    );
-
     return (
         <CalculatorLayout
             title="Salary to Hourly Calculator"
@@ -236,9 +245,9 @@ const SalaryToHourlyCalculatorPage = () => {
 
                 {/* 1. Main Card */}
                 <div className="calc-card">
-                    <CalcInput label="Hourly wage" value={values.hourly} field="hourly" />
-                    <CalcInput label="Hours per week" value={values.hoursPerWeek} field="hoursPerWeek" unit={null} />
-                    <CalcInput label="Annual salary" value={values.annual} field="annual" />
+                    <CalcInput label="Hourly wage" value={values.hourly} field="hourly" onChange={handleInputChange} />
+                    <CalcInput label="Hours per week" value={values.hoursPerWeek} field="hoursPerWeek" unit={null} onChange={handleInputChange} />
+                    <CalcInput label="Annual salary" value={values.annual} field="annual" onChange={handleInputChange} />
                 </div>
 
                 {/* 2. Your Wage As (Collapsible) */}
@@ -253,10 +262,10 @@ const SalaryToHourlyCalculatorPage = () => {
                     </div>
                     {isWageAsOpen && (
                         <div className="card-body grid-2-col">
-                            <CalcInput label="Daily" value={values.daily} field="daily" />
-                            <CalcInput label="Monthly" value={values.monthly} field="monthly" />
-                            <CalcInput label="Weekly" value={values.weekly} field="weekly" />
-                            <CalcInput label="Biweekly" value={values.biweekly} field="biweekly" />
+                            <CalcInput label="Daily" value={values.daily} field="daily" onChange={handleInputChange} />
+                            <CalcInput label="Monthly" value={values.monthly} field="monthly" onChange={handleInputChange} />
+                            <CalcInput label="Weekly" value={values.weekly} field="weekly" onChange={handleInputChange} />
+                            <CalcInput label="Biweekly" value={values.biweekly} field="biweekly" onChange={handleInputChange} />
                         </div>
                     )}
                 </div>
@@ -273,8 +282,8 @@ const SalaryToHourlyCalculatorPage = () => {
                     </div>
                     {isOtherOpen && (
                         <div className="card-body">
-                            <CalcInput label="Per minute" value={values.perMinute} field="perMinute" />
-                            <CalcInput label="Per second" value={values.perSecond} field="perSecond" />
+                            <CalcInput label="Per minute" value={values.perMinute} field="perMinute" onChange={handleInputChange} />
+                            <CalcInput label="Per second" value={values.perSecond} field="perSecond" onChange={handleInputChange} />
                         </div>
                     )}
                 </div>

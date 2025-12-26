@@ -140,6 +140,18 @@ const BlackFridayCalculatorPage = () => {
         </div>
     );
 
+    const [showShareTooltip, setShowShareTooltip] = useState(false);
+
+    const handleShare = async () => {
+        try {
+            await navigator.clipboard.writeText(window.location.href);
+            setShowShareTooltip(true);
+            setTimeout(() => setShowShareTooltip(false), 2000);
+        } catch (err) {
+            console.error('Failed to copy URL:', err);
+        }
+    };
+
     const educationalContent = (
         <div className="educational-content">
             <p>
@@ -415,11 +427,12 @@ const BlackFridayCalculatorPage = () => {
                 {/* Footer Actions */}
                 <div className="footer-actions" style={{ marginTop: '24px', padding: '16px', border: '1px solid #e5e7eb', borderRadius: '8px', backgroundColor: 'white' }}>
                     <div style={{ display: 'flex', gap: '16px' }}>
-                        <button type="button" className="btn-share" style={{ flex: 1, display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', gap: '8px', padding: '12px', borderRadius: '8px', border: '1px solid #e5e7eb', backgroundColor: 'white', cursor: 'pointer', height: '100px' }}>
+                        <button type="button" className="btn-share" onClick={handleShare} style={{ flex: 1, display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', gap: '8px', padding: '12px', borderRadius: '8px', border: '1px solid #e5e7eb', backgroundColor: 'white', cursor: 'pointer', height: '100px', position: 'relative' }}>
                             <div style={{ backgroundColor: '#ff4f6e', padding: '8px', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
                                 <Share2 size={24} color="white" />
                             </div>
                             <span style={{ fontWeight: '600', color: '#111827' }}>Share result</span>
+                            {showShareTooltip && <span className="copied-tooltip" style={{ position: 'absolute', top: '10px', right: '10px', backgroundColor: '#333', color: 'white', padding: '4px 8px', borderRadius: '4px', fontSize: '12px' }}>Copied!</span>}
                         </button>
                         <div style={{ flex: 1, display: 'flex', flexDirection: 'column', gap: '12px' }}>
                             <button type="button" onClick={() => window.location.reload()} style={{ flex: 1, padding: '12px', borderRadius: '8px', border: '1px solid #e5e7eb', backgroundColor: 'white', fontSize: '0.9rem', fontWeight: '500', color: '#374151', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>

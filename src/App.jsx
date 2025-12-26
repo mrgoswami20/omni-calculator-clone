@@ -27,6 +27,8 @@ import MilesToDollarsCalculatorPage from './pages/EverydayLife/MilesToDollarsCal
 import AnnealingCalculatorPage from './pages/Biology/AnnealingCalculatorPage';
 import SalesTaxCalculatorPage from './pages/Finance/SalesTaxCalculatorPage';
 import SalaryToHourlyCalculatorPage from './pages/Finance/SalaryToHourlyCalculatorPage';
+import MarginCalculatorPage from './pages/Finance/MarginCalculatorPage';
+import PercentageIncreaseCalculatorPage from './pages/Math/PercentageIncreaseCalculatorPage';
 import PValueCalculatorPage from './pages/Statistics/PValueCalculatorPage';
 import ConfidenceIntervalCalculatorPage from './pages/Statistics/ConfidenceIntervalCalculatorPage';
 import TestGradeCalculatorPage from './pages/Other/TestGradeCalculatorPage';
@@ -35,7 +37,7 @@ import LogCalculatorPage from './pages/Math/LogCalculatorPage';
 import SigFigCalculatorPage from './pages/Math/SigFigCalculatorPage';
 import ScientificNotationCalculatorPage from './pages/Math/ScientificNotationCalculatorPage';
 import SquareFootageCalculatorPage from './pages/Construction/SquareFootageCalculatorPage';
-import PercentageIncreaseCalculatorPage from './pages/Math/PercentageIncreaseCalculatorPage';
+
 import FractionToPercentCalculatorPage from './pages/Math/FractionToPercentCalculatorPage';
 import PercentageOfPercentageCalculatorPage from './pages/Math/PercentageOfPercentageCalculatorPage';
 import DecimalToPercentConverterPage from './pages/Math/DecimalToPercentConverterPage';
@@ -68,6 +70,7 @@ import KoreanAgeCalculatorPage from './pages/DiscoverOmni/KoreanAgeCalculatorPag
 import MeatFootprintCalculatorPage from './pages/Ecology/MeatFootprintCalculatorPage';
 import ImpliedProbabilityCalculatorPage from './pages/Statistics/ImpliedProbabilityCalculatorPage';
 import AccuracyCalculatorPage from './pages/Statistics/AccuracyCalculatorPage';
+import ANOVACalculatorPage from './pages/Statistics/ANOVACalculatorPage';
 
 import AuthModal from './components/AuthModal';
 import Footer from './components/Footer';
@@ -136,10 +139,13 @@ function App() {
           <Route path="/everyday-life/miles-to-dollars-calculator" element={<MilesToDollarsCalculatorPage />} />
           <Route path="/finance/sales-tax-calculator" element={<SalesTaxCalculatorPage />} />
           <Route path="/finance/salary-to-hourly-calculator" element={<SalaryToHourlyCalculatorPage />} />
+          <Route path="/finance/margin-calculator" element={<MarginCalculatorPage />} />
+          <Route path="/math/percentage-increase-calculator" element={<PercentageIncreaseCalculatorPage />} />
           <Route path="/statistics/p-value-calculator" element={<PValueCalculatorPage />} />
           <Route path="/statistics/confidence-interval-calculator" element={<ConfidenceIntervalCalculatorPage />} />
           <Route path="/statistics/implied-probability-calculator" element={<ImpliedProbabilityCalculatorPage />} />
           <Route path="/statistics/accuracy-calculator" element={<AccuracyCalculatorPage />} />
+          <Route path="/statistics/anova-calculator" element={<ANOVACalculatorPage />} />
           <Route path="/everyday-life/time-until-calculator" element={<TimeUntilCalculatorPage />} />
           <Route path="/other/test-grade-calculator" element={<TestGradeCalculatorPage />} />
           <Route path="/other/act-score-calculator" element={<ACTScoreCalculatorPage />} />
@@ -152,7 +158,7 @@ function App() {
           <Route path="/math/sig-fig-calculator" element={<SigFigCalculatorPage />} />
           <Route path="/math/scientific-notation-calculator" element={<ScientificNotationCalculatorPage />} />
           <Route path="/construction/square-footage-calculator" element={<SquareFootageCalculatorPage />} />
-          <Route path="/math/percentage-increase-calculator" element={<PercentageIncreaseCalculatorPage />} />
+
           <Route path="/math/fraction-to-percent-calculator" element={<FractionToPercentCalculatorPage />} />
           <Route path="/math/percentage-of-percentage-calculator" element={<PercentageOfPercentageCalculatorPage />} />
           <Route path="/math/decimal-to-percent-converter" element={<DecimalToPercentConverterPage />} />

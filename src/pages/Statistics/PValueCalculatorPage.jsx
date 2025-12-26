@@ -6,6 +6,22 @@ import '../../components/CalculatorLayout.css';
 const PValueCalculatorPage = () => {
     const [zScore, setZScore] = useState('');
     const [pValue, setPValue] = useState('');
+    const [showShareTooltip, setShowShareTooltip] = useState(false);
+
+    const handleShare = async () => {
+        try {
+            await navigator.clipboard.writeText(window.location.href);
+            setShowShareTooltip(true);
+            setTimeout(() => setShowShareTooltip(false), 2000);
+        } catch (err) {
+            console.error('Failed to copy URL:', err);
+        }
+    };
+
+    const handleClear = () => {
+        setZScore('');
+        setPValue('');
+    };
 
     const calculatePValue = (z) => {
         if (!z) return;
@@ -74,8 +90,28 @@ const PValueCalculatorPage = () => {
                         />
                     </div>
                 </div>
+
+                <div className="calc-actions">
+                    <button className="share-result-btn" onClick={handleShare} style={{ position: 'relative' }}>
+                        <div className="share-icon-circle"><Share2 size={14} /></div>
+                        Share result
+                        {showShareTooltip && <span className="copied-tooltip" style={{ position: 'absolute', top: '-30px', left: '50%', transform: 'translateX(-50%)' }}>Copied!</span>}
+                    </button>
+                    <div className="secondary-actions">
+                        <button className="secondary-btn" onClick={() => window.location.reload()}>Reload calculator</button>
+                        <button className="secondary-btn" onClick={handleClear}>Clear all changes</button>
+                    </div>
+                </div>
+
+                <div className="feedback-section">
+                    <p>Did we solve your problem today?</p>
+                    <div className="feedback-btns">
+                        <button>Yes</button>
+                        <button>No</button>
+                    </div>
+                </div>
             </div>
-        </CalculatorLayout>
+        </CalculatorLayout >
     );
 };
 // Add simple math erf polyfill implementation if needed, but for now simple CDF

@@ -1,0 +1,224 @@
+.anova-calculator-page .section-card {
+    background-color: white;
+    border: 1px solid #e5e7eb;
+    border-radius: 8px;
+    margin-bottom: 24px;
+    overflow: hidden;
+}
+
+.anova-calculator-page .section-header {
+    display: flex;
+    align-items: center;
+    padding: 16px;
+    cursor: pointer;
+    background-color: #fff;
+    border-bottom: 1px solid transparent;
+}
+
+.anova-calculator-page .section-header:hover {
+    background-color: #f9fafb;
+}
+
+.anova-calculator-page .header-icon {
+    margin-right: 12px;
+    color: #436cfe;
+}
+
+.anova-calculator-page .section-header h4 {
+    margin: 0;
+    font-size: 1rem;
+    color: #111827;
+    flex: 1;
+}
+
+.anova-calculator-page .group-content {
+    padding: 16px;
+    border-top: 1px solid #e5e7eb;
+}
+
+.anova-calculator-page .input-row {
+    margin-bottom: 16px;
+}
+
+.anova-calculator-page .input-label {
+    display: block;
+    margin-bottom: 6px;
+    font-size: 0.85rem;
+    color: #374151;
+    display: flex;
+    justify-content: space-between;
+}
+
+.anova-calculator-page .input-field {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #d1d5db;
+    border-radius: 6px;
+    background-color: #f9fafb;
+    font-size: 0.95rem;
+}
+
+.anova-calculator-page .input-field:focus {
+    outline: none;
+    border-color: #436cfe;
+    box-shadow: 0 0 0 2px rgba(67, 108, 254, 0.2);
+    background-color: white;
+}
+
+.anova-calculator-page .add-btn-container {
+    text-align: center;
+    margin: 24px 0;
+}
+
+.anova-calculator-page .add-group-btn {
+    background-color: white;
+    border: 1px solid #d1d5db;
+    padding: 10px 20px;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: #374151;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.anova-calculator-page .add-group-btn:hover {
+    background-color: #f3f4f6;
+    border-color: #9ca3af;
+}
+
+.anova-calculator-page .results-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    font-size: 0.9rem;
+}
+
+.anova-calculator-page .results-table th,
+.anova-calculator-page .results-table td {
+    padding: 10px;
+    text-align: left;
+    border-bottom: 1px solid #e5e7eb;
+}
+
+.anova-calculator-page .results-table th {
+    background-color: #f9fafb;
+    font-weight: 600;
+    color: #374151;
+}
+
+.anova-calculator-page .summary-section {
+    margin-top: 24px;
+    padding: 16px;
+    background-color: #eff6ff;
+    border-radius: 8px;
+    border: 1px solid #dbeafe;
+}
+
+.anova-calculator-page .summary-item {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 8px;
+    font-size: 0.95rem;
+}
+
+.anova-calculator-page .summary-value {
+    font-weight: bold;
+    color: #1e3a8a;
+}
+
+/* Custom Action Buttons */
+.calc-actions-custom {
+    display: flex;
+    gap: 16px;
+    margin-top: 30px;
+    padding-top: 20px;
+    border-top: 1px solid #f3f4f6;
+}
+
+.share-result-btn-custom {
+    flex: 0 0 140px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    background: white;
+    border: 1px solid #e5e7eb;
+    border-radius: 8px;
+    padding: 16px;
+    color: #ef4444;
+    font-weight: 600;
+    cursor: pointer;
+    position: relative;
+    height: 100px;
+}
+
+.share-result-btn-custom:hover {
+    background-color: #f9fafb;
+}
+
+.share-icon-circle-custom {
+    width: 40px;
+    height: 40px;
+    background-color: #ef4444;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+}
+
+.secondary-actions-custom {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.secondary-btn-custom {
+    background: white;
+    border: 1px solid #e5e7eb;
+    padding: 12px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: #374151;
+    height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.secondary-btn-custom:hover {
+    background-color: #f9fafb;
+}
+
+.copied-tooltip {
+    position: absolute;
+    top: -40px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #1f2937;
+    color: white;
+    padding: 6px 12px;
+    border-radius: 6px;
+    font-size: 0.85rem;
+    font-weight: 500;
+    pointer-events: none;
+    white-space: nowrap;
+    animation: fadeIn 0.2s ease-in-out;
+    z-index: 10;
+}
+
+.copied-tooltip::after {
+    content: '';
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: #1f2937 transparent transparent transparent;
+}

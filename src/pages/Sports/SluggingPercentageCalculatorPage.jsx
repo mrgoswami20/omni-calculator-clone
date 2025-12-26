@@ -53,6 +53,18 @@ const SluggingPercentageCalculatorPage = () => {
         recalc(s1, s2, s3, h, a);
     };
 
+    const [showShareTooltip, setShowShareTooltip] = useState(false);
+
+    const handleShare = async () => {
+        try {
+            await navigator.clipboard.writeText(window.location.href);
+            setShowShareTooltip(true);
+            setTimeout(() => setShowShareTooltip(false), 2000);
+        } catch (err) {
+            console.error('Failed to copy URL:', err);
+        }
+    };
+
     const clearAll = () => {
         setSingles('');
         setDoubles('');
@@ -171,9 +183,10 @@ const SluggingPercentageCalculatorPage = () => {
                     </div>
 
                     <div className="calc-actions">
-                        <button className="share-result-btn">
+                        <button className="share-result-btn" onClick={handleShare}>
                             <div className="share-icon-circle"><Share2 size={14} /></div>
                             Share result
+                            {showShareTooltip && <span className="copied-tooltip">Copied!</span>}
                         </button>
                         <div className="secondary-actions">
                             <button className="secondary-btn">Reload calculator</button>

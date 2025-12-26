@@ -5,6 +5,17 @@ import './PTEScoreCalculatorPage.css';
 
 const PTEScoreCalculatorPage = () => {
     const [pteScore, setPteScore] = useState('');
+    const [showShareTooltip, setShowShareTooltip] = useState(false);
+
+    const handleShare = async () => {
+        try {
+            await navigator.clipboard.writeText(window.location.href);
+            setShowShareTooltip(true);
+            setTimeout(() => setShowShareTooltip(false), 2000);
+        } catch (err) {
+            console.error('Failed to copy URL:', err);
+        }
+    };
 
     const getResults = (score) => {
         const s = parseInt(score);
@@ -161,9 +172,10 @@ const PTEScoreCalculatorPage = () => {
 
                     <div className="calc-actions">
                         <div className="action-buttons-row">
-                            <button className="share-result-btn">
+                            <button className="share-result-btn" onClick={handleShare}>
                                 <div className="share-icon-circle"><Share2 size={16} /></div>
                                 <span>Share result</span>
+                                {showShareTooltip && <span className="copied-tooltip">Copied!</span>}
                             </button>
                             <div className="right-actions">
                                 <button className="secondary-btn">Reload calculator</button>

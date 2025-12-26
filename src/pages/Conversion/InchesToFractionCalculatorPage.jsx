@@ -177,6 +177,18 @@ const InchesToFractionCalculatorPage = () => {
         { value: '64', label: '1/64' },
     ];
 
+    const [showShareTooltip, setShowShareTooltip] = useState(false);
+
+    const handleShare = async () => {
+        try {
+            await navigator.clipboard.writeText(window.location.href);
+            setShowShareTooltip(true);
+            setTimeout(() => setShowShareTooltip(false), 2000);
+        } catch (err) {
+            console.error('Failed to copy URL:', err);
+        }
+    };
+
     return (
         <CalculatorLayout
             title="Inches to Fraction Calculator"
@@ -244,14 +256,6 @@ const InchesToFractionCalculatorPage = () => {
                     </div>
                 </div>
 
-                {/* Result Display? Screenshot doesn't show a clear "Result" box, 
-                    but implies the input converts or there's a section below.
-                    Usually Omni has a separate result field. 
-                    Wait, the screenshot title is "Enter distance...".
-                    Actually, maybe the result is the input itself if it were bidirectional?
-                    But this is "decimal to fraction".
-                    Let's add a Result box.
-                */}
                 {/* Custom Result Layout matching screenshot */}
                 <div className="custom-results-container">
                     {/* Fraction inches */}
@@ -290,9 +294,10 @@ const InchesToFractionCalculatorPage = () => {
                 </div>
 
                 <div className="calc-actions">
-                    <button className="share-result-btn">
+                    <button className="share-result-btn" onClick={handleShare}>
                         <div className="share-icon-circle"><Share2 size={14} /></div>
                         Share result
+                        {showShareTooltip && <span className="copied-tooltip">Copied!</span>}
                     </button>
                     <div className="secondary-actions">
                         <button className="secondary-btn">Reload calculator</button>

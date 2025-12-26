@@ -1,285 +1,379 @@
-import React, { useState, useEffect } from 'react';
+
+import React, { useState } from 'react';
 import CalculatorLayout from '../../components/CalculatorLayout';
-import { Share2 } from 'lucide-react';
+import { Share2, ChevronDown, MoreVertical, ThumbsUp, ThumbsDown } from 'lucide-react';
 import './PercentageIncreaseCalculatorPage.css';
 
+// Reusable Input
+const CalcInput = ({ label, value, field, unit, onChange, isCalculated = false }) => (
+    <div className="input-row">
+        <div className="label-wrapper">
+            <label>{label}</label>
+            <div className="label-icons">
+                <MoreVertical size={16} className="dots-icon" />
+            </div>
+        </div>
+        <div className="field-wrapper">
+            <input
+                type="number"
+                className={`sc-input ${isCalculated ? 'calculated' : ''}`}
+                value={value}
+                onChange={(e) => onChange(field, e.target.value)}
+                onWheel={(e) => e.target.blur()}
+            />
+            {unit && (
+                <div className="unit-badge">
+                    <span>{unit}</span>
+                    {unit !== '' && <ChevronDown size={14} />}
+                </div>
+            )}
+        </div>
+    </div>
+);
+
 const PercentageIncreaseCalculatorPage = () => {
+    const [values, setValues] = useState({
+        initial: '',
+        final: '',
+        percentage: '',
+        difference: ''
+    });
 
-    const [initial, setInitial] = useState('');
-    const [final, setFinal] = useState('');
-    const [percent, setPercent] = useState('');
-    const [difference, setDifference] = useState('');
-    const [mode, setMode] = useState('increase'); // 'increase' or 'decrease'
+    const [calculatedFields, setCalculatedFields] = useState([]);
+    const [mode, setMode] = useState('increase'); // 'increase' | 'decrease'
+    const [showShareTooltip, setShowShareTooltip] = useState(false);
 
-    // Formatter
-    const fmt = (val) => {
-        if (val === '' || val === null || isNaN(val)) return '';
-        // Format to max 4 decimals, removing trailing zeros
-        return parseFloat(val.toFixed(6)).toString();
-    };
-
-    const handleInitialChange = (val) => {
-        setInitial(val);
-        calcFromInitial(val, final, percent);
-    };
-
-    const handleFinalChange = (val) => {
-        setFinal(val);
-        calcFromFinal(initial, val);
-    };
-
-    const handlePercentChange = (val) => {
-        setPercent(val);
-        calcFromPercent(initial, val);
-    };
-
-    const handleDifferenceChange = (val) => {
-        setDifference(val);
-        calcFromDifference(initial, final, val);
+    const toFixed = (val) => {
+        if (val === '' || isNaN(val)) return '';
+        // Avoid -0.00 and ensure simple formatting
+        const f = parseFloat(Number(val).toFixed(2));
+        return Math.abs(f) < 0.0001 ? '0' : f.toString();
     };
 
     const handleModeChange = (newMode) => {
         setMode(newMode);
-        // If we have a percent, re-evaluate its sign based on mode
-        // If mode is Decrease, percent should be treated effectively as negative for calculation,
-        // but displayed as positive in the input (usually).
-        // Let's check typical behavior. "Increase 10%" -> +10%. "Decrease 10%" -> -10%.
-        // The input label changes to "Decrease (%)" or "Increase (%)".
-        // The value in the box remains "10". This requires decoupling the stored signed percent from the displayed value.
-        // SIMPLIFICATION:
-        // Use 'percent' as the signed value.
-        // If mode is decrease, we display abs(percent).
-        // When user types in decrease mode, we negate it before storage.
+        // Recalculate based on current initial and percentage if available
+        // Or just keep inputs and let user adjust?
+        // Omni usually recalculates 'Final' when mode changes, keeping Initial and Percent constant.
+        if (values.initial !== '' && values.percentage !== '') {
+            const init = parseFloat(values.initial);
+            const perc = parseFloat(values.percentage);
+            if (!isNaN(init) && !isNaN(perc)) {
+                let finalVal;
+                if (newMode === 'increase') {
+                    finalVal = init * (1 + perc / 100);
+                } else {
+                    finalVal = init * (1 - perc / 100);
+                }
+                const realDiff = finalVal - init;
 
-        // Wait, if I change mode from Increase to Decrease, do numbers change?
-        // 100 -> 110 (+10%). Switch to Decrease: 100 -> 90 (-10%).
-        // Yes, recalculate based on Initial provided and new effective percent sign.
-        if (initial !== '' && percent !== '') {
-            const p = Math.abs(parseFloat(percent));
-            const newSignedP = newMode === 'increase' ? p : -p;
-            // setPercent(newSignedP); // This might cause loop if we are not careful.
-            // Let's just trigger calculation.
-            calcFromPercent(initial, newSignedP.toString(), newMode);
+                setValues(prev => ({
+                    ...prev,
+                    final: toFixed(finalVal),
+                    difference: toFixed(realDiff)
+                }));
+                setCalculatedFields(['final', 'difference']);
+            }
         }
     };
 
-    // logic helpers
-    const calcFromInitial = (initStr, finalStr, pctStr) => {
-        // This is complex because we have 3 variables, any 2 define the 3rd.
-        // Usually we prioritize the last edited. 
-        // If I edit Initial, do I keep Final fixed (recalc %) or Percent fixed (recalc Final)?
-        // Standard behavior: Keep Percent fixed (if set), Recalc Final.
-        // If Percent not set, try to use Final to calc Percent.
-        if (pctStr !== '') {
-            calcFromPercent(initStr, pctStr);
-        } else if (finalStr !== '') {
-            calcFromFinal(initStr, finalStr);
+    const handleInputChange = (field, val) => {
+        const newValues = { ...values, [field]: val };
+        const numVal = parseFloat(val);
+
+        // Reset calculated fields if input is cleared, or start fresh
+        let newCalculated = [];
+
+        if (val !== '' && isNaN(numVal)) {
+            // Allow typing signs etc if needed, but for now strict number
+            return;
         }
-    };
 
-    const calcFromFinal = (initStr, finalStr) => {
-        const i = parseFloat(initStr);
-        const f = parseFloat(finalStr);
-        if (!isNaN(i) && !isNaN(f)) {
-            const diff = f - i;
-            const pct = i !== 0 ? (diff / i) * 100 : 0;
+        // Logic
+        // We have: Initial (I), Final (F), Percentage (P), Difference (D)
+        // Equations:
+        // D = F - I
+        // Increase: F = I * (1 + P/100)
+        // Decrease: F = I * (1 - P/100)
 
-            setDifference(fmt(diff));
-            setPercent(fmt(Math.abs(pct)));
-            setMode(pct < 0 ? 'decrease' : 'increase');
+        // We prioritize based on what changed.
+        let I = parseFloat(newValues.initial);
+        let F = parseFloat(newValues.final);
+        let P = parseFloat(newValues.percentage);
+        let D = parseFloat(newValues.difference); // D is strictly F - I
+
+        const isValid = (n) => !isNaN(n) && n !== null;
+
+        if (field === 'initial') {
+            I = numVal;
+            if (isValid(P)) {
+                // I + P -> F, D
+                if (mode === 'increase') F = I * (1 + P / 100);
+                else F = I * (1 - P / 100);
+                D = F - I;
+                newCalculated = ['final', 'difference'];
+            } else if (isValid(F)) {
+                // I + F -> P, D
+                D = F - I;
+                // Omni percentage increase is ((F - I) / I) * 100
+                const rawP = ((F - I) / I) * 100;
+                if (mode === 'decrease') {
+                    // If mode is 'decrease', P should be positive usually representing the % decrease?
+                    // If I=100, F=90. D=-10. (D/I) = -0.1 -> -10%. 
+                    // In Decrease mode, we show "10% decrease". So P = 10.
+                    // If I=100, F=110. D=10. (D/I) = 0.1 -> 10%.
+                    // In Decrease mode, this is a "negative decrease" or "increase".
+                    // Omni usually shows the magnitude of the change.
+                    P = -rawP; // This makes P positive for a decrease (F<I) and negative for an increase (F>I) in decrease mode.
+                } else {
+                    P = rawP;
+                }
+                newCalculated = ['percentage', 'difference'];
+            } else if (isValid(D)) {
+                // I + D -> F, P
+                F = I + D;
+                const rawP = (D / I) * 100;
+                if (mode === 'decrease') P = -rawP;
+                else P = rawP;
+                newCalculated = ['final', 'percentage'];
+            }
         }
-    };
-
-    const calcFromPercent = (initStr, pctStr, forcedMode = null) => {
-        const i = parseFloat(initStr);
-        let p = parseFloat(pctStr);
-        const currentMode = forcedMode || mode;
-
-        if (!isNaN(i) && !isNaN(p)) {
-            // Apply sign based on mode
-            if (currentMode === 'decrease') p = -Math.abs(p);
-            else p = Math.abs(p);
-
-            const f = i * (1 + p / 100);
-            const diff = f - i;
-
-            setFinal(fmt(f));
-            setDifference(fmt(diff));
-            // Keep percent display value absolute
-            // setPercent is already handled by Input onChange unless this function called it.
-            // If called from handleModeChange, we need to ensure percent state is consistent?
-            // Actually, handlePercentChange sets raw string.
+        else if (field === 'final') {
+            F = numVal;
+            if (isValid(I)) {
+                // F + I -> P, D
+                D = F - I;
+                const rawP = ((F - I) / I) * 100;
+                if (mode === 'decrease') {
+                    P = ((I - F) / I) * 100; // P = -(F-I)/I
+                } else {
+                    P = rawP;
+                }
+                newCalculated = ['percentage', 'difference'];
+            } else if (isValid(P)) {
+                // F + P -> I, D
+                // F = I * (1 +/- P/100)
+                // I = F / (1 +/- P/100)
+                if (mode === 'increase') I = F / (1 + P / 100);
+                else I = F / (1 - P / 100);
+                D = F - I;
+                newCalculated = ['initial', 'difference'];
+            }
         }
-    };
-
-    const calcFromDifference = (initStr, finalStr, diffStr) => {
-        const d = parseFloat(diffStr);
-        // Prioritize Initial. Final = Initial + Diff.
-        const i = parseFloat(initStr);
-        if (!isNaN(d) && !isNaN(i)) {
-            const f = i + d;
-            const pct = i !== 0 ? (d / i) * 100 : 0;
-
-            setFinal(fmt(f));
-            setPercent(fmt(Math.abs(pct)));
-            setMode(pct < 0 ? 'decrease' : 'increase');
+        else if (field === 'percentage') {
+            P = numVal;
+            if (isValid(I)) {
+                // P + I -> F, D
+                if (mode === 'increase') F = I * (1 + P / 100);
+                else F = I * (1 - P / 100);
+                D = F - I;
+                newCalculated = ['final', 'difference'];
+            } else if (isValid(F)) {
+                // P + F -> I, D
+                // F = I * (1 +/- P/100)
+                // I = F / (1 +/- P/100)
+                if (mode === 'increase') I = F / (1 + P / 100);
+                else I = F / (1 - P / 100);
+                D = F - I;
+                newCalculated = ['initial', 'difference'];
+            }
         }
+        // If difference changed, calculate others? Usually difference is just a result view, but if edited:
+        else if (field === 'difference') {
+            D = numVal;
+            // D = F - I
+            if (isValid(I)) {
+                F = I + D;
+                const rawP = (D / I) * 100;
+                if (mode === 'decrease') P = -rawP;
+                else P = rawP;
+                newCalculated = ['final', 'percentage'];
+            } else if (isValid(F)) {
+                I = F - D;
+                const rawP = (D / I) * 100;
+                if (mode === 'decrease') P = -rawP;
+                else P = rawP;
+                newCalculated = ['initial', 'percentage'];
+            }
+        }
+
+        setCalculatedFields(newCalculated);
+        setValues({
+            initial: field === 'initial' ? val : toFixed(I),
+            final: field === 'final' ? val : toFixed(F),
+            percentage: field === 'percentage' ? val : toFixed(P),
+            difference: field === 'difference' ? val : toFixed(D)
+        });
     };
 
-    const clearAll = () => {
-        setInitial('');
-        setFinal('');
-        setPercent('');
-        setDifference('');
-        setMode('increase');
+    const handleShare = async () => {
+        try {
+            await navigator.clipboard.writeText(window.location.href);
+            setShowShareTooltip(true);
+            setTimeout(() => setShowShareTooltip(false), 2000);
+        } catch (err) { console.error(err); }
     };
 
-    const creators = [
-        { name: "Mateusz Mucha", role: "" },
-        { name: "Dominik Czernia", role: "PhD" },
-    ];
+    const handleReload = () => {
+        setValues({ initial: '', final: '', percentage: '', difference: '' });
+        setCalculatedFields([]);
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    };
 
-    const reviewers = [
-        { name: "Bogna Szyk", role: "" },
-        { name: "Jack Bowater", role: "" },
-        { name: "Borys Kuca", role: "PhD" },
-    ];
+    const handleClear = () => {
+        setValues({ initial: '', final: '', percentage: '', difference: '' });
+        setCalculatedFields([]);
+    };
+
+    // Helper for result text
+    const isNegative = parseFloat(values.percentage) < 0;
+    const absPercentage = Math.abs(parseFloat(values.percentage));
+    const equivalentMode = mode === 'increase' ? 'decrease' : 'increase';
 
     const articleContent = (
-        <>
+        <div className="article-content">
             <p>
-                The percentage increase calculator is a useful tool for <strong>calculating the increase from one value to another</strong> in terms of a <strong>percentage</strong> of the original amount. Before using this calculator, it may be beneficial for you to understand how to calculate percent increase by using the percent increase formula.
+                The <strong>percentage increase calculator</strong> is a useful tool for <strong>calculating the increase from one value to another</strong> in terms of a <strong>percentage</strong> of the original amount. Before using this calculator, it may be beneficial for you to understand how to calculate percent increase by using the percent increase formula. The following sections will explain these concepts in further detail.
             </p>
-        </>
+            <h3>How to calculate percent increase</h3>
+            <p>
+                To calculate percent increase:
+                <br />
+                1. <strong>Subtract</strong> the original value from the new value.
+                <br />
+                2. <strong>Divide</strong> that result by the original value.
+                <br />
+                3. <strong>Multiply</strong> by 100 to get the percentage.
+            </p>
+            <h3>Percent increase formula</h3>
+            <p>
+                The formula for percent increase is:
+                <br /><br />
+                <code>Percent increase = [(New - Original) / Original] × 100</code>
+            </p>
+        </div>
     );
 
     return (
         <CalculatorLayout
             title="Percentage Increase Calculator"
-            creators={creators}
-            reviewers={reviewers}
-            tocItems={[
-                "How to calculate percent increase",
-                "Percent increase formula",
-                "Calculating percent decrease",
-                "Real-life applications",
-                "Closely related topics",
-                "FAQs"
-            ]}
+            creators={[{ name: "Mateusz Mucha", role: "" }, { name: "Dominik Czernia", role: "PhD" }]}
+            reviewers={[{ name: "Bogna Szyk" }, { name: "Jack Bowater" }]}
+            tocItems={["How to calculate", "Percent increase formula", "Calculating percent decrease", "Real-life applications", "FAQs"]}
             articleContent={articleContent}
-            similarCalculators={8836}
         >
-            <div className="percentage-increase-calculator-page">
+            <div className="percentage-calculator-container">
+                <div className="calc-card">
+                    {/* Row 1: Side by Side Inputs */}
+                    <div className="input-grid-2">
+                        <CalcInput
+                            label="Initial value"
+                            value={values.initial}
+                            field="initial"
+                            unit=""
+                            onChange={handleInputChange}
+                            isCalculated={calculatedFields.includes('initial')}
+                        />
+                        <CalcInput
+                            label="Final value"
+                            value={values.final}
+                            field="final"
+                            unit=""
+                            onChange={handleInputChange}
+                            isCalculated={calculatedFields.includes('final')}
+                        />
+                    </div>
 
-                <div className="section-card">
-                    {/* Row 1: Initial & Final */}
-                    <div className="input-group">
-                        <div className="input-row">
-                            <div className="input-col">
-                                <div className="label-row"><label>Initial value</label><span className="more-options">...</span></div>
-                                <div className="input-wrapper">
-                                    <input
-                                        type="number"
-                                        className="calc-input"
-                                        value={initial}
-                                        onChange={(e) => handleInitialChange(e.target.value)}
-                                    />
-                                </div>
+                    {/* Row 2: Radio Buttons */}
+                    <div className="radio-group-container">
+                        <label className="radio-label">Increase or decrease?</label>
+                        <div className="radio-options">
+                            <div
+                                className={`radio-option ${mode === 'increase' ? 'selected' : ''}`}
+                                onClick={() => handleModeChange('increase')}
+                            >
+                                <div className="radio-circle"></div>
+                                <span>Increase</span>
                             </div>
-                            <div className="input-col">
-                                <div className="label-row"><label>Final value</label><span className="more-options">...</span></div>
-                                <div className="input-wrapper">
-                                    <input
-                                        type="number"
-                                        className="calc-input"
-                                        value={final}
-                                        onChange={(e) => handleFinalChange(e.target.value)}
-                                    />
-                                </div>
+                            <div
+                                className={`radio-option ${mode === 'decrease' ? 'selected' : ''}`}
+                                onClick={() => handleModeChange('decrease')}
+                            >
+                                <div className="radio-circle"></div>
+                                <span>Decrease</span>
                             </div>
                         </div>
                     </div>
 
-                    {/* Row 2: Radio - Increase or decrease? */}
-                    <div className="input-group">
-                        <div className="label-row"><label>Increase or decrease?</label><span className="more-options">...</span></div>
-                        <div className="radio-group">
-                            <label className="radio-option">
-                                <input
-                                    type="radio"
-                                    name="mode"
-                                    value="increase"
-                                    checked={mode === 'increase'}
-                                    onChange={() => handleModeChange('increase')}
-                                    className="radio-input"
-                                />
-                                Increase
-                            </label>
-                            <label className="radio-option">
-                                <input
-                                    type="radio"
-                                    name="mode"
-                                    value="decrease"
-                                    checked={mode === 'decrease'}
-                                    onChange={() => handleModeChange('decrease')}
-                                    className="radio-input"
-                                />
-                                Decrease
-                            </label>
-                        </div>
-                    </div>
+                    {/* Row 3: Percentage Input */}
+                    <CalcInput
+                        label={mode === 'increase' ? "Increase (%)" : "Decrease (%)"}
+                        value={values.percentage}
+                        field="percentage"
+                        unit="%"
+                        onChange={handleInputChange}
+                        isCalculated={calculatedFields.includes('percentage')}
+                    />
 
-                    {/* Row 3: Percent Input */}
-                    <div className="input-group">
-                        <div className="label-row">
-                            <label>{mode === 'increase' ? 'Increase' : 'Decrease'} (%)</label>
-                            <span className="more-options">...</span>
-                        </div>
-                        <div className="input-wrapper">
-                            <input
-                                type="number"
-                                className="calc-input"
-                                value={percent}
-                                onChange={(e) => handlePercentChange(e.target.value)}
-                            />
-                            <span className="input-suffix">%</span>
-                        </div>
-                    </div>
+                    {/* Result Text */}
+                    {values.initial && values.final && values.percentage && (
+                        <div className="result-text-container">
+                            <p className="result-text">
+                                {values.final} is a <strong>{values.percentage}% {mode}</strong> from {values.initial}.
+                            </p>
 
-                </div>
-
-                {/* Section 2: Difference */}
-                <div className="section-card">
-                    <div className="section-header">
-                        <div className="section-title">Difference</div>
-                    </div>
-                    <div className="input-group">
-                        <div className="label-row">
-                            <label>Final value - Initial value</label>
-                            <span className="more-options">...</span>
+                            {isNegative && (
+                                <>
+                                    <p className="result-text-equivalent">
+                                        or equivalently
+                                    </p>
+                                    <p className="result-text">
+                                        {values.final} is a <strong>{absPercentage}% {equivalentMode}</strong> from {values.initial}.
+                                    </p>
+                                </>
+                            )}
                         </div>
-                        <div className="input-wrapper">
-                            <input
-                                type="number"
-                                className="calc-input"
-                                value={difference}
-                                onChange={(e) => handleDifferenceChange(e.target.value)}
-                            />
-                        </div>
-                    </div>
+                    )}
 
+
+                    <div className="calc-divider"></div>
+
+                    {/* Difference Section */}
+                    <h3 className="section-title">Difference</h3>
+                    <CalcInput
+                        label="Final value - Initial value"
+                        value={values.difference}
+                        field="difference"
+                        unit=""
+                        onChange={handleInputChange}
+                    />
+
+                    <div className="calc-divider"></div>
+
+                    {/* Actions and Feedback */}
                     <div className="calc-actions">
-                        <button className="share-result-btn">
-                            <div className="share-icon-circle"><Share2 size={14} /></div>
-                            Share result
+                        <button className="share-result-btn" onClick={handleShare}>
+                            <div className="share-icon-circle"><Share2 size={24} /></div>
+                            <span>Share result</span>
+                            {showShareTooltip && <span className="copied-tooltip">Copied!</span>}
                         </button>
-                        <div className="secondary-actions">
-                            <button className="secondary-btn">Reload calculator</button>
-                            <button className="secondary-btn" onClick={clearAll}>Clear all changes</button>
+
+                        <div className="actions-right-stack">
+                            <button className="secondary-btn" onClick={handleReload}>Reload calculator</button>
+                            <button className="secondary-btn clear-btn" onClick={handleClear}>Clear all changes</button>
+                        </div>
+                    </div>
+
+                    <div className="calc-divider"></div>
+
+                    <div className="feedback-section-card">
+                        <p>Did we solve your problem today?</p>
+                        <div className="feedback-buttons">
+                            <button className="feedback-btn"><ThumbsUp size={16} /> Yes</button>
+                            <button className="feedback-btn"><ThumbsDown size={16} /> No</button>
                         </div>
                     </div>
                 </div>
-
             </div>
         </CalculatorLayout>
     );
