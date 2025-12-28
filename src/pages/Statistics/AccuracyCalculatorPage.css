@@ -24,16 +24,39 @@
 .accuracy-calculator-page .radio-option {
     display: flex;
     align-items: center;
-    gap: 8px;
+    gap: 10px;
+    /* Increased gap */
     cursor: pointer;
     font-size: 0.95rem;
     color: #374151;
+    padding: 2px 0;
 }
 
 .accuracy-calculator-page .radio-option input[type="radio"] {
+    appearance: none;
+    -webkit-appearance: none;
     width: 18px;
     height: 18px;
-    accent-color: #3b82f6;
+    border: 1px solid #d1d5db;
+    border-radius: 50%;
+    margin: 0;
+    position: relative;
+    cursor: pointer;
+    background-color: white;
+    opacity: 1;
+    /* Force visibility */
+    display: inline-block;
+}
+
+/* Global Checkbox cleanup */
+.accuracy-calculator-page input[type="checkbox"] {
+    opacity: 1;
+}
+
+.accuracy-calculator-page .radio-option input[type="radio"]:checked {
+    border-color: #3b82f6;
+    background-color: #3b82f6;
+    background-image: url("data:image/svg+xml,%3csvg viewBox='0 0 16 16' fill='white' xmlns='http://www.w3.org/2000/svg'%3e%3ccircle cx='8' cy='8' r='3'/%3e%3c/svg%3e");
 }
 
 .accuracy-calculator-page .matrix-grid {
@@ -55,6 +78,8 @@
     display: flex;
     justify-content: space-between;
 }
+
+
 
 .accuracy-calculator-page .matrix-cell .more-dots {
     color: #9ca3af;
@@ -97,18 +122,30 @@
 
 .accuracy-calculator-page .input-wrapper-result {
     position: relative;
-    display: flex;
-    align-items: center;
+    width: 100%;
 }
 
 .accuracy-calculator-page .input-wrapper-result input {
     width: 100%;
-    padding: 10px;
-    padding-right: 30px;
+    padding: 10px 35px 10px 10px;
+    /* Right padding for unit */
     background-color: #f9fafb;
     border: 1px solid #e5e7eb;
     border-radius: 6px;
     color: #111827;
+    font-weight: 500;
+    outline: none;
+    font-size: 1rem;
+}
+
+.accuracy-calculator-page .input-wrapper-result .unit {
+    position: absolute;
+    right: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #6b7280;
+    font-size: 0.9rem;
+    pointer-events: none;
     font-weight: 500;
 }
 
@@ -121,17 +158,53 @@
 .accuracy-calculator-page .checkbox-option {
     display: flex;
     align-items: center;
-    gap: 8px;
+    gap: 12px;
     cursor: pointer;
     font-size: 0.95rem;
     color: #4b5563;
+    padding-left: 2px;
+    /* Slight adjustment */
 }
 
-.accuracy-calculator-page .checkbox-option input[type="checkbox"] {
-    width: 16px;
-    height: 16px;
-    accent-color: #3b82f6;
+.accuracy-calculator-page .checkbox-wrapper input[type="checkbox"] {
+    appearance: none;
+    -webkit-appearance: none;
+    width: 18px;
+    height: 18px;
+    border: 2px solid #d1d5db;
+    /* Slightly thicker border for visibility */
     border-radius: 4px;
+    margin: 0;
+    cursor: pointer;
+    position: relative;
+    background-color: white;
+    display: grid;
+    place-content: center;
+    transition: all 0.2s ease;
+}
+
+.accuracy-calculator-page .checkbox-wrapper input[type="checkbox"]:checked {
+    background-color: #3b82f6;
+    border-color: #3b82f6;
+}
+
+.accuracy-calculator-page .checkbox-wrapper input[type="checkbox"]::before {
+    content: "";
+    width: 10px;
+    height: 10px;
+    transform: scale(0);
+    transition: 0.2s transform ease-in-out;
+    box-shadow: inset 1em 1em white;
+    transform-origin: center;
+    clip-path: polygon(14% 44%, 0 65%, 50% 100%, 100% 16%, 80% 0%, 43% 62%);
+}
+
+.accuracy-calculator-page .checkbox-wrapper input[type="checkbox"]:checked::before {
+    transform: scale(1);
+}
+
+.accuracy-calculator-page .checkbox-wrapper .radio-option:hover input[type="checkbox"] {
+    border-color: #3b82f6;
 }
 
 .accuracy-calculator-page .prevalence-input-section {
@@ -150,4 +223,110 @@
     margin-bottom: 6px;
     font-size: 0.9rem;
     color: #374151;
+}
+
+/* Standard UI Styles */
+
+.section-card {
+    background-color: white;
+    border: 1px solid #e5e7eb;
+    border-radius: 8px;
+    padding: 24px;
+    margin-bottom: 24px;
+}
+
+/* Custom Action Buttons */
+.calc-actions-custom {
+    display: flex;
+    gap: 16px;
+    margin-top: 30px;
+    padding-top: 20px;
+    border-top: 1px solid #f3f4f6;
+}
+
+.share-result-btn-custom {
+    flex: 0 0 140px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    background: white;
+    border: 1px solid #e5e7eb;
+    border-radius: 8px;
+    padding: 16px;
+    color: #ef4444;
+    font-weight: 600;
+    cursor: pointer;
+    position: relative;
+    height: 100px;
+}
+
+.share-result-btn-custom:hover {
+    background-color: #f9fafb;
+}
+
+.share-icon-circle-custom {
+    width: 40px;
+    height: 40px;
+    background-color: #ef4444;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+}
+
+.secondary-actions-custom {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.secondary-btn-custom {
+    background: white;
+    border: 1px solid #e5e7eb;
+    padding: 12px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: #374151;
+    height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.secondary-btn-custom:hover {
+    background-color: #f9fafb;
+}
+
+.copied-tooltip {
+    position: absolute;
+    top: -40px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #1f2937;
+    color: white;
+    padding: 6px 12px;
+    border-radius: 6px;
+    font-size: 0.85rem;
+    font-weight: 500;
+    pointer-events: none;
+    white-space: nowrap;
+    animation: fadeIn 0.2s ease-in-out;
+    z-index: 10;
+}
+
+.copied-tooltip::after {
+    content: '';
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: #1f2937 transparent transparent transparent;
 }

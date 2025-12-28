@@ -64,12 +64,12 @@ export const categoryPagesData = {
                     [
                         { label: "Accuracy Calculator", url: "/statistics/accuracy-calculator" },
                         { label: "ANOVA Calculator", url: "/statistics/anova-calculator" },
-                        { label: "Bayes' Theorem Calculator", url: "#" },
+                        { label: "Bayes' Theorem Calculator", url: "/statistics/bayes-theorem-calculator", icon: "share-2" },
                     ],
                     [
+                        { label: "Lottery Calculator", url: "/statistics/lottery-calculator", icon: "ticket" },
                         { label: "Implied Probability Calculator", url: "/statistics/implied-probability-calculator" },
-                        { label: "Joint Probability Calculator", url: "#" },
-                        { label: "Lottery Calculator", url: "#" },
+                        { label: "Joint Probability Calculator", url: "/statistics/joint-probability-calculator" },
                     ]
                 ]
             }

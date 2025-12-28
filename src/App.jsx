@@ -69,8 +69,11 @@ import IdealEggBoilingCalculatorPage from './pages/DiscoverOmni/IdealEggBoilingC
 import KoreanAgeCalculatorPage from './pages/DiscoverOmni/KoreanAgeCalculatorPage';
 import MeatFootprintCalculatorPage from './pages/Ecology/MeatFootprintCalculatorPage';
 import ImpliedProbabilityCalculatorPage from './pages/Statistics/ImpliedProbabilityCalculatorPage';
+import JointProbabilityCalculatorPage from './pages/Statistics/JointProbabilityCalculatorPage';
 import AccuracyCalculatorPage from './pages/Statistics/AccuracyCalculatorPage';
 import ANOVACalculatorPage from './pages/Statistics/ANOVACalculatorPage';
+import BayesTheoremCalculatorPage from './pages/Statistics/BayesTheoremCalculatorPage';
+import LotteryCalculatorPage from './pages/Statistics/LotteryCalculatorPage';
 
 import AuthModal from './components/AuthModal';
 import Footer from './components/Footer';
@@ -146,6 +149,9 @@ function App() {
           <Route path="/statistics/implied-probability-calculator" element={<ImpliedProbabilityCalculatorPage />} />
           <Route path="/statistics/accuracy-calculator" element={<AccuracyCalculatorPage />} />
           <Route path="/statistics/anova-calculator" element={<ANOVACalculatorPage />} />
+          <Route path="/statistics/joint-probability-calculator" element={<JointProbabilityCalculatorPage />} />
+          <Route path="/statistics/bayes-theorem-calculator" element={<BayesTheoremCalculatorPage />} />
+          <Route path="/statistics/lottery-calculator" element={<LotteryCalculatorPage />} />
           <Route path="/everyday-life/time-until-calculator" element={<TimeUntilCalculatorPage />} />
           <Route path="/other/test-grade-calculator" element={<TestGradeCalculatorPage />} />
           <Route path="/other/act-score-calculator" element={<ACTScoreCalculatorPage />} />

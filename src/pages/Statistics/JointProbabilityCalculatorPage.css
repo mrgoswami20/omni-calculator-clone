@@ -1,0 +1,358 @@
+.joint-probability-calculator {
+    padding: 16px;
+    background-color: white;
+    border-radius: 8px;
+}
+
+.input-group {
+    margin-bottom: 24px;
+}
+
+.input-label {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.9rem;
+    color: #374151;
+    margin-bottom: 8px;
+}
+
+.info-icon {
+    color: #9ca3af;
+    cursor: pointer;
+}
+
+.input-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.input-field::-webkit-outer-spin-button,
+.input-field::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+.input-field[type=number] {
+    -moz-appearance: textfield;
+}
+
+.input-field {
+    width: 100%;
+    padding: 12px 90px 12px 12px;
+    /* Increased right padding for the select */
+    border: 1px solid #d1d5db;
+    border-radius: 6px;
+    background-color: white;
+    font-size: 1rem;
+    color: #111827;
+    transition: all 0.2s;
+}
+
+.input-field:focus {
+    outline: none;
+    border-color: #436cfe;
+    box-shadow: 0 0 0 3px rgba(67, 108, 254, 0.1);
+}
+
+.input-field.input-error {
+    border-color: #ef4444;
+}
+
+.input-field.input-error:focus {
+    box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.1);
+}
+
+.error-message {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 8px;
+    padding: 8px 12px;
+    background-color: #fef2f2;
+    color: #b91c1c;
+    font-size: 0.875rem;
+    border-radius: 6px;
+}
+
+.error-icon-small {
+    color: #ef4444;
+    min-width: 14px;
+}
+
+.helper-text {
+    font-size: 0.85rem;
+    color: #374151;
+    margin-top: 4px;
+}
+
+.input-field.result-field {
+    background-color: #f9fafb;
+    color: #374151;
+    padding-right: 36px;
+    /* Reset for result which still has simple unit */
+}
+
+.unit-symbol {
+    position: absolute;
+    right: 12px;
+    color: #9ca3af;
+    font-size: 0.9rem;
+    pointer-events: none;
+}
+
+.unit-select {
+    position: absolute;
+    right: 2px;
+    top: 2px;
+    /* Slight offset to fit inside border */
+    bottom: 2px;
+    border: none;
+    background-color: transparent;
+    color: #6b7280;
+    font-size: 0.9rem;
+    padding: 0 8px;
+    cursor: pointer;
+    border-left: 1px solid #e5e7eb;
+    margin-left: 4px;
+    height: calc(100% - 4px);
+    border-radius: 0 4px 4px 0;
+}
+
+.unit-select:focus {
+    outline: none;
+    background-color: #f9fafb;
+}
+
+/* Radio Button Styling */
+.radio-group {
+    margin-bottom: 32px;
+}
+
+.radio-options {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.radio-option {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    font-size: 0.95rem;
+    color: #111827;
+    position: relative;
+    padding-left: 30px;
+}
+
+.radio-option input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+}
+
+.radio-custom {
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    height: 20px;
+    width: 20px;
+    background-color: white;
+    border: 2px solid #d1d5db;
+    border-radius: 50%;
+    transition: all 0.2s;
+}
+
+.radio-option.selected .radio-custom {
+    border-color: #436cfe;
+    background-color: #436cfe;
+}
+
+.radio-option.selected .radio-custom::after {
+    content: "";
+    position: absolute;
+    display: block;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: white;
+}
+
+/* Info Box */
+.info-box {
+    background-color: #eff6ff;
+    /* Light blue background */
+    color: #1e40af;
+    /* Darker blue text */
+    padding: 16px;
+    border-radius: 6px;
+    font-size: 0.9rem;
+    line-height: 1.5;
+    margin-bottom: 24px;
+}
+
+/* Venn Diagram Container */
+.venn-diagram-container {
+    border: 1px solid #111827;
+    /* Simple black border */
+    border-radius: 4px;
+    padding: 10px;
+    background-color: white;
+    position: relative;
+    margin-bottom: 32px;
+}
+
+.venn-svg {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.venn-text {
+    font-family: sans-serif;
+}
+
+.label-a,
+.label-b {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.copyright-text {
+    font-size: 0.75rem;
+    color: #6b7280;
+    margin-top: 8px;
+    font-style: italic;
+}
+
+
+/* Action Buttons - Copied from ANOVA and other calculators */
+.calc-actions-custom {
+    display: flex;
+    gap: 16px;
+    margin-top: 30px;
+    padding-top: 20px;
+    border-top: 1px solid #f3f4f6;
+}
+
+.share-result-btn-custom {
+    flex: 0 0 140px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    background: white;
+    border: 1px solid #e5e7eb;
+    border-radius: 8px;
+    padding: 16px;
+    color: #ef4444;
+    font-weight: 600;
+    cursor: pointer;
+    position: relative;
+    height: 120px;
+    /* Make it square-ish */
+    transition: background-color 0.2s;
+}
+
+.share-result-btn-custom:hover {
+    background-color: #f9fafb;
+}
+
+.share-icon-circle-custom {
+    width: 48px;
+    height: 48px;
+    background-color: #ef4444;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    margin-bottom: 4px;
+}
+
+.secondary-actions-custom {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.secondary-btn-custom {
+    background: white;
+    border: 1px solid #e5e7eb;
+    padding: 12px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: #374151;
+    height: 54px;
+    /* Match height distribution */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.2s;
+}
+
+.secondary-btn-custom:hover {
+    background-color: #f9fafb;
+}
+
+.copied-tooltip {
+    position: absolute;
+    top: -30px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #1f2937;
+    color: white;
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    white-space: nowrap;
+}
+
+/* Feedback Section */
+.feedback-section {
+    margin-top: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 24px;
+    border-top: 1px solid #f3f4f6;
+}
+
+.feedback-section p {
+    font-size: 0.95rem;
+    color: #374151;
+    margin: 0;
+}
+
+.feedback-btns {
+    display: flex;
+    gap: 12px;
+}
+
+.feedback-btn {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 8px 16px;
+    background-color: white;
+    border: 1px solid #d1d5db;
+    border-radius: 6px;
+    font-size: 0.9rem;
+    color: #4b5563;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.feedback-btn:hover {
+    background-color: #f9fafb;
+    border-color: #9ca3af;
+}
