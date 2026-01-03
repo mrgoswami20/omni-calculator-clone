@@ -72,6 +72,7 @@ import ImpliedProbabilityCalculatorPage from './pages/Statistics/ImpliedProbabil
 import JointProbabilityCalculatorPage from './pages/Statistics/JointProbabilityCalculatorPage';
 import AccuracyCalculatorPage from './pages/Statistics/AccuracyCalculatorPage';
 import ANOVACalculatorPage from './pages/Statistics/ANOVACalculatorPage';
+import ArrowSpeedCalculatorPage from './pages/Physics/ArrowSpeedCalculatorPage';
 import BayesTheoremCalculatorPage from './pages/Statistics/BayesTheoremCalculatorPage';
 import LotteryCalculatorPage from './pages/Statistics/LotteryCalculatorPage';
 
@@ -110,6 +111,7 @@ function App() {
           <Route path="/health" element={<CategoryLayout data={categoryPagesData.health} />} />
           <Route path="/math" element={<CategoryLayout data={categoryPagesData.math} />} />
           <Route path="/physics" element={<CategoryLayout data={categoryPagesData.physics} />} />
+          <Route path="/physics/arrow-speed-calculator" element={<ArrowSpeedCalculatorPage />} />
           <Route path="/sports" element={<CategoryLayout data={categoryPagesData.sports} />} />
           <Route path="/statistics" element={<CategoryLayout data={categoryPagesData.statistics} />} />
           <Route path="/other" element={<CategoryLayout data={categoryPagesData.other} />} />

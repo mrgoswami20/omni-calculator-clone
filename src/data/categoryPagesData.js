@@ -4,8 +4,8 @@ export const categoryPagesData = {
     physics: {
         title: "Physics Calculators",
         icon: Atom,
-        subtitle: "530 calculators",
-        description: "The well-known American author, Bill Bryson, once said: “Physics is really nothing more than a search for ultimate simplicity, but so far all we have is a kind of elegant messiness.” Physics is indeed the most fundamental of the sciences that tries to describe the whole nature with thousands of mathematical formulas. How not to get lost in all...",
+        subtitle: "6 calculators",
+        description: "The well-known American author, Bill Bryson, once said: “Physics is really nothing more than a search for ultimate simplicity, but so far all we have is a kind of elegant messiness.” Physics is indeed the most fundamental of the sciences that tries to describe the whole nature with thousands of mathematical formulas.",
         sections: [
             {
                 title: "Kinematics calculators — How things move",
@@ -13,7 +13,7 @@ export const categoryPagesData = {
                 iconColor: "#a16207",
                 groups: [
                     [
-                        { label: "Arrow Speed Calculator", url: "#" },
+                        { label: "Arrow Speed Calculator", url: "/physics/arrow-speed-calculator" },
                         { label: "Ballistic Coefficient Calculator", url: "#" },
                         { label: "Car Jump Distance Calculator", url: "#" },
                     ],
@@ -29,8 +29,8 @@ export const categoryPagesData = {
     sports: {
         title: "Sports Calculators",
         icon: Dumbbell,
-        subtitle: "109 calculators",
-        description: "Are you an amateur sportsperson? Maybe a professional athlete? Even if you do sport only occasionally, the category sports calculators is the area dedicated to you! We serve suited runners calculators, cycling calculators, as well as more calculators for other disciplines and sport-related topics. Want to know how good was the last season...",
+        subtitle: "6 calculators",
+        description: "Are you an amateur sportsperson? Maybe a professional athlete? Even if you do sport only occasionally, the category sports calculators is the area dedicated to you! We serve suited runners calculators, cycling calculators, as well as more calculators for other disciplines and sport-related topics.",
         sections: [
             {
                 title: "Baseball calculators",
@@ -53,8 +53,8 @@ export const categoryPagesData = {
     statistics: {
         title: "Statistics Calculators",
         icon: BarChart3,
-        subtitle: "191 calculators",
-        description: "What are the chances of winning the lottery? What is the risk of doing this? How many times do I have to roll a dice to get the number I want? All these questions are statistics problems. We provide simple statistics calculators to help you make better decisions and solve problems faster. From the odds calculator to the probability calculator, you'll...",
+        subtitle: "6 calculators",
+        description: "What are the chances of winning the lottery? What is the risk of doing this? How many times do I have to roll a dice to get the number I want? All these questions are statistics problems. We provide simple statistics calculators to help you make better decisions and solve problems faster.",
         sections: [
             {
                 title: "Probability theory and odds calculators",
@@ -78,8 +78,8 @@ export const categoryPagesData = {
     other: {
         title: "Other Calculators",
         icon: MoreHorizontal,
-        subtitle: "193 calculators",
-        description: "Congratulations, you just found the most random collection of calculators available on the Internet! Are you a hardcore geek? We’ll help you pick a motor for your drone. A travel junkie? Use our calculator to choose the optimal sunscreen SPF for holidays in Bali. A keen photographer? We’ll help you plan out a perfect star time lapse. A student...",
+        subtitle: "7 calculators",
+        description: "Congratulations, you just found the most random collection of calculators available on the Internet! Are you a hardcore geek? We’ll help you pick a motor for your drone. A travel junkie? Use our calculator to choose the optimal sunscreen SPF for holidays in Bali. A keen photographer? We’ll help you plan out a perfect star time lapse.",
         sections: [
             {
                 title: "Education calculators",
@@ -105,8 +105,8 @@ export const categoryPagesData = {
         title: "Discover Omni",
         icon: Star,
         iconFill: "white",
-        subtitle: "41 calculators",
-        description: "We proudly present the collection of the most unique, crazy, knock-your-socks-off calculators on the Web! Here, you can discover Omni Calculator in its full glory, and get the full perspective on what we do and why. Trying to relax? Grab a sweet tea prepared with our chilled drink calculator, or lift up in the air on helium balloons. Hungry? We have...",
+        subtitle: "6 calculators",
+        description: "We proudly present the collection of the most unique, crazy, knock-your-socks-off calculators on the Web! Here, you can discover Omni Calculator in its full glory, and get the full perspective on what we do and why. Trying to relax? Grab a sweet tea prepared with our chilled drink calculator, or lift up in the air on helium balloons.",
         sections: [
             {
                 groups: [
@@ -131,8 +131,8 @@ export const categoryPagesData = {
     biology: {
         title: "Biology Calculators",
         icon: Dna,
-        subtitle: "105 calculators",
-        description: "This collection is a surprise even for us – it turns out that even in the science of life, there are lots of things to calculate! Here, you can find calculators for gardeners, farmers, pet owners, scientists, and nature enthusiasts! Do you need to know how many plants you need to create an organized and dense flower bed? Our mulch calculator...",
+        subtitle: "6 calculators",
+        description: "This collection is a surprise even for us – it turns out that even in the science of life, there are lots of things to calculate! Here, you can find calculators for gardeners, farmers, pet owners, scientists, and nature enthusiasts! Do you need to know how many plants you need to create an organized and dense flower bed?",
         sections: [
             {
                 title: "Bio laboratory calculators",
@@ -155,8 +155,8 @@ export const categoryPagesData = {
     chemistry: {
         title: "Chemistry Calculators",
         icon: FlaskConical,
-        subtitle: "102 calculators",
-        description: "Chemistry might seem intimidating and counterintuitive at first, but it is also extremely useful. So how can you learn everything about chemistry without effort? We don't know the answer, but we can help you solve chemistry problems faster and more efficiently thanks to our chemistry calculators. From calculating concentrations to using...",
+        subtitle: "6 calculators",
+        description: "Chemistry might seem intimidating and counterintuitive at first, but it is also extremely useful. So how can you learn everything about chemistry without effort? We don't know the answer, but we can help you solve chemistry problems faster and more efficiently thanks to our chemistry calculators.",
         sections: [
             {
                 title: "General chemistry calculators",
@@ -180,8 +180,8 @@ export const categoryPagesData = {
     construction: {
         title: "Construction Calculators",
         icon: Hammer,
-        subtitle: "153 calculators",
-        description: "Whether you're renovating a house, planning out a swimming pool, or removing snow from your roof, we've got you covered. These online construction calculators were created specifically for carpenters, painters, bricklayers, roofers, and craftsmen alike who switch back and forth between square feet of driveways and pounds of cement on an...",
+        subtitle: "6 calculators",
+        description: "Whether you're renovating a house, planning out a swimming pool, or removing snow from your roof, we've got you covered. These online construction calculators were created specifically for carpenters, painters, bricklayers, roofers.",
         sections: [
             {
                 title: "Construction converters",
@@ -204,8 +204,8 @@ export const categoryPagesData = {
     conversion: {
         title: "Conversion Calculators",
         icon: ArrowRightLeft,
-        subtitle: "318 calculators",
-        description: "We all use length, weight, temperature, time, speed, and various other quantities in everyday life. But they aren't just plain numbers - they all have corresponding units. Moreover, the multitude of metric systems such as the International System of Units (SI) or the United States customary units (USC) complicates the situation even more. I...",
+        subtitle: "6 calculators",
+        description: "We all use length, weight, temperature, time, speed, and various other quantities in everyday life. But they aren't just plain numbers - they all have corresponding units. Moreover, the multitude of metric systems such as the International System of Units (SI) or the United States customary units (USC) complicates the situation even more.",
         sections: [
             {
                 title: "Length and area converters",
@@ -229,8 +229,8 @@ export const categoryPagesData = {
     ecology: {
         title: "Ecology Calculators",
         icon: Leaf,
-        subtitle: "34 calculators",
-        description: "You may think that this category is only for vegans, ecologists or nature lovers, but nothing could be further from the truth. Climate change and environmental degradation are one of the biggest threats of our times, which will affect each and every person. With these simple calculators, we're trying to increase the environmental awareness of the...",
+        subtitle: "6 calculators",
+        description: "You may think that this category is only for vegans, ecologists or nature lovers, but nothing could be further from the truth. Climate change and environmental degradation are one of the biggest threats of our times, which will affect each and every person.",
         sections: [
             {
                 title: "Eco footprint calculators",
@@ -254,8 +254,8 @@ export const categoryPagesData = {
     everyday_life: {
         title: "Everyday life Calculators",
         icon: Camera,
-        subtitle: "270 calculators",
-        description: "This unique collection of calculators gives you a hand in your everyday struggle of existence. We can help in finding the ways to save some money, with tools like our fuel cost calculator. We'll be on your side when you're racking your brain over commuting alternatives or planning with our time and date calculator. And when you're wasting your...",
+        subtitle: "7 calculators",
+        description: "This unique collection of calculators gives you a hand in your everyday struggle of existence. We can help in finding the ways to save some money, with tools like our fuel cost calculator. We'll be on your side when you're racking your brain over commuting alternatives or planning with our time and date calculator.",
         sections: [
             {
                 title: "Transportation calculators",
@@ -289,8 +289,8 @@ export const categoryPagesData = {
     finance: {
         title: "Finance Calculators",
         icon: DollarSign,
-        subtitle: "596 calculators",
-        description: "It doesn't matter whether you are the CEO of Google, a venture capitalist, a stockbroker, an entrepreneur or a simple student - we all have to admit that this world revolves around money. Almost every human interaction has something to do with finances: buying in a shop, providing services, borrowing, even going on a date. Sometimes, w...",
+        subtitle: "9 calculators",
+        description: "It doesn't matter whether you are the CEO of Google, a venture capitalist, a stockbroker, an entrepreneur or a simple student - we all have to admit that this world revolves around money. Almost every human interaction has something to do with finances: buying in a shop, providing services, borrowing, even going on a date.",
         sections: [
             {
                 title: "Business planning calculators",
@@ -326,8 +326,8 @@ export const categoryPagesData = {
     food: {
         title: "Food Calculators",
         icon: Utensils,
-        subtitle: "69 calculators",
-        description: "Food - naturally, the most essential (as well as controversial) part of our life. In this section, you can find calculators for food lovers, party organizers or calorie counting addicts, what perfectly reflects the complexity of feelings we have for the subject. Wondering if we have a pizza calculator? Nope - we have pizza calculators, plural! Check our...",
+        subtitle: "6 calculators",
+        description: "Food - naturally, the most essential (as well as controversial) part of our life. In this section, you can find calculators for food lovers, party organizers or calorie counting addicts, what perfectly reflects the complexity of feelings we have for the subject. Wondering if we have a pizza calculator? Nope - we have pizza calculators, plural!",
         sections: [
             {
                 title: "Cooking converters",
@@ -351,8 +351,8 @@ export const categoryPagesData = {
     health: {
         title: "Health Calculators",
         icon: Heart,
-        subtitle: "431 calculators",
-        description: "Welcome to health calculators! Whether you are a doctor, a medical student or a patient, you will find answers to your medical questions here, as well as receive a lot of scientifically proven information. What is my renal function and what does it mean? How much blood do I have? How to dose medication to children? What is my risk of having...",
+        subtitle: "6 calculators",
+        description: "Welcome to health calculators! Whether you are a doctor, a medical student or a patient, you will find answers to your medical questions here, as well as receive a lot of scientifically proven information. What is my renal function and what does it mean? How much blood do I have? How to dose medication to children?",
         sections: [
             {
                 title: "Body measurements calculators",
@@ -376,8 +376,8 @@ export const categoryPagesData = {
     math: {
         title: "Math Calculators",
         icon: Calculator,
-        subtitle: "671 calculators",
-        description: "Math can be exciting and easier than you think! With our collection of maths calculators, everyone can perform and understand useful mathematical calculations in seconds. Are you scared of trigonometry? Do you think geometry is “too complicated”? Fear not! Omni Calculator has your back, with a comprehensive array of calculators designed s...",
+        subtitle: "6 calculators",
+        description: "Math can be exciting and easier than you think! With our collection of maths calculators, everyone can perform and understand useful mathematical calculations in seconds. Are you scared of trigonometry? Do you think geometry is “too complicated”? Fear not! Omni Calculator has your back.",
         sections: [
             {
                 title: "Percentages calculators",

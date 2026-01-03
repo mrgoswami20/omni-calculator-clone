@@ -31,7 +31,7 @@ const CategoryLayout = ({ data }) => {
 
                         <div className="description-text">
                             <p>{description}</p>
-                            <a href="#" className="read-more">Read more</a>
+                            {/* <a href="#" className="read-more">Read more</a> */}
                         </div>
 
                         {sections.map((section, index) => {

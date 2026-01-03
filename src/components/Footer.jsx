@@ -104,19 +104,19 @@ const Footer = () => {
                     </div>
 
                     <div className="links-group-secondary">
-                        <div className="links-column press-column">
+                        {/* <div className="links-column press-column">
                             <h3 className="column-title">Press</h3>
                             <a href="#">Editorial policies</a>
                             <a href="#">Partnerships</a>
-                        </div>
+                        </div> */}
 
                         <div className="links-column meet-column">
                             <h3 className="column-title">Meet Omni</h3>
                             <Link to="/about-us">About</Link>
-                            <a href="#">Resource library</a>
+                            {/* <a href="#">Resource library</a>
                             <a href="#">Collections</a>
                             <a href="#">Contact</a>
-                            <a href="#" className="hiring-link">We're hiring!</a>
+                            <a href="#" className="hiring-link">We're hiring!</a> */}
                         </div>
                     </div>
                 </div>
