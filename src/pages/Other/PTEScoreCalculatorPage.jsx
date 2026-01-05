@@ -172,11 +172,11 @@ const PTEScoreCalculatorPage = () => {
 
                     <div className="calc-actions">
                         <div className="action-buttons-row">
-                            <button className="share-result-btn" onClick={handleShare}>
+                            {/* <button className="share-result-btn" onClick={handleShare}>
                                 <div className="share-icon-circle"><Share2 size={16} /></div>
                                 <span>Share result</span>
                                 {showShareTooltip && <span className="copied-tooltip">Copied!</span>}
-                            </button>
+                            </button> */}
                             <div className="right-actions">
                                 <button className="secondary-btn">Reload calculator</button>
                                 <button className="secondary-btn" onClick={() => setPteScore('')}>Clear all changes</button>

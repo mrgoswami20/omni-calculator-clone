@@ -159,13 +159,13 @@ const ImpliedProbabilityCalculatorPage = () => {
 
                     <div className="action-buttons">
                         <div className="share-btn-wrapper" style={{ flex: 1 }}>
-                            <button className="btn-share" onClick={handleShare} style={{ position: 'relative' }}>
+                            {/* <button className="btn-share" onClick={handleShare} style={{ position: 'relative' }}>
                                 <div className="share-icon-circle">
                                     <Share2 size={20} />
                                 </div>
                                 <span>Share result</span>
                                 {showShareTooltip && <span className="copied-tooltip" style={{ position: 'absolute', top: '-30px', left: '50%', transform: 'translateX(-50%)' }}>Copied!</span>}
-                            </button>
+                            </button> */}
                         </div>
                         <div className="right-actions" style={{ flex: 1, display: 'flex', flexDirection: 'column', gap: '12px' }}>
                             <button className="btn-action" onClick={() => window.location.reload()}>Reload calculator</button>

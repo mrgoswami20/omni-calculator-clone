@@ -398,13 +398,13 @@ const ArrowSpeedCalculatorPage = () => {
                 {/* Footer Actions */}
                 <div className="section-card">
                     <div className="calc-actions-custom" style={{ marginTop: 0, borderTop: 'none', paddingTop: 0 }}>
-                        <button className="share-result-btn-custom" onClick={handleShare}>
+                        {/* <button className="share-result-btn-custom" onClick={handleShare}>
                             <div className="share-icon-circle-custom">
                                 <Share2 size={24} />
                             </div>
                             Share result
                             {showShareTooltip && <span className="copied-tooltip">Copied!</span>}
-                        </button>
+                        </button> */}
 
                         <div className="secondary-actions-custom">
                             <button className="secondary-btn-custom" onClick={() => window.location.reload()}>

@@ -262,11 +262,11 @@ const TestGradeCalculatorPage = () => {
                         I'll use a `section-card` only if I want the white background. Let's stick to the previous style.
                      */}
                     <div className="calc-actions">
-                        <button className="share-result-btn" onClick={handleShare}>
+                        {/* <button className="share-result-btn" onClick={handleShare}>
                             <div className="share-icon-circle"><Share2 size={20} /></div>
                             <span>Share result</span>
                             {showShareTooltip && <span style={{ fontSize: '0.7rem', color: '#10b981' }}>Copied!</span>}
-                        </button>
+                        </button> */}
 
                         <div className="actions-right-stack">
                             <button className="secondary-btn" onClick={handleReload}>Reload calculator</button>

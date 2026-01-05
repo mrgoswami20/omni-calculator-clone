@@ -309,11 +309,11 @@ const AtomCalculatorPage = () => {
                 )}
 
                 <div className="calc-actions">
-                    <button className="share-result-btn" onClick={handleShare}>
+                    {/* <button className="share-result-btn" onClick={handleShare}>
                         <div className="share-icon-circle"><Share2 size={14} /></div>
                         Share result
                         {showShareTooltip && <span className="copied-tooltip">Copied!</span>}
-                    </button>
+                    </button> */}
                     <div className="secondary-actions">
                         <button className="secondary-btn">Reload calculator</button>
                         <button className="secondary-btn" onClick={handleClear}>Clear all changes</button>

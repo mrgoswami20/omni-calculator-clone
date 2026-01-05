@@ -217,11 +217,11 @@ const GWACalculatorPage = () => {
 
                     <div className="calc-actions">
                         <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem' }}>
-                            <button className="share-result-btn" style={{ flexDirection: 'column', padding: '1.5rem 0' }} onClick={handleShare}>
+                            {/* <button className="share-result-btn" style={{ flexDirection: 'column', padding: '1.5rem 0' }} onClick={handleShare}>
                                 <div className="share-icon-circle" style={{ width: '40px', height: '40px', fontSize: '1.25rem' }}><Share2 size={20} /></div>
                                 <span style={{ marginTop: '0.5rem' }}>Share result</span>
                                 {showShareTooltip && <span className="copied-tooltip">Copied!</span>}
-                            </button>
+                            </button> */}
                             <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
                                 <button className="secondary-btn" style={{ height: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>Reload calculator</button>
                                 <button className="secondary-btn" style={{ height: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center' }} onClick={clearAll}>Clear all changes</button>

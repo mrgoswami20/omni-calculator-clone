@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import SubNavigation from './SubNavigation';
 import { MoreVertical, Info } from 'lucide-react';
+import CalculatorItemCard from './CalculatorItemCard';
 import './CategoryLayout.css';
 
 const CategoryLayout = ({ data }) => {
@@ -46,17 +47,31 @@ const CategoryLayout = ({ data }) => {
                                         </div>
                                     )}
 
-                                    <div className="calculator-list">
-                                        {section.groups.map((group, groupIndex) => (
-                                            <ul key={groupIndex}>
-                                                {group.map((link, linkIndex) => (
-                                                    <li key={linkIndex}>
-                                                        <Link to={link.url}>{link.label}</Link>
-                                                    </li>
-                                                ))}
-                                            </ul>
-                                        ))}
-                                    </div>
+                                    {data.layoutType === 'cards' ? (
+                                        <div className="calculator-grid">
+                                            {section.groups.flat().map((link, linkIndex) => (
+                                                <CalculatorItemCard
+                                                    key={linkIndex}
+                                                    label={link.label}
+                                                    url={link.url}
+                                                    icon={link.icon}
+                                                    emoji={link.emoji}
+                                                />
+                                            ))}
+                                        </div>
+                                    ) : (
+                                        <div className="calculator-list">
+                                            {section.groups.map((group, groupIndex) => (
+                                                <ul key={groupIndex}>
+                                                    {group.map((link, linkIndex) => (
+                                                        <li key={linkIndex}>
+                                                            <Link to={link.url}>{link.label}</Link>
+                                                        </li>
+                                                    ))}
+                                                </ul>
+                                            ))}
+                                        </div>
+                                    )}
                                 </div>
                             );
                         })}

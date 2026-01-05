@@ -1,0 +1,250 @@
+.momentum-calculator-page {
+    padding: 24px;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.section-card {
+    background: white;
+    border-radius: 12px;
+    padding: 24px;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    margin-bottom: 24px;
+    border: 1px solid #e5e7eb;
+}
+
+.section-title {
+    font-size: 14px;
+    font-weight: 600;
+    color: #4b5563;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.input-group {
+    margin-bottom: 24px;
+}
+
+.result-group {
+    margin-top: 32px;
+    padding-top: 24px;
+    border-top: 1px solid #f3f4f6;
+}
+
+.input-label {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 14px;
+    font-weight: 500;
+    color: #374151;
+    margin-bottom: 8px;
+}
+
+.info-icon {
+    color: #9ca3af;
+    cursor: pointer;
+}
+
+.input-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.input-field {
+    width: 100%;
+    height: 48px;
+    padding: 0 16px;
+    padding-right: 100px;
+    /* Space for unit select */
+    border: 1px solid #e5e7eb;
+    border-radius: 8px;
+    font-size: 16px;
+    color: #111827;
+    transition: all 0.2s;
+    background-color: #f9fafb;
+}
+
+.input-field:focus {
+    outline: none;
+    border-color: #3b82f6;
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+    background-color: white;
+}
+
+.result-field {
+    background-color: #eff6ff;
+    border-color: #bfdbfe;
+    color: #1e40af;
+    font-weight: 600;
+}
+
+.unit-select-wrapper {
+    position: absolute;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    display: flex;
+    align-items: center;
+    background-color: transparent;
+    padding-right: 12px;
+}
+
+.unit-select {
+    border: none;
+    background: transparent;
+    font-size: 14px;
+    font-weight: 500;
+    color: #2563eb;
+    cursor: pointer;
+    text-align: right;
+    outline: none;
+    padding: 0;
+}
+
+.unit-static {
+    position: absolute;
+    right: 16px;
+    color: #6b7280;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+/* Collapsible Sections */
+.collapse-card {
+    padding: 0;
+    overflow: hidden;
+}
+
+.collapse-header {
+    padding: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    cursor: pointer;
+    background-color: white;
+    font-weight: 600;
+    color: #1f2937;
+    font-size: 15px;
+}
+
+.collapse-header:hover {
+    background-color: #f9fafb;
+}
+
+.collapse-content {
+    padding: 0 24px 24px 24px;
+    border-top: 1px solid #f3f4f6;
+    padding-top: 24px;
+}
+
+/* Actions implementation */
+.calc-actions-custom {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.share-result-btn-custom {
+    width: 100%;
+    height: 48px;
+    background-color: #3b82f6;
+    color: white;
+    border: none;
+    border-radius: 24px;
+    font-weight: 600;
+    font-size: 16px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    position: relative;
+    transition: background-color 0.2s;
+}
+
+.share-result-btn-custom:hover {
+    background-color: #2563eb;
+}
+
+.secondary-actions-custom {
+    display: flex;
+    gap: 12px;
+}
+
+.secondary-btn-custom {
+    flex: 1;
+    height: 40px;
+    background-color: white;
+    color: #6b7280;
+    border: 1px solid #e5e7eb;
+    border-radius: 20px;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.secondary-btn-custom:hover {
+    background-color: #f9fafb;
+    border-color: #d1d5db;
+    color: #374151;
+}
+
+.feedback-section {
+    margin-top: 24px;
+    text-align: center;
+    padding-top: 24px;
+    border-top: 1px solid #f3f4f6;
+}
+
+.feedback-section p {
+    color: #6b7280;
+    margin-bottom: 16px;
+    font-size: 14px;
+}
+
+.feedback-btns {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+}
+
+.feedback-btns button {
+    padding: 8px 32px;
+    border: 1px solid #e5e7eb;
+    border-radius: 20px;
+    background: white;
+    color: #6b7280;
+    font-size: 14px;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.feedback-btns button:hover {
+    background-color: #f9fafb;
+    border-color: #d1d5db;
+}
+
+.math-formula {
+    background-color: #f3f4f6;
+    padding: 12px;
+    border-radius: 8px;
+    font-family: monospace;
+    text-align: center;
+    margin: 16px 0;
+    font-size: 1.1em;
+}
+
+.copied-tooltip {
+    position: absolute;
+    top: -40px;
+    background-color: #1f2937;
+    color: white;
+    padding: 6px 12px;
+    border-radius: 6px;
+    font-size: 14px;
+    animation: fadeIn 0.2s ease-in-out;
+}

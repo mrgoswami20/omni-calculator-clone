@@ -367,11 +367,11 @@ const ANOVACalculatorPage = () => {
                 )}
 
                 <div className="calc-actions-custom">
-                    <button className="share-result-btn-custom" onClick={handleShare}>
+                    {/* <button className="share-result-btn-custom" onClick={handleShare}>
                         <div className="share-icon-circle-custom"><Share2 size={24} /></div>
                         Share result
                         {showShareTooltip && <span className="copied-tooltip">Copied!</span>}
-                    </button>
+                    </button> */}
                     <div className="secondary-actions-custom">
                         <button className="secondary-btn-custom" onClick={() => window.location.reload()}>Reload calculator</button>
                         <button className="secondary-btn-custom" onClick={clearAll}>Clear all changes</button>

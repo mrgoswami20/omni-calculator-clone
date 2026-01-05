@@ -292,11 +292,11 @@ const HighSchoolGPACalculatorPage = () => {
                     )}
 
                     <div className="calc-actions">
-                        <button className="share-result-btn" onClick={handleShare}>
+                        {/* <button className="share-result-btn" onClick={handleShare}>
                             <div className="share-icon-circle"><Share2 size={16} /></div>
                             Share result
                             {showShareTooltip && <span className="copied-tooltip">Copied!</span>}
-                        </button>
+                        </button> */}
                         <div style={{ display: 'grid', gap: '0.75rem' }}>
                             <button className="secondary-btn" style={{ width: '100%' }}>Reload calculator</button>
                             <button className="secondary-btn" style={{ width: '100%' }} onClick={clearAll}>Clear all changes</button>

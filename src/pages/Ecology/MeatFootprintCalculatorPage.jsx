@@ -417,13 +417,13 @@ const MeatFootprintCalculatorPage = () => {
 
                             {/* Action Buttons */}
                             <div className="action-buttons-container">
-                                <button className="btn-share-box" onClick={handleShare}>
+                                {/* <button className="btn-share-box" onClick={handleShare}>
                                     <div className="share-icon-circle">
                                         <Share2 size={24} />
                                     </div>
                                     <span>Share result</span>
                                     {showShareTooltip && <span className="copied-tooltip">Copied!</span>}
-                                </button>
+                                </button> */}
                                 <div className="action-stack">
                                     <button className="btn-action-rect" onClick={() => window.location.reload()}>
                                         Reload calculator

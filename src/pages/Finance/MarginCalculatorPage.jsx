@@ -412,11 +412,11 @@ const MarginCalculatorPage = () => {
                     <div className="calc-divider"></div>
 
                     <div className="calc-actions">
-                        <button className="share-result-btn" onClick={handleShare}>
+                        {/* <button className="share-result-btn" onClick={handleShare}>
                             <div className="share-icon-circle"><Share2 size={24} /></div>
                             <span>Share result</span>
                             {showShareTooltip && <span className="copied-tooltip">Copied!</span>}
-                        </button>
+                        </button> */}
 
                         <div className="actions-right-stack">
                             <button className="secondary-btn" onClick={handleReload}>Reload calculator</button>

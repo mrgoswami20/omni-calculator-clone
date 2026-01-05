@@ -295,7 +295,7 @@ const BayesTheoremCalculatorPage = () => {
                     {error && <div className="error-message">{error}</div>}
 
                     <div className="calc-actions-custom">
-                        <button className="share-result-btn-custom" onClick={handleShare}>
+                        {/* <button className="share-result-btn-custom" onClick={handleShare}>
                             <div className="share-icon-circle-custom">
                                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                                     <circle cx="18" cy="5" r="3"></circle>
@@ -307,7 +307,7 @@ const BayesTheoremCalculatorPage = () => {
                             </div>
                             Share result
                             {showShareTooltip && <span className="copied-tooltip">Copied!</span>}
-                        </button>
+                        </button> */}
 
                         <div className="secondary-actions-custom">
                             <button className="secondary-btn-custom" onClick={() => window.location.reload()}>

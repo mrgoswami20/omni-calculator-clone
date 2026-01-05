@@ -1,0 +1,81 @@
+.calculator-item-card {
+    display: block;
+    text-decoration: none;
+    background: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    border-radius: 16px;
+    padding: 24px;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+    position: relative;
+    overflow: hidden;
+    height: 100%;
+    min-height: 140px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.calculator-item-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 20px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    background: rgba(255, 255, 255, 0.95);
+    border-color: rgba(37, 99, 235, 0.2);
+}
+
+.card-content {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.card-icon-wrapper {
+    width: 56px;
+    height: 56px;
+    background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%);
+    border-radius: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #2563eb;
+    transition: all 0.3s ease;
+}
+
+.calculator-item-card:hover .card-icon-wrapper {
+    background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
+    color: white;
+    transform: scale(1.05);
+}
+
+.card-emoji {
+    font-size: 28px;
+}
+
+.card-text {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.card-title {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #1f2937;
+    margin: 0;
+    line-height: 1.4;
+}
+
+.card-arrow {
+    opacity: 0;
+    transform: translateX(-10px);
+    transition: all 0.3s ease;
+    color: #2563eb;
+}
+
+.calculator-item-card:hover .card-arrow {
+    opacity: 1;
+    transform: translateX(0);
+}
