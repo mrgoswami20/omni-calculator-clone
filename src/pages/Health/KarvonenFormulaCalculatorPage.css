@@ -1,0 +1,269 @@
+.karvonen-calculator-page {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.karvonen-calculator-page .section-card {
+    position: relative;
+    background: white;
+    border-radius: 12px;
+    padding: 32px;
+    border: 1px solid #e5e7eb;
+    margin-bottom: 24px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+.karvonen-calculator-page .input-group {
+    margin-bottom: 24px;
+}
+
+.karvonen-calculator-page .input-label {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 15px;
+    font-weight: 500;
+    color: #4b5563;
+    margin-bottom: 10px;
+}
+
+.karvonen-calculator-page .info-icon {
+    color: #9ca3af;
+    cursor: help;
+}
+
+/* Radio Group Styling */
+.karvonen-calculator-page .radio-group-container {
+    display: flex;
+    gap: 24px;
+    margin-top: 4px;
+}
+
+.karvonen-calculator-page .radio-option {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 14px;
+    color: #374151;
+    cursor: pointer;
+    user-select: none;
+}
+
+.karvonen-calculator-page .radio-option input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+}
+
+.karvonen-calculator-page .radio-circle {
+    height: 18px;
+    width: 18px;
+    background-color: white;
+    border: 2px solid #d1d5db;
+    border-radius: 50%;
+    display: inline-block;
+    position: relative;
+    transition: all 0.2s;
+}
+
+.karvonen-calculator-page .radio-option:hover .radio-circle {
+    border-color: #3b82f6;
+}
+
+.karvonen-calculator-page .radio-option.active .radio-circle {
+    border-color: #3b82f6;
+}
+
+.karvonen-calculator-page .radio-option.active .radio-circle::after {
+    content: "";
+    position: absolute;
+    display: block;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: #3b82f6;
+}
+
+/* Input Wrapper */
+.karvonen-calculator-page .input-wrapper {
+    display: flex;
+    height: 48px;
+    align-items: stretch;
+    border: 1px solid #cbd5e1;
+    border-radius: 8px;
+    overflow: hidden;
+    transition: all 0.2s;
+    background: #fcfcfc;
+}
+
+.karvonen-calculator-page .input-wrapper:focus-within {
+    border-color: #3b82f6;
+    box-shadow: 0 0 0 1px #3b82f6;
+}
+
+.karvonen-calculator-page .input-field {
+    flex: 1;
+    border: none;
+    padding: 0 16px;
+    font-size: 16px;
+    color: #1f2937;
+    width: 100%;
+    outline: none;
+    background: transparent;
+}
+
+.karvonen-calculator-page .input-field.calculated-value {
+    color: #3b82f6;
+    font-weight: 500;
+}
+
+.karvonen-calculator-page .unit-label-static {
+    font-size: 14px;
+    font-weight: 500;
+    color: #64748b;
+    display: flex;
+    align-items: center;
+    padding: 0 16px;
+    background: white;
+    border-left: 1px solid #cbd5e1;
+}
+
+/* Divider & Actions */
+.karvonen-calculator-page .divider-custom {
+    height: 1px;
+    background: #f3f4f6;
+    margin: 32px 0;
+}
+
+.karvonen-calculator-page .calc-actions-custom-layout {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.karvonen-calculator-page .side-actions {
+    display: flex;
+    gap: 12px;
+}
+
+.karvonen-calculator-page .action-btn-styled {
+    flex: 1;
+    height: 44px;
+    border: 1px solid #e5e7eb;
+    background: white;
+    color: #1f2937;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    font-size: 14px;
+    transition: all 0.2s;
+}
+
+.karvonen-calculator-page .action-btn-styled:hover {
+    background: #f9fafb;
+    border-color: #d1d5db;
+}
+
+.karvonen-calculator-page .action-btn-styled.outline {
+    color: #4b5563;
+}
+
+/* Feedback Section */
+.feedback-section-new {
+    margin-top: 32px;
+    padding-top: 24px;
+    border-top: 1px solid #f3f4f6;
+    text-align: center;
+}
+
+.feedback-section-new p {
+    font-size: 15px;
+    color: #4b5563;
+    margin-bottom: 16px;
+    text-align: center;
+    width: 100%;
+}
+
+.feedback-btns-new {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+    width: 100%;
+}
+
+.feedback-btn {
+    border: 1px solid #e5e7eb;
+    background: white;
+    padding: 8px 16px;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    transition: all 0.2s;
+    white-space: nowrap;
+}
+
+.feedback-btn:hover {
+    background: #f9fafb;
+}
+
+/* Article Styling */
+.article-container {
+    color: #374151;
+    line-height: 1.6;
+}
+
+.article-title {
+    font-size: 24px;
+    font-weight: 800;
+    color: #111827;
+    margin-bottom: 16px;
+    margin-top: 32px;
+}
+
+.premium-formula-box {
+    background: #f8fafc;
+    border-radius: 4px;
+    padding: 12px 16px;
+    margin: 16px 0;
+    border-left: 4px solid #3b82f6;
+}
+
+.premium-formula-box.sub-formula {
+    border-left-color: #6366f1;
+}
+
+.math-latex {
+    font-family: monospace;
+    font-size: 15px;
+    color: #1e293b;
+    line-height: 1.5;
+}
+
+@media (max-width: 640px) {
+    .karvonen-calculator-page .section-card {
+        padding: 20px;
+    }
+
+    .karvonen-calculator-page .side-actions {
+        flex-direction: column;
+    }
+
+    .karvonen-calculator-page .radio-group-container {
+        flex-direction: column;
+        gap: 12px;
+    }
+}

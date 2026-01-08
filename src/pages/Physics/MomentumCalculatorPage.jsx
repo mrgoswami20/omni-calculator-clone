@@ -4,195 +4,221 @@ import { Share2, MoreHorizontal, ChevronDown, ChevronUp } from 'lucide-react';
 import './MomentumCalculatorPage.css';
 
 const MomentumCalculatorPage = () => {
-    // Inputs/State
-    const [mass, setMass] = useState('');
-    const [massUnit, setMassUnit] = useState('kg');
+    // --- Constants ---
+    const MASS_UNITS = {
+        'kg': 1,
+        'mg': 1e-6,
+        'g': 1e-3,
+        't': 1000,
+        'oz': 0.0283495,
+        'lb': 0.453592,
+        'us ton': 907.185,
+        'long ton': 1016.05
+    };
 
-    const [velocity, setVelocity] = useState('');
-    const [velocityUnit, setVelocityUnit] = useState('m/s');
+    const VELOCITY_UNITS = {
+        'm/s': 1,
+        'km/h': 1 / 3.6,
+        'ft/s': 0.3048,
+        'mph': 0.44704,
+        'ft/min': 0.00508
+    };
 
-    const [momentum, setMomentum] = useState('');
-    const [momentumUnit, setMomentumUnit] = useState('kg·m/s');
+    const MOMENTUM_UNITS = {
+        'kg·m/s': 1,
+        'mN-s': 1e-3,
+        'N-s': 1,
+        'kN-s': 1000,
+        'MN-s': 1e6,
+        't-km/h': 277.778, // 1000 kg * (1/3.6) m/s
+        'lb·ft/s': 0.138255, // 0.453592 kg * 0.3048 m/s
+        't-mph': 447.04,  // 1000 kg * 0.44704 m/s (Metric Ton-mile/hour)
+        'US t-mph': 405.548, // 907.185 kg * 0.44704 m/s
+        'long t-mph': 454.214 // 1016.05 kg * 0.44704 m/s
+    };
 
-    const [velX, setVelX] = useState('');
-    const [velY, setVelY] = useState('');
-    const [velZ, setVelZ] = useState('');
+    // --- State ---
+    // Section 1: 1D
+    const [mass1D, setMass1D] = useState({ value: '', unit: 'kg' });
+    const [vel1D, setVel1D] = useState({ value: '', unit: 'm/s' });
+    const [mom1D, setMom1D] = useState({ value: '', unit: 'kg·m/s' });
 
-    const [momX, setMomX] = useState('');
-    const [momY, setMomY] = useState('');
-    const [momZ, setMomZ] = useState('');
+    // Section 2: Mass & Velocity 2D/3D (Mass is synced with 1D)
+    const [velX, setVelX] = useState({ value: '', unit: 'm/s' });
+    const [velY, setVelY] = useState({ value: '', unit: 'm/s' });
+    const [velZ, setVelZ] = useState({ value: '', unit: 'm/s' });
+    const [velMag, setVelMag] = useState({ value: '', unit: 'm/s' }); // Linked to 1D Vel
 
-    const [isMultiDimOpen, setIsMultiDimOpen] = useState(false);
-    const [isMultiDimResultOpen, setIsMultiDimResultOpen] = useState(false);
+    // Section 3: Momentum 2D/3D
+    const [momX, setMomX] = useState({ value: '', unit: 'kg·m/s' });
+    const [momY, setMomY] = useState({ value: '', unit: 'kg·m/s' });
+    const [momZ, setMomZ] = useState({ value: '', unit: 'kg·m/s' });
+    const [momMag, setMomMag] = useState({ value: '', unit: 'kg·m/s' }); // Linked to 1D Mom
+
+    const [isSec2Open, setIsSec2Open] = useState(true);
+    const [isSec3Open, setIsSec3Open] = useState(true);
     const [showShareTooltip, setShowShareTooltip] = useState(false);
 
-    // Constants
-    const KG_TO_LBS = 2.20462;
-    const KG_TO_OZ = 35.274;
-    const KG_TO_G = 1000;
-    const KG_TO_TON = 0.001;
-    const KG_TO_GRAIN = 15432.4;
-
-    const MPS_TO_KMPH = 3.6;
-    const MPS_TO_MPH = 2.23694;
-    const MPS_TO_FPS = 3.28084;
-    const MPS_TO_KNOT = 1.94384;
-
-    const NS_TO_LB_FT_S = 7.23301;
-
-    // Helpers
-    const getMassInKg = (val, unit) => {
-        let kg = parseFloat(val);
-        if (isNaN(kg)) return 0;
-        if (unit === 'lbs') kg /= KG_TO_LBS;
-        else if (unit === 'oz') kg /= KG_TO_OZ;
-        else if (unit === 'g') kg /= KG_TO_G;
-        else if (unit === 'ton') kg /= KG_TO_TON;
-        else if (unit === 'grain') kg /= KG_TO_GRAIN;
-        return kg;
+    // --- Helpers ---
+    const toBase = (val, unit, factors) => {
+        const v = parseFloat(val);
+        if (isNaN(v)) return 0;
+        return v * (factors[unit] || 1);
     };
 
-    const getVelocityInMps = (val, unit) => {
-        let mps = parseFloat(val);
-        if (isNaN(mps)) return 0;
-        if (unit === 'km/h') mps /= MPS_TO_KMPH;
-        else if (unit === 'mph') mps /= MPS_TO_MPH;
-        else if (unit === 'ft/s') mps /= MPS_TO_FPS;
-        else if (unit === 'knot') mps /= MPS_TO_KNOT;
-        return mps;
+    const fromBase = (val, targetUnit, factors) => {
+        if (val === 0 && Math.abs(val) < 1e-9) return 0;
+        return val / (factors[targetUnit] || 1);
     };
 
-    const convertVelocity = (valInMps, targetUnit) => {
-        if (targetUnit === 'km/h') return valInMps * MPS_TO_KMPH;
-        if (targetUnit === 'mph') return valInMps * MPS_TO_MPH;
-        if (targetUnit === 'ft/s') return valInMps * MPS_TO_FPS;
-        if (targetUnit === 'knot') return valInMps * MPS_TO_KNOT;
-        return valInMps;
+    const format = (val) => {
+        if (val === 0 || isNaN(val)) return '';
+        // Avoid scientific notation for simple numbers user might type, but handle small/large
+        if (Math.abs(val) < 1e-6 || Math.abs(val) > 1e6) return val.toExponential(4);
+        return parseFloat(val.toFixed(4)).toString();
     };
 
-    const getMomentumInNs = (val, unit) => {
-        let ns = parseFloat(val);
-        if (isNaN(ns)) return 0;
-        if (unit === 'lb·ft/s') ns /= NS_TO_LB_FT_S;
-        // kg·m/s and N·s are base units (1)
-        return ns;
-    };
+    // --- Universal Update Handler ---
+    // This is the core logic. Triggers re-calculation of everything based on what changed.
+    // changedType: 'mass', 'vel1D', 'mom1D', 'velComp', 'velMag', 'momComp', 'momMag'
+    const updateCalculations = (changedType, newValue, newUnit, axis = null) => {
+        // 1. Get current base values
+        let mBase = toBase(mass1D.value, mass1D.unit, MASS_UNITS);
 
-    const convertMomentum = (valInNs, targetUnit) => {
-        if (targetUnit === 'lb·ft/s') return valInNs * NS_TO_LB_FT_S;
-        return valInNs;
-    };
+        let vxBase = toBase(velX.value, velX.unit, VELOCITY_UNITS);
+        let vyBase = toBase(velY.value, velY.unit, VELOCITY_UNITS);
+        let vzBase = toBase(velZ.value, velZ.unit, VELOCITY_UNITS);
 
-    const formatVal = (val, maxDecimals = 4) => {
-        if (val === 0 && Math.abs(val) < 1e-9) return ''; // Cleaner empty state
-        return val.toLocaleString(undefined, { maximumFractionDigits: maxDecimals, useGrouping: false });
-    };
+        let pxBase = toBase(momX.value, momX.unit, MOMENTUM_UNITS);
+        let pyBase = toBase(momY.value, momY.unit, MOMENTUM_UNITS);
+        let pzBase = toBase(momZ.value, momZ.unit, MOMENTUM_UNITS);
 
-    // Calculation Logic
-    const handleMassChange = (newMass) => {
-        setMass(newMass);
-        const mKg = getMassInKg(newMass, massUnit);
-        if (mKg === 0) return;
+        // 2. Update the specific input that changed and recalculate base values
+        if (changedType === 'mass') {
+            mBase = toBase(newValue, newUnit, MASS_UNITS);
+            setMass1D({ value: newValue, unit: newUnit });
 
-        // Update Momentum Main
-        const vMps = getVelocityInMps(velocity, velocityUnit);
-        if (velocity !== '') {
-            const pNs = mKg * vMps;
-            setMomentum(formatVal(convertMomentum(pNs, momentumUnit)));
+            // If mass changes, update Momentums based on current Velocities
+            if (mBase !== 0) {
+                pxBase = mBase * vxBase;
+                pyBase = mBase * vyBase;
+                pzBase = mBase * vzBase;
+            }
+        }
+        else if (changedType === 'vel1D' || changedType === 'velMag') {
+            const vMagBase = toBase(newValue, newUnit, VELOCITY_UNITS);
+            setVel1D({ value: newValue, unit: newUnit });
+            setVelMag({ value: newValue, unit: newUnit }); // Sync 1D and Mag inputs
+
+            // If we only change magnitude, we assume scaling existing components or default to X direction if zero
+            const currentMag = Math.sqrt(vxBase * vxBase + vyBase * vyBase + vzBase * vzBase);
+            if (currentMag === 0) {
+                vxBase = vMagBase;
+                vyBase = 0;
+                vzBase = 0;
+            } else {
+                const ratio = vMagBase / currentMag;
+                vxBase *= ratio;
+                vyBase *= ratio;
+                vzBase *= ratio;
+            }
+
+            if (mBase !== 0) {
+                pxBase = mBase * vxBase;
+                pyBase = mBase * vyBase;
+                pzBase = mBase * vzBase;
+            }
+        }
+        else if (changedType === 'mom1D' || changedType === 'momMag') {
+            const pMagBase = toBase(newValue, newUnit, MOMENTUM_UNITS);
+            setMom1D({ value: newValue, unit: newUnit });
+            setMomMag({ value: newValue, unit: newUnit });
+
+            // Similar scaling logic for Momentum
+            const currentMag = Math.sqrt(pxBase * pxBase + pyBase * pyBase + pzBase * pzBase);
+            if (currentMag === 0) {
+                pxBase = pMagBase;
+                pyBase = 0;
+                pzBase = 0;
+            } else {
+                const ratio = pMagBase / currentMag;
+                pxBase *= ratio;
+                pyBase *= ratio;
+                pzBase *= ratio;
+            }
+
+            if (mBase !== 0) {
+                vxBase = pxBase / mBase;
+                vyBase = pyBase / mBase;
+                vzBase = pzBase / mBase;
+            }
+        }
+        else if (changedType === 'velComp') {
+            const valBase = toBase(newValue, newUnit, VELOCITY_UNITS);
+            if (axis === 'x') { vxBase = valBase; setVelX({ value: newValue, unit: newUnit }); }
+            if (axis === 'y') { vyBase = valBase; setVelY({ value: newValue, unit: newUnit }); }
+            if (axis === 'z') { vzBase = valBase; setVelZ({ value: newValue, unit: newUnit }); }
+
+            if (mBase !== 0) {
+                if (axis === 'x') pxBase = mBase * vxBase;
+                if (axis === 'y') pyBase = mBase * vyBase;
+                if (axis === 'z') pzBase = mBase * vzBase;
+            }
+        }
+        else if (changedType === 'momComp') {
+            const valBase = toBase(newValue, newUnit, MOMENTUM_UNITS);
+            if (axis === 'x') { pxBase = valBase; setMomX({ value: newValue, unit: newUnit }); }
+            if (axis === 'y') { pyBase = valBase; setMomY({ value: newValue, unit: newUnit }); }
+            if (axis === 'z') { pzBase = valBase; setMomZ({ value: newValue, unit: newUnit }); }
+
+            if (mBase !== 0) {
+                if (axis === 'x') vxBase = pxBase / mBase;
+                if (axis === 'y') vyBase = pyBase / mBase;
+                if (axis === 'z') vzBase = pzBase / mBase;
+            }
         }
 
-        // Update Momentum Components
-        if (velX !== '') setMomX(formatVal(convertMomentum(mKg * getVelocityInMps(velX, velocityUnit), momentumUnit)));
-        if (velY !== '') setMomY(formatVal(convertMomentum(mKg * getVelocityInMps(velY, velocityUnit), momentumUnit)));
-        if (velZ !== '') setMomZ(formatVal(convertMomentum(mKg * getVelocityInMps(velZ, velocityUnit), momentumUnit)));
-    };
+        // 3. Propagate results to all other fields (updating values in their current units)
 
-    const handleVelocityChange = (newVel) => {
-        setVelocity(newVel);
-        const mKg = getMassInKg(mass, massUnit);
-        const vMps = getVelocityInMps(newVel, velocityUnit);
+        // Update Derived Velocities (if not the source of change)
+        if (changedType !== 'velComp') {
+            setVelX(prev => ({ ...prev, value: format(fromBase(vxBase, prev.unit, VELOCITY_UNITS)) }));
+            setVelY(prev => ({ ...prev, value: format(fromBase(vyBase, prev.unit, VELOCITY_UNITS)) }));
+            setVelZ(prev => ({ ...prev, value: format(fromBase(vzBase, prev.unit, VELOCITY_UNITS)) }));
+        }
 
-        // Update Momentum Main
-        if (mass !== '') {
-            const pNs = mKg * vMps;
-            setMomentum(formatVal(convertMomentum(pNs, momentumUnit)));
+        // Update Derived Momentums (if not the source of change)
+        if (changedType !== 'momComp') {
+            setMomX(prev => ({ ...prev, value: format(fromBase(pxBase, prev.unit, MOMENTUM_UNITS)) }));
+            setMomY(prev => ({ ...prev, value: format(fromBase(pyBase, prev.unit, MOMENTUM_UNITS)) }));
+            setMomZ(prev => ({ ...prev, value: format(fromBase(pzBase, prev.unit, MOMENTUM_UNITS)) }));
+        }
+
+        // Update Magnitudes
+        const newVelMagBase = Math.sqrt(vxBase * vxBase + vyBase * vyBase + vzBase * vzBase);
+        const newMomMagBase = Math.sqrt(pxBase * pxBase + pyBase * pyBase + pzBase * pzBase);
+
+        if (changedType !== 'vel1D' && changedType !== 'velMag') {
+            const vMagVal = format(fromBase(newVelMagBase, vel1D.unit, VELOCITY_UNITS)); // careful to use correct unit state
+            setVel1D(prev => ({ ...prev, value: vMagVal })); // Sync
+            setVelMag(prev => ({ ...prev, value: vMagVal }));
+        }
+
+        if (changedType !== 'mom1D' && changedType !== 'momMag') {
+            const pMagVal = format(fromBase(newMomMagBase, mom1D.unit, MOMENTUM_UNITS));
+            setMom1D(prev => ({ ...prev, value: pMagVal }));
+            setMomMag(prev => ({ ...prev, value: pMagVal }));
         }
     };
 
-    const handleMomentumChange = (newMom) => {
-        setMomentum(newMom);
-        const mKg = getMassInKg(mass, massUnit);
-        const pNs = getMomentumInNs(newMom, momentumUnit);
-
-        // Update Velocity Main
-        if (mass !== '' && mKg !== 0) {
-            const vMps = pNs / mKg;
-            setVelocity(formatVal(convertVelocity(vMps, velocityUnit)));
-        }
-    };
-
-    const handleVelComponentChange = (val, axis) => {
-        if (axis === 'x') setVelX(val);
-        if (axis === 'y') setVelY(val);
-        if (axis === 'z') setVelZ(val);
-
-        const vx = axis === 'x' ? val : velX;
-        const vy = axis === 'y' ? val : velY;
-        const vz = axis === 'z' ? val : velZ;
-
-        const vxMps = getVelocityInMps(vx, velocityUnit);
-        const vyMps = getVelocityInMps(vy, velocityUnit);
-        const vzMps = getVelocityInMps(vz, velocityUnit);
-
-        const mKg = getMassInKg(mass, massUnit);
-        if (mass !== '') {
-            if (axis === 'x') setMomX(formatVal(convertMomentum(mKg * vxMps, momentumUnit)));
-            if (axis === 'y') setMomY(formatVal(convertMomentum(mKg * vyMps, momentumUnit)));
-            if (axis === 'z') setMomZ(formatVal(convertMomentum(mKg * vzMps, momentumUnit)));
-        }
-
-        const vMagMps = Math.sqrt(vxMps * vxMps + vyMps * vyMps + vzMps * vzMps);
-        setVelocity(formatVal(convertVelocity(vMagMps, velocityUnit)));
-
-        if (mass !== '') {
-            const pMagNs = mKg * vMagMps;
-            setMomentum(formatVal(convertMomentum(pMagNs, momentumUnit)));
-        }
-    };
-
-    const handleMomComponentChange = (val, axis) => {
-        if (axis === 'x') setMomX(val);
-        if (axis === 'y') setMomY(val);
-        if (axis === 'z') setMomZ(val);
-
-        const px = axis === 'x' ? val : momX;
-        const py = axis === 'y' ? val : momY;
-        const pz = axis === 'z' ? val : momZ;
-
-        const pxNs = getMomentumInNs(px, momentumUnit);
-        const pyNs = getMomentumInNs(py, momentumUnit);
-        const pzNs = getMomentumInNs(pz, momentumUnit);
-
-        const mKg = getMassInKg(mass, massUnit);
-
-        if (mass !== '' && mKg !== 0) {
-            const vCompMps = (axis === 'x' ? pxNs : axis === 'y' ? pyNs : pzNs) / mKg;
-            const vCompVal = formatVal(convertVelocity(vCompMps, velocityUnit));
-
-            if (axis === 'x') setVelX(vCompVal);
-            if (axis === 'y') setVelY(vCompVal);
-            if (axis === 'z') setVelZ(vCompVal);
-
-            const vxMps = axis === 'x' ? vCompMps : getVelocityInMps(velX, velocityUnit);
-            const vyMps = axis === 'y' ? vCompMps : getVelocityInMps(velY, velocityUnit);
-            const vzMps = axis === 'z' ? vCompMps : getVelocityInMps(velZ, velocityUnit);
-
-            const vMagMps = Math.sqrt(vxMps * vxMps + vyMps * vyMps + vzMps * vzMps);
-            setVelocity(formatVal(convertVelocity(vMagMps, velocityUnit)));
-
-            const pMagNs = Math.sqrt(pxNs * pxNs + pyNs * pyNs + pzNs * pzNs);
-            setMomentum(formatVal(convertMomentum(pMagNs, momentumUnit)));
-        }
+    // --- Unit Change Handlers ---
+    // These just convert the current displayed value to the new unit, keeping the base physics value same-ish or just swapping unit?
+    // User expectation: usually converting the value. e.g. 1 kg -> 1000 g.
+    const handleUnitChange = (setter, state, newUnit, type, factors) => {
+        const base = toBase(state.value, state.unit, factors);
+        const newVal = format(fromBase(base, newUnit, factors));
+        setter({ value: newVal, unit: newUnit });
+        // No physics Recalculation needed, just display conversion
     };
 
     const handleShare = async () => {
@@ -204,32 +230,31 @@ const MomentumCalculatorPage = () => {
     };
 
     const handleClear = () => {
-        setMass('');
-        setVelocity('');
-        setVelX('');
-        setVelY('');
-        setVelZ('');
-        setMomentum('');
-        setMomX('');
-        setMomY('');
-        setMomZ('');
+        const empty = { value: '', unit: '' }; // preserve units? better to just clear values
+        setMass1D(prev => ({ ...prev, value: '' }));
+        setVel1D(prev => ({ ...prev, value: '' }));
+        setMom1D(prev => ({ ...prev, value: '' }));
+
+        setVelX(prev => ({ ...prev, value: '' }));
+        setVelY(prev => ({ ...prev, value: '' }));
+        setVelZ(prev => ({ ...prev, value: '' }));
+        setVelMag(prev => ({ ...prev, value: '' }));
+
+        setMomX(prev => ({ ...prev, value: '' }));
+        setMomY(prev => ({ ...prev, value: '' }));
+        setMomZ(prev => ({ ...prev, value: '' }));
+        setMomMag(prev => ({ ...prev, value: '' }));
     };
 
     const articleContent = (
         <div>
             <p>
-                The <strong>Momentum Calculator</strong> is a simple tool designed to find the momentum of an object.
+                The <strong>Momentum Calculator</strong> is a tool designed to find the momentum of an object.
                 Physics defines momentum as the product of mass and velocity. It is a vector quantity, possessing a magnitude and a direction.
             </p>
             <h3>Momentum Formula</h3>
             <p>The equation for linear momentum is:</p>
             <p className="math-formula">p = m × v</p>
-            <p>Where:</p>
-            <ul>
-                <li><strong>p</strong> is the momentum</li>
-                <li><strong>m</strong> is the mass of the moving object</li>
-                <li><strong>v</strong> is the velocity of the object</li>
-            </ul>
         </div>
     );
 
@@ -238,113 +263,114 @@ const MomentumCalculatorPage = () => {
             title="Momentum Calculator"
             creators={[{ name: "Omni Team" }]}
             reviewers={[]}
-            tocItems={["What is momentum?", "Momentum formula", "How to use this calculator"]}
+            tocItems={["Momentum in one dimension", "Mass and velocity in two or three dimensions", "Momentum in two or three dimensions"]}
             articleContent={articleContent}
         >
             <div className="momentum-calculator-page">
+                {/* Section 1: Momentum in one dimension */}
                 <div className="section-card">
                     <h3 className="section-title">Momentum in one dimension</h3>
-                    {/* Mass Input */}
+
+                    {/* Mass */}
                     <div className="input-group">
                         <label className="input-label">Mass (m)<MoreHorizontal size={16} className="info-icon" /></label>
                         <div className="input-wrapper">
                             <input
                                 type="number"
                                 className="input-field"
-                                value={mass}
-                                onChange={(e) => handleMassChange(e.target.value)}
+                                value={mass1D.value}
+                                onChange={(e) => updateCalculations('mass', e.target.value, mass1D.unit)}
                                 placeholder="Enter mass"
                             />
                             <div className="unit-select-wrapper">
-                                <select className="unit-select" value={massUnit} onChange={(e) => setMassUnit(e.target.value)}>
-                                    <option value="kg">kg</option>
-                                    <option value="lbs">lbs</option>
-                                    <option value="g">g</option>
-                                    <option value="oz">oz</option>
-                                    <option value="ton">ton</option>
-                                    <option value="grain">grain</option>
+                                <select
+                                    className="unit-select"
+                                    value={mass1D.unit}
+                                    onChange={(e) => handleUnitChange(setMass1D, mass1D, e.target.value, 'mass', MASS_UNITS)}
+                                >
+                                    {Object.keys(MASS_UNITS).map(u => <option key={u} value={u}>{u}</option>)}
                                 </select>
                             </div>
                         </div>
                     </div>
 
-                    {/* Velocity Input */}
+                    {/* Velocity */}
                     <div className="input-group">
                         <label className="input-label">Velocity (v)<MoreHorizontal size={16} className="info-icon" /></label>
                         <div className="input-wrapper">
                             <input
                                 type="number"
                                 className="input-field"
-                                value={velocity}
-                                onChange={(e) => handleVelocityChange(e.target.value)}
+                                value={vel1D.value}
+                                onChange={(e) => updateCalculations('vel1D', e.target.value, vel1D.unit)}
                                 placeholder="Enter velocity"
                             />
                             <div className="unit-select-wrapper">
-                                <select className="unit-select" value={velocityUnit} onChange={(e) => setVelocityUnit(e.target.value)}>
-                                    <option value="m/s">m/s</option>
-                                    <option value="km/h">km/h</option>
-                                    <option value="mph">mph</option>
-                                    <option value="ft/s">ft/s</option>
-                                    <option value="knot">kn</option>
+                                <select
+                                    className="unit-select"
+                                    value={vel1D.unit}
+                                    onChange={(e) => handleUnitChange(setVel1D, vel1D, e.target.value, 'vel1D', VELOCITY_UNITS)}
+                                >
+                                    {Object.keys(VELOCITY_UNITS).map(u => <option key={u} value={u}>{u}</option>)}
                                 </select>
                             </div>
                         </div>
                     </div>
 
-                    {/* Momentum Output (Also Input now) */}
+                    {/* Momentum */}
                     <div className="input-group result-group">
                         <label className="input-label">Momentum (p)<MoreHorizontal size={16} className="info-icon" /></label>
                         <div className="input-wrapper">
                             <input
                                 type="number"
                                 className="input-field result-field"
-                                value={momentum}
-                                onChange={(e) => handleMomentumChange(e.target.value)}
+                                value={mom1D.value}
+                                onChange={(e) => updateCalculations('mom1D', e.target.value, mom1D.unit)}
                                 placeholder="Result"
                             />
                             <div className="unit-select-wrapper">
-                                <select className="unit-select" value={momentumUnit} onChange={(e) => setMomentumUnit(e.target.value)}>
-                                    <option value="kg·m/s">kg·m/s</option>
-                                    <option value="N·s">N·s</option>
-                                    <option value="lb·ft/s">lb·ft/s</option>
+                                <select
+                                    className="unit-select"
+                                    value={mom1D.unit}
+                                    onChange={(e) => handleUnitChange(setMom1D, mom1D, e.target.value, 'mom1D', MOMENTUM_UNITS)}
+                                >
+                                    {Object.keys(MOMENTUM_UNITS).map(u => <option key={u} value={u}>{u}</option>)}
                                 </select>
                             </div>
                         </div>
                     </div>
                 </div>
 
-                {/* Collapsible: Mass and velocity in 2D/3D */}
-                <div className="section-card collapse-card">
-                    <div className="collapse-header" onClick={() => setIsMultiDimOpen(!isMultiDimOpen)}>
-                        <span>Mass and velocity in two or three dimensions</span>
-                        {isMultiDimOpen ? <ChevronUp size={20} /> : <ChevronDown size={20} />}
-                    </div>
+                <div className="divider-custom"></div>
 
-                    {isMultiDimOpen && (
+                <div className="collapse-card">
+                    <div className="collapse-header" onClick={() => setIsSec2Open(!isSec2Open)}>
+                        <span>Mass and velocity in two or three dimensions</span>
+                        {isSec2Open ? <ChevronUp size={20} /> : <ChevronDown size={20} />}
+                    </div>
+                    {isSec2Open && (
                         <div className="collapse-content">
                             <p style={{ fontSize: '14px', color: '#4b5563', marginBottom: '16px' }}>
                                 Leave the <strong>velocity in z-direction as zero</strong> if you want to consider a problem of <strong>two-dimensional vectors</strong>.
                             </p>
 
-                            {/* Mass Input (Synced) */}
+                            {/* Mass (Synced) */}
                             <div className="input-group">
-                                <label className="input-label">Mass of the body <MoreHorizontal size={16} className="info-icon" /></label>
+                                <label className="input-label">Mass of the body</label>
                                 <div className="input-wrapper">
                                     <input
                                         type="number"
                                         className="input-field"
-                                        value={mass}
-                                        onChange={(e) => handleMassChange(e.target.value)}
-                                        placeholder="Enter mass"
+                                        value={mass1D.value}
+                                        onChange={(e) => updateCalculations('mass', e.target.value, mass1D.unit)}
                                     />
                                     <div className="unit-select-wrapper">
-                                        <select className="unit-select" value={massUnit} onChange={(e) => setMassUnit(e.target.value)}>
-                                            <option value="kg">kg</option>
-                                            <option value="lbs">lbs</option>
-                                            <option value="g">g</option>
-                                            <option value="oz">oz</option>
-                                            <option value="ton">ton</option>
-                                            <option value="grain">grain</option>
+                                        <select
+                                            className="unit-select"
+                                            value={mass1D.unit}
+                                            onChange={(e) => handleUnitChange(setMass1D, mass1D, e.target.value, 'mass', MASS_UNITS)}
+                                        >
+                                            {Object.keys(MASS_UNITS).map(u => <option key={u} value={u}>{u}</option>)}
                                         </select>
                                     </div>
                                 </div>
@@ -352,21 +378,17 @@ const MomentumCalculatorPage = () => {
 
                             {/* Velocity X */}
                             <div className="input-group">
-                                <label className="input-label">Velocity in x-direction <MoreHorizontal size={16} className="info-icon" /></label>
+                                <label className="input-label">Velocity in x-direction</label>
                                 <div className="input-wrapper">
                                     <input
                                         type="number"
                                         className="input-field"
-                                        value={velX}
-                                        onChange={(e) => handleVelComponentChange(e.target.value, 'x')}
+                                        value={velX.value}
+                                        onChange={(e) => updateCalculations('velComp', e.target.value, velX.unit, 'x')}
                                     />
                                     <div className="unit-select-wrapper">
-                                        <select className="unit-select" value={velocityUnit} onChange={(e) => setVelocityUnit(e.target.value)}>
-                                            <option value="m/s">m/s</option>
-                                            <option value="km/h">km/h</option>
-                                            <option value="mph">mph</option>
-                                            <option value="ft/s">ft/s</option>
-                                            <option value="knot">kn</option>
+                                        <select className="unit-select" value={velX.unit} onChange={(e) => handleUnitChange(setVelX, velX, e.target.value, 'velX', VELOCITY_UNITS)}>
+                                            {Object.keys(VELOCITY_UNITS).map(u => <option key={u} value={u}>{u}</option>)}
                                         </select>
                                     </div>
                                 </div>
@@ -374,111 +396,124 @@ const MomentumCalculatorPage = () => {
 
                             {/* Velocity Y */}
                             <div className="input-group">
-                                <label className="input-label">Velocity in y-direction <MoreHorizontal size={16} className="info-icon" /></label>
+                                <label className="input-label">Velocity in y-direction</label>
                                 <div className="input-wrapper">
                                     <input
                                         type="number"
                                         className="input-field"
-                                        value={velY}
-                                        onChange={(e) => handleVelComponentChange(e.target.value, 'y')}
+                                        value={velY.value}
+                                        onChange={(e) => updateCalculations('velComp', e.target.value, velY.unit, 'y')}
                                     />
                                     <div className="unit-select-wrapper">
-                                        <span className="unit-static" style={{ marginRight: '12px' }}>{velocityUnit}</span>
+                                        <select className="unit-select" value={velY.unit} onChange={(e) => handleUnitChange(setVelY, velY, e.target.value, 'velY', VELOCITY_UNITS)}>
+                                            {Object.keys(VELOCITY_UNITS).map(u => <option key={u} value={u}>{u}</option>)}
+                                        </select>
                                     </div>
                                 </div>
                             </div>
 
                             {/* Velocity Z */}
                             <div className="input-group">
-                                <label className="input-label">Velocity in z-direction <MoreHorizontal size={16} className="info-icon" /></label>
+                                <label className="input-label">Velocity in z-direction</label>
                                 <div className="input-wrapper">
                                     <input
                                         type="number"
                                         className="input-field"
-                                        value={velZ}
-                                        onChange={(e) => handleVelComponentChange(e.target.value, 'z')}
+                                        value={velZ.value}
+                                        onChange={(e) => updateCalculations('velComp', e.target.value, velZ.unit, 'z')}
                                     />
                                     <div className="unit-select-wrapper">
-                                        <span className="unit-static" style={{ marginRight: '12px' }}>{velocityUnit}</span>
+                                        <select className="unit-select" value={velZ.unit} onChange={(e) => handleUnitChange(setVelZ, velZ, e.target.value, 'velZ', VELOCITY_UNITS)}>
+                                            {Object.keys(VELOCITY_UNITS).map(u => <option key={u} value={u}>{u}</option>)}
+                                        </select>
                                     </div>
                                 </div>
                             </div>
 
                             {/* Velocity Magnitude */}
                             <div className="input-group">
-                                <label className="input-label">Velocity magnitude <MoreHorizontal size={16} className="info-icon" /></label>
+                                <label className="input-label">Velocity magnitude</label>
                                 <div className="input-wrapper">
                                     <input
                                         type="number"
-                                        className="input-field result-field"
-                                        value={velocity}
-                                        onChange={(e) => handleVelocityChange(e.target.value)}
+                                        className="input-field"
+                                        value={velMag.value}
+                                        onChange={(e) => updateCalculations('velMag', e.target.value, velMag.unit)}
                                     />
                                     <div className="unit-select-wrapper">
-                                        <span className="unit-static" style={{ marginRight: '12px' }}>{velocityUnit}</span>
+                                        <select className="unit-select" value={velMag.unit} onChange={(e) => handleUnitChange(setVelMag, velMag, e.target.value, 'velMag', VELOCITY_UNITS)}>
+                                            {Object.keys(VELOCITY_UNITS).map(u => <option key={u} value={u}>{u}</option>)}
+                                        </select>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     )}
+                    <div className="divider-custom"></div>
                 </div>
 
-                {/* Collapsible: Momentum in 2D/3D */}
-                <div className="section-card collapse-card">
-                    <div className="collapse-header" onClick={() => setIsMultiDimResultOpen(!isMultiDimResultOpen)}>
+                {/* Section 3: Momentum in 2D/3D */}
+                <div className="collapse-card">
+                    <div className="collapse-header" onClick={() => setIsSec3Open(!isSec3Open)}>
                         <span>Momentum in two or three dimensions</span>
-                        {isMultiDimResultOpen ? <ChevronUp size={20} /> : <ChevronDown size={20} />}
+                        {isSec3Open ? <ChevronUp size={20} /> : <ChevronDown size={20} />}
                     </div>
-
-                    {isMultiDimResultOpen && (
+                    {isSec3Open && (
                         <div className="collapse-content">
                             <p style={{ fontSize: '14px', color: '#4b5563', marginBottom: '16px' }}>
                                 Leave the <strong>momentum in z-direction as zero</strong> if you want to consider a problem of <strong>two-dimensional vectors</strong>.
                             </p>
 
+                            {/* Momentum X */}
                             <div className="input-group">
                                 <label className="input-label">Momentum in x-direction</label>
                                 <div className="input-wrapper">
                                     <input
                                         type="number"
-                                        className="input-field result-field"
-                                        value={momX}
-                                        onChange={(e) => handleMomComponentChange(e.target.value, 'x')}
+                                        className="input-field"
+                                        value={momX.value}
+                                        onChange={(e) => updateCalculations('momComp', e.target.value, momX.unit, 'x')}
                                     />
                                     <div className="unit-select-wrapper">
-                                        <select className="unit-select" value={momentumUnit} onChange={(e) => setMomentumUnit(e.target.value)}>
-                                            <option value="kg·m/s">kg·m/s</option>
-                                            <option value="N·s">N·s</option>
-                                            <option value="lb·ft/s">lb·ft/s</option>
+                                        <select className="unit-select" value={momX.unit} onChange={(e) => handleUnitChange(setMomX, momX, e.target.value, 'momX', MOMENTUM_UNITS)}>
+                                            {Object.keys(MOMENTUM_UNITS).map(u => <option key={u} value={u}>{u}</option>)}
                                         </select>
                                     </div>
                                 </div>
                             </div>
+
+                            {/* Momentum Y */}
                             <div className="input-group">
                                 <label className="input-label">Momentum in y-direction</label>
                                 <div className="input-wrapper">
                                     <input
                                         type="number"
-                                        className="input-field result-field"
-                                        value={momY}
-                                        onChange={(e) => handleMomComponentChange(e.target.value, 'y')}
+                                        className="input-field"
+                                        value={momY.value}
+                                        onChange={(e) => updateCalculations('momComp', e.target.value, momY.unit, 'y')}
                                     />
                                     <div className="unit-select-wrapper">
-                                        <span className="unit-static" style={{ marginRight: '12px' }}>{momentumUnit}</span>
+                                        <select className="unit-select" value={momY.unit} onChange={(e) => handleUnitChange(setMomY, momY, e.target.value, 'momY', MOMENTUM_UNITS)}>
+                                            {Object.keys(MOMENTUM_UNITS).map(u => <option key={u} value={u}>{u}</option>)}
+                                        </select>
                                     </div>
                                 </div>
                             </div>
+
+                            {/* Momentum Z */}
                             <div className="input-group">
                                 <label className="input-label">Momentum in z-direction</label>
                                 <div className="input-wrapper">
                                     <input
                                         type="number"
-                                        className="input-field result-field"
-                                        value={momZ}
-                                        onChange={(e) => handleMomComponentChange(e.target.value, 'z')}
+                                        className="input-field"
+                                        value={momZ.value}
+                                        onChange={(e) => updateCalculations('momComp', e.target.value, momZ.unit, 'z')}
                                     />
                                     <div className="unit-select-wrapper">
-                                        <span className="unit-static" style={{ marginRight: '12px' }}>{momentumUnit}</span>
+                                        <select className="unit-select" value={momZ.unit} onChange={(e) => handleUnitChange(setMomZ, momZ, e.target.value, 'momZ', MOMENTUM_UNITS)}>
+                                            {Object.keys(MOMENTUM_UNITS).map(u => <option key={u} value={u}>{u}</option>)}
+                                        </select>
                                     </div>
                                 </div>
                             </div>
@@ -489,29 +524,21 @@ const MomentumCalculatorPage = () => {
                                 <div className="input-wrapper">
                                     <input
                                         type="number"
-                                        className="input-field result-field"
-                                        value={momentum}
-                                        onChange={(e) => handleMomentumChange(e.target.value)}
+                                        className="input-field"
+                                        value={momMag.value}
+                                        onChange={(e) => updateCalculations('momMag', e.target.value, momMag.unit)}
                                     />
                                     <div className="unit-select-wrapper">
-                                        <span className="unit-static" style={{ marginRight: '12px' }}>{momentumUnit}</span>
+                                        <select className="unit-select" value={momMag.unit} onChange={(e) => handleUnitChange(setMomMag, momMag, e.target.value, 'momMag', MOMENTUM_UNITS)}>
+                                            {Object.keys(MOMENTUM_UNITS).map(u => <option key={u} value={u}>{u}</option>)}
+                                        </select>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     )}
-                </div>
 
-                <div className="section-card">
-                    <div className="calc-actions-custom">
-                        <button className="share-result-btn-custom" onClick={handleShare}>
-                            <div className="share-icon-circle-custom">
-                                <Share2 size={24} />
-                            </div>
-                            Share result
-                            {showShareTooltip && <span className="copied-tooltip">Copied!</span>}
-                        </button>
-
+                    <div className="calc-actions-custom" style={{ marginTop: '24px' }}>
                         <div className="secondary-actions-custom">
                             <button className="secondary-btn-custom" onClick={() => window.location.reload()}>
                                 Reload calculator

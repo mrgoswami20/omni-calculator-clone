@@ -74,9 +74,23 @@ import AccuracyCalculatorPage from './pages/Statistics/AccuracyCalculatorPage';
 import ANOVACalculatorPage from './pages/Statistics/ANOVACalculatorPage';
 import ArrowSpeedCalculatorPage from './pages/Physics/ArrowSpeedCalculatorPage';
 import MomentumCalculatorPage from './pages/Physics/MomentumCalculatorPage';
-import MuzzleVelocityCalculatorPage from './pages/Physics/MuzzleVelocityCalculatorPage';
+import BallisticCoefficientCalculatorPage from './pages/Physics/BallisticCoefficientCalculatorPage';
+import FrictionCalculatorPage from './pages/Physics/FrictionCalculatorPage';
 import BayesTheoremCalculatorPage from './pages/Statistics/BayesTheoremCalculatorPage';
 import LotteryCalculatorPage from './pages/Statistics/LotteryCalculatorPage';
+import QuarterMileCalculatorPage from './pages/Physics/QuarterMileCalculatorPage';
+import FreeFallCalculatorPage from './pages/Physics/FreeFallCalculatorPage';
+import CellDoublingTimeCalculatorPage from './pages/Biology/CellDoublingTimeCalculatorPage';
+import GenerationTimeCalculatorPage from './pages/Biology/GenerationTimeCalculatorPage';
+import LigationCalculatorPage from './pages/Biology/LigationCalculatorPage';
+import CellDilutionCalculatorPage from './pages/Biology/CellDilutionCalculatorPage';
+import LogReductionCalculatorPage from './pages/Biology/LogReductionCalculatorPage';
+import ABSICalculatorPage from './pages/Health/ABSICalculatorPage';
+import AdjustedBodyWeightCalculatorPage from './pages/Health/AdjustedBodyWeightCalculatorPage';
+import BAICalculatorPage from './pages/Health/BAICalculatorPage';
+import FFMICalculatorPage from './pages/Health/FFMICalculatorPage';
+import LeanBodyMassCalculatorPage from './pages/Health/LeanBodyMassCalculatorPage';
+import KarvonenFormulaCalculatorPage from './pages/Health/KarvonenFormulaCalculatorPage';
 
 import AuthModal from './components/AuthModal';
 import Footer from './components/Footer';
@@ -115,7 +129,10 @@ function App() {
           <Route path="/physics" element={<CategoryLayout data={categoryPagesData.physics} />} />
           <Route path="/physics/arrow-speed-calculator" element={<ArrowSpeedCalculatorPage />} />
           <Route path="/physics/momentum-calculator" element={<MomentumCalculatorPage />} />
-          <Route path="/physics/muzzle-velocity-calculator" element={<MuzzleVelocityCalculatorPage />} />
+          <Route path="/physics/ballistic-coefficient-calculator" element={<BallisticCoefficientCalculatorPage />} />
+          <Route path="/physics/friction-calculator" element={<FrictionCalculatorPage />} />
+          <Route path="/physics/quarter-mile-calculator" element={<QuarterMileCalculatorPage />} />
+          <Route path="/physics/free-fall-calculator" element={<FreeFallCalculatorPage />} />
           <Route path="/sports" element={<CategoryLayout data={categoryPagesData.sports} />} />
           <Route path="/statistics" element={<CategoryLayout data={categoryPagesData.statistics} />} />
           <Route path="/other" element={<CategoryLayout data={categoryPagesData.other} />} />
@@ -189,6 +206,17 @@ function App() {
           <Route path="/discover-omni/ideal-egg-boiling-calculator" element={<IdealEggBoilingCalculatorPage />} />
           <Route path="/discover-omni/korean-age-calculator" element={<KoreanAgeCalculatorPage />} />
           <Route path="/ecology/meat-footprint-calculator" element={<MeatFootprintCalculatorPage />} />
+          <Route path="/biology/cell-doubling-time-calculator" element={<CellDoublingTimeCalculatorPage />} />
+          <Route path="/biology/generation-time-calculator" element={<GenerationTimeCalculatorPage />} />
+          <Route path="/biology/ligation-calculator" element={<LigationCalculatorPage />} />
+          <Route path="/biology/cell-dilution-calculator" element={<CellDilutionCalculatorPage />} />
+          <Route path="/biology/log-reduction-calculator" element={<LogReductionCalculatorPage />} />
+          <Route path="/health/absi-calculator" element={<ABSICalculatorPage />} />
+          <Route path="/health/adjusted-body-weight-calculator" element={<AdjustedBodyWeightCalculatorPage />} />
+          <Route path="/health/bai-calculator" element={<BAICalculatorPage />} />
+          <Route path="/health/ffmi-calculator" element={<FFMICalculatorPage />} />
+          <Route path="/health/lean-body-mass-calculator" element={<LeanBodyMassCalculatorPage />} />
+          <Route path="/health/karvonen-formula-calculator" element={<KarvonenFormulaCalculatorPage />} />
         </Routes>
         <Footer />
 

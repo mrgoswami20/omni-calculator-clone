@@ -1,0 +1,237 @@
+.bai-calculator-page {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.bai-calculator-page .section-card {
+    position: relative;
+    background: white;
+    border-radius: 12px;
+    padding: 32px;
+    border: 1px solid #e5e7eb;
+    margin-bottom: 24px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+.bai-calculator-page .section-title {
+    font-size: 18px;
+    font-weight: 700;
+    color: #111827;
+    margin-bottom: 24px;
+}
+
+.bai-calculator-page .input-group {
+    margin-bottom: 24px;
+}
+
+.bai-calculator-page .info-icon {
+    color: #9ca3af;
+    cursor: help;
+    vertical-align: middle;
+}
+
+/* Input Wrapper */
+.bai-calculator-page .input-wrapper {
+    display: flex;
+    height: 48px;
+    align-items: stretch;
+    border: 1px solid #cbd5e1;
+    border-radius: 8px;
+    overflow: hidden;
+    transition: all 0.2s;
+    background: #fcfcfc;
+}
+
+.bai-calculator-page .input-wrapper:focus-within {
+    border-color: #3b82f6;
+    box-shadow: 0 0 0 1px #3b82f6;
+}
+
+.bai-calculator-page .input-field {
+    flex: 1;
+    border: none;
+    padding: 0 16px;
+    font-size: 16px;
+    color: #1f2937;
+    width: 100%;
+    outline: none;
+    background: transparent;
+}
+
+.bai-calculator-page .input-field.calculated-value {
+    color: #3b82f6;
+    font-weight: 500;
+}
+
+.bai-calculator-page .unit-label-static {
+    font-size: 14px;
+    font-weight: 500;
+    color: #64748b;
+    display: flex;
+    align-items: center;
+    padding: 0 16px;
+    background: white;
+    border-left: 1px solid #cbd5e1;
+}
+
+.bai-calculator-page .unit-select-wrapper {
+    background: white;
+    border-left: 1px solid #cbd5e1;
+    display: flex;
+    align-items: center;
+    padding-right: 8px;
+    min-width: 80px;
+    position: relative;
+}
+
+.bai-calculator-page .unit-select {
+    border: none;
+    background: transparent;
+    font-size: 14px;
+    font-weight: 500;
+    color: #64748b;
+    cursor: pointer;
+    outline: none;
+    width: 100%;
+    padding: 0 24px 0 12px;
+    appearance: none;
+}
+
+.bai-calculator-page .unit-select-wrapper::after {
+    content: '▼';
+    font-size: 8px;
+    position: absolute;
+    right: 12px;
+    pointer-events: none;
+    color: #64748b;
+}
+
+/* Divider & Actions */
+.bai-calculator-page .divider-custom {
+    height: 1px;
+    background: #f3f4f6;
+    margin: 32px 0;
+}
+
+.bai-calculator-page .calc-actions-custom-layout {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.bai-calculator-page .side-actions {
+    display: flex;
+    gap: 12px;
+}
+
+.bai-calculator-page .action-btn-styled {
+    flex: 1;
+    height: 44px;
+    border: 1px solid #e5e7eb;
+    background: white;
+    color: #1f2937;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    font-size: 14px;
+    transition: all 0.2s;
+}
+
+.bai-calculator-page .action-btn-styled:hover {
+    background: #f9fafb;
+    border-color: #d1d5db;
+}
+
+.bai-calculator-page .action-btn-styled.outline {
+    color: #4b5563;
+}
+
+/* Feedback Section */
+.feedback-section-new {
+    margin-top: 32px;
+    padding-top: 24px;
+    border-top: 1px solid #f3f4f6;
+    text-align: center;
+}
+
+.feedback-section-new p {
+    font-size: 15px;
+    color: #4b5563;
+    margin-bottom: 16px;
+    text-align: center;
+    width: 100%;
+}
+
+.feedback-btns-new {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+    width: 100%;
+}
+
+.feedback-btn {
+    border: 1px solid #e5e7eb;
+    background: white;
+    padding: 8px 16px;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    transition: all 0.2s;
+    white-space: nowrap;
+}
+
+.feedback-btn:hover {
+    background: #f9fafb;
+}
+
+/* Article Styling */
+.article-container {
+    color: #374151;
+    line-height: 1.6;
+}
+
+.article-title {
+    font-size: 24px;
+    font-weight: 800;
+    color: #111827;
+    margin-bottom: 16px;
+    margin-top: 32px;
+}
+
+.premium-formula-box {
+    background: #f8fafc;
+    border-radius: 12px;
+    padding: 24px;
+    margin: 24px 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid #e2e8f0;
+}
+
+.math-latex {
+    font-family: serif;
+    font-size: 18px;
+    color: #1e293b;
+    text-align: center;
+    font-style: italic;
+}
+
+@media (max-width: 640px) {
+    .bai-calculator-page .section-card {
+        padding: 20px;
+    }
+
+    .bai-calculator-page .side-actions {
+        flex-direction: column;
+    }
+}

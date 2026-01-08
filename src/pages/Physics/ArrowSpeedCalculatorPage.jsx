@@ -320,10 +320,8 @@ const ArrowSpeedCalculatorPage = () => {
                             </div>
                         </div>
                     </div>
-                </div>
+                    <div className="divider-custom"></div>
 
-                {/* Results Card */}
-                <div className="section-card">
                     <h3 style={{ fontSize: '16px', fontWeight: '600', color: '#2d3748', marginBottom: '16px' }}>Actual arrow speed</h3>
                     <p style={{ fontSize: '14px', color: '#4a5568', marginBottom: '16px' }}>Plus its momentum and kinetic energy</p>
 
@@ -393,19 +391,8 @@ const ArrowSpeedCalculatorPage = () => {
                             </div>
                         </div>
                     </div>
-                </div>
 
-                {/* Footer Actions */}
-                <div className="section-card">
-                    <div className="calc-actions-custom" style={{ marginTop: 0, borderTop: 'none', paddingTop: 0 }}>
-                        {/* <button className="share-result-btn-custom" onClick={handleShare}>
-                            <div className="share-icon-circle-custom">
-                                <Share2 size={24} />
-                            </div>
-                            Share result
-                            {showShareTooltip && <span className="copied-tooltip">Copied!</span>}
-                        </button> */}
-
+                    <div className="calc-actions-custom" style={{ marginTop: '24px' }}>
                         <div className="secondary-actions-custom">
                             <button className="secondary-btn-custom" onClick={() => window.location.reload()}>
                                 Reload calculator

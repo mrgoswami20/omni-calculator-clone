@@ -19,13 +19,13 @@ export const categoryPagesData = {
                 groups: [
                     [
                         { label: "Arrow Speed Calculator", url: "/physics/arrow-speed-calculator", icon: MoreHorizontal }, // Placeholder icon
-                        { label: "Ballistic Coefficient Calculator", url: "#", icon: MoreHorizontal },
-                        { label: "Car Jump Distance Calculator", url: "#", icon: Car },
+                        { label: "Ballistic Coefficient Calculator", url: "/physics/ballistic-coefficient-calculator", icon: Rocket },
+                        { label: "Quarter Mile Calculator", url: "/physics/quarter-mile-calculator", icon: Timer },
                     ],
                     [
                         { label: "Momentum Calculator", url: "/physics/momentum-calculator", icon: Activity },
-                        { label: "Muzzle Velocity Calculator", url: "/physics/muzzle-velocity-calculator", icon: Zap },
-                        { label: "Polar Moment of Inertia Calculator", url: "#", icon: RotateCw },
+                        { label: "Friction Calculator", url: "/physics/friction-calculator", icon: Zap },
+                        { label: "Free Fall Calculator", url: "/physics/free-fall-calculator", icon: ArrowDownUp },
                     ]
                 ]
             }
@@ -150,13 +150,13 @@ export const categoryPagesData = {
                 groups: [
                     [
                         { label: "Annealing Temperature Calculator", url: "/biology/annealing-temperature-calculator", icon: Thermometer },
-                        { label: "Generation Time Calculator", url: "#", icon: Timer },
-                        { label: "Cell Dilution Calculator", url: "#", icon: Pipette },
+                        { label: "Generation Time Calculator", url: "/biology/generation-time-calculator", icon: Timer },
+                        { label: "Cell Dilution Calculator", url: "/biology/cell-dilution-calculator", icon: Pipette },
                     ],
                     [
-                        { label: "DNA Concentration Calculator", url: "#", icon: Dna },
-                        { label: "Ligation Calculator", url: "#", icon: LinkIcon },
-                        { label: "Log Reduction Calculator", url: "#", icon: TrendingDown },
+                        { label: "Cell Doubling Time Calculator", url: "/biology/cell-doubling-time-calculator", icon: Activity },
+                        { label: "Ligation Calculator", url: "/biology/ligation-calculator", icon: LinkIcon },
+                        { label: "Log Reduction Calculator", url: "/biology/log-reduction-calculator", icon: TrendingDown },
                     ]
                 ]
             }
@@ -378,14 +378,14 @@ export const categoryPagesData = {
                 iconColor: "#a16207",
                 groups: [
                     [
-                        { label: "ABSI Calculator", url: "#", icon: Activity },
-                        { label: "Adjusted Body Weight Calculator", url: "#", icon: Scale },
-                        { label: "BAI Calculator - Body Adiposity Index", url: "#", icon: Activity },
+                        { label: "ABSI Calculator", url: "/health/absi-calculator", icon: Activity },
+                        { label: "Adjusted Body Weight Calculator", url: "/health/adjusted-body-weight-calculator", icon: Scale },
+                        { label: "BAI Calculator - Body Adiposity Index", url: "/health/bai-calculator", icon: Activity },
                     ],
                     [
-                        { label: "FFMI Calculator (Fat-Free Mass Index)", url: "#", icon: Dumbbell },
-                        { label: "Ideal Weight Calculator", url: "#", icon: Scale },
-                        { label: "Karvonen Formula Calculator", url: "#", icon: Heart },
+                        { label: "FFMI Calculator (Fat-Free Mass Index)", url: "/health/ffmi-calculator", icon: Dumbbell },
+                        { label: "Lean Body Mass Calculator", url: "/health/lean-body-mass-calculator", icon: Scale },
+                        { label: "Karvonen Formula Calculator", url: "/health/karvonen-formula-calculator", icon: Heart },
                     ]
                 ]
             }
