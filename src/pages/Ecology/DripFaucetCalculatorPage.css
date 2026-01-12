@@ -1,6 +1,6 @@
-/* AnnealingCalculatorPage.css */
+/* DripFaucetCalculatorPage.css */
 
-.annealing-calculator {
+.drip-faucet-calculator {
     width: 100%;
     margin: 0 auto;
 }
@@ -16,9 +16,10 @@
     gap: 12px;
     /* Tight gap */
     max-width: 380px;
-    /* Small format */
+    /* Even smaller max-width for "compact" look */
     margin: 0 auto;
     border: 1px solid #f1f5f9;
+    /* Subtle border for definition */
 }
 
 /* Actions Section */
@@ -27,6 +28,7 @@
     justify-content: center;
     gap: 10px;
     margin-top: 4px;
+    /* Minimal margin */
     padding-top: 12px;
     border-top: 1px solid #f1f5f9;
 }
@@ -49,6 +51,7 @@
 
 .feedback-section p {
     font-size: 0.8rem;
+    /* Smaller text */
     color: #64748b;
     margin-bottom: 6px;
 }
@@ -76,7 +79,16 @@
         max-width: 100%;
         padding: 14px;
         border-radius: 0;
+        /* Full width often looks better without rounded corners on very small screens, or keep small radius */
+        background: transparent;
+        /* Or keep white. Let's keep white but maybe simplify box shadow */
         box-shadow: none;
+        /* Remove shadow on mobile for flatter look if preferred, or keep */
         border: none;
+    }
+
+    .drip-faucet-calculator {
+        padding: 0;
+        /* No extra padding on page wrapper */
     }
 }

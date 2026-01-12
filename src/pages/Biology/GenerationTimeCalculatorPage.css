@@ -1,292 +1,86 @@
-.generation-time-calculator-page {
+/* GenerationTimeCalculatorPage.css */
+
+.generation-time-calculator {
+    width: 100%;
+    margin: 0 auto;
+}
+
+.calc-card {
+    background: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    padding: 16px;
+    /* Tight padding */
     display: flex;
     flex-direction: column;
-    gap: 16px;
+    gap: 12px;
+    /* Tight gap */
+    max-width: 380px;
+    /* Small format */
+    margin: 0 auto;
+    border: 1px solid #f1f5f9;
 }
 
-.generation-time-calculator-page .section-card {
-    position: relative;
-    background: white;
-    border-radius: 12px;
-    padding: 32px;
-    border: 1px solid #e5e7eb;
-    margin-bottom: 24px;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
-}
-
-.generation-time-calculator-page .input-group {
-    margin-bottom: 24px;
-}
-
-.generation-time-calculator-page .input-label {
+/* Actions Section */
+.actions-section {
     display: flex;
-    align-items: center;
-    gap: 8px;
-    font-size: 15px;
-    font-weight: 500;
-    color: #4b5563;
-    margin-bottom: 10px;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 4px;
+    padding-top: 12px;
+    border-top: 1px solid #f1f5f9;
 }
 
-.generation-time-calculator-page .info-icon {
-    color: #9ca3af;
-    cursor: help;
-}
-
-.generation-time-calculator-page .input-wrapper {
+.utility-buttons {
     display: flex;
-    height: 48px;
-    align-items: stretch;
-    border: 1px solid #cbd5e1;
-    border-radius: 8px;
-    overflow: hidden;
-    transition: all 0.2s;
-}
-
-.generation-time-calculator-page .input-wrapper:focus-within {
-    border-color: #3b82f6;
-    box-shadow: 0 0 0 1px #3b82f6;
-}
-
-.generation-time-calculator-page .input-wrapper.single-field {
-    border-radius: 8px;
-}
-
-.generation-time-calculator-page .input-field {
-    flex: 1;
-    border: none;
-    padding: 0 16px;
-    font-size: 16px;
-    color: #1f2937;
     width: 100%;
-    outline: none;
-    background: #fcfcfc;
+    flex-direction: row;
+    justify-content: center;
+    gap: 10px;
 }
 
-.generation-time-calculator-page .input-field.full-round {
-    border-radius: 8px;
+/* Feedback Section */
+.feedback-section {
+    margin-top: 0;
+    text-align: center;
+    padding-top: 12px;
+    border-top: 1px solid #f1f5f9;
 }
 
-.generation-time-calculator-page .unit-select-wrapper {
-    background: white;
-    border-left: 1px solid #cbd5e1;
-    display: flex;
-    align-items: center;
-    padding-right: 8px;
-    min-width: 80px;
-    position: relative;
-}
-
-.generation-time-calculator-page .unit-select {
-    border: none;
-    background: transparent;
-    padding: 0 24px 0 12px;
-    font-size: 14px;
-    font-weight: 500;
-    color: #3b82f6;
-    cursor: pointer;
-    outline: none;
-    appearance: none;
-    width: 100%;
-}
-
-.generation-time-calculator-page .unit-select-wrapper::after {
-    content: '▼';
-    font-size: 8px;
-    position: absolute;
-    right: 12px;
-    top: 50%;
-    transform: translateY(-50%);
-    color: #3b82f6;
-    pointer-events: none;
-}
-
-.generation-time-calculator-page .input-wrapper.multi-part-container {
-    height: 48px;
-    display: flex;
-    align-items: stretch;
-    border: 1px solid #cbd5e1;
-    border-radius: 8px;
-    overflow: hidden;
-    background: #fcfcfc;
-    gap: 0;
-}
-
-.generation-time-calculator-page .multi-field-layout {
-    flex: 1;
-    display: flex;
-    align-items: stretch;
-}
-
-.generation-time-calculator-page .field-with-label {
-    flex: 1;
-    display: flex;
-    align-items: center;
-    position: relative;
-    border-right: 1px solid #cbd5e1;
-    background: transparent;
-}
-
-.generation-time-calculator-page .field-with-label:last-child {
-    border-right: none;
-}
-
-.generation-time-calculator-page .part-label {
-    position: absolute;
-    right: 12px;
-    font-size: 13px;
+.feedback-section p {
+    font-size: 0.8rem;
     color: #64748b;
-    pointer-events: none;
-    text-transform: lowercase;
+    margin-bottom: 6px;
 }
 
-.generation-time-calculator-page .field-with-label .input-field {
-    height: 100%;
-    background: transparent;
-    padding: 0 45px 0 16px;
-    text-align: left;
-}
-
-.generation-time-calculator-page .multi-part-container .unit-select-wrapper {
-    border-left: 1px solid #cbd5e1;
-    border-right: none;
-    border-top: none;
-    border-bottom: none;
-    border-radius: 0;
-    min-width: 160px;
-}
-
-.generation-time-calculator-page .calc-actions-custom-layout {
+.feedback-btngroup {
     display: flex;
-    flex-direction: column;
-    gap: 16px;
-    margin-top: 24px;
+    justify-content: center;
+    gap: 10px;
 }
 
-.generation-time-calculator-page .side-actions {
-    display: flex;
-    gap: 12px;
+.result-space {
+    margin-top: 4px !important;
+    padding-top: 8px !important;
+    border-top: 1px dashed #e2e8f0;
 }
 
-.generation-time-calculator-page .action-btn-styled {
-    flex: 1;
-    height: 44px;
-    border: 1px solid #e5e7eb;
-    background: white;
-    color: #1f2937;
-    border-radius: 8px;
+/* Specific styling for formula blocks in article */
+.formula-block {
+    text-align: center;
     font-weight: 600;
-    cursor: pointer;
-    font-size: 14px;
-    transition: all 0.2s;
-}
-
-.generation-time-calculator-page .action-btn-styled.outline {
-    color: #4b5563;
-}
-
-.generation-time-calculator-page .action-btn-styled:hover {
-    background: #f9fafb;
-    border-color: #d1d5db;
-}
-
-.feedback-section-new {
-    margin-top: 32px;
-    padding-top: 24px;
-    border-top: 1px solid #f3f4f6;
-    text-align: center;
-}
-
-.feedback-section-new p {
-    font-size: 15px;
-    color: #4b5563;
-    margin-bottom: 16px;
-    text-align: center;
-    width: 100%;
-}
-
-.feedback-btns-new {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    gap: 12px;
-    width: 100%;
-}
-
-.feedback-btn {
-    border: 1px solid #e5e7eb;
-    background: white;
-    padding: 8px 16px;
-    border-radius: 8px;
-    font-size: 14px;
-    font-weight: 500;
-    cursor: pointer;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
-    transition: all 0.2s;
-    white-space: nowrap;
-}
-
-.feedback-btn:hover {
-    background: #f9fafb;
-}
-
-.article-container {
-    color: #374151;
-    line-height: 1.6;
-}
-
-.article-title {
-    font-size: 32px;
-    font-weight: 800;
-    color: #111827;
-    margin-bottom: 24px;
-    text-align: center;
-}
-
-.article-steps {
     margin: 24px 0;
-    padding-left: 20px;
-}
-
-.article-steps li {
-    margin-bottom: 16px;
-}
-
-.premium-formula-box {
-    background: #fffbeb;
-    border-radius: 12px;
-    padding: 40px 20px;
-    margin: 32px 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border: 1px solid #fde68a;
-}
-
-.math-latex {
-    font-family: serif;
-    font-size: 20px;
-    color: #92400e;
-    display: flex;
-    align-items: center;
-    gap: 8px;
+    color: #1e293b;
+    font-family: 'Times New Roman', serif;
+    font-size: 1.1rem;
 }
 
 @media (max-width: 640px) {
-    .generation-time-calculator-page .section-card {
-        padding: 20px;
-    }
-
-    .generation-time-calculator-page .side-actions {
-        flex-direction: column;
-    }
-
-    .math-latex {
-        font-size: 16px;
+    .calc-card {
+        max-width: 100%;
+        padding: 14px;
+        border-radius: 0;
+        box-shadow: none;
+        border: none;
     }
 }

@@ -1,136 +1,155 @@
 import React, { useState } from 'react';
 import CalculatorLayout from '../../components/CalculatorLayout';
+import { RotateCcw, Trash2 } from 'lucide-react';
+import InputBarWithDropDownOption from '../../components/kit_components/InputBarWithDropDownOption';
+import SimpleButton from '../../components/kit_components/SimpleButton';
 import './CellDilutionCalculatorPage.css';
 
 const CellDilutionCalculatorPage = () => {
     // --- Constants ---
+    // User requested: [microliter (ul), milliliter (ml), centiliter (cl), liter (1)]
+    const CONC_UNITS = [
+        { value: 'uL', label: 'microliter (µl)' },
+        { value: 'mL', label: 'milliliter (ml)' },
+        { value: 'cL', label: 'centiliter (cl)' },
+        { value: 'L', label: 'liter (l)' }
+    ];
+
+    const VOL_UNITS = [
+        { value: 'L', label: 'Liters (L)' },
+        { value: 'mL', label: 'milliliters (mL)' },
+        { value: 'uL', label: 'microliters (µL)' },
+        { value: 'nL', label: 'nanoliters (nL)' }
+    ];
+
+    // Factors relative to "cells / mL" (Base Unit = 1)
+    // 1 cell/uL = 1000 cells/mL -> Factor 1000
+    // 1 cell/mL = 1 cells/mL -> Factor 1
+    // 1 cell/cL = 1 cell per 10 mL = 0.1 cells/mL -> Factor 0.1
+    // 1 cell/L = 1 cell per 1000 mL = 0.001 cells/mL -> Factor 0.001
     const CONC_FACTORS = {
-        'cells / L': 0.001,
-        'cells / ml': 1,
-        'cells / µl': 1000,
-        '10³ cells / ml': 1000,
-        '10⁶ cells / ml': 1000000
+        'uL': 1000,
+        'mL': 1,
+        'cL': 0.1,
+        'L': 0.001
     };
 
     const VOL_FACTORS = {
-        'nl': 0.001,
-        'µl': 1,
-        'ml': 1000,
-        'L': 1000000
+        'L': 1000, // Base unit mL? Let's check logic.
+        // If Base vol is mL, then L factor is 1000.
+        'mL': 1,
+        'uL': 0.001,
+        'nL': 0.000001
     };
 
     // --- State ---
-    const [c1, setC1] = useState({ value: '', unit: 'cells / ml', isManual: false });
-    const [v1, setV1] = useState({ value: '', unit: 'ml', isManual: false });
-    const [c2, setC2] = useState({ value: '', unit: 'cells / ml', isManual: false });
-    const [v2, setV2] = useState({ value: '', unit: 'ml', isManual: false });
+    const [values, setValues] = useState({
+        c1: '', v1: '', c2: '', v2: ''
+    });
+
+    // Units state
+    const [units, setUnits] = useState({
+        c1: 'mL', v1: 'mL', c2: 'mL', v2: 'mL'
+    });
+
+    const [errors, setErrors] = useState({});
+
+    const handleReset = () => {
+        setValues({ c1: '', v1: '', c2: '', v2: '' });
+        setUnits({ c1: 'mL', v1: 'mL', c2: 'mL', v2: 'mL' });
+        setErrors({});
+    };
 
     // --- Helpers ---
-    const formatValue = (val) => {
-        if (val === null || isNaN(val) || val === Infinity) return '';
-        if (val > 0 && (val < 0.001 || val > 1e9)) {
-            return val.toExponential(4);
-        }
-        return parseFloat(val.toFixed(6)).toString();
+    const getBaseValue = (val, unit, type) => {
+        const factor = type === 'conc' ? CONC_FACTORS[unit] : VOL_FACTORS[unit];
+        return parseFloat(val) * factor;
     };
 
-    // --- Calculation Logic ---
-    const calculate = (changedField, newVal, newUnit) => {
-        const state = {
-            c1: { ...c1 },
-            v1: { ...v1 },
-            c2: { ...c2 },
-            v2: { ...v2 }
-        };
-
-        // Update state with new input and mark as manual
-        if (changedField === 'c1') {
-            state.c1.value = newVal;
-            state.c1.isManual = true;
-            setC1(state.c1);
-        } else if (changedField === 'c1-unit') {
-            state.c1.unit = newUnit;
-            setC1(state.c1);
-        } else if (changedField === 'v1') {
-            state.v1.value = newVal;
-            state.v1.isManual = true;
-            setV1(state.v1);
-        } else if (changedField === 'v1-unit') {
-            state.v1.unit = newUnit;
-            setV1(state.v1);
-        } else if (changedField === 'c2') {
-            state.c2.value = newVal;
-            state.c2.isManual = true;
-            setC2(state.c2);
-        } else if (changedField === 'c2-unit') {
-            state.c2.unit = newUnit;
-            setC2(state.c2);
-        } else if (changedField === 'v2') {
-            state.v2.value = newVal;
-            state.v2.isManual = true;
-            setV2(state.v2);
-        } else if (changedField === 'v2-unit') {
-            state.v2.unit = newUnit;
-            setV2(state.v2);
-        }
-
-        const c1_base = parseFloat(state.c1.value) * CONC_FACTORS[state.c1.unit];
-        const v1_base = parseFloat(state.v1.value) * VOL_FACTORS[state.v1.unit];
-        const c2_base = parseFloat(state.c2.value) * CONC_FACTORS[state.c2.unit];
-        const v2_base = parseFloat(state.v2.value) * VOL_FACTORS[state.v2.unit];
-
-        // Solver logic
-        if (changedField !== 'v2' && !isNaN(c1_base) && !isNaN(v1_base) && !isNaN(c2_base) && c2_base !== 0) {
-            const res = (c1_base * v1_base) / c2_base;
-            setV2(prev => ({ ...prev, value: formatValue(res / VOL_FACTORS[prev.unit]), isManual: false }));
-        } else if (changedField !== 'c2' && !isNaN(c1_base) && !isNaN(v1_base) && !isNaN(v2_base) && v2_base !== 0) {
-            const res = (c1_base * v1_base) / v2_base;
-            setC2(prev => ({ ...prev, value: formatValue(res / CONC_FACTORS[prev.unit]), isManual: false }));
-        } else if (changedField !== 'v1' && !isNaN(c1_base) && !isNaN(c2_base) && !isNaN(v2_base) && c1_base !== 0) {
-            const res = (c2_base * v2_base) / c1_base;
-            setV1(prev => ({ ...prev, value: formatValue(res / VOL_FACTORS[prev.unit]), isManual: false }));
-        } else if (changedField !== 'c1' && !isNaN(v1_base) && !isNaN(c2_base) && !isNaN(v2_base) && v1_base !== 0) {
-            const res = (c2_base * v2_base) / v1_base;
-            setC1(prev => ({ ...prev, value: formatValue(res / CONC_FACTORS[prev.unit]), isManual: false }));
-        }
+    const fromBaseValue = (val, unit, type) => {
+        const factor = type === 'conc' ? CONC_FACTORS[unit] : VOL_FACTORS[unit];
+        return val / factor;
     };
 
-    const handleClear = () => {
-        setC1({ value: '', unit: 'cells / ml', isManual: false });
-        setV1({ value: '', unit: 'ml', isManual: false });
-        setC2({ value: '', unit: 'cells / ml', isManual: false });
-        setV2({ value: '', unit: 'ml', isManual: false });
+    // --- Core Logic ---
+    const validate = (newValues) => {
+        const newErrors = {};
+        if (newValues.c1 && parseFloat(newValues.c1) <= 0) newErrors.c1 = "Initial concentration must be positive!";
+        if (newValues.v1 && parseFloat(newValues.v1) <= 0) newErrors.v1 = "Volume of suspension must be positive!";
+        if (newValues.c2 && parseFloat(newValues.c2) <= 0) newErrors.c2 = "Final concentration must be positive!";
+        if (newValues.v2 && parseFloat(newValues.v2) <= 0) newErrors.v2 = "Final volume must be positive!";
+        setErrors(newErrors);
+        return Object.keys(newErrors).length === 0;
     };
+
+    const calculate = (target, newVals = values, newUnits = units) => {
+        // Find unknown
+        const filled = ['c1', 'v1', 'c2', 'v2'].filter(k => newVals[k] !== '' && !isNaN(parseFloat(newVals[k])));
+
+        if (filled.length === 3) {
+            const missing = ['c1', 'v1', 'c2', 'v2'].find(k => !filled.includes(k));
+
+            // Convert filled to base
+            const base = {};
+            filled.forEach(k => {
+                const type = (k === 'c1' || k === 'c2') ? 'conc' : 'vol';
+                base[k] = getBaseValue(newVals[k], newUnits[k], type);
+            });
+
+            let resBase = 0;
+            // Solve equations C1*V1 = C2*V2  (Base units: cells/mL * mL = cells)
+            // Units check: (cells/mL) * mL = cells. Consistent.
+
+            if (missing === 'v1') resBase = (base.c2 * base.v2) / base.c1;
+            else if (missing === 'c1') resBase = (base.c2 * base.v2) / base.v1;
+            else if (missing === 'v2') resBase = (base.c1 * base.v1) / base.c2;
+            else if (missing === 'c2') resBase = (base.c1 * base.v1) / base.v2;
+
+            if (resBase > 0 && isFinite(resBase)) {
+                const type = (missing === 'c1' || missing === 'c2') ? 'conc' : 'vol';
+                const resVal = fromBaseValue(resBase, newUnits[missing], type);
+
+                return { [missing]: parseFloat(resVal.toPrecision(6)).toString() };
+            }
+        }
+        return {};
+    };
+
+    const handleChange = (field, value) => {
+        const newValues = { ...values, [field]: value };
+        validate(newValues);
+        const derived = calculate(field, newValues, units);
+        setValues({ ...newValues, ...derived });
+    };
+
+    const handleUnitChange = (field, unit) => {
+        const newUnits = { ...units, [field]: unit };
+        setUnits(newUnits);
+        const derived = calculate(field, values, newUnits);
+        setValues({ ...values, ...derived });
+    };
+
+    const handleReload = () => window.location.reload();
 
     const articleContent = (
-        <div className="article-container">
-            <h2 className="article-title">What is the cell dilution calculator?</h2>
-            <p>If you want to know how to dilute your primary solution to receive the desired amount of cells in a set volume, this <strong>cell dilution calculator</strong> is just right for you! Apart from using this tool as a <strong>cell suspension dilution calculator</strong>, it can also be used as a <strong>cell concentration calculator</strong>.</p>
-
-            <h2 className="article-title">How to calculate cell dilution?</h2>
-            <p>The calculations are based on the main dilution formula:</p>
-            <div className="premium-formula-box">
-                <div className="math-latex">
-                    C₁ · V₁ = C₂ · V₂
-                </div>
+        <div className="article-wrapper">
+            <h2 id="dilution">What is the dilution formula?</h2>
+            <p>
+                Dilution is the process of decreasing the concentration of a solute in a solution, usually simply by mixing with more solvent like water. To dilute a solution means to add more solvent without the addition of more solute.
+            </p>
+            <p>The standard dilution equation is:</p>
+            <div className="formula-block">
+                $C_1 V_1 = C_2 V_2$
             </div>
-            <p>where:</p>
+            <p>Where:</p>
             <ul>
-                <li><strong>C₁</strong> — Initial concentration of cells;</li>
-                <li><strong>V₁</strong> — Volume of the initial suspension (stock);</li>
-                <li><strong>C₂</strong> — Target (final) concentration of cells; and</li>
-                <li><strong>V₂</strong> — Target (final) volume of suspension.</li>
+                <li>$C_1$ = Initial concentration (Stock)</li>
+                <li>$V_1$ = Initial volume (Volume of stock to take)</li>
+                <li>$C_2$ = Final concentration (Target)</li>
+                <li>$V_2$ = Final volume (Target)</li>
             </ul>
-
-            <h2 className="article-title">How to use the cell dilution calculator?</h2>
-            <ol className="article-steps">
-                <li>Enter the <strong>Initial concentration</strong> of your cell stock.</li>
-                <li>Enter the <strong>Final concentration</strong> you want to achieve.</li>
-                <li>Enter the <strong>Final volume</strong> needed for your experiment.</li>
-                <li>The calculator will instantly show the <strong>Volume for suspension</strong> you need to take from your stock.</li>
-            </ol>
-            <div className="info-callout">
-                <p>💡 <strong>Note:</strong> To find the volume of diluent (e.g., media or PBS) to add, simply subtract the volume for suspension from the final volume.</p>
+            <div className="formula-block">
+                {`$V_1 = \\frac{C_2 V_2}{C_1}$`}
             </div>
         </div>
     );
@@ -140,111 +159,81 @@ const CellDilutionCalculatorPage = () => {
             title="Cell Dilution Calculator"
             creators={[{ name: "Julia Kopczyńska", phd: true }]}
             reviewers={[{ name: "Anna Szczepanek", phd: true }, { name: "Steven Wooding" }]}
+            lastUpdated="June 11, 2024"
             articleContent={articleContent}
+            tocItems={[
+                { label: "Dilution Formula", id: "dilution" }
+            ]}
         >
-            <div className="cell-dilution-calculator-page">
-                <div className="section-card">
-                    <div className="input-group">
-                        <label className="input-label">Initial concentration</label>
-                        <div className="input-wrapper">
-                            <input
-                                type="text"
-                                className={`input-field ${!c1.isManual && c1.value ? 'calculated-value' : ''}`}
-                                value={c1.value}
-                                onChange={(e) => calculate('c1', e.target.value)}
-                                placeholder="0"
-                            />
-                            <div className="unit-select-wrapper">
-                                <select
-                                    className="unit-select"
-                                    value={c1.unit}
-                                    onChange={(e) => calculate('c1-unit', e.target.value)}
-                                >
-                                    {Object.keys(CONC_FACTORS).map(u => <option key={u} value={u}>{u}</option>)}
-                                </select>
-                            </div>
+            <div className="cell-dilution-calculator">
+                <div className="calc-card">
+                    {/* C1: Stock Concentration */}
+                    <InputBarWithDropDownOption
+                        label="Initial concentration"
+                        value={values.c1}
+                        onChange={(e) => handleChange('c1', e.target.value)}
+                        unit={units.c1}
+                        onUnitChange={(e) => handleUnitChange('c1', e.target.value)}
+                        unitOptions={CONC_UNITS}
+                        placeholder="0"
+                        error={errors.c1}
+                        unitPrefix="cells /"
+                    />
+
+                    {/* V1: Stock Volume */}
+                    <InputBarWithDropDownOption
+                        label="Volume for suspension"
+                        value={values.v1}
+                        onChange={(e) => handleChange('v1', e.target.value)}
+                        unit={units.v1}
+                        onUnitChange={(e) => handleUnitChange('v1', e.target.value)}
+                        unitOptions={VOL_UNITS}
+                        placeholder="0"
+                        error={errors.v1}
+                    />
+
+                    {/* C2: Final Concentration */}
+                    <InputBarWithDropDownOption
+                        label="Final concentration"
+                        value={values.c2}
+                        onChange={(e) => handleChange('c2', e.target.value)}
+                        unit={units.c2}
+                        onUnitChange={(e) => handleUnitChange('c2', e.target.value)}
+                        unitOptions={CONC_UNITS}
+                        placeholder="0"
+                        error={errors.c2}
+                        unitPrefix="cells /"
+                    />
+
+                    {/* V2: Final Volume */}
+                    <InputBarWithDropDownOption
+                        label="Final volume"
+                        value={values.v2}
+                        onChange={(e) => handleChange('v2', e.target.value)}
+                        unit={units.v2}
+                        onUnitChange={(e) => handleUnitChange('v2', e.target.value)}
+                        unitOptions={VOL_UNITS}
+                        placeholder="0"
+                        error={errors.v2}
+                    />
+
+                    {/* Actions */}
+                    <div className="actions-section">
+                        <div className="utility-buttons">
+                            <SimpleButton onClick={handleReload} variant="secondary">
+                                <RotateCcw size={16} style={{ marginRight: 8 }} /> Reload calculator
+                            </SimpleButton>
+                            <SimpleButton onClick={handleReset} variant="secondary">
+                                <Trash2 size={16} style={{ marginRight: 8 }} /> Clear all changes
+                            </SimpleButton>
                         </div>
                     </div>
 
-                    <div className="input-group">
-                        <label className="input-label">Volume for suspension</label>
-                        <div className="input-wrapper">
-                            <input
-                                type="text"
-                                className={`input-field ${!v1.isManual && v1.value ? 'calculated-value' : ''}`}
-                                value={v1.value}
-                                onChange={(e) => calculate('v1', e.target.value)}
-                                placeholder="0"
-                            />
-                            <div className="unit-select-wrapper">
-                                <select
-                                    className="unit-select"
-                                    value={v1.unit}
-                                    onChange={(e) => calculate('v1-unit', e.target.value)}
-                                >
-                                    {Object.keys(VOL_FACTORS).map(u => <option key={u} value={u}>{u}</option>)}
-                                </select>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div className="input-group">
-                        <label className="input-label">Final concentration</label>
-                        <div className="input-wrapper">
-                            <input
-                                type="text"
-                                className={`input-field ${!c2.isManual && c2.value ? 'calculated-value' : ''}`}
-                                value={c2.value}
-                                onChange={(e) => calculate('c2', e.target.value)}
-                                placeholder="0"
-                            />
-                            <div className="unit-select-wrapper">
-                                <select
-                                    className="unit-select"
-                                    value={c2.unit}
-                                    onChange={(e) => calculate('c2-unit', e.target.value)}
-                                >
-                                    {Object.keys(CONC_FACTORS).map(u => <option key={u} value={u}>{u}</option>)}
-                                </select>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div className="input-group">
-                        <label className="input-label">Final volume</label>
-                        <div className="input-wrapper">
-                            <input
-                                type="text"
-                                className={`input-field ${!v2.isManual && v2.value ? 'calculated-value' : ''}`}
-                                value={v2.value}
-                                onChange={(e) => calculate('v2', e.target.value)}
-                                placeholder="0"
-                            />
-                            <div className="unit-select-wrapper">
-                                <select
-                                    className="unit-select"
-                                    value={v2.unit}
-                                    onChange={(e) => calculate('v2-unit', e.target.value)}
-                                >
-                                    {Object.keys(VOL_FACTORS).map(u => <option key={u} value={u}>{u}</option>)}
-                                </select>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div className="divider-custom"></div>
-                    <div className="calc-actions-custom-layout">
-                        <div className="side-actions">
-                            <button className="action-btn-styled" onClick={() => window.location.reload()}>Reload calculator</button>
-                            <button className="action-btn-styled outline" onClick={handleClear}>Clear all changes</button>
-                        </div>
-                    </div>
-
-                    <div className="feedback-section-new">
+                    <div className="feedback-section">
                         <p>Did we solve your problem today?</p>
-                        <div className="feedback-btns-new">
-                            <button className="feedback-btn"><span className="icon">👍</span> Yes</button>
-                            <button className="feedback-btn"><span className="icon">👎</span> No</button>
+                        <div className="feedback-btngroup">
+                            <SimpleButton variant="secondary" style={{ width: 80 }}>Yes</SimpleButton>
+                            <SimpleButton variant="secondary" style={{ width: 80 }}>No</SimpleButton>
                         </div>
                     </div>
                 </div>

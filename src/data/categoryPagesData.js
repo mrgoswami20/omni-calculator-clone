@@ -1,4 +1,10 @@
-import { Atom, Dumbbell, BarChart3, MoreHorizontal, Star, Timer, GraduationCap, Dice5, Dna, Microscope, FlaskConical, Hammer, ArrowRightLeft, Ruler, Leaf, Recycle, Camera, Car, DollarSign, Briefcase, Utensils, ChefHat, Heart, Calculator, Percent, User, Calendar, Thermometer, Pipette, Link as LinkIcon, TrendingDown, Activity, Zap, RotateCw, Target, Shield, Footprints, Trophy, Ticket, GitBranch, Box, LayoutGrid, Droplets, ShoppingBag, TreePine, Globe, Sailboat, Rocket, BadgeDollarSign, Fuel, Wind, TrendingUp, Printer, UserX, ArrowDownUp, Users, BarChart4, Cookie, Circle, ConciergeBell, Scale, Divide, Award, Pill, Ghost, CircleDot } from 'lucide-react';
+
+import {
+    Atom, Dumbbell, BarChart3, MoreHorizontal, Star, Timer, GraduationCap, Dice5, Dna, Microscope, FlaskConical, Hammer, ArrowRightLeft, Ruler, Leaf, Recycle, Camera, Car, DollarSign, Briefcase, Utensils, ChefHat, Heart, Calculator, Percent, User, Calendar, Thermometer, Pipette, Link as LinkIcon, TrendingDown, Activity, Zap, RotateCw, Target, Shield, Footprints, Trophy, Ticket, GitBranch, Box, LayoutGrid, Droplets,
+    Factory,
+    Plane,
+    ShoppingBag, TreePine, Globe, Sailboat, Rocket, BadgeDollarSign, Fuel, Wind, TrendingUp, Printer, UserX, ArrowDownUp, Users, BarChart4, Cookie, Circle, ConciergeBell, Scale, Divide, Award, Pill, Ghost, CircleDot
+} from 'lucide-react';
 
 
 
@@ -200,14 +206,14 @@ export const categoryPagesData = {
                 emoji: "👷",
                 groups: [
                     [
-                        { label: "Board Foot Calculator", url: "#", icon: Ruler },
-                        { label: "Cubic Yard Calculator", url: "#", icon: Box },
-                        { label: "Gallons per Square Foot Calculator", url: "#", icon: Droplets },
+                        { label: "Board Foot Calculator", url: "/construction/board-foot-calculator", icon: Ruler },
+                        { label: "Cubic Yard Calculator", url: "/construction/cubic-yard-calculator", icon: Box },
+                        { label: "Gallons per Square Foot Calculator", url: "/construction/gallons-per-square-foot-calculator", icon: Droplets },
                     ],
                     [
-                        { label: "Square Feet to Cubic Yards Calculator", url: "#", icon: Box },
+                        { label: "Square Feet to Cubic Yards Calculator", url: "/construction/square-feet-to-cubic-yards-calculator", icon: Box },
                         { label: "Square Footage Calculator", url: "/construction/square-footage-calculator", icon: LayoutGrid },
-                        { label: "Square Yards Calculator", url: "#", icon: LayoutGrid },
+                        { label: "Square Yards Calculator", url: "/construction/square-yards-calculator", icon: LayoutGrid },
                     ]
                 ]
             }
@@ -252,13 +258,13 @@ export const categoryPagesData = {
                 iconColor: "#10b981",
                 groups: [
                     [
-                        { label: "AI Water Footprint Calculator", url: "#", icon: Droplets },
-                        { label: "Bag Footprint Calculator", url: "#", icon: ShoppingBag },
-                        { label: "Christmas Tree Footprint Calculator", url: "#", icon: TreePine },
+                        { label: "Flight Carbon Footprint Calculator", url: "/ecology/flight-carbon-footprint-calculator", icon: Plane },
+                        { label: "Bag Footprint Calculator", url: "/ecology/bag-footprint-calculator", icon: ShoppingBag },
+                        { label: "Vegan Footprint Calculator", url: "/ecology/vegan-footprint-calculator", icon: Leaf },
                     ],
                     [
-                        { label: "Hand Drying Footprint Calculator", url: "#", icon: Wind },
-                        { label: "Kaya Identity Calculator", url: "#", icon: Globe },
+                        { label: "Drip Faucet Calculator", url: "/ecology/drip-faucet-calculator", icon: Droplets },
+                        { label: "Kaya Identity Calculator", url: "/ecology/kaya-identity-calculator", icon: Globe },
                         { label: "Meat Footprint Calculator", url: "/ecology/meat-footprint-calculator", icon: Utensils },
                     ]
                 ]

@@ -1,0 +1,201 @@
+/* refined styling for the Square Footage Calculator cards */
+
+/* Reset local overrides to let CalculatorLayout handle the layout */
+.sq-ft-refined-container {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+/* Card Styling */
+.calc-section-card {
+    background: white;
+    border: 1px solid #e5e7eb;
+    border-radius: 12px;
+    padding: 24px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+.card-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 24px;
+}
+
+.header-left {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.header-icon {
+    color: #3b82f6;
+}
+
+.header-title {
+    font-size: 16px;
+    font-weight: 700;
+    color: #1e293b;
+}
+
+.more-options {
+    color: #94a3b8;
+    cursor: pointer;
+}
+
+/* Unified Bar (70/30) Styling */
+.unified-bar-item {
+    margin-bottom: 20px;
+}
+
+.bar-label {
+    display: block;
+    font-size: 14px;
+    font-weight: 600;
+    color: #4b5563;
+    margin-bottom: 8px;
+}
+
+.bar-container {
+    display: flex;
+    height: 48px;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    overflow: hidden;
+    background: #fcfcfc;
+    transition: all 0.2s;
+    position: relative;
+}
+
+.bar-container:focus-within {
+    border-color: #3b82f6;
+    box-shadow: 0 0 0 1px #3b82f6;
+}
+
+.bar-input {
+    flex: 7;
+    border: none;
+    padding: 0 16px;
+    font-size: 16px;
+    color: #1e293b;
+    outline: none;
+    background: transparent;
+    width: 0;
+}
+
+.bar-unit-select {
+    flex: 3;
+    border: none;
+    background: #f8fafc;
+    border-left: 1px solid #e2e8f0;
+    font-size: 14px;
+    font-weight: 500;
+    color: #64748b;
+    padding: 0 24px 0 12px;
+    cursor: pointer;
+    outline: none;
+    appearance: none;
+}
+
+.unit-chevron {
+    position: absolute;
+    right: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    pointer-events: none;
+    color: #94a3b8;
+}
+
+/* Result specific bar */
+.bar-container.result-bar {
+    background: #f8fafc;
+}
+
+.bar-container.result-bar .bar-input {
+    color: #3b82f6;
+    font-weight: 700;
+}
+
+/* Cost Section Cards */
+.cost-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: #f8fafc;
+    margin: -24px -24px 24px -24px;
+    padding: 16px 24px;
+    border-bottom: 1px solid #e2e8f0;
+    border-radius: 12px 12px 0 0;
+}
+
+.cost-header-left {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.pin-icon {
+    color: #94a3b8;
+}
+
+/* Multi-unit price bar grid */
+.bar-unit-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+    border-left: 1px solid #e2e8f0;
+    background: #f8fafc;
+    flex: 3;
+}
+
+.price-unit-select {
+    border: none;
+    background: transparent;
+    font-size: 11px;
+    font-weight: 600;
+    color: #64748b;
+    padding: 0 8px;
+    cursor: pointer;
+    text-align: center;
+    appearance: none;
+}
+
+.bar-container.quantity-bar {
+    display: block;
+}
+
+.bar-container.quantity-bar .bar-input {
+    width: 100%;
+    flex: none;
+}
+
+/* Adjustments for CalculatorLayout sidebar content */
+.toc h3 {
+    font-size: 20px !important;
+    font-weight: 700 !important;
+    margin-bottom: 24px !important;
+}
+
+.toc li {
+    padding-left: 0 !important;
+    margin-bottom: 16px !important;
+}
+
+.toc li::before {
+    display: none !important;
+}
+
+.toc a {
+    font-size: 14px !important;
+    font-weight: 500 !important;
+    color: #3b82f6 !important;
+    line-height: 1.4 !important;
+}
+
+.toc a::before {
+    content: "•";
+    color: #cbd5e1;
+    margin-right: 12px;
+    font-size: 18px;
+}

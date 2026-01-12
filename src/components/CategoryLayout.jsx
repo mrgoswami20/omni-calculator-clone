@@ -15,9 +15,8 @@ const CategoryLayout = ({ data }) => {
             <SubNavigation />
 
             <div className="category-content">
-                <div className="ad-banner-placeholder">
-                    {/* Placeholder for top banner */}
-                </div>
+                {/* <div className="ad-banner-placeholder">
+                </div> */}
 
                 <div className="main-layout">
                     <div className="left-column">
@@ -77,15 +76,14 @@ const CategoryLayout = ({ data }) => {
                         })}
                     </div>
 
-                    <div className="right-column">
+                    {/* <div className="right-column">
                         <div className="info-box-placeholder">
-                            {/* Right side box */}
                             <div className="info-icons">
                                 <Info size={16} color="#9ca3af" />
                                 <MoreVertical size={16} color="#9ca3af" />
                             </div>
                         </div>
-                    </div>
+                    </div> */}
                 </div>
             </div>
         </div>

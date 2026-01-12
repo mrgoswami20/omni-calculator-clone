@@ -141,38 +141,7 @@
     margin: 32px 0;
 }
 
-.karvonen-calculator-page .calc-actions-custom-layout {
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-}
 
-.karvonen-calculator-page .side-actions {
-    display: flex;
-    gap: 12px;
-}
-
-.karvonen-calculator-page .action-btn-styled {
-    flex: 1;
-    height: 44px;
-    border: 1px solid #e5e7eb;
-    background: white;
-    color: #1f2937;
-    border-radius: 8px;
-    font-weight: 600;
-    cursor: pointer;
-    font-size: 14px;
-    transition: all 0.2s;
-}
-
-.karvonen-calculator-page .action-btn-styled:hover {
-    background: #f9fafb;
-    border-color: #d1d5db;
-}
-
-.karvonen-calculator-page .action-btn-styled.outline {
-    color: #4b5563;
-}
 
 /* Feedback Section */
 .feedback-section-new {

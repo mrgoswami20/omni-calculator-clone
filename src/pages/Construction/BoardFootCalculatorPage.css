@@ -1,0 +1,337 @@
+.bf-calculator-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.premium-card {
+    background: white;
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+    padding: 32px;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+}
+
+.input-group-premium {
+    margin-bottom: 24px;
+}
+
+.label-premium {
+    display: block;
+    font-size: 15px;
+    font-weight: 600;
+    color: #475569;
+    margin-bottom: 8px;
+}
+
+/* Unified Bar Component */
+.unified-bar {
+    display: flex;
+    height: 48px;
+    align-items: stretch;
+    border: 1px solid #cbd5e1;
+    border-radius: 8px;
+    background: #ffffff;
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    overflow: hidden;
+}
+
+.unified-bar:focus-within {
+    border-color: #3b82f6;
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+}
+
+.unified-bar.result {
+    background: #f8fafc;
+    border-style: solid;
+    border-color: #e2e8f0;
+}
+
+.segments-container {
+    display: flex;
+    flex: 7;
+    align-items: center;
+}
+
+.bar-input {
+    flex: 1;
+    border: none;
+    padding: 0 12px;
+    font-size: 16px;
+    color: #1e293b;
+    background: transparent;
+    outline: none;
+    width: 60px;
+}
+
+.bar-input.solo {
+    width: 100%;
+}
+
+.bar-input.highlight {
+    color: #3b82f6;
+    font-weight: 700;
+}
+
+.inner-unit-label {
+    font-size: 13px;
+    font-weight: 600;
+    color: #64748b;
+    padding: 0 10px 0 2px;
+    white-space: nowrap;
+}
+
+/* Dividers */
+.bar-main-divider {
+    width: 1px;
+    background: #e2e8f0;
+    margin: 8px 0;
+}
+
+.bar-inner-divider {
+    width: 1px;
+    height: 20px;
+    background: rgba(203, 213, 225, 0.5);
+    margin: 0 4px;
+}
+
+/* Selects & Static Labels */
+.bar-select {
+    border: none;
+    background: #fcfcfc;
+    padding: 0 12px;
+    font-size: 14px;
+    font-weight: 500;
+    color: #475569;
+    cursor: pointer;
+    outline: none;
+    flex: 3;
+    min-width: 0;
+}
+
+.bar-select.currency-select {
+    min-width: 70px;
+    color: #3b82f6;
+    font-weight: 700;
+}
+
+.bar-static-label {
+    display: flex;
+    align-items: center;
+    padding: 0 16px;
+    background: #f8fafc;
+    font-size: 14px;
+    font-weight: 600;
+    color: #64748b;
+    white-space: nowrap;
+    border-left: 1px solid #e2e8f0;
+}
+
+.per-label {
+    display: flex;
+    align-items: center;
+    padding-right: 16px;
+    font-size: 13px;
+    color: #94a3b8;
+    white-space: nowrap;
+    background: #fcfcfc;
+}
+
+/* Dividers & Buttons */
+/* Action Cluster */
+.action-cluster-card {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-top: 32px;
+    padding-top: 24px;
+    border-top: 1px solid #f1f5f9;
+}
+
+.primary-action-btn.share {
+    width: 100%;
+    height: 80px;
+    background: white;
+    border: 1px solid #e5e7eb;
+    border-radius: 12px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    color: #ef4444;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.primary-action-btn.share:hover {
+    background: #fef2f2;
+    border-color: #fca5a5;
+    transform: translateY(-1px);
+}
+
+.secondary-action-group {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+}
+
+.secondary-action-btn {
+    height: 48px;
+    background: white;
+    border: 1px solid #e5e7eb;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    color: #4b5563;
+    font-size: 13px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.secondary-action-btn:hover {
+    background: #f9fafb;
+    border-color: #d1d5db;
+}
+
+/* Cost Section Card */
+.cost-card {
+    padding: 0;
+    overflow: hidden;
+}
+
+.cost-header {
+    padding: 20px 32px;
+    cursor: pointer;
+    background: #ffffff;
+    display: flex;
+    align-items: center;
+}
+
+.cost-content {
+    padding: 24px 32px 32px;
+    border-top: 1px solid #f1f5f9;
+}
+
+/* Global Helpers */
+.flex-center {
+    display: flex;
+    align-items: center;
+}
+
+.gap-2 {
+    gap: 8px;
+}
+
+.gap-3 {
+    gap: 12px;
+}
+
+.mt-4 {
+    margin-top: 16px;
+}
+
+/* Feedback */
+.feedback-container-premium {
+    margin-top: 32px;
+    text-align: center;
+    padding: 32px;
+    border-top: 1px solid #f1f5f9;
+}
+
+.feedback-pill {
+    padding: 10px 24px;
+    background: white;
+    border: 1px solid #e2e8f0;
+    border-radius: 24px;
+    font-size: 14px;
+    font-weight: 500;
+    color: #475569;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.feedback-pill:hover {
+    background: #f8fafc;
+    border-color: #3b82f6;
+    color: #3b82f6;
+}
+
+/* Article Styling */
+.article-container {
+    color: #334155;
+    line-height: 1.8;
+}
+
+.article-title {
+    font-size: 26px;
+    font-weight: 800;
+    color: #0f172a;
+    margin: 40px 0 20px;
+}
+
+.premium-formula-box {
+    background: #fefce8;
+    padding: 24px;
+    border-radius: 12px;
+    border-left: 6px solid #fbbf24;
+    margin: 24px 0;
+}
+
+.premium-formula-box.sub-formula {
+    border-left-color: #3b82f6;
+    background: #f0f7ff;
+}
+
+.math-latex {
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: 700;
+    color: #1e293b;
+    font-size: 17px;
+}
+
+@media (max-width: 640px) {
+
+    .premium-card,
+    .cost-header,
+    .cost-content {
+        padding: 24px 20px;
+    }
+
+    .unified-bar {
+        height: auto;
+        flex-direction: column;
+    }
+
+    .bar-input {
+        height: 48px;
+    }
+
+    .bar-main-divider {
+        width: 100%;
+        height: 1px;
+        margin: 0;
+    }
+
+    .bar-select,
+    .bar-static-label,
+    .per-label {
+        height: 40px;
+        width: 100%;
+        justify-content: center;
+        border-left: none;
+    }
+
+    .secondary-action-group {
+        grid-template-columns: 1fr;
+    }
+
+    .primary-action-btn.share {
+        height: 60px;
+    }
+}

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import CalculatorLayout from '../../components/CalculatorLayout';
-import { Info } from 'lucide-react';
+import { Info, RefreshCcw, X, Share2 } from 'lucide-react';
 import './FFMICalculatorPage.css';
 
 const FFMICalculatorPage = () => {
@@ -203,10 +203,20 @@ const FFMICalculatorPage = () => {
                         </div>
                     </div>
 
-                    <div className="calc-actions-custom-layout">
-                        <div className="side-actions">
-                            <button className="action-btn-styled" onClick={() => window.location.reload()}>Reload calculator</button>
-                            <button className="action-btn-styled outline" onClick={handleClear}>Clear all changes</button>
+                    <div className="action-cluster-card">
+                        {/* <button className="primary-action-btn share">
+                            <Share2 size={18} />
+                            <span>Share result</span>
+                        </button> */}
+                        <div className="secondary-action-group">
+                            <button className="secondary-action-btn" onClick={() => window.location.reload()}>
+                                <RefreshCcw size={16} />
+                                <span>Reload calculator</span>
+                            </button>
+                            <button className="secondary-action-btn" onClick={handleClear}>
+                                <X size={16} />
+                                <span>Clear all changes</span>
+                            </button>
                         </div>
                     </div>
 

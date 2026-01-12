@@ -45,3 +45,74 @@ button {
     transform: translateY(0);
   }
 }
+
+/* Global Standardized Action Cluster for Calculators */
+.action-cluster-card {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 32px;
+  padding-top: 24px;
+  border-top: 1px solid #f1f5f9;
+}
+
+.primary-action-btn.share {
+  width: 100%;
+  height: 80px;
+  background: white;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  color: #ef4444;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.primary-action-btn.share:hover {
+  background: #fef2f2;
+  border-color: #fca5a5;
+  transform: translateY(-1px);
+}
+
+.secondary-action-group {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.secondary-action-btn {
+  height: 48px;
+  background: white;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  color: #4b5563;
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.secondary-action-btn:hover {
+  background: #f9fafb;
+  border-color: #d1d5db;
+}
+
+@media (max-width: 640px) {
+  .secondary-action-group {
+    grid-template-columns: 1fr;
+  }
+
+  .primary-action-btn.share {
+    height: 60px;
+  }
+}

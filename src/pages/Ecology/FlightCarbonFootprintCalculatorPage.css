@@ -1,0 +1,258 @@
+/* --- Flight Carbon Footprint Calculator Styles --- */
+
+.flight-carbon-calculator {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
+
+/* --- Input Fields Styling (Unified Bar) --- */
+.unified-input-group {
+    display: flex;
+    align-items: center;
+    background-color: #f9fafb;
+    border: 1px solid #d1d5db;
+    border-radius: 6px;
+    padding: 2px 2px 2px 12px;
+    transition: all 0.2s;
+    height: 42px;
+}
+
+.unified-input-group:focus-within {
+    border-color: #3b82f6;
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+    background-color: white;
+}
+
+.input-invisible {
+    flex: 1;
+    border: none;
+    outline: none;
+    background: transparent;
+    font-size: 0.95rem;
+    color: #111827;
+    width: 100%;
+}
+
+.unit-dropdown {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    padding: 0 8px;
+    cursor: pointer;
+    font-size: 0.85rem;
+    color: #2563eb;
+    font-weight: 500;
+    border-left: 1px solid transparent;
+    height: 100%;
+}
+
+/* --- Radio Group (Custom) --- */
+.flight-radio-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-top: 8px;
+}
+
+.flight-radio-option {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.95rem;
+    color: #374151;
+    cursor: pointer;
+}
+
+.flight-radio-option input[type="radio"] {
+    accent-color: #3b82f6;
+    width: 18px;
+    height: 18px;
+}
+
+
+/* --- Result Fields --- */
+.result-field-group {
+    display: flex;
+    align-items: center;
+    background-color: #f9fafb;
+    /* Light gray for read-only */
+    border: 1px solid #e5e7eb;
+    border-radius: 6px;
+    padding: 2px 12px;
+    height: 42px;
+}
+
+.result-value-input {
+    flex: 1;
+    border: none;
+    outline: none;
+    background: transparent;
+    font-size: 0.95rem;
+    color: #111827;
+    font-weight: 600;
+}
+
+/* --- Action Section Grid --- */
+.flight-actions-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin-top: 32px;
+    padding-top: 24px;
+    border-top: 1px solid #f3f4f6;
+}
+
+/* Left: Share Button */
+.share-result-large-btn {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #e5e7eb;
+    border-radius: 8px;
+    background: white;
+    padding: 16px;
+    cursor: pointer;
+    transition: all 0.2s;
+    height: 100%;
+}
+
+.share-result-large-btn:hover {
+    background-color: #f9fafb;
+    border-color: #d1d5db;
+}
+
+.share-icon-circle {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: #ff4d6d;
+    /* Pink/Red from screenshot */
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 8px;
+}
+
+.share-text {
+    font-weight: 600;
+    color: #111827;
+    font-size: 0.9rem;
+}
+
+/* Right: Stacked Buttons */
+.right-action-stack {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.action-btn-secondary {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 44px;
+    /* Match height */
+    background: white;
+    border: 1px solid #e5e7eb;
+    border-radius: 8px;
+    color: #374151;
+    font-weight: 500;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.action-btn-secondary:hover {
+    background-color: #f9fafb;
+    border-color: #d1d5db;
+    color: #111827;
+}
+
+/* --- Dropdowns --- */
+.relative-dropdown-container {
+    position: relative;
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.dropdown-menu {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    margin-top: 4px;
+    background: white;
+    border: 1px solid #e5e7eb;
+    border-radius: 6px;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    z-index: 20;
+    min-width: 80px;
+    overflow: hidden;
+}
+
+.dropdown-item {
+    padding: 8px 12px;
+    font-size: 0.9rem;
+    color: #374151;
+    cursor: pointer;
+    transition: background 0.1s;
+    text-align: right;
+}
+
+.dropdown-item:hover {
+    background-color: #f3f4f6;
+    color: #111827;
+}
+
+/* --- Feedback --- */
+.feedback-box {
+    margin-top: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.feedback-label {
+    font-size: 0.85rem;
+    color: #6b7280;
+}
+
+.feedback-btn-group {
+    display: flex;
+    gap: 8px;
+}
+
+.feedback-sm-btn {
+    border: 1px solid #e5e7eb;
+    background: white;
+    border-radius: 4px;
+    padding: 4px 10px;
+    font-size: 0.85rem;
+    cursor: pointer;
+    color: #374151;
+}
+
+.feedback-sm-btn:hover {
+    background-color: #f9fafb;
+}
+
+/* --- Misc Helper --- */
+.label-flex {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 6px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: #374151;
+}
+
+.more-dots {
+    color: #9ca3af;
+    cursor: pointer;
+}

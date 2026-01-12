@@ -1,0 +1,254 @@
+/* Kaya Identity Calculator - Enhanced Styling */
+
+.kaya-identity-calculator {
+    width: 100%;
+}
+
+.calc-card {
+    background: #ffffff;
+    padding: 24px;
+}
+
+/* Input Styles */
+.input-field-wrapper {
+    margin-bottom: 20px;
+}
+
+.label-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 8px;
+}
+
+.label-row label {
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: #374151;
+}
+
+.info-icon {
+    color: #9ca3af;
+    cursor: help;
+}
+
+.input-control {
+    display: flex;
+    align-items: center;
+    background: #f9fafb;
+    border: 1px solid #d1d5db;
+    border-radius: 8px;
+    padding: 0 14px;
+    height: 48px;
+    transition: all 0.2s ease;
+}
+
+.input-control:focus-within {
+    border-color: #436cfe;
+    background: #ffffff;
+    box-shadow: 0 0 0 3px rgba(67, 108, 254, 0.1);
+}
+
+.input-control input {
+    flex: 1;
+    border: none;
+    outline: none;
+    background: transparent;
+    font-size: 1rem;
+    color: #111827;
+    width: 100%;
+}
+
+.input-unit {
+    margin-left: 8px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: #6b7280;
+    background: #f3f4f6;
+    padding: 2px 6px;
+    border-radius: 4px;
+}
+
+/* Result Style */
+.result-mode {
+    background: #f3f6ff;
+    border-color: #dbe4ff;
+}
+
+.result-input {
+    font-weight: 700;
+    color: #2563eb !important;
+}
+
+.result-space {
+    margin-top: 12px;
+}
+
+/* Actions Section */
+.actions-section {
+    display: grid;
+    grid-template-columns: 1fr 1.5fr;
+    gap: 16px;
+    margin-top: 32px;
+    padding-top: 24px;
+    border-top: 1px solid #f1f5f9;
+}
+
+.main-share-btn {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: #ffffff;
+    border: 1px solid #e5e7eb;
+    border-radius: 12px;
+    padding: 16px;
+    cursor: pointer;
+    transition: all 0.2s;
+    gap: 8px;
+}
+
+.main-share-btn:hover {
+    background: #fffafa;
+    border-color: #fecaca;
+}
+
+.share-circle {
+    width: 48px;
+    height: 48px;
+    background: #ff4d6d;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #ffffff;
+    box-shadow: 0 4px 6px -1px rgba(255, 77, 109, 0.2);
+}
+
+.main-share-btn span {
+    font-weight: 600;
+    font-size: 0.9rem;
+    color: #1f2937;
+}
+
+.utility-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.util-btn {
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    background: #ffffff;
+    border: 1px solid #e5e7eb;
+    border-radius: 10px;
+    color: #4b5563;
+    font-weight: 600;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.util-btn:hover {
+    background: #f9fafb;
+    border-color: #d1d5db;
+    color: #111827;
+}
+
+/* Feedback Section */
+.feedback-section {
+    margin-top: 32px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.feedback-section p {
+    font-size: 0.85rem;
+    color: #6b7280;
+}
+
+.feedback-btngroup {
+    display: flex;
+    gap: 8px;
+}
+
+.feedback-btngroup button {
+    padding: 6px 14px;
+    background: #ffffff;
+    border: 1px solid #e5e7eb;
+    border-radius: 6px;
+    font-size: 0.85rem;
+    color: #374151;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+/* Article Styles */
+.article-wrapper h2 {
+    margin-top: 0;
+    color: #111827;
+}
+
+.article-wrapper ul {
+    padding-left: 20px;
+    margin-bottom: 20px;
+}
+
+.article-wrapper li {
+    margin-bottom: 8px;
+}
+
+.formula-box {
+    background: #fffcf0;
+    border: 1px solid #fef3c7;
+    border-radius: 8px;
+    padding: 16px;
+    margin: 20px 0;
+    text-align: center;
+}
+
+.formula-box code {
+    font-size: 1.25rem;
+    color: #92400e;
+    font-family: "Times New Roman", Times, serif;
+    font-style: italic;
+}
+
+.info-callout {
+    background: #f0f4ff;
+    border: 1px solid #dbe4ff;
+    border-radius: 8px;
+    padding: 16px;
+    margin: 20px 0;
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    color: #1e3a8a;
+    font-weight: 500;
+}
+
+.info-callout .emoji {
+    font-size: 1.2rem;
+}
+
+/* Responsive */
+@media (max-width: 640px) {
+    .actions-section {
+        grid-template-columns: 1fr;
+    }
+
+    .main-share-btn {
+        flex-direction: row;
+        height: 60px;
+    }
+
+    .share-circle {
+        width: 32px;
+        height: 32px;
+    }
+}

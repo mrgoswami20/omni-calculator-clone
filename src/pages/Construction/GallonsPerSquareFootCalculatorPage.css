@@ -1,0 +1,142 @@
+/* Gallons per Square Foot Calculator Styles */
+
+.gpsf-refined-container {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    width: 100%;
+}
+
+.calc-section-card {
+    background: white;
+    border: 1px solid #e5e7eb;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+}
+
+.card-content {
+    padding: 24px;
+}
+
+.card-header-polished {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px 24px;
+    border-bottom: 1px solid #f1f5f9;
+    background: #ffffff;
+}
+
+.header-left-part {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.header-icon-blue {
+    color: #3b82f6;
+}
+
+.card-main-title {
+    font-size: 15px;
+    font-weight: 700;
+    color: #1a1a1a;
+}
+
+/* Side-by-side row */
+.input-flex-row {
+    display: flex;
+    gap: 16px;
+}
+
+.flex-item {
+    flex: 1;
+}
+
+.item-header-label {
+    display: flex;
+    justify-content: space-between;
+    font-size: 13px;
+    font-weight: 600;
+    color: #4b5563;
+    margin-bottom: 8px;
+}
+
+/* Unified Bar */
+.unified-bar-wrap {
+    display: flex;
+    height: 44px;
+    border: 1px solid #e2e8f0;
+    border-radius: 6px;
+    background: #fcfcfc;
+    transition: all 0.2s;
+    position: relative;
+}
+
+.unified-bar-wrap:focus-within {
+    border-color: #3b82f6;
+    box-shadow: 0 0 0 1px #3b82f6;
+}
+
+.bar-main-input {
+    flex: 1;
+    border: none;
+    padding: 0 12px;
+    font-size: 15px;
+    color: #1a1a1a;
+    background: transparent;
+    outline: none;
+    width: 100%;
+}
+
+.bar-unit-dropdown {
+    width: 75px;
+    border: none;
+    background: #f8fafc;
+    border-left: 1px solid #e2e8f0;
+    padding: 0 20px 0 8px;
+    font-size: 13px;
+    font-weight: 600;
+    color: #3b82f6;
+    cursor: pointer;
+    appearance: none;
+}
+
+.unit-icon-small {
+    position: absolute;
+    right: 8px;
+    top: 50%;
+    transform: translateY(-50%);
+    pointer-events: none;
+    color: #3b82f6;
+}
+
+.result-theme {
+    background: #f0f7ff;
+    border-color: #3b82f6;
+}
+
+.result-theme .bar-main-input {
+    color: #2563eb;
+    font-weight: 700;
+}
+
+.full-width-item {
+    margin-bottom: 24px;
+}
+
+.full-width-item:last-child {
+    margin-bottom: 0;
+}
+
+.pin-action {
+    color: #94a3b8;
+    cursor: pointer;
+}
+
+@media (max-width: 600px) {
+    .input-flex-row {
+        flex-direction: column;
+    }
+}

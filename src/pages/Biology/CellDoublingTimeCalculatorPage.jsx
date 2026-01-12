@@ -1,10 +1,13 @@
 import React, { useState } from 'react';
 import CalculatorLayout from '../../components/CalculatorLayout';
-import { Info } from 'lucide-react';
+import { RotateCcw, Trash2 } from 'lucide-react';
+import SimpleInputBar from '../../components/kit_components/SimpleInputBar';
+import InputBarWithDropDownOption from '../../components/kit_components/InputBarWithDropDownOption'; // Used where possible
+import SimpleButton from '../../components/kit_components/SimpleButton';
 import './CellDoublingTimeCalculatorPage.css';
 
 const CellDoublingTimeCalculatorPage = () => {
-    // --- Constants ---
+    // --- Constants (PRESERVED LOGIC) ---
     const TIME_FACTORS = {
         'sec': 1,
         'min': 60,
@@ -47,6 +50,8 @@ const CellDoublingTimeCalculatorPage = () => {
         'yr': 31557600
     };
 
+    const GROWTH_RATE_OPTIONS = Object.keys(GROWTH_RATE_UNITS).map(u => ({ value: u, label: `/ ${u}` }));
+
     // --- State ---
     const [n0, setN0] = useState({ value: '', unit: 'cells' });
     const [n, setN] = useState({ value: '', unit: 'cells' });
@@ -61,24 +66,27 @@ const CellDoublingTimeCalculatorPage = () => {
     });
 
     // --- Helpers ---
-    const toBase = (val) => {
-        const v = parseFloat(val);
-        if (isNaN(v)) return null;
-        return v;
+    const parseNumber = (val) => {
+        if (!val) return 0;
+        const cleanVal = val.toString().replace(/[, ]/g, '');
+        const num = parseFloat(cleanVal);
+        return isNaN(num) ? 0 : num;
     };
+
+    const toBase = (val) => parseNumber(val);
 
     const toBaseMulti = (valObj, unit) => {
         const components = MULTI_UNIT_CONFIG[unit] || [];
         let totalVal = 0;
         let hasValue = false;
         components.forEach(comp => {
-            const v = parseFloat(valObj[comp]);
-            if (!isNaN(v)) {
+            const v = parseNumber(valObj[comp]); // Use robust parsing
+            if (v > 0 || (v === 0 && valObj[comp] !== '')) { // Treat 0 as valid if explicitly typed
                 totalVal += v * TIME_FACTORS[comp];
                 hasValue = true;
             }
         });
-        return hasValue ? totalVal : null;
+        return hasValue ? totalVal : 0;
     };
 
     const fromBaseMulti = (valInSec, unit) => {
@@ -106,21 +114,18 @@ const CellDoublingTimeCalculatorPage = () => {
 
     const formatValue = (val) => {
         if (val === null || isNaN(val) || val === Infinity) return '';
-        // Use exponential notation for very large or small numbers
-        if (val > 0 && (val < 0.001 || val > 1e9)) {
-            return val.toExponential(4);
-        }
+        if (val > 0 && (val < 0.001 || val > 1e9)) return val.toExponential(4);
         return parseFloat(val.toFixed(6)).toString();
     };
 
-    // --- Calculation Logic ---
+    // --- Calculation Logic (PRESERVED) ---
     const calculate = (changedType, newValue, unitKey) => {
         const updates = { n0, n, t, r, g };
 
+        // 1. Update the 'updates' object based on what changed
         if (changedType === 'n0') updates.n0 = { ...n0, value: newValue };
         if (changedType === 'n') updates.n = { ...n, value: newValue };
         if (changedType === 'r') updates.r = { ...r, value: newValue };
-
         if (changedType === 't') {
             const newTValue = { ...t.value, [unitKey]: newValue };
             updates.t = { ...t, value: newTValue };
@@ -130,48 +135,80 @@ const CellDoublingTimeCalculatorPage = () => {
             updates.g = { ...g, value: newGValue };
         }
 
-        // Sync local state immediately
+        // 2. Set State Immediately for the input that changed
         if (changedType === 'n0') setN0(updates.n0);
         if (changedType === 'n') setN(updates.n);
         if (changedType === 'r') setR(updates.r);
         if (changedType === 't') setT(updates.t);
         if (changedType === 'g') setG(updates.g);
 
-        const n0_val = parseFloat(updates.n0.value);
-        const n_val = parseFloat(updates.n.value);
-        const t_val = toBaseMulti(updates.t.value, updates.t.unit); // in seconds
+        // 3. Perform Logic
+        const n0_string = updates.n0.value;
+        const n_string = updates.n.value;
+        const n0_val = parseNumber(n0_string);
+        const n_val = parseNumber(n_string);
 
-        let k; // growth rate in 1/sec
+        // Calculate total seconds for T
+        const t_val = toBaseMulti(updates.t.value, updates.t.unit);
+
+        let k = 0; // growth rate in 1/sec
+        let k_calculated = false;
+
+        // Route A: N0, N, T changed -> Calculate K
         if (changedType === 'n0' || changedType === 'n' || changedType === 't') {
-            if (n0_val > 0 && n_val > 0 && t_val > 0 && n_val > n0_val) {
-                k = Math.log(n_val / n0_val) / t_val;
+            if (n0_val > 0 && n_val > 0 && t_val > 0) {
+                if (n_val !== n0_val) {
+                    // k can be negative (decay) or positive (growth)
+                    k = Math.log(n_val / n0_val) / t_val;
+                    k_calculated = true;
+                }
             }
-        } else if (changedType === 'r') {
-            const r_val = parseFloat(newValue);
-            if (r_val > 0) {
+        }
+        // Route B: Rate (R) changed -> Calculate K
+        else if (changedType === 'r') {
+            const r_val = parseNumber(newValue);
+            if (r_val !== 0) {
                 const unit_multiplier = GROWTH_RATE_UNITS[updates.r.unit];
                 k = r_val / unit_multiplier;
+                k_calculated = true;
             }
-        } else if (changedType === 'g') {
-            const g_val = toBaseMulti(newValue, newUnit);
-            if (g_val > 0) {
-                k = Math.log(2) / g_val;
+        }
+        // Route C: Doubling Time (G) changed -> Calculate K
+        else if (changedType === 'g') {
+            const g_val_sec = toBaseMulti(updates.g.value, updates.g.unit);
+            if (g_val_sec > 0) {
+                k = Math.log(2) / g_val_sec;
+                k_calculated = true;
             }
         }
 
-        if (k > 0) {
-            // Update other fields
+        // 4. Update Dependent Fields if K was successfully calculated
+        if (k_calculated && k !== 0 && isFinite(k)) {
+            // Update R (if not source)
             if (changedType !== 'r') {
                 const r_new = k * GROWTH_RATE_UNITS[updates.r.unit];
                 setR({ ...updates.r, value: formatValue(r_new) });
             }
 
-            const doubling_time_sec = Math.log(2) / k;
+            // Update G (if not source)
             if (changedType !== 'g') {
-                const res_g_obj = fromBaseMulti(doubling_time_sec, updates.g.unit);
-                setG({ ...updates.g, value: res_g_obj });
+                // Doubling Time = ln(2) / k
+                // Only defined for Growth (k > 0) usually, but we can calc abs value or just math result
+                // If k < 0, doubling time is negative (or technically undefined/half-life)
+                if (k > 0) {
+                    const doubling_time_sec = Math.log(2) / k;
+                    const res_g_obj = fromBaseMulti(doubling_time_sec, updates.g.unit);
+                    setG({ ...updates.g, value: res_g_obj });
+                } else {
+                    // Start of decay / half-life logic if needed, or clear G
+                    // Current request: user wants results. 
+                    // Let's clear G if decay, or show empty.
+                    const emptyValObj = { yrs: '', mos: '', wks: '', days: '', hrs: '', min: '', sec: '' };
+                    setG({ ...updates.g, value: emptyValObj });
+                }
             }
 
+            // Update N or N0 (if Source was R or G)
             if (changedType === 'g' || changedType === 'r') {
                 if (n0_val > 0 && t_val > 0) {
                     const res_n = n0_val * Math.exp(k * t_val);
@@ -184,44 +221,87 @@ const CellDoublingTimeCalculatorPage = () => {
         }
     };
 
+    // Special handler for unit changes because they trigger recalculation
+    const handleMultiUnitChange = (type, newUnit) => {
+        if (type === 't') {
+            const baseVal = toBaseMulti(t.value, t.unit);
+            const newValObj = fromBaseMulti(baseVal, newUnit);
+            setT({ value: newValObj, unit: newUnit });
+            // re-trigger calc? The logic mostly relies on values. 
+            // If we convert correctly, base val is same, so K is same. No calc needed really?
+            // But if T was source, strict logic might need to ensure consistency.
+        }
+        if (type === 'g') {
+            const baseVal = toBaseMulti(g.value, g.unit);
+            const newValObj = fromBaseMulti(baseVal, newUnit);
+            setG({ value: newValObj, unit: newUnit });
+        }
+    };
+
+    const handleRateUnitChange = (newUnit) => {
+        // When rate unit changes, we keep the underlying K (growth per sec) constant?
+        // Or do we keep the number constant and change K?
+        // Original logic: "const k = parseFloat(r.value) / GROWTH_RATE_UNITS[r.unit]; setR(..., val: k * newUnitFactor)"
+        // So it converts the displayed value to match the same physical rate.
+        const k = parseNumber(r.value) / GROWTH_RATE_UNITS[r.unit];
+        const newVal = r.value !== '' && !isNaN(k) ? formatValue(k * GROWTH_RATE_UNITS[newUnit]) : '';
+        setR({ value: newVal, unit: newUnit });
+    };
+
+    const handleReload = () => window.location.reload();
     const handleClear = () => {
         const emptyValObj = { yrs: '', mos: '', wks: '', days: '', hrs: '', min: '', sec: '' };
         setN0({ value: '', unit: 'cells' });
         setN({ value: '', unit: 'cells' });
-        setT(p => ({ ...p, value: emptyValObj }));
-        setR(p => ({ ...p, value: '' }));
-        setG(p => ({ ...p, value: emptyValObj }));
+        setT({ value: emptyValObj, unit: 'hours (hrs)' });
+        setR({ value: '', unit: 'hr' });
+        setG({ value: emptyValObj, unit: 'hours (hrs)' });
+    };
+
+    // --- Actions ---
+    // Custom Multi-part Input Renderer
+    const renderMultiInput = (type, stateObj, handleChange, handleUnitChangeDesc) => {
+        const components = MULTI_UNIT_CONFIG[stateObj.unit];
+
+        return (
+            <div className="multi-input-container">
+                <div className="multi-fields-row">
+                    {components.map((comp, idx) => (
+                        <div key={comp} className="multi-field-item">
+                            <input
+                                className="multi-input-box"
+                                placeholder="0"
+                                value={stateObj.value[comp]}
+                                onChange={(e) => handleChange(type, e.target.value, comp)}
+                            />
+                            <span className="multi-input-label">{comp}</span>
+                        </div>
+                    ))}
+                </div>
+                <div className="multi-unit-selector">
+                    <select
+                        value={stateObj.unit}
+                        onChange={(e) => handleUnitChangeDesc(type, e.target.value)}
+                        className="std-select"
+                    >
+                        {Object.keys(MULTI_UNIT_CONFIG).map(u => (
+                            <option key={u} value={u}>{u}</option>
+                        ))}
+                    </select>
+                </div>
+            </div>
+        );
     };
 
     const articleContent = (
-        <div className="article-container">
-            <h2 className="article-title">How to calculate doubling time of cells?</h2>
-            <p>To calculate the doubling time of cells, use the following formula:</p>
-
-            <div className="premium-formula-box">
-                <div className="math-latex">
-                    Doubling time = <span className="fraction">
-                        <span className="numerator">Duration · ln(2)</span>
-                        <span className="denominator">ln(<span className="fraction-inline"><span className="num-inline">Final concentration</span><hr /><span className="den-inline">Initial concentration</span></span>)</span>
-                    </span>
-                </div>
-            </div>
-
-            <p>To use this cell culture doubling time formula, you need to:</p>
-            <ol className="article-steps">
-                <li>Select a reference parameter. It can be the number of cells, concentration, or confluency. Measure it at the beginning of an experiment.</li>
-                <li>Wait for a certain period. Depending on the cell type and culture conditions, it can be a few minutes, hours, or days.</li>
-                <li>Check chosen parameter after a suitable period.</li>
-                <li>Calculate the doubling time.</li>
-            </ol>
-
-            <div className="info-callout">
-                <p>💡 <strong>Concentration</strong> is the number of cells per unit of volume (i.e., cells/ml). You can find it, for example, by using a hemocytometer like the Bürker counting chamber. <strong>Confluency</strong> is the percentage coverage of a container surface. This parameter can be found only for adherent cells.</p>
+        <div className="article-wrapper">
+            <h2 id="calc-method">How to calculate doubling time?</h2>
+            <p>Use the following formula:</p>
+            <div className="formula-block">
+                {`Doubling Time = $\\frac{t \\cdot \\ln(2)}{\\ln(N_t / N_0)}$`}
             </div>
         </div>
     );
-
-    // renderInput function is removed as per the new UI structure
 
     return (
         <CalculatorLayout
@@ -229,154 +309,67 @@ const CellDoublingTimeCalculatorPage = () => {
             creators={[{ name: "Bogna Szyk" }]}
             reviewers={[{ name: "Jack Bowater" }]}
             articleContent={articleContent}
+            tocItems={[{ label: 'Method', id: 'calc-method' }]}
         >
-            <div className="cell-doubling-time-calculator-page">
-                <div className="section-card">
-                    {/* Initial Parameter */}
-                    <div className="input-group">
-                        <label className="input-label">
-                            Initial reference parameter <Info size={14} className="info-icon" title="Initial number, concentration, or confluency" />
-                        </label>
-                        <div className="input-wrapper single-field">
-                            <input
-                                type="text"
-                                className="input-field full-round"
-                                value={n0.value}
-                                onChange={(e) => calculate('n0', e.target.value, n0.unit)}
-                            />
+            <div className="cell-doubling-calculator">
+                <div className="calc-card">
+                    {/* N0 */}
+                    <SimpleInputBar
+                        label="Initial reference parameter (N0)"
+                        value={n0.value}
+                        onChange={(e) => calculate('n0', e.target.value)}
+                        placeholder="e.g. 1000"
+                        showInfoIcon={true}
+                    />
+
+                    {/* Nt */}
+                    <SimpleInputBar
+                        label="Final reference parameter (Nt)"
+                        value={n.value}
+                        onChange={(e) => calculate('n', e.target.value)}
+                        placeholder="e.g. 5000"
+                    />
+
+                    {/* Time (Multi) */}
+                    <div className="input-block-wrapper">
+                        <label className="input-label-std">Time duration</label>
+                        {renderMultiInput('t', t, calculate, handleMultiUnitChange)}
+                    </div>
+
+                    {/* Growth Rate */}
+                    <InputBarWithDropDownOption
+                        label="Growth rate"
+                        value={r.value}
+                        onChange={(e) => calculate('r', e.target.value)}
+                        unit={r.unit}
+                        onUnitChange={(e) => handleRateUnitChange(e.target.value)}
+                        unitOptions={GROWTH_RATE_OPTIONS}
+                        placeholder="Rate"
+                    />
+
+                    {/* Doubling Time (Multi - Result) */}
+                    <div className="input-block-wrapper result-bg">
+                        <label className="input-label-std">Doubling time</label>
+                        {renderMultiInput('g', g, calculate, handleMultiUnitChange)}
+                    </div>
+
+                    {/* Actions */}
+                    <div className="actions-section">
+                        <div className="utility-buttons">
+                            <SimpleButton onClick={handleReload} variant="secondary">
+                                <RotateCcw size={16} style={{ marginRight: 8 }} /> Reload calculator
+                            </SimpleButton>
+                            <SimpleButton onClick={handleClear} variant="secondary">
+                                <Trash2 size={16} style={{ marginRight: 8 }} /> Clear all changes
+                            </SimpleButton>
                         </div>
                     </div>
 
-                    {/* Final Parameter */}
-                    <div className="input-group">
-                        <label className="input-label">Final reference parameter</label>
-                        <div className="input-wrapper single-field">
-                            <input
-                                type="text"
-                                className="input-field full-round"
-                                value={n.value}
-                                onChange={(e) => calculate('n', e.target.value, n.unit)}
-                            />
-                        </div>
-                    </div>
-
-                    {/* Time duration */}
-                    <div className="input-group">
-                        <label className="input-label">Time duration</label>
-                        <div className="input-wrapper multi-part-container time-duration-wrapper">
-                            <div className="multi-field-layout">
-                                {MULTI_UNIT_CONFIG[t.unit].map(comp => (
-                                    <div className="field-with-label" key={comp}>
-                                        <input
-                                            type="text"
-                                            className="input-field"
-                                            value={t.value[comp]}
-                                            onChange={(e) => calculate('t', e.target.value, comp)}
-                                        />
-                                        <span className="part-label">{comp}</span>
-                                    </div>
-                                ))}
-                            </div>
-                            <div className="unit-select-wrapper">
-                                <select
-                                    className="unit-select"
-                                    value={t.unit}
-                                    onChange={(e) => {
-                                        const newUnit = e.target.value;
-                                        const baseVal = toBaseMulti(t.value, t.unit);
-                                        const newValObj = fromBaseMulti(baseVal, newUnit);
-                                        setT({ ...t, value: newValObj, unit: newUnit });
-                                    }}
-                                >
-                                    {Object.keys(MULTI_UNIT_CONFIG).map(u => <option key={u} value={u}>{u}</option>)}
-                                </select>
-                            </div>
-                        </div>
-                    </div>
-
-                    {/* Growth rate */}
-                    <div className="input-group">
-                        <label className="input-label">Growth rate</label>
-                        <div className="input-wrapper">
-                            <input
-                                type="text"
-                                className="input-field"
-                                value={r.value}
-                                onChange={(e) => calculate('r', e.target.value, r.unit)}
-                            />
-                            <div className="unit-select-wrapper">
-                                <select
-                                    className="unit-select"
-                                    value={r.unit}
-                                    onChange={(e) => {
-                                        const newUnit = e.target.value;
-                                        const k = parseFloat(r.value) / GROWTH_RATE_UNITS[r.unit];
-                                        const newVal = r.value !== '' ? formatValue(k * GROWTH_RATE_UNITS[newUnit]) : '';
-                                        setR({ ...r, value: newVal, unit: newUnit });
-                                    }}
-                                >
-                                    {Object.keys(GROWTH_RATE_UNITS).map(u => <option key={u} value={u}>/ {u}</option>)}
-                                </select>
-                            </div>
-                        </div>
-                    </div>
-
-                    {/* Doubling time */}
-                    <div className="input-group">
-                        <label className="input-label">Doubling time</label>
-                        <div className="input-wrapper multi-part-container">
-                            <div className="multi-field-layout">
-                                {MULTI_UNIT_CONFIG[g.unit].map(comp => (
-                                    <div className="field-with-label" key={comp}>
-                                        <input
-                                            type="text"
-                                            className="input-field"
-                                            value={g.value[comp]}
-                                            onChange={(e) => calculate('g', e.target.value, comp)}
-                                        />
-                                        <span className="part-label">{comp}</span>
-                                    </div>
-                                ))}
-                            </div>
-                            <div className="unit-select-wrapper">
-                                <select
-                                    className="unit-select"
-                                    value={g.unit}
-                                    onChange={(e) => {
-                                        const newUnit = e.target.value;
-                                        const baseVal = toBaseMulti(g.value, g.unit);
-                                        const newValObj = fromBaseMulti(baseVal, newUnit);
-                                        setG({ ...g, value: newValObj, unit: newUnit });
-                                    }}
-                                >
-                                    {Object.keys(MULTI_UNIT_CONFIG).map(u => <option key={u} value={u}>{u}</option>)}
-                                </select>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div className="divider-custom"></div>
-
-                    <div className="calc-actions-custom-layout">
-                        {/* <button className="share-result-btn">
-                            <div className="share-icon-circle">
-                                <svg viewBox="0 0 24 24" width="18" height="18" fill="white">
-                                    <path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81 1.66 0 3-1.34 3-3s-1.34-3-3-3-3 1.34-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9c-1.66 0-3 1.34-3 3s1.34 3 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.16c-.05.21-.08.43-.08.65 0 1.61 1.31 2.92 2.92 2.92s2.92-1.31 2.92-2.92c0-1.61-1.31-2.92-2.92-2.92z"/>
-                                </svg>
-                            </div>
-                            Share result
-                        </button> */}
-                        <div className="side-actions">
-                            <button className="action-btn-styled" onClick={() => window.location.reload()}>Reload calculator</button>
-                            <button className="action-btn-styled outline" onClick={handleClear}>Clear all changes</button>
-                        </div>
-                    </div>
-
-                    <div className="feedback-section-new">
+                    <div className="feedback-section">
                         <p>Did we solve your problem today?</p>
-                        <div className="feedback-btns-new">
-                            <button className="feedback-btn"><span className="icon">👍</span> Yes</button>
-                            <button className="feedback-btn"><span className="icon">👎</span> No</button>
+                        <div className="feedback-btngroup">
+                            <SimpleButton variant="secondary" style={{ width: 80 }}>Yes</SimpleButton>
+                            <SimpleButton variant="secondary" style={{ width: 80 }}>No</SimpleButton>
                         </div>
                     </div>
                 </div>
@@ -384,5 +377,4 @@ const CellDoublingTimeCalculatorPage = () => {
         </CalculatorLayout>
     );
 };
-
 export default CellDoublingTimeCalculatorPage;

@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import SubNavigation from './SubNavigation';
-import { Share2, ThumbsUp, ThumbsDown, MessageSquare, Box, Code, Quote } from 'lucide-react';
+import { ThumbsUp, ThumbsDown, Box } from 'lucide-react';
 import './CalculatorLayout.css'; // We'll move common styles here
 
 const CalculatorLayout = ({
@@ -11,7 +11,8 @@ const CalculatorLayout = ({
     tocItems = [],
     children,
     similarCalculators = 7,
-    articleContent
+    articleContent,
+    lastUpdated = "August 27, 2024" // Default or passed prop
 }) => {
     const location = useLocation();
 
@@ -40,94 +41,67 @@ const CalculatorLayout = ({
             <SubNavigation />
 
             <div className="calc-content-wrapper">
-                <h1 className="calc-main-title">{title}</h1>
-                <div className="calc-meta-info">
-                    {creators && (
-                        <div className="author-info">
-                            <div className="author-avatar">
-                                <span>{creators[0]?.name ? creators[0].name.substring(0, 2).toUpperCase() : 'OM'}</span>
-                            </div>
-                            <div className="creators-text">
-                                <span className="label">Creators</span>
-                                <p>
-                                    {creators.map((c, i) => (
-                                        <span key={i}>
-                                            <a href="#">{c.name}</a>{i < creators.length - 1 ? ', ' : ''}
-                                        </span>
-                                    ))}
-                                </p>
-                            </div>
-                        </div>
-                    )}
-
-                    {reviewers && (
-                        <div className="reviewers-info">
-                            <span className="label">Reviewers</span>
-                            <p>
-                                {reviewers.map((r, i) => (
-                                    <span key={i}>
-                                        <a href="#">{r.name}</a>{i < reviewers.length - 1 ? ' and ' : ''}
-                                    </span>
-                                ))}
-                            </p>
-                        </div>
-                    )}
-                </div>
-
                 <div className="calc-layout">
-                    {/* Left Sidebar */}
+                    {/* Left Sidebar / Article Area */}
                     <div className="left-sidebar">
-                        <div className="social-proof">
-                            <div className="proof-item">
-                                <Box size={16} /> Based on <b>3 sources</b>
-                            </div>
-                            <div className="proof-item">
-                                <ThumbsUp size={16} /> <b>725</b> people find this calculator helpful
-                            </div>
+                        <div className="calc-meta-date">Last updated: {lastUpdated}</div>
+                        <h1 className="calc-main-title">{title}</h1>
+                        <div className="calc-meta-info">
+                            {creators && (
+                                <div className="author-info">
+                                    <div className="author-avatar">
+                                        <img src={`https://ui-avatars.com/api/?name=${creators[0]?.name}&background=random&color=fff&size=128`} alt={creators[0]?.name} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+                                    </div>
+                                    <div className="creators-text">
+                                        <span className="label">Creators</span>
+                                        <p>
+                                            {creators.map((c, i) => (
+                                                <span key={i}>
+                                                    <a href="#">{c.name}</a>{c.role && <span>, {c.role}</span>}{i < creators.length - 1 ? ', ' : ''}
+                                                </span>
+                                            ))}
+                                        </p>
+                                    </div>
+                                </div>
+                            )}
                         </div>
 
-                        <div className="interaction-buttons">
-                            <button className="like-btn"><ThumbsUp size={18} /> 725</button>
-                            <button className="dislike-btn"><ThumbsDown size={18} /></button>
-                            <button className="action-btn"><MessageSquare size={18} /></button>
-                            <button className="action-btn"><Share2 size={18} /></button>
-                            <button className="action-btn"><Code size={18} /></button>
-                            <button className="action-btn"><Quote size={18} /></button>
+                        <div className="calc-meta-social">
+                            <ThumbsUp size={16} className="meta-icon" /> <b>20 people</b> find this calculator helpful
+                        </div>
+
+                        {/* LIKE/DISLIKE BUTTONS SMALL ROW */}
+                        <div className="calc-rating-row">
+                            <div className="rating-btn-group">
+                                <button className="rating-btn"><ThumbsUp size={16} /> 20</button>
+                                <button className="rating-btn"><ThumbsDown size={16} /></button>
+                            </div>
                         </div>
 
                         <div className="toc">
                             <h3>Table of contents</h3>
                             <ul>
                                 {tocItems.map((item, index) => (
-                                    <li key={index}><a href="#">{item}</a></li>
+                                    <li key={index}>
+                                        <a href={item.id ? `#${item.id}` : '#'}>
+                                            {typeof item === 'object' ? item.label : item}
+                                        </a>
+                                    </li>
                                 ))}
                             </ul>
                         </div>
 
                         {articleContent && (
-                            <div className="article-content" style={{ marginTop: '32px', lineHeight: '1.6', color: '#374151' }}>
+                            <div className="article-content">
                                 {articleContent}
                             </div>
                         )}
                     </div>
 
-                    {/* Right Content Area (Standard Wrapper) */}
+                    {/* Right Content Area (Standard Wrapper, No ads) */}
                     <div className="calculator-wrapper">
-                        {/* Ad Banner Placeholder */}
-                        <div className="ad-banner-placeholder">
-                            <div className="ad-content">
-                                <span>Ad Space / Banner</span>
-                            </div>
-                        </div>
-
                         {/* The Actual Calculator Card passed as children */}
                         {children}
-
-                        <div style={{ marginTop: '24px', background: '#fffbeb', padding: '16px', borderRadius: '8px', border: '1px solid #fef3c7' }}>
-                            <div style={{ fontWeight: '600', fontSize: '0.95rem' }}>
-                                Check out <a href="#" style={{ color: '#436cfe' }}>{similarCalculators} similar</a> calculators 🔬
-                            </div>
-                        </div>
                     </div>
                 </div>
             </div>
