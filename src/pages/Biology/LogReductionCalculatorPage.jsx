@@ -262,13 +262,6 @@ const LogReductionCalculatorPage = () => {
                         </div>
                     </div>
 
-                    <div className="feedback-section-new">
-                        <p>Did we solve your problem today?</p>
-                        <div className="feedback-btns-new">
-                            <button className="feedback-btn"><span className="icon">👍</span> Yes</button>
-                            <button className="feedback-btn"><span className="icon">👎</span> No</button>
-                        </div>
-                    </div>
                 </div>
             </div>
         </CalculatorLayout>

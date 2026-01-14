@@ -163,7 +163,7 @@ const FractionToPercentCalculatorPage = () => {
                                 className="calc-input"
                                 value={num}
                                 onChange={(e) => handleNumChange(e.target.value)}
-                            />
+                             onWheel={(e) => e.target.blur()} />
                         </div>
                     </div>
 
@@ -175,7 +175,7 @@ const FractionToPercentCalculatorPage = () => {
                                 className="calc-input"
                                 value={den}
                                 onChange={(e) => handleDenChange(e.target.value)}
-                            />
+                             onWheel={(e) => e.target.blur()} />
                         </div>
                     </div>
 
@@ -217,7 +217,7 @@ const FractionToPercentCalculatorPage = () => {
                                 className="calc-input"
                                 value={pctInput}
                                 onChange={(e) => handlePctInputChange(e.target.value)}
-                            />
+                             onWheel={(e) => e.target.blur()} />
                             <span className="input-suffix">%</span>
                         </div>
                     </div>
@@ -249,13 +249,6 @@ const FractionToPercentCalculatorPage = () => {
                     </div>
                 </div>
 
-                <div className="feedback-section" style={{ marginTop: '2rem', textAlign: 'center', paddingTop: '1.5rem', borderTop: '1px solid #f3f4f6' }}>
-                    <p style={{ marginBottom: '1rem', color: '#4b5563' }}>Did we solve your problem today?</p>
-                    <div>
-                        <button className="feedback-btn" style={{ padding: '0.5rem 1.5rem', border: '1px solid #e5e7eb', borderRadius: '0.25rem', background: 'white', cursor: 'pointer', margin: '0 0.5rem' }}>Yes</button>
-                        <button className="feedback-btn" style={{ padding: '0.5rem 1.5rem', border: '1px solid #e5e7eb', borderRadius: '0.25rem', background: 'white', cursor: 'pointer', margin: '0 0.5rem' }}>No</button>
-                    </div>
-                </div>
 
             </div>
         </CalculatorLayout>

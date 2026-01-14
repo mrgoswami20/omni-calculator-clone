@@ -249,7 +249,7 @@ const AddictionCalculatorPage = () => {
                 <div className="input-group">
                     <div className="label-row"><label>Life lost <Info size={14} className="info-icon" /></label><span className="more-options">...</span></div>
                     <div className="input-with-unit">
-                        <input type="number" className="calc-input" value={lifeLostRaw} onChange={(e) => setLifeLostRaw(e.target.value)} />
+                        <input type="number" className="calc-input" value={lifeLostRaw} onChange={(e) => setLifeLostRaw(e.target.value)}  onWheel={(e) => e.target.blur()} />
                         <div className="unit-select-wrapper">
                             <select className="unit-select" value={lifeLostUnit} onChange={(e) => setLifeLostUnit(e.target.value)}>
                                 <option value="min">minutes (min)</option>
@@ -266,7 +266,7 @@ const AddictionCalculatorPage = () => {
                 <div className="input-group">
                     <div className="label-row"><label>Times used</label><span className="more-options">...</span></div>
                     <div className="input-with-unit">
-                        <input type="number" className="calc-input" value={timesUsed} onChange={(e) => setTimesUsed(e.target.value)} />
+                        <input type="number" className="calc-input" value={timesUsed} onChange={(e) => setTimesUsed(e.target.value)}  onWheel={(e) => e.target.blur()} />
                         <div className="unit-select-wrapper right-align-fix">
                             <span className="plain-suffix">/ day</span>
                         </div>
@@ -277,7 +277,7 @@ const AddictionCalculatorPage = () => {
                 <div className="input-group">
                     <div className="label-row"><label>Age started <Info size={14} className="info-icon" /></label><span className="more-options">...</span></div>
                     <div className="input-with-unit">
-                        <input type="number" className="calc-input" value={ageStarted} onChange={(e) => setAgeStarted(e.target.value)} />
+                        <input type="number" className="calc-input" value={ageStarted} onChange={(e) => setAgeStarted(e.target.value)}  onWheel={(e) => e.target.blur()} />
                         <div className="unit-select-wrapper">
                             <select className="unit-select" value={ageStartedUnit} onChange={(e) => setAgeStartedUnit(e.target.value)}>
                                 {renderUnitOptions()}

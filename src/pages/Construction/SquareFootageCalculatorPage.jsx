@@ -123,7 +123,7 @@ const SquareFootageCalculatorPage = () => {
                                 value={width.value}
                                 onChange={(e) => setWidth({ ...width, value: e.target.value })}
                                 placeholder="0"
-                            />
+                             onWheel={(e) => e.target.blur()} />
                             <select
                                 className="bar-unit-select"
                                 value={width.unit}
@@ -148,7 +148,7 @@ const SquareFootageCalculatorPage = () => {
                                 value={length.value}
                                 onChange={(e) => setLength({ ...length, value: e.target.value })}
                                 placeholder="0"
-                            />
+                             onWheel={(e) => e.target.blur()} />
                             <select
                                 className="bar-unit-select"
                                 value={length.unit}
@@ -172,7 +172,7 @@ const SquareFootageCalculatorPage = () => {
                                 className="bar-input"
                                 value={quantity}
                                 onChange={(e) => setQuantity(e.target.value)}
-                            />
+                             onWheel={(e) => e.target.blur()} />
                         </div>
                     </div>
 
@@ -224,7 +224,7 @@ const SquareFootageCalculatorPage = () => {
                                 value={unitPrice.value}
                                 onChange={(e) => setUnitPrice({ ...unitPrice, value: e.target.value })}
                                 placeholder="0"
-                            />
+                             onWheel={(e) => e.target.blur()} />
                             <div className="bar-unit-grid">
                                 <select
                                     className="price-unit-select"
@@ -285,13 +285,6 @@ const SquareFootageCalculatorPage = () => {
                         </div>
                     </div>
 
-                    <div className="feedback-section-new" style={{ borderTop: 'none', borderBottom: 'none', marginTop: '24px' }}>
-                        <p>Did we solve your problem today?</p>
-                        <div className="feedback-btns-new">
-                            <button className="feedback-btn"><span className="icon">👍</span> Yes</button>
-                            <button className="feedback-btn"><span className="icon">👎</span> No</button>
-                        </div>
-                    </div>
                 </div>
             </div>
         </CalculatorLayout>

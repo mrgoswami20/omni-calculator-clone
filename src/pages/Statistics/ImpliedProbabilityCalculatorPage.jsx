@@ -136,7 +136,7 @@ const ImpliedProbabilityCalculatorPage = () => {
                                 onChange={(e) => setOdds(e.target.value)}
                                 placeholder={sign === 'positive' ? "e.g. 150" : "e.g. 200"}
                                 min="0"
-                            />
+                             onWheel={(e) => e.target.blur()} />
                         </div>
                     </div>
 

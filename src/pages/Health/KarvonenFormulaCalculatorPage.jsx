@@ -128,7 +128,7 @@ const KarvonenFormulaCalculatorPage = () => {
                                 value={restingHR}
                                 onChange={(e) => setRestingHR(e.target.value)}
                                 placeholder=" "
-                            />
+                             onWheel={(e) => e.target.blur()} />
                             <div className="unit-label-static">bpm</div>
                         </div>
                     </div>
@@ -163,7 +163,7 @@ const KarvonenFormulaCalculatorPage = () => {
                                     value={maxHR}
                                     onChange={(e) => setMaxHR(e.target.value)}
                                     placeholder=" "
-                                />
+                                 onWheel={(e) => e.target.blur()} />
                                 <div className="unit-label-static">bpm</div>
                             </div>
                         </div>
@@ -177,7 +177,7 @@ const KarvonenFormulaCalculatorPage = () => {
                                     value={age}
                                     onChange={(e) => setAge(e.target.value)}
                                     placeholder=" "
-                                />
+                                 onWheel={(e) => e.target.blur()} />
                                 <div className="unit-label-static">years</div>
                             </div>
                         </div>
@@ -193,7 +193,7 @@ const KarvonenFormulaCalculatorPage = () => {
                                 value={intensity}
                                 onChange={(e) => setIntensity(e.target.value)}
                                 placeholder=" "
-                            />
+                             onWheel={(e) => e.target.blur()} />
                             <div className="unit-label-static">%</div>
                         </div>
                     </div>
@@ -238,13 +238,6 @@ const KarvonenFormulaCalculatorPage = () => {
                         </div>
                     </div>
 
-                    <div className="feedback-section-new">
-                        <p>Did we solve your problem today?</p>
-                        <div className="feedback-btns-new">
-                            <button className="feedback-btn"><span className="icon">👍</span> Yes</button>
-                            <button className="feedback-btn"><span className="icon">👎</span> No</button>
-                        </div>
-                    </div>
                 </div>
             </div>
         </CalculatorLayout>

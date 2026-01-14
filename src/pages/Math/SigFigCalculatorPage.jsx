@@ -61,7 +61,7 @@ const SigFigCalculatorPage = () => {
             reviewers={[{ name: "Tibor Pál" }]}
             tocItems={["What are significant figures?", "Rules"]}
         >
-            <div className="calculator-card">
+            <div className="calc-card">
                 <div className="input-group">
                     <label style={{ display: 'block', marginBottom: '4px' }}>Data</label>
                     <div className="input-wrapper">

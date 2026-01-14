@@ -142,7 +142,7 @@ const LengthConverterPage = () => {
             articleContent={articleContent}
             similarCalculators={12}
         >
-            <div className="calculator-card length-converter-page">
+            <div className="calc-card length-converter-page">
 
                 {/* Metric Section */}
                 <div className="collapsible-section no-border-top">
@@ -157,35 +157,35 @@ const LengthConverterPage = () => {
                             <div className="input-group">
                                 <div className="label-row"><label>Length in millimeters</label><span className="more-options">...</span></div>
                                 <div className="input-wrapper">
-                                    <input type="number" className="calc-input" value={getDisplayValue('mm')} onChange={(e) => handleInputChange(e.target.value, 'mm')} />
+                                    <input type="number" className="calc-input" value={getDisplayValue('mm')} onChange={(e) => handleInputChange(e.target.value, 'mm')}  onWheel={(e) => e.target.blur()} />
                                     <span className="unit-label-static">mm</span>
                                 </div>
                             </div>
                             <div className="input-group">
                                 <div className="label-row"><label>Length in centimeters</label><span className="more-options">...</span></div>
                                 <div className="input-wrapper">
-                                    <input type="number" className="calc-input" value={getDisplayValue('cm')} onChange={(e) => handleInputChange(e.target.value, 'cm')} />
+                                    <input type="number" className="calc-input" value={getDisplayValue('cm')} onChange={(e) => handleInputChange(e.target.value, 'cm')}  onWheel={(e) => e.target.blur()} />
                                     <span className="unit-label-static">cm</span>
                                 </div>
                             </div>
                             <div className="input-group">
                                 <div className="label-row"><label>Length in meters</label><span className="more-options">...</span></div>
                                 <div className="input-wrapper">
-                                    <input type="number" className="calc-input" value={getDisplayValue('m')} onChange={(e) => handleInputChange(e.target.value, 'm')} />
+                                    <input type="number" className="calc-input" value={getDisplayValue('m')} onChange={(e) => handleInputChange(e.target.value, 'm')}  onWheel={(e) => e.target.blur()} />
                                     <span className="unit-label-static">m</span>
                                 </div>
                             </div>
                             <div className="input-group">
                                 <div className="label-row"><label>Length in kilometers</label><span className="more-options">...</span></div>
                                 <div className="input-wrapper">
-                                    <input type="number" className="calc-input" value={getDisplayValue('km')} onChange={(e) => handleInputChange(e.target.value, 'km')} />
+                                    <input type="number" className="calc-input" value={getDisplayValue('km')} onChange={(e) => handleInputChange(e.target.value, 'km')}  onWheel={(e) => e.target.blur()} />
                                     <span className="unit-label-static">km</span>
                                 </div>
                             </div>
                             <div className="input-group">
                                 <div className="label-row"><label>Length in other metric units</label><span className="more-options">...</span></div>
                                 <div className="input-wrapper">
-                                    <input type="number" className="calc-input" value={getDisplayValue(otherMetricUnit)} onChange={(e) => handleInputChange(e.target.value, otherMetricUnit)} />
+                                    <input type="number" className="calc-input" value={getDisplayValue(otherMetricUnit)} onChange={(e) => handleInputChange(e.target.value, otherMetricUnit)}  onWheel={(e) => e.target.blur()} />
                                     <UnitSelect value={otherMetricUnit} onChange={setOtherMetricUnit} options={MetricOptions} />
                                 </div>
                             </div>
@@ -206,35 +206,35 @@ const LengthConverterPage = () => {
                             <div className="input-group">
                                 <div className="label-row"><label>Length in inches</label><span className="more-options">...</span></div>
                                 <div className="input-wrapper">
-                                    <input type="number" className="calc-input" value={getDisplayValue('in')} onChange={(e) => handleInputChange(e.target.value, 'in')} />
+                                    <input type="number" className="calc-input" value={getDisplayValue('in')} onChange={(e) => handleInputChange(e.target.value, 'in')}  onWheel={(e) => e.target.blur()} />
                                     <span className="unit-label-static">in</span>
                                 </div>
                             </div>
                             <div className="input-group">
                                 <div className="label-row"><label>Length in feet</label><span className="more-options">...</span></div>
                                 <div className="input-wrapper">
-                                    <input type="number" className="calc-input" value={getDisplayValue('ft')} onChange={(e) => handleInputChange(e.target.value, 'ft')} />
+                                    <input type="number" className="calc-input" value={getDisplayValue('ft')} onChange={(e) => handleInputChange(e.target.value, 'ft')}  onWheel={(e) => e.target.blur()} />
                                     <span className="unit-label-static">ft</span>
                                 </div>
                             </div>
                             <div className="input-group">
                                 <div className="label-row"><label>Length in yards</label><span className="more-options">...</span></div>
                                 <div className="input-wrapper">
-                                    <input type="number" className="calc-input" value={getDisplayValue('yd')} onChange={(e) => handleInputChange(e.target.value, 'yd')} />
+                                    <input type="number" className="calc-input" value={getDisplayValue('yd')} onChange={(e) => handleInputChange(e.target.value, 'yd')}  onWheel={(e) => e.target.blur()} />
                                     <span className="unit-label-static">yd</span>
                                 </div>
                             </div>
                             <div className="input-group">
                                 <div className="label-row"><label>Length in miles</label><span className="more-options">...</span></div>
                                 <div className="input-wrapper">
-                                    <input type="number" className="calc-input" value={getDisplayValue('mi')} onChange={(e) => handleInputChange(e.target.value, 'mi')} />
+                                    <input type="number" className="calc-input" value={getDisplayValue('mi')} onChange={(e) => handleInputChange(e.target.value, 'mi')}  onWheel={(e) => e.target.blur()} />
                                     <span className="unit-label-static">mi</span>
                                 </div>
                             </div>
                             <div className="input-group">
                                 <div className="label-row"><label>Length in other imperial units</label><span className="more-options">...</span></div>
                                 <div className="input-wrapper">
-                                    <input type="number" className="calc-input" value={getDisplayValue(otherImperialUnit)} onChange={(e) => handleInputChange(e.target.value, otherImperialUnit)} />
+                                    <input type="number" className="calc-input" value={getDisplayValue(otherImperialUnit)} onChange={(e) => handleInputChange(e.target.value, otherImperialUnit)}  onWheel={(e) => e.target.blur()} />
                                     <UnitSelect value={otherImperialUnit} onChange={setOtherImperialUnit} options={ImperialOptions} />
                                 </div>
                             </div>
@@ -255,28 +255,28 @@ const LengthConverterPage = () => {
                             <div className="input-group">
                                 <div className="label-row"><label>Length in nautical miles</label><span className="more-options">...</span></div>
                                 <div className="input-wrapper">
-                                    <input type="number" className="calc-input" value={getDisplayValue('nmi')} onChange={(e) => handleInputChange(e.target.value, 'nmi')} />
+                                    <input type="number" className="calc-input" value={getDisplayValue('nmi')} onChange={(e) => handleInputChange(e.target.value, 'nmi')}  onWheel={(e) => e.target.blur()} />
                                     <span className="unit-label-static">nmi</span>
                                 </div>
                             </div>
                             <div className="input-group">
                                 <div className="label-row"><label>Length in Sun radii</label><span className="more-options">...</span></div>
                                 <div className="input-wrapper">
-                                    <input type="number" className="calc-input" value={getDisplayValue('R☉')} onChange={(e) => handleInputChange(e.target.value, 'R☉')} />
+                                    <input type="number" className="calc-input" value={getDisplayValue('R☉')} onChange={(e) => handleInputChange(e.target.value, 'R☉')}  onWheel={(e) => e.target.blur()} />
                                     <span className="unit-label-static">R☉</span>
                                 </div>
                             </div>
                             <div className="input-group">
                                 <div className="label-row"><label>Length in light years</label><span className="more-options">...</span></div>
                                 <div className="input-wrapper">
-                                    <input type="number" className="calc-input" value={getDisplayValue('ly')} onChange={(e) => handleInputChange(e.target.value, 'ly')} />
+                                    <input type="number" className="calc-input" value={getDisplayValue('ly')} onChange={(e) => handleInputChange(e.target.value, 'ly')}  onWheel={(e) => e.target.blur()} />
                                     <span className="unit-label-static">ly</span>
                                 </div>
                             </div>
                             <div className="input-group">
                                 <div className="label-row"><label>Length in other units</label><span className="more-options">...</span></div>
                                 <div className="input-wrapper">
-                                    <input type="number" className="calc-input" value={getDisplayValue(otherUnit)} onChange={(e) => handleInputChange(e.target.value, otherUnit)} />
+                                    <input type="number" className="calc-input" value={getDisplayValue(otherUnit)} onChange={(e) => handleInputChange(e.target.value, otherUnit)}  onWheel={(e) => e.target.blur()} />
                                     <UnitSelect value={otherUnit} onChange={setOtherUnit} options={OtherOptions} />
                                 </div>
                             </div>
@@ -298,13 +298,6 @@ const LengthConverterPage = () => {
                     </div>
                 </div>
 
-                <div className="feedback-section">
-                    <p>Did we solve your problem today?</p>
-                    <div className="feedback-btns">
-                        <button>Yes</button>
-                        <button>No</button>
-                    </div>
-                </div>
             </div>
         </CalculatorLayout>
     );

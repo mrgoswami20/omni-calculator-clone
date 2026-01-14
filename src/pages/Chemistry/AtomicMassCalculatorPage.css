@@ -1,103 +1,13 @@
-.atomic-mass-page .input-group {
-    margin-bottom: 20px;
-}
+/* AtomicMassCalculatorPage.css */
 
-.label-row {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 8px;
-    font-size: 0.9rem;
-    color: #374151;
-}
+/* 
+   Styles have been moved to CalculatorLayout.css for global consistency.
+   This file can contain page-specific overrides if needed.
+*/
 
-.more-options {
-    color: #9ca3af;
-    cursor: pointer;
-    font-weight: bold;
-}
-
-.input-wrapper {
-    position: relative;
-    display: flex;
-    align-items: center;
-}
-
-.calc-input {
+.atomic-mass-calculator-page {
     width: 100%;
-    padding: 10px 12px;
-    padding-right: 40px;
-    /* Space for unit */
-    border: 1px solid #d1d5db;
-    border-radius: 6px;
-    font-size: 1rem;
-    color: #111827;
-    background-color: #f9fafb;
-    outline: none;
+    margin: 0 auto;
 }
 
-.calc-input:focus {
-    border-color: #2563eb;
-    background-color: white;
-}
-
-.with-unit .calc-input {
-    padding-right: 60px;
-}
-
-.unit-label {
-    position: absolute;
-    right: 12px;
-    color: #6b7280;
-    font-size: 0.9rem;
-    display: flex;
-    align-items: center;
-    gap: 4px;
-}
-
-.scientific .calc-input {
-    padding-right: 120px;
-}
-
-.scientific-part {
-    position: absolute;
-    right: 40px;
-    color: #2563eb;
-    /* Blue text */
-    font-weight: 500;
-    font-size: 0.95rem;
-}
-
-.symbol-section {
-    margin-top: 32px;
-}
-
-.aze-display {
-    display: inline-flex;
-    align-items: center;
-    gap: 4px;
-    margin-top: 8px;
-    margin-bottom: 16px;
-}
-
-.aze-numbers {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-end;
-    line-height: 1;
-    font-size: 0.9rem;
-    font-weight: 600;
-    color: #111827;
-}
-
-.aze-sym {
-    font-size: 1.8rem;
-    font-weight: 800;
-    line-height: 1;
-    color: #111827;
-}
-
-.stability-text {
-    font-size: 0.95rem;
-    color: #374151;
-}
+/* Any specific non-standard overrides can go here */

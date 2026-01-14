@@ -117,7 +117,7 @@ const SluggingPercentageCalculatorPage = () => {
                                 className="calc-input"
                                 value={singles}
                                 onChange={(e) => handleChange(setSingles, e.target.value, 's1')}
-                            />
+                             onWheel={(e) => e.target.blur()} />
                         </div>
                     </div>
 
@@ -129,7 +129,7 @@ const SluggingPercentageCalculatorPage = () => {
                                 className="calc-input"
                                 value={doubles}
                                 onChange={(e) => handleChange(setDoubles, e.target.value, 's2')}
-                            />
+                             onWheel={(e) => e.target.blur()} />
                         </div>
                     </div>
 
@@ -141,7 +141,7 @@ const SluggingPercentageCalculatorPage = () => {
                                 className="calc-input"
                                 value={triples}
                                 onChange={(e) => handleChange(setTriples, e.target.value, 's3')}
-                            />
+                             onWheel={(e) => e.target.blur()} />
                         </div>
                     </div>
 
@@ -153,7 +153,7 @@ const SluggingPercentageCalculatorPage = () => {
                                 className="calc-input"
                                 value={hr}
                                 onChange={(e) => handleChange(setHr, e.target.value, 'hr')}
-                            />
+                             onWheel={(e) => e.target.blur()} />
                         </div>
                     </div>
 
@@ -165,7 +165,7 @@ const SluggingPercentageCalculatorPage = () => {
                                 className="calc-input"
                                 value={ab}
                                 onChange={(e) => handleChange(setAb, e.target.value, 'ab')}
-                            />
+                             onWheel={(e) => e.target.blur()} />
                         </div>
                     </div>
 
@@ -196,13 +196,6 @@ const SluggingPercentageCalculatorPage = () => {
 
                 </div>
 
-                <div className="feedback-section" style={{ marginTop: '2rem', textAlign: 'center', paddingTop: '1.5rem', borderTop: '1px solid #f3f4f6' }}>
-                    <p style={{ marginBottom: '1rem', color: '#4b5563' }}>Did we solve your problem today?</p>
-                    <div>
-                        <button className="feedback-btn" style={{ padding: '0.5rem 1.5rem', border: '1px solid #e5e7eb', borderRadius: '0.25rem', background: 'white', cursor: 'pointer', margin: '0 0.5rem' }}>Yes</button>
-                        <button className="feedback-btn" style={{ padding: '0.5rem 1.5rem', border: '1px solid #e5e7eb', borderRadius: '0.25rem', background: 'white', cursor: 'pointer', margin: '0 0.5rem' }}>No</button>
-                    </div>
-                </div>
 
             </div>
         </CalculatorLayout>

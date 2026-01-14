@@ -212,13 +212,13 @@ const IELTSScoreCalculatorPage = () => {
                         <div className="input-col">
                             <div className="label-row"><label>Listening</label><span className="more-options">...</span></div>
                             <div className="input-wrapper">
-                                <input type="number" step="0.5" className="calc-input" value={listening} onChange={(e) => setListening(e.target.value)} />
+                                <input type="number" step="0.5" className="calc-input" value={listening} onChange={(e) => setListening(e.target.value)}  onWheel={(e) => e.target.blur()} />
                             </div>
                         </div>
                         <div className="input-col">
                             <div className="label-row"><label>Reading</label><span className="more-options">...</span></div>
                             <div className="input-wrapper">
-                                <input type="number" step="0.5" className="calc-input" value={reading} onChange={(e) => setReading(e.target.value)} />
+                                <input type="number" step="0.5" className="calc-input" value={reading} onChange={(e) => setReading(e.target.value)}  onWheel={(e) => e.target.blur()} />
                             </div>
                         </div>
                     </div>
@@ -227,13 +227,13 @@ const IELTSScoreCalculatorPage = () => {
                         <div className="input-col">
                             <div className="label-row"><label>Speaking</label><span className="more-options">...</span></div>
                             <div className="input-wrapper">
-                                <input type="number" step="0.5" className="calc-input" value={speaking} onChange={(e) => setSpeaking(e.target.value)} />
+                                <input type="number" step="0.5" className="calc-input" value={speaking} onChange={(e) => setSpeaking(e.target.value)}  onWheel={(e) => e.target.blur()} />
                             </div>
                         </div>
                         <div className="input-col">
                             <div className="label-row"><label>Writing</label><span className="more-options">...</span></div>
                             <div className="input-wrapper">
-                                <input type="number" step="0.5" className="calc-input" value={writing} onChange={(e) => setWriting(e.target.value)} />
+                                <input type="number" step="0.5" className="calc-input" value={writing} onChange={(e) => setWriting(e.target.value)}  onWheel={(e) => e.target.blur()} />
                             </div>
                         </div>
                     </div>
@@ -264,7 +264,7 @@ const IELTSScoreCalculatorPage = () => {
                     <div className="label-row"><label>Listening points <Info size={14} className="inline ml-1 text-gray-400" /></label><span className="more-options">...</span></div>
                     <div className="input-split">
                         <div className="input-wrapper" style={{ flex: 1 }}>
-                            <input type="number" className="calc-input" value={listeningPoints} onChange={(e) => setListeningPoints(e.target.value)} />
+                            <input type="number" className="calc-input" value={listeningPoints} onChange={(e) => setListeningPoints(e.target.value)}  onWheel={(e) => e.target.blur()} />
                         </div>
                         <div className="input-wrapper" style={{ flex: 1 }}>
                             <input type="text" className="calc-input result-input" value={listeningScoreResult} placeholder="" readOnly style={{ textAlign: 'center' }} />
@@ -299,7 +299,7 @@ const IELTSScoreCalculatorPage = () => {
                     <div className="label-row"><label>Reading points <Info size={14} className="inline ml-1 text-gray-400" /></label><span className="more-options">...</span></div>
                     <div className="input-split">
                         <div className="input-wrapper" style={{ flex: 1 }}>
-                            <input type="number" className="calc-input" value={readingPoints} onChange={(e) => setReadingPoints(e.target.value)} />
+                            <input type="number" className="calc-input" value={readingPoints} onChange={(e) => setReadingPoints(e.target.value)}  onWheel={(e) => e.target.blur()} />
                         </div>
                         <div className="input-wrapper" style={{ flex: 1 }}>
                             <input type="text" className="calc-input result-input" value={readingScoreResult} placeholder="" readOnly style={{ textAlign: 'center' }} />

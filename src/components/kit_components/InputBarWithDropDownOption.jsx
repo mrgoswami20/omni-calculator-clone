@@ -14,9 +14,12 @@ const InputBarWithDropDownOption = ({
     type = "text",
     className = "",
     showInfoIcon = true,
-    error, // New Prop: string or null
-    warning, // New Prop: string or null
-    unitPrefix // New Prop: string
+    error,
+    warning,
+    unitPrefix,
+    outerSuffix, // New prop for suffix outside dropdown but inside input container
+    selectedDisplayProp = 'label', // 'label' or 'value'
+    ...rest // Capture rest props
 }) => {
     const [isFocused, setIsFocused] = useState(false);
 
@@ -48,7 +51,7 @@ const InputBarWithDropDownOption = ({
             display: 'flex',
             alignItems: 'center',
             backgroundColor: '#ffffff',
-            border: error ? '1px solid #ef4444' : '1px solid #3b82f6', // Red border on error
+            border: error ? '1px solid #ef4444' : '1px solid #3b82f6',
             borderRadius: '6px',
             height: '38px',
             paddingLeft: '10px',
@@ -75,27 +78,25 @@ const InputBarWithDropDownOption = ({
             alignItems: 'center',
             padding: '0 10px',
             borderLeft: error ? '1px solid #ef4444' : '1px solid #3b82f6',
-            position: 'relative', // Anchor for absolute select
-            minWidth: '60px', // Slightly wider for safety
+            position: 'relative',
+            minWidth: '60px',
             justifyContent: 'center',
             cursor: 'pointer'
         },
-        // Visual text styling
         selectedText: {
             fontSize: '0.85rem',
             fontWeight: 500,
             color: error ? '#ef4444' : '#2563eb',
-            marginRight: '14px', // Space for chevron
+            marginRight: '14px',
             whiteSpace: 'nowrap',
-            pointerEvents: 'none' // Clicks go through to select
+            pointerEvents: 'none'
         },
-        // Transparent Overlay
         selectOverlay: {
             position: 'absolute',
             inset: 0,
             width: '100%',
             height: '100%',
-            opacity: 0, // Invisible but clickable
+            opacity: 0,
             cursor: 'pointer',
             appearance: 'none',
             zIndex: 10
@@ -116,26 +117,41 @@ const InputBarWithDropDownOption = ({
             width: '14px',
             height: '14px'
         },
-        errorBlock: {
-            backgroundColor: '#fef2f2',
-            color: '#991b1b',
-            border: '1px solid #fecaca', // Subtle border
-            borderRadius: '6px', // Matching input radius
-            padding: '8px 12px',
+        outerSuffix: {
+            fontSize: '0.85rem',
+            fontWeight: 500,
+            color: '#6b7280', // Text gray
+            padding: '0 10px',
+            backgroundColor: '#ffffff', // White bg
+            height: '100%',
             display: 'flex',
             alignItems: 'center',
-            gap: '8px',
-            fontSize: '0.8125rem', // Small readable text
-            marginTop: '4px',
+            borderLeft: '1px solid #e5e7eb' // Optional separator? Or just space?
+        },
+        errorBlock: {
+            backgroundColor: '#FFECEB',
+            color: '#B91C1C',
+            borderRadius: '8px',
+            padding: '10px 14px',
+            display: 'flex',
+            alignItems: 'center',
+            gap: '10px',
+            fontSize: '0.85rem',
+            fontWeight: 500,
+            marginTop: '6px',
             animation: 'fadeIn 0.2s ease-in-out'
         },
         warningBlock: {
-            backgroundColor: '#fefce8', // Light yellow/beige
-            color: '#713f12', // Brown text
-            borderRadius: '6px',
-            padding: '12px',
-            fontSize: '0.9rem',
-            marginTop: '8px', // Slightly more space
+            backgroundColor: '#eff6ff', // Match Atomic Page Blue
+            color: '#1e40af',
+            borderRadius: '8px', // Match standard
+            padding: '10px 14px', // Match standard
+            display: 'flex',
+            alignItems: 'center',
+            gap: '10px',
+            fontSize: '0.85rem', // Match standard
+            fontWeight: 400,
+            marginTop: '6px',
             animation: 'fadeIn 0.2s ease-in-out'
         }
     };
@@ -161,21 +177,25 @@ const InputBarWithDropDownOption = ({
                     onChange={onChange}
                     placeholder={placeholder}
                     style={styles.inputField}
+                    onWheel={(e) => e.target.blur()}
+                    {...rest}
                 />
 
                 <div style={styles.selectContainer}>
-                    {/* Prefix Text */}
                     {unitPrefix && (
                         <span style={styles.prefixText}>{unitPrefix}</span>
                     )}
 
-                    {/* Visual Representation */}
                     <span style={styles.selectedText}>
-                        {unitOptions.find(opt => (opt.value || opt) === unit)?.label || unitOptions.find(opt => (opt.value || opt) === unit) || unit}
+                        {(() => {
+                            const selectedOpt = unitOptions.find(opt => (opt.value || opt) === unit);
+                            if (!selectedOpt) return unit;
+                            if (selectedDisplayProp === 'value') return selectedOpt.value || selectedOpt;
+                            return selectedOpt.label || selectedOpt.value || selectedOpt;
+                        })()}
                     </span>
                     <ChevronDown style={styles.chevron} />
 
-                    {/* Interactive Overlay */}
                     <select
                         value={unit}
                         onChange={onUnitChange}
@@ -188,13 +208,20 @@ const InputBarWithDropDownOption = ({
                         ))}
                     </select>
                 </div>
+
+                {/* Outer Suffix */}
+                {outerSuffix && (
+                    <div style={styles.outerSuffix}>
+                        {outerSuffix}
+                    </div>
+                )}
             </div>
 
             {/* Error Message Block */}
             {error && (
                 <div style={styles.errorBlock}>
-                    <CircleAlert size={14} color="#ef4444" />
-                    {error}
+                    <CircleAlert size={16} fill="#ef4444" color="white" style={{ flexShrink: 0 }} />
+                    <span>{error}</span>
                 </div>
             )}
 
@@ -225,9 +252,11 @@ InputBarWithDropDownOption.propTypes = {
     type: PropTypes.string,
     className: PropTypes.string,
     showInfoIcon: PropTypes.bool,
-    error: PropTypes.string, // Error message to display
-    warning: PropTypes.string, // Warning message to display
-    unitPrefix: PropTypes.string // Optional prefix text before unit label
+    error: PropTypes.string,
+    warning: PropTypes.string,
+    unitPrefix: PropTypes.string,
+    outerSuffix: PropTypes.string,
+    selectedDisplayProp: PropTypes.oneOf(['label', 'value'])
 };
 
 export default InputBarWithDropDownOption;

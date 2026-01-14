@@ -179,7 +179,7 @@ const BallisticCoefficientCalculatorPage = () => {
                                 value={mass.value}
                                 onChange={(e) => calculate('mass', e.target.value, mass.unit)}
                                 placeholder="Enter mass"
-                            />
+                             onWheel={(e) => e.target.blur()} />
                             <div className="unit-select-wrapper">
                                 <select
                                     className="unit-select"
@@ -202,7 +202,7 @@ const BallisticCoefficientCalculatorPage = () => {
                                 value={area.value}
                                 onChange={(e) => calculate('area', e.target.value, area.unit)}
                                 placeholder="Enter area"
-                            />
+                             onWheel={(e) => e.target.blur()} />
                             <div className="unit-select-wrapper">
                                 <select
                                     className="unit-select"
@@ -227,7 +227,7 @@ const BallisticCoefficientCalculatorPage = () => {
                                 style={{ paddingRight: '16px' }}
                                 onChange={(e) => calculate('drag', e.target.value, null)}
                                 placeholder="Enter drag coefficient"
-                            />
+                             onWheel={(e) => e.target.blur()} />
                         </div>
                     </div>
 
@@ -241,7 +241,7 @@ const BallisticCoefficientCalculatorPage = () => {
                                 value={bc.value}
                                 onChange={(e) => calculate('bc', e.target.value, bc.unit)}
                                 placeholder="Result"
-                            />
+                             onWheel={(e) => e.target.blur()} />
                             <div className="unit-select-wrapper">
                                 <select
                                     className="unit-select"
@@ -264,13 +264,6 @@ const BallisticCoefficientCalculatorPage = () => {
                         </div>
                     </div>
 
-                    <div className="feedback-section">
-                        <p>Did we solve your problem today?</p>
-                        <div className="feedback-btns">
-                            <button>Yes</button>
-                            <button>No</button>
-                        </div>
-                    </div>
                 </div>
             </div>
         </CalculatorLayout>

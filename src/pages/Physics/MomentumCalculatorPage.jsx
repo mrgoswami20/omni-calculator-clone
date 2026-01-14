@@ -281,7 +281,7 @@ const MomentumCalculatorPage = () => {
                                 value={mass1D.value}
                                 onChange={(e) => updateCalculations('mass', e.target.value, mass1D.unit)}
                                 placeholder="Enter mass"
-                            />
+                             onWheel={(e) => e.target.blur()} />
                             <div className="unit-select-wrapper">
                                 <select
                                     className="unit-select"
@@ -304,7 +304,7 @@ const MomentumCalculatorPage = () => {
                                 value={vel1D.value}
                                 onChange={(e) => updateCalculations('vel1D', e.target.value, vel1D.unit)}
                                 placeholder="Enter velocity"
-                            />
+                             onWheel={(e) => e.target.blur()} />
                             <div className="unit-select-wrapper">
                                 <select
                                     className="unit-select"
@@ -327,7 +327,7 @@ const MomentumCalculatorPage = () => {
                                 value={mom1D.value}
                                 onChange={(e) => updateCalculations('mom1D', e.target.value, mom1D.unit)}
                                 placeholder="Result"
-                            />
+                             onWheel={(e) => e.target.blur()} />
                             <div className="unit-select-wrapper">
                                 <select
                                     className="unit-select"
@@ -363,7 +363,7 @@ const MomentumCalculatorPage = () => {
                                         className="input-field"
                                         value={mass1D.value}
                                         onChange={(e) => updateCalculations('mass', e.target.value, mass1D.unit)}
-                                    />
+                                     onWheel={(e) => e.target.blur()} />
                                     <div className="unit-select-wrapper">
                                         <select
                                             className="unit-select"
@@ -385,7 +385,7 @@ const MomentumCalculatorPage = () => {
                                         className="input-field"
                                         value={velX.value}
                                         onChange={(e) => updateCalculations('velComp', e.target.value, velX.unit, 'x')}
-                                    />
+                                     onWheel={(e) => e.target.blur()} />
                                     <div className="unit-select-wrapper">
                                         <select className="unit-select" value={velX.unit} onChange={(e) => handleUnitChange(setVelX, velX, e.target.value, 'velX', VELOCITY_UNITS)}>
                                             {Object.keys(VELOCITY_UNITS).map(u => <option key={u} value={u}>{u}</option>)}
@@ -403,7 +403,7 @@ const MomentumCalculatorPage = () => {
                                         className="input-field"
                                         value={velY.value}
                                         onChange={(e) => updateCalculations('velComp', e.target.value, velY.unit, 'y')}
-                                    />
+                                     onWheel={(e) => e.target.blur()} />
                                     <div className="unit-select-wrapper">
                                         <select className="unit-select" value={velY.unit} onChange={(e) => handleUnitChange(setVelY, velY, e.target.value, 'velY', VELOCITY_UNITS)}>
                                             {Object.keys(VELOCITY_UNITS).map(u => <option key={u} value={u}>{u}</option>)}
@@ -421,7 +421,7 @@ const MomentumCalculatorPage = () => {
                                         className="input-field"
                                         value={velZ.value}
                                         onChange={(e) => updateCalculations('velComp', e.target.value, velZ.unit, 'z')}
-                                    />
+                                     onWheel={(e) => e.target.blur()} />
                                     <div className="unit-select-wrapper">
                                         <select className="unit-select" value={velZ.unit} onChange={(e) => handleUnitChange(setVelZ, velZ, e.target.value, 'velZ', VELOCITY_UNITS)}>
                                             {Object.keys(VELOCITY_UNITS).map(u => <option key={u} value={u}>{u}</option>)}
@@ -439,7 +439,7 @@ const MomentumCalculatorPage = () => {
                                         className="input-field"
                                         value={velMag.value}
                                         onChange={(e) => updateCalculations('velMag', e.target.value, velMag.unit)}
-                                    />
+                                     onWheel={(e) => e.target.blur()} />
                                     <div className="unit-select-wrapper">
                                         <select className="unit-select" value={velMag.unit} onChange={(e) => handleUnitChange(setVelMag, velMag, e.target.value, 'velMag', VELOCITY_UNITS)}>
                                             {Object.keys(VELOCITY_UNITS).map(u => <option key={u} value={u}>{u}</option>)}
@@ -473,7 +473,7 @@ const MomentumCalculatorPage = () => {
                                         className="input-field"
                                         value={momX.value}
                                         onChange={(e) => updateCalculations('momComp', e.target.value, momX.unit, 'x')}
-                                    />
+                                     onWheel={(e) => e.target.blur()} />
                                     <div className="unit-select-wrapper">
                                         <select className="unit-select" value={momX.unit} onChange={(e) => handleUnitChange(setMomX, momX, e.target.value, 'momX', MOMENTUM_UNITS)}>
                                             {Object.keys(MOMENTUM_UNITS).map(u => <option key={u} value={u}>{u}</option>)}
@@ -491,7 +491,7 @@ const MomentumCalculatorPage = () => {
                                         className="input-field"
                                         value={momY.value}
                                         onChange={(e) => updateCalculations('momComp', e.target.value, momY.unit, 'y')}
-                                    />
+                                     onWheel={(e) => e.target.blur()} />
                                     <div className="unit-select-wrapper">
                                         <select className="unit-select" value={momY.unit} onChange={(e) => handleUnitChange(setMomY, momY, e.target.value, 'momY', MOMENTUM_UNITS)}>
                                             {Object.keys(MOMENTUM_UNITS).map(u => <option key={u} value={u}>{u}</option>)}
@@ -509,7 +509,7 @@ const MomentumCalculatorPage = () => {
                                         className="input-field"
                                         value={momZ.value}
                                         onChange={(e) => updateCalculations('momComp', e.target.value, momZ.unit, 'z')}
-                                    />
+                                     onWheel={(e) => e.target.blur()} />
                                     <div className="unit-select-wrapper">
                                         <select className="unit-select" value={momZ.unit} onChange={(e) => handleUnitChange(setMomZ, momZ, e.target.value, 'momZ', MOMENTUM_UNITS)}>
                                             {Object.keys(MOMENTUM_UNITS).map(u => <option key={u} value={u}>{u}</option>)}
@@ -527,7 +527,7 @@ const MomentumCalculatorPage = () => {
                                         className="input-field"
                                         value={momMag.value}
                                         onChange={(e) => updateCalculations('momMag', e.target.value, momMag.unit)}
-                                    />
+                                     onWheel={(e) => e.target.blur()} />
                                     <div className="unit-select-wrapper">
                                         <select className="unit-select" value={momMag.unit} onChange={(e) => handleUnitChange(setMomMag, momMag, e.target.value, 'momMag', MOMENTUM_UNITS)}>
                                             {Object.keys(MOMENTUM_UNITS).map(u => <option key={u} value={u}>{u}</option>)}
@@ -549,13 +549,6 @@ const MomentumCalculatorPage = () => {
                         </div>
                     </div>
 
-                    <div className="feedback-section">
-                        <p>Did we solve your problem today?</p>
-                        <div className="feedback-btns">
-                            <button>Yes</button>
-                            <button>No</button>
-                        </div>
-                    </div>
                 </div>
             </div>
         </CalculatorLayout>

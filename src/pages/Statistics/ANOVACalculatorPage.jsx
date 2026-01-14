@@ -378,13 +378,6 @@ const ANOVACalculatorPage = () => {
                     </div>
                 </div>
 
-                <div className="feedback-section" style={{ marginTop: '2rem' }}>
-                    <p>Did we solve your problem today?</p>
-                    <div className="feedback-btns">
-                        <button>Yes</button>
-                        <button>No</button>
-                    </div>
-                </div>
 
             </div>
         </CalculatorLayout>

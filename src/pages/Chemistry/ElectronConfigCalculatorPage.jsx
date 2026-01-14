@@ -63,7 +63,7 @@ const ElectronConfigCalculatorPage = () => {
                 "What are valence electrons?"
             ]}
         >
-            <div className="calculator-card electron-config-page">
+            <div className="calc-card electron-config-page">
                 <div className="input-group">
                     <div className="label-row">
                         <label>Element</label>
@@ -153,13 +153,6 @@ const ElectronConfigCalculatorPage = () => {
                     </div>
                 </div>
 
-                <div className="feedback-section">
-                    <p>Did we solve your problem today?</p>
-                    <div className="feedback-btns">
-                        <button>Yes</button>
-                        <button>No</button>
-                    </div>
-                </div>
             </div>
         </CalculatorLayout>
     );

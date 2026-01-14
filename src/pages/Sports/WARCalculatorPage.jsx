@@ -136,7 +136,7 @@ const WARCalculatorPage = () => {
                                 className="calc-input"
                                 value={battingRuns}
                                 onChange={(e) => handleChange(setBattingRuns, e.target.value, 'br')}
-                            />
+                             onWheel={(e) => e.target.blur()} />
                         </div>
                     </div>
 
@@ -148,7 +148,7 @@ const WARCalculatorPage = () => {
                                 className="calc-input"
                                 value={baseRunningRuns}
                                 onChange={(e) => handleChange(setBaseRunningRuns, e.target.value, 'bsr')}
-                            />
+                             onWheel={(e) => e.target.blur()} />
                         </div>
                     </div>
 
@@ -160,7 +160,7 @@ const WARCalculatorPage = () => {
                                 className="calc-input"
                                 value={fieldingRuns}
                                 onChange={(e) => handleChange(setFieldingRuns, e.target.value, 'fr')}
-                            />
+                             onWheel={(e) => e.target.blur()} />
                         </div>
                     </div>
 
@@ -172,7 +172,7 @@ const WARCalculatorPage = () => {
                                 className="calc-input"
                                 value={positionalAdj}
                                 onChange={(e) => handleChange(setPositionalAdj, e.target.value, 'pos')}
-                            />
+                             onWheel={(e) => e.target.blur()} />
                         </div>
                     </div>
 
@@ -184,7 +184,7 @@ const WARCalculatorPage = () => {
                                 className="calc-input"
                                 value={leagueAdj}
                                 onChange={(e) => handleChange(setLeagueAdj, e.target.value, 'lg')}
-                            />
+                             onWheel={(e) => e.target.blur()} />
                         </div>
                     </div>
 
@@ -196,7 +196,7 @@ const WARCalculatorPage = () => {
                                 className="calc-input"
                                 value={replacementRuns}
                                 onChange={(e) => handleChange(setReplacementRuns, e.target.value, 'rep')}
-                            />
+                             onWheel={(e) => e.target.blur()} />
                         </div>
                     </div>
 
@@ -208,7 +208,7 @@ const WARCalculatorPage = () => {
                                 className="calc-input"
                                 value={runsPerWin}
                                 onChange={(e) => handleChange(setRunsPerWin, e.target.value, 'rpw')}
-                            />
+                             onWheel={(e) => e.target.blur()} />
                         </div>
                     </div>
 
@@ -239,13 +239,6 @@ const WARCalculatorPage = () => {
 
                 </div>
 
-                <div className="feedback-section" style={{ marginTop: '2rem', textAlign: 'center', paddingTop: '1.5rem', borderTop: '1px solid #f3f4f6' }}>
-                    <p style={{ marginBottom: '1rem', color: '#4b5563' }}>Did we solve your problem today?</p>
-                    <div>
-                        <button className="feedback-btn" style={{ padding: '0.5rem 1.5rem', border: '1px solid #e5e7eb', borderRadius: '0.25rem', background: 'white', cursor: 'pointer', margin: '0 0.5rem' }}>Yes</button>
-                        <button className="feedback-btn" style={{ padding: '0.5rem 1.5rem', border: '1px solid #e5e7eb', borderRadius: '0.25rem', background: 'white', cursor: 'pointer', margin: '0 0.5rem' }}>No</button>
-                    </div>
-                </div>
 
             </div>
         </CalculatorLayout>

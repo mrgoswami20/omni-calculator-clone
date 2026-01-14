@@ -426,13 +426,6 @@ const MarginCalculatorPage = () => {
 
                     <div className="calc-divider"></div>
 
-                    <div className="feedback-section-card">
-                        <p>Did we solve your problem today?</p>
-                        <div className="feedback-buttons">
-                            <button className="feedback-btn"><ThumbsUp size={16} /> Yes</button>
-                            <button className="feedback-btn"><ThumbsDown size={16} /> No</button>
-                        </div>
-                    </div>
                 </div>
             </div>
         </CalculatorLayout>

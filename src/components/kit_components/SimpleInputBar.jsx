@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import { MoreHorizontal } from 'lucide-react';
+import { MoreHorizontal, AlertCircle, Info } from 'lucide-react';
 
 const SimpleInputBar = ({
     label,
@@ -10,15 +10,21 @@ const SimpleInputBar = ({
     type = "text",
     name,
     className = "",
-    showInfoIcon = true
+    showInfoIcon = true,
+    error = false,
+    errorMessage = "",
+    errorMessages = [],
+    warningMessages = [], // New prop for blue warnings
+    ...rest
 }) => {
     const [isFocused, setIsFocused] = useState(false);
+    const hasError = error || errorMessages.length > 0;
 
     const styles = {
         wrapper: {
             display: 'flex',
             flexDirection: 'column',
-            gap: '4px', // Tighter gap
+            gap: '4px',
             width: '100%',
             fontFamily: 'inherit'
         },
@@ -28,7 +34,7 @@ const SimpleInputBar = ({
             alignItems: 'center',
         },
         label: {
-            fontSize: '0.8125rem', // ~13px
+            fontSize: '0.8125rem',
             fontWeight: 500,
             color: '#374151',
         },
@@ -42,21 +48,49 @@ const SimpleInputBar = ({
             display: 'flex',
             alignItems: 'center',
             backgroundColor: '#ffffff',
-            border: '1px solid #3b82f6',
-            borderRadius: '6px', // Slightly less rounded for "pro" look
-            height: '38px', // Even more compact (was 42px)
+            border: hasError ? '1px solid #ef4444' : '1px solid #3b82f6',
+            borderRadius: '6px',
+            height: '38px',
             padding: '0 10px',
             transition: 'all 0.2s ease-in-out',
-            boxShadow: isFocused ? '0 0 0 1px #3b82f6, 0 0 0 3px rgba(59, 130, 246, 0.2)' : '0 0 0 1px #3b82f6',
+            boxShadow: isFocused
+                ? (hasError ? '0 0 0 1px #ef4444, 0 0 0 3px rgba(239, 68, 68, 0.2)' : '0 0 0 1px #3b82f6, 0 0 0 3px rgba(59, 130, 246, 0.2)')
+                : (hasError ? '0 0 0 1px #ef4444' : '0 0 0 1px #3b82f6'),
         },
         inputField: {
             flex: 1,
             border: 'none',
             outline: 'none',
-            fontSize: '0.9rem', // ~14px (Standard readable size)
+            fontSize: '0.9rem',
             color: '#111827',
             backgroundColor: 'transparent',
             width: '100%',
+        },
+        errorMessage: {
+            display: 'flex',
+            alignItems: 'center',
+            gap: '10px',
+            marginTop: '6px',
+            padding: '10px 14px',
+            backgroundColor: '#fff5f5',
+            color: '#ef4444',
+            borderRadius: '8px',
+            fontSize: '0.85rem',
+            fontWeight: 500,
+            animation: 'fadeIn 0.2s ease-in-out'
+        },
+        warningMessage: { // Blue style
+            display: 'flex',
+            alignItems: 'center',
+            gap: '10px',
+            marginTop: '6px',
+            padding: '10px 14px',
+            backgroundColor: '#eff6ff', // Light blue (blue-50)
+            color: '#1e40af', // Darker blue (blue-800) or similar for text
+            borderRadius: '8px',
+            fontSize: '0.85rem',
+            fontWeight: 400, // Regular weight as per screenshot
+            animation: 'fadeIn 0.2s ease-in-out'
         }
     };
 
@@ -81,8 +115,47 @@ const SimpleInputBar = ({
                     onChange={onChange}
                     placeholder={placeholder}
                     style={styles.inputField}
+                    onWheel={(e) => e.target.blur()}
+                    {...rest}
                 />
+                {/* Suffix support */}
+                {rest.suffix && (
+                    <span style={{
+                        fontSize: '0.9rem',
+                        color: '#6b7280',
+                        marginLeft: '8px',
+                        fontWeight: 500,
+                        pointerEvents: 'none'
+                    }}>
+                        {rest.suffix}
+                    </span>
+                )}
             </div>
+
+            {/* Warning Messages (Blue) */}
+            {warningMessages.length > 0 && (
+                warningMessages.map((msg, idx) => (
+                    <div key={`warn-${idx}`} style={styles.warningMessage}>
+                        {/* No icon in screenshot? Or text only? Screenshot shows text. */}
+                        <span>{msg}</span>
+                    </div>
+                ))
+            )}
+
+            {/* Error Messages (Red) */}
+            {errorMessages.length > 0 ? (
+                errorMessages.map((msg, idx) => (
+                    <div key={`err-${idx}`} style={styles.errorMessage}>
+                        <AlertCircle size={16} fill="#ef4444" color="white" style={{ flexShrink: 0 }} />
+                        <span>{msg}</span>
+                    </div>
+                ))
+            ) : (error && errorMessage) ? (
+                <div style={styles.errorMessage}>
+                    <AlertCircle size={16} fill="#ef4444" color="white" style={{ flexShrink: 0 }} />
+                    <span>{errorMessage}</span>
+                </div>
+            ) : null}
         </div>
     );
 };
@@ -95,7 +168,11 @@ SimpleInputBar.propTypes = {
     type: PropTypes.string,
     name: PropTypes.string,
     className: PropTypes.string,
-    showInfoIcon: PropTypes.bool
+    showInfoIcon: PropTypes.bool,
+    error: PropTypes.bool,
+    errorMessage: PropTypes.string,
+    errorMessages: PropTypes.arrayOf(PropTypes.string),
+    warningMessages: PropTypes.arrayOf(PropTypes.string)
 };
 
 export default SimpleInputBar;

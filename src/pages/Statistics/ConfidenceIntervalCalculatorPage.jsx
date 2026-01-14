@@ -68,23 +68,23 @@ const ConfidenceIntervalCalculatorPage = () => {
             reviewers={[{ name: "Steven Wooding" }]}
             tocItems={["Confidence Interval Formula", "How to calculate CI"]}
         >
-            <div className="calculator-card">
+            <div className="calc-card">
                 <div className="input-group">
                     <label style={{ display: 'block', marginBottom: '4px' }}>Sample Mean (x̄)</label>
                     <div className="input-wrapper">
-                        <input type="number" value={mean} onChange={handleChange(setMean)} />
+                        <input type="number" value={mean} onChange={handleChange(setMean)}  onWheel={(e) => e.target.blur()} />
                     </div>
                 </div>
                 <div className="input-group">
                     <label style={{ display: 'block', marginBottom: '4px' }}>Standard Deviation (s)</label>
                     <div className="input-wrapper">
-                        <input type="number" value={stdDev} onChange={handleChange(setStdDev)} />
+                        <input type="number" value={stdDev} onChange={handleChange(setStdDev)}  onWheel={(e) => e.target.blur()} />
                     </div>
                 </div>
                 <div className="input-group">
                     <label style={{ display: 'block', marginBottom: '4px' }}>Sample Size (n)</label>
                     <div className="input-wrapper">
-                        <input type="number" value={sampleSize} onChange={handleChange(setSampleSize)} />
+                        <input type="number" value={sampleSize} onChange={handleChange(setSampleSize)}  onWheel={(e) => e.target.blur()} />
                     </div>
                 </div>
                 <div className="input-group">
@@ -121,13 +121,6 @@ const ConfidenceIntervalCalculatorPage = () => {
                     </div>
                 </div>
 
-                <div className="feedback-section">
-                    <p>Did we solve your problem today?</p>
-                    <div className="feedback-btns">
-                        <button>Yes</button>
-                        <button>No</button>
-                    </div>
-                </div>
             </div>
         </CalculatorLayout >
     );

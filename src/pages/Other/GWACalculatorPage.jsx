@@ -191,7 +191,7 @@ const GWACalculatorPage = () => {
                                             className="calc-input"
                                             value={course.units}
                                             onChange={(e) => handleCourseChange(course.id, 'units', e.target.value)}
-                                        />
+                                         onWheel={(e) => e.target.blur()} />
                                     </div>
                                 </div>
                             </div>

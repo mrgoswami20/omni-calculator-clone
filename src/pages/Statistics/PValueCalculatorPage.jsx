@@ -59,7 +59,7 @@ const PValueCalculatorPage = () => {
             reviewers={[{ name: "Bogna Szyk" }]}
             tocItems={["What is p-value?", "How to calculate p-value"]}
         >
-            <div className="calculator-card">
+            <div className="calc-card">
                 <div className="input-group">
                     <div className="label-row">
                         <label>Z-score</label>
@@ -71,7 +71,7 @@ const PValueCalculatorPage = () => {
                             value={zScore}
                             onChange={handleZChange}
                             placeholder="e.g. 1.96"
-                        />
+                         onWheel={(e) => e.target.blur()} />
                         <div className="unit-display">Z</div>
                     </div>
                 </div>
@@ -87,7 +87,7 @@ const PValueCalculatorPage = () => {
                             value={pValue}
                             readOnly
                             className="result-input"
-                        />
+                         onWheel={(e) => e.target.blur()} />
                     </div>
                 </div>
 
@@ -103,13 +103,6 @@ const PValueCalculatorPage = () => {
                     </div>
                 </div>
 
-                <div className="feedback-section">
-                    <p>Did we solve your problem today?</p>
-                    <div className="feedback-btns">
-                        <button>Yes</button>
-                        <button>No</button>
-                    </div>
-                </div>
             </div>
         </CalculatorLayout >
     );

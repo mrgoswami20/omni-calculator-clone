@@ -40,17 +40,17 @@ const LogCalculatorPage = () => {
             reviewers={[{ name: "Bogna Szyk" }]}
             tocItems={["Logarithm rules", "Common logs"]}
         >
-            <div className="calculator-card">
+            <div className="calc-card">
                 <div className="input-group">
                     <label style={{ display: 'block', marginBottom: '4px' }}>Base (b)</label>
                     <div className="input-wrapper">
-                        <input type="number" value={base} onChange={(e) => setBase(e.target.value)} />
+                        <input type="number" value={base} onChange={(e) => setBase(e.target.value)}  onWheel={(e) => e.target.blur()} />
                     </div>
                 </div>
                 <div className="input-group">
                     <label style={{ display: 'block', marginBottom: '4px' }}>Number (x)</label>
                     <div className="input-wrapper">
-                        <input type="number" value={number} onChange={(e) => setNumber(e.target.value)} />
+                        <input type="number" value={number} onChange={(e) => setNumber(e.target.value)}  onWheel={(e) => e.target.blur()} />
                     </div>
                 </div>
                 <div className="input-group result-group">

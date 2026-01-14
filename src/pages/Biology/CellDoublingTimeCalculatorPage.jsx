@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import CalculatorLayout from '../../components/CalculatorLayout';
-import { RotateCcw, Trash2 } from 'lucide-react';
+import { RotateCcw, Trash2, AlertCircle } from 'lucide-react';
 import SimpleInputBar from '../../components/kit_components/SimpleInputBar';
 import InputBarWithDropDownOption from '../../components/kit_components/InputBarWithDropDownOption'; // Used where possible
 import SimpleButton from '../../components/kit_components/SimpleButton';
@@ -258,10 +258,37 @@ const CellDoublingTimeCalculatorPage = () => {
         setG({ value: emptyValObj, unit: 'hours (hrs)' });
     };
 
+    // --- Validation Logic ---
+    const n0Val = parseFloat(n0.value);
+    const showN0Error = n0.value !== '' && (isNaN(n0Val) || n0Val <= 0);
+
+    const nVal = parseFloat(n.value);
+    const ntErrorMessages = [];
+    if (n.value !== '') {
+        if (isNaN(nVal) || nVal <= 0) {
+            ntErrorMessages.push("Final reference parameter must be positive.");
+        }
+        if (!isNaN(nVal) && !isNaN(n0Val) && n0Val > 0 && nVal <= n0Val) {
+            ntErrorMessages.push("Final reference parameter must be greater than initial reference parameter.");
+        }
+    }
+
+    const tTotalSec = toBaseMulti(t.value, t.unit);
+    // Check if any field is filled
+    const isTimeFilled = Object.values(t.value).some(v => v !== '');
+    const showTimeError = isTimeFilled && tTotalSec <= 0;
+
+    const rVal = parseFloat(r.value);
+    const showRateError = r.value !== '' && (isNaN(rVal) || rVal <= 0);
+
+
     // --- Actions ---
     // Custom Multi-part Input Renderer
-    const renderMultiInput = (type, stateObj, handleChange, handleUnitChangeDesc) => {
+    const renderMultiInput = (type, stateObj, handleChange, handleUnitChangeDesc, error, errorMessage) => {
         const components = MULTI_UNIT_CONFIG[stateObj.unit];
+
+        // Inline styles for error state in multi-input
+        const boxStyle = error ? { borderColor: '#ef4444', boxShadow: '0 0 0 1px #ef4444' } : {};
 
         return (
             <div className="multi-input-container">
@@ -273,6 +300,7 @@ const CellDoublingTimeCalculatorPage = () => {
                                 placeholder="0"
                                 value={stateObj.value[comp]}
                                 onChange={(e) => handleChange(type, e.target.value, comp)}
+                                style={boxStyle}
                             />
                             <span className="multi-input-label">{comp}</span>
                         </div>
@@ -289,6 +317,24 @@ const CellDoublingTimeCalculatorPage = () => {
                         ))}
                     </select>
                 </div>
+                {error && errorMessage && (
+                    <div style={{
+                        display: 'flex',
+                        alignItems: 'center',
+                        gap: '10px',
+                        marginTop: '6px',
+                        padding: '10px 14px',
+                        backgroundColor: '#FFECEB',
+                        color: '#B91C1C',
+                        borderRadius: '8px',
+                        fontSize: '0.85rem',
+                        fontWeight: 500,
+                        animation: 'fadeIn 0.2s ease-in-out'
+                    }}>
+                        <AlertCircle size={16} fill="#DC2626" color="white" style={{ flexShrink: 0 }} />
+                        <span>{errorMessage}</span>
+                    </div>
+                )}
             </div>
         );
     };
@@ -320,6 +366,8 @@ const CellDoublingTimeCalculatorPage = () => {
                         onChange={(e) => calculate('n0', e.target.value)}
                         placeholder="e.g. 1000"
                         showInfoIcon={true}
+                        error={showN0Error}
+                        errorMessage="Initial reference parameter must be positive."
                     />
 
                     {/* Nt */}
@@ -328,12 +376,13 @@ const CellDoublingTimeCalculatorPage = () => {
                         value={n.value}
                         onChange={(e) => calculate('n', e.target.value)}
                         placeholder="e.g. 5000"
+                        errorMessages={ntErrorMessages}
                     />
 
                     {/* Time (Multi) */}
                     <div className="input-block-wrapper">
                         <label className="input-label-std">Time duration</label>
-                        {renderMultiInput('t', t, calculate, handleMultiUnitChange)}
+                        {renderMultiInput('t', t, calculate, handleMultiUnitChange, showTimeError, "Time duration must be positive.")}
                     </div>
 
                     {/* Growth Rate */}
@@ -345,6 +394,7 @@ const CellDoublingTimeCalculatorPage = () => {
                         onUnitChange={(e) => handleRateUnitChange(e.target.value)}
                         unitOptions={GROWTH_RATE_OPTIONS}
                         placeholder="Rate"
+                        error={showRateError ? "Growth rate must be positive." : null}
                     />
 
                     {/* Doubling Time (Multi - Result) */}
@@ -365,13 +415,6 @@ const CellDoublingTimeCalculatorPage = () => {
                         </div>
                     </div>
 
-                    <div className="feedback-section">
-                        <p>Did we solve your problem today?</p>
-                        <div className="feedback-btngroup">
-                            <SimpleButton variant="secondary" style={{ width: 80 }}>Yes</SimpleButton>
-                            <SimpleButton variant="secondary" style={{ width: 80 }}>No</SimpleButton>
-                        </div>
-                    </div>
                 </div>
             </div>
         </CalculatorLayout>

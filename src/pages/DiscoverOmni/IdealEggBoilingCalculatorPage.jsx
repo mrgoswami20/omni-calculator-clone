@@ -470,7 +470,7 @@ const IdealEggBoilingCalculatorPage = () => {
                                                 type="number"
                                                 value={customTemp}
                                                 onChange={(e) => setCustomTemp(e.target.value)}
-                                            />
+                                             onWheel={(e) => e.target.blur()} />
                                             <div className="unit-static">°C</div>
                                         </div>
                                     )}

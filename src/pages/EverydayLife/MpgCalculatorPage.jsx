@@ -128,13 +128,13 @@ const MpgCalculatorPage = () => {
             articleContent={articleContent}
             similarCalculators={32}
         >
-            <div className="calculator-card mpg-page">
+            <div className="calc-card mpg-page">
 
                 {/* Distance */}
                 <div className="input-group">
                     <div className="label-row"><label>Distance</label><span className="more-options">...</span></div>
                     <div className="input-wrapper">
-                        <input type="number" className="calc-input" value={distance} onChange={(e) => setDistance(e.target.value)} />
+                        <input type="number" className="calc-input" value={distance} onChange={(e) => setDistance(e.target.value)}  onWheel={(e) => e.target.blur()} />
                         <div className="unit-select-container">
                             <select value={distanceUnit} onChange={(e) => setDistanceUnit(e.target.value)} className="unit-select">
                                 <option value="mi">mi</option>
@@ -150,7 +150,7 @@ const MpgCalculatorPage = () => {
                 <div className="input-group">
                     <div className="label-row"><label>Fuel used</label><span className="more-options">...</span></div>
                     <div className="input-wrapper">
-                        <input type="number" className="calc-input" value={fuelUsed} onChange={(e) => setFuelUsed(e.target.value)} />
+                        <input type="number" className="calc-input" value={fuelUsed} onChange={(e) => setFuelUsed(e.target.value)}  onWheel={(e) => e.target.blur()} />
                         <div className="unit-select-container">
                             <select value={fuelUnit} onChange={(e) => setFuelUnit(e.target.value)} className="unit-select">
                                 <option value="gal_us">gal (US)</option>
@@ -192,7 +192,7 @@ const MpgCalculatorPage = () => {
                             <div className="input-group">
                                 <div className="label-row"><label>Fuel price</label><span className="more-options">...</span></div>
                                 <div className="input-wrapper">
-                                    <input type="number" className="calc-input" value={fuelPrice} onChange={(e) => setFuelPrice(e.target.value)} placeholder="Price per unit" />
+                                    <input type="number" className="calc-input" value={fuelPrice} onChange={(e) => setFuelPrice(e.target.value)} placeholder="Price per unit"  onWheel={(e) => e.target.blur()} />
                                     {/* Simplified unit for price just to show intention */}
                                     <span className="unit-label-static">/unit</span>
                                 </div>
@@ -226,13 +226,6 @@ const MpgCalculatorPage = () => {
                     </div>
                 </div>
 
-                <div className="feedback-section">
-                    <p>Did we solve your problem today?</p>
-                    <div className="feedback-btns">
-                        <button>Yes</button>
-                        <button>No</button>
-                    </div>
-                </div>
 
                 <div className="check-out-box">
                     Check out <strong>32 similar</strong> transportation calculators

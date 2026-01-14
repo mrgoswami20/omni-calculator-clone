@@ -383,7 +383,7 @@ const BlackFridayCalculatorPage = () => {
                                         readOnly
                                         value={youPay}
                                         style={{ backgroundColor: '#f3f4f6' }}
-                                    />
+                                     onWheel={(e) => e.target.blur()} />
                                     <CurrencySelect />
                                 </div>
                             </div>
@@ -400,7 +400,7 @@ const BlackFridayCalculatorPage = () => {
                                         readOnly
                                         value={totalWithShipping}
                                         style={{ backgroundColor: '#f3f4f6' }}
-                                    />
+                                     onWheel={(e) => e.target.blur()} />
                                     <CurrencySelect />
                                 </div>
                             </div>
@@ -416,7 +416,7 @@ const BlackFridayCalculatorPage = () => {
                                         readOnly
                                         value={youSave}
                                         style={{ backgroundColor: '#f3f4f6' }}
-                                    />
+                                     onWheel={(e) => e.target.blur()} />
                                     <CurrencySelect />
                                 </div>
                             </div>

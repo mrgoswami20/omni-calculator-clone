@@ -1,88 +1,10 @@
-.acreage-page .input-group {
-    margin-bottom: 1rem;
-}
+/* AcreageCalculatorPage.css */
 
-.acreage-page .label-row {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 0.25rem;
-}
+/* 
+    Most styles are now handled by CalculatorLayout.css and kit_components.
+    Keeping only collapsing section and specific layout tweaks.
+*/
 
-.acreage-page .label-row label {
-    font-size: 0.85rem;
-    color: #374151;
-    font-weight: 400;
-}
-
-.acreage-page .more-options {
-    color: #9ca3af;
-    cursor: pointer;
-    font-weight: bold;
-}
-
-.acreage-page .input-wrapper {
-    position: relative;
-    display: flex;
-    align-items: center;
-    background-color: #f3f4f6;
-    border-radius: 6px;
-    border: 1px solid transparent;
-    transition: all 0.2s;
-}
-
-.acreage-page .input-wrapper:hover {
-    background-color: #e5e7eb;
-}
-
-.acreage-page .input-wrapper:focus-within {
-    background-color: #fff;
-    border-color: #436cfe;
-    box-shadow: 0 0 0 2px rgba(67, 108, 254, 0.2);
-}
-
-.acreage-page .calc-input {
-    flex: 1;
-    padding: 0.6rem 0.75rem;
-    background: transparent;
-    border: none;
-    outline: none;
-    font-size: 1rem;
-    color: #111827;
-    font-weight: 500;
-}
-
-/* Unit Select Styling */
-.acreage-page .unit-select-container {
-    position: relative;
-    display: flex;
-    align-items: center;
-    border-left: 1px solid #e5e7eb;
-    padding: 0 4px;
-}
-
-.acreage-page .unit-select {
-    appearance: none;
-    background: transparent;
-    border: none;
-    outline: none;
-    padding: 0.6rem 2rem 0.6rem 0.8rem;
-    font-size: 0.9rem;
-    color: #436cfe;
-    /* Blue unit text */
-    font-weight: 500;
-    cursor: pointer;
-    text-align: right;
-}
-
-.acreage-page .unit-arrow {
-    position: absolute;
-    right: 8px;
-    color: #436cfe;
-    pointer-events: none;
-}
-
-/* Collapsible */
 .acreage-page .collapsible-section {
     margin-top: 2rem;
     border-top: 1px solid #e5e7eb;
@@ -107,103 +29,18 @@
 
 .acreage-page .collapsible-content {
     margin-top: 1rem;
-    padding-left: 1rem;
-    /* Slight indent */
-}
-
-.acreage-page .calc-actions {
-    margin-top: 2rem;
-    border-top: 1px solid #e5e7eb;
-    padding-top: 1.5rem;
-}
-
-.acreage-page .share-result-btn {
-    width: 100%;
+    padding-left: 0;
     display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
-    background-color: #fff;
-    border: 1px solid #e5e7eb;
-    color: #111827;
-    padding: 0.75rem;
-    border-radius: 9999px;
-    font-weight: 600;
-    cursor: pointer;
-    transition: all 0.2s;
-    margin-bottom: 1rem;
+    flex-direction: column;
+    gap: 12px;
 }
 
-.acreage-page .share-result-btn:hover {
-    background-color: #f9fafb;
-    border-color: #d1d5db;
-}
+/* Specific button styles if not covered by global utility-buttons class */
+/* Actually .actions-section and .utility-buttons are now global, but let's double check if we need overrides */
 
-.acreage-page .share-icon-circle {
-    width: 24px;
-    height: 24px;
-    background-color: #ef4444;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: white;
-}
-
-.acreage-page .secondary-actions {
-    display: flex;
-    gap: 1rem;
-}
-
-.acreage-page .secondary-btn {
-    flex: 1;
-    background: transparent;
-    border: 1px solid #e5e7eb;
-    color: #6b7280;
-    padding: 0.6rem;
-    border-radius: 6px;
-    font-size: 0.85rem;
-    cursor: pointer;
-    transition: all 0.2s;
-}
-
-.acreage-page .secondary-btn:hover {
-    background-color: #f3f4f6;
-    color: #374151;
-}
-
-.acreage-page .feedback-section {
-    margin-top: 2rem;
-    background-color: #f9fafb;
-    padding: 1.5rem;
-    border-radius: 8px;
-    text-align: center;
-}
-
-.acreage-page .feedback-btns {
-    display: flex;
-    justify-content: center;
-    gap: 1rem;
-    margin-top: 1rem;
-}
-
-.acreage-page .feedback-btns button {
-    padding: 0.5rem 2rem;
-    border: 1px solid #d1d5db;
-    background: #fff;
-    border-radius: 6px;
-    cursor: pointer;
-    transition: all 0.2s;
-}
-
-.acreage-page .feedback-btns button:hover {
-    border-color: #9ca3af;
-}
-
-.acreage-page .check-out-box {
+.check-out-box {
     margin-top: 2rem;
     background-color: #fefce8;
-    /* yellow-50 */
     padding: 1rem;
     border-radius: 8px;
     font-size: 0.9rem;

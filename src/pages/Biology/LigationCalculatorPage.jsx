@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import CalculatorLayout from '../../components/CalculatorLayout';
-import { Info } from 'lucide-react';
+import { Info, RotateCcw, Trash2 } from 'lucide-react';
+import InputBarWithDropDownOption from '../../components/kit_components/InputBarWithDropDownOption';
+import SimpleButton from '../../components/kit_components/SimpleButton';
 import './LigationCalculatorPage.css';
 
 const LigationCalculatorPage = () => {
@@ -12,7 +14,9 @@ const LigationCalculatorPage = () => {
 
     const MASS_UNITS = {
         'ng': 1,
-        'µg': 1000
+        'µg': 1000,
+        'mg': 1e6,
+        'g': 1e9
     };
 
     const RATIO_OPTIONS = [
@@ -56,7 +60,7 @@ const LigationCalculatorPage = () => {
             setInsertLength(state.il);
         }
         if (changedField === 'il-unit') {
-            state.il.unit = newUnit;
+            state.il.unit = newUnit || newVal;
             setInsertLength(state.il);
         }
         if (changedField === 'vl') {
@@ -64,7 +68,7 @@ const LigationCalculatorPage = () => {
             setVectorLength(state.vl);
         }
         if (changedField === 'vl-unit') {
-            state.vl.unit = newUnit;
+            state.vl.unit = newUnit || newVal;
             setVectorLength(state.vl);
         }
         if (changedField === 'vm') {
@@ -72,7 +76,7 @@ const LigationCalculatorPage = () => {
             setVectorMass(state.vm);
         }
         if (changedField === 'vm-unit') {
-            state.vm.unit = newUnit;
+            state.vm.unit = newUnit || newVal;
             setVectorMass(state.vm);
         }
         if (changedField === 'ratio') {
@@ -84,7 +88,7 @@ const LigationCalculatorPage = () => {
             setInsertMass(state.im);
         }
         if (changedField === 'im-unit') {
-            state.im.unit = newUnit;
+            state.im.unit = newUnit || newVal;
             setInsertMass(state.im);
         }
 
@@ -160,6 +164,19 @@ const LigationCalculatorPage = () => {
         </div>
     );
 
+    // --- Validation Logic ---
+    const ilVal = parseFloat(insertLength.value);
+    const showILError = insertLength.value !== '' && (isNaN(ilVal) || ilVal <= 0);
+
+    const vlVal = parseFloat(vectorLength.value);
+    const showVLError = vectorLength.value !== '' && (isNaN(vlVal) || vlVal <= 0);
+
+    const vmVal = parseFloat(vectorMass.value);
+    const showVMError = vectorMass.value !== '' && (isNaN(vmVal) || vmVal <= 0);
+
+    const imVal = parseFloat(insertMass.value);
+    const showIMError = insertMass.value !== '' && (isNaN(imVal) || imVal <= 0);
+
     return (
         <CalculatorLayout
             title="Ligation Calculator"
@@ -169,72 +186,43 @@ const LigationCalculatorPage = () => {
         >
             <div className="ligation-calculator-page">
                 <div className="section-card">
-                    <div className="input-group">
-                        <label className="input-label">Insert length</label>
-                        <div className="input-wrapper">
-                            <input
-                                type="text"
-                                className="input-field"
-                                value={insertLength.value}
-                                onChange={(e) => calculate('il', e.target.value)}
-                                placeholder="0"
-                            />
-                            <div className="unit-select-wrapper">
-                                <select
-                                    className="unit-select"
-                                    value={insertLength.unit}
-                                    onChange={(e) => calculate('il-unit', e.target.value)}
-                                >
-                                    {Object.keys(LENGTH_UNITS).map(u => <option key={u} value={u}>{u}</option>)}
-                                </select>
-                            </div>
-                        </div>
-                    </div>
+                    {/* Insert Length */}
+                    <InputBarWithDropDownOption
+                        label="Insert length"
+                        value={insertLength.value}
+                        onChange={(e) => calculate('il', e.target.value)}
+                        unit={insertLength.unit}
+                        onUnitChange={(e) => calculate('il-unit', e.target.value)}
+                        unitOptions={Object.keys(LENGTH_UNITS)}
+                        placeholder="0"
+                        error={showILError ? "Insert length must be greater than 0." : null}
+                    />
 
-                    <div className="input-group">
-                        <label className="input-label">Vector length</label>
-                        <div className="input-wrapper">
-                            <input
-                                type="text"
-                                className="input-field"
-                                value={vectorLength.value}
-                                onChange={(e) => calculate('vl', e.target.value)}
-                                placeholder="0"
-                            />
-                            <div className="unit-select-wrapper">
-                                <select
-                                    className="unit-select"
-                                    value={vectorLength.unit}
-                                    onChange={(e) => calculate('vl-unit', e.target.value)}
-                                >
-                                    {Object.keys(LENGTH_UNITS).map(u => <option key={u} value={u}>{u}</option>)}
-                                </select>
-                            </div>
-                        </div>
-                    </div>
+                    {/* Vector Length */}
+                    <InputBarWithDropDownOption
+                        label="Vector length"
+                        value={vectorLength.value}
+                        onChange={(e) => calculate('vl', e.target.value)}
+                        unit={vectorLength.unit}
+                        onUnitChange={(e) => calculate('vl-unit', e.target.value)}
+                        unitOptions={Object.keys(LENGTH_UNITS)}
+                        placeholder="0"
+                        error={showVLError ? "Vector length must be greater than 0." : null}
+                    />
 
-                    <div className="input-group">
-                        <label className="input-label">Vector mass</label>
-                        <div className="input-wrapper">
-                            <input
-                                type="text"
-                                className="input-field"
-                                value={vectorMass.value}
-                                onChange={(e) => calculate('vm', e.target.value)}
-                                placeholder="0"
-                            />
-                            <div className="unit-select-wrapper">
-                                <select
-                                    className="unit-select"
-                                    value={vectorMass.unit}
-                                    onChange={(e) => calculate('vm-unit', e.target.value)}
-                                >
-                                    {Object.keys(MASS_UNITS).map(u => <option key={u} value={u}>{u}</option>)}
-                                </select>
-                            </div>
-                        </div>
-                    </div>
+                    {/* Vector Mass */}
+                    <InputBarWithDropDownOption
+                        label="Vector mass"
+                        value={vectorMass.value}
+                        onChange={(e) => calculate('vm', e.target.value)}
+                        unit={vectorMass.unit}
+                        onUnitChange={(e) => calculate('vm-unit', e.target.value)}
+                        unitOptions={Object.keys(MASS_UNITS)}
+                        placeholder="0"
+                        error={showVMError ? "Vector mass must be greater than 0." : null}
+                    />
 
+                    {/* Ratio Dropdown (Custom styled to look similar? Or just as is) */}
                     <div className="input-group">
                         <label className="input-label">
                             Insert / vector ratio <Info size={14} className="info-icon" title="Recommended ratio is 3:1" />
@@ -253,47 +241,55 @@ const LigationCalculatorPage = () => {
                         </div>
                     </div>
 
-                    <div className="input-group">
-                        <label className="input-label">Insert mass</label>
-                        <div className="input-wrapper">
-                            <input
-                                type="text"
-                                className="input-field"
-                                value={insertMass.value}
-                                onChange={(e) => calculate('im', e.target.value)}
-                                placeholder="0"
-                            />
-                            <div className="unit-select-wrapper">
-                                <select
-                                    className="unit-select"
-                                    value={insertMass.unit}
-                                    onChange={(e) => calculate('im-unit', e.target.value)}
-                                >
-                                    {Object.keys(MASS_UNITS).map(u => <option key={u} value={u}>{u}</option>)}
-                                </select>
-                            </div>
-                        </div>
-                    </div>
+                    {/* Insert Mass */}
+                    <InputBarWithDropDownOption
+                        label="Insert mass"
+                        value={insertMass.value}
+                        onChange={(e) => calculate('im', e.target.value)}
+                        unit={insertMass.unit}
+                        onUnitChange={(e) => calculate('im-unit', e.target.value)}
+                        unitOptions={Object.keys(MASS_UNITS)}
+                        placeholder="0"
+                        error={showIMError ? "Insert mass must be greater than 0." : null}
+                    />
 
                     <div className="divider-custom"></div>
                     <div className="calc-actions-custom-layout">
                         <div className="side-actions">
-                            <button className="action-btn-styled" onClick={() => window.location.reload()}>Reload calculator</button>
-                            <button className="action-btn-styled outline" onClick={handleClear}>Clear all changes</button>
+                            <SimpleButton
+                                onClick={() => window.location.reload()}
+                                variant="secondary"
+                                style={{
+                                    flex: 1,
+                                    height: 'auto',
+                                    padding: '10px 12px',
+                                    borderColor: '#9ca3af',
+                                    color: '#000',
+                                    whiteSpace: 'nowrap'
+                                }}
+                            >
+                                <RotateCcw size={16} style={{ marginRight: 8, minWidth: 16 }} /> Reload calculator
+                            </SimpleButton>
+                            <SimpleButton
+                                onClick={handleClear}
+                                variant="secondary"
+                                style={{
+                                    flex: 1,
+                                    height: 'auto',
+                                    padding: '10px 12px',
+                                    borderColor: '#9ca3af',
+                                    color: '#000',
+                                    whiteSpace: 'nowrap'
+                                }}
+                            >
+                                <Trash2 size={16} style={{ marginRight: 8, minWidth: 16 }} /> Clear all changes
+                            </SimpleButton>
                         </div>
                     </div>
 
-                    <div className="feedback-section-new">
-                        <p>Did we solve your problem today?</p>
-                        <div className="feedback-btns-new">
-                            <button className="feedback-btn"><span className="icon">👍</span> Yes</button>
-                            <button className="feedback-btn"><span className="icon">👎</span> No</button>
-                        </div>
-                    </div>
                 </div>
             </div>
         </CalculatorLayout>
     );
 };
-
 export default LigationCalculatorPage;

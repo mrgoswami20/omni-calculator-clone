@@ -149,7 +149,7 @@ const CakePanConverterPage = () => {
                                     className="calc-input"
                                     value={recipeDim1}
                                     onChange={(e) => setRecipeDim1(e.target.value)}
-                                />
+                                 onWheel={(e) => e.target.blur()} />
                                 <div className="unit-select-container">
                                     <select value={recipeUnit} onChange={(e) => setRecipeUnit(e.target.value)} className="unit-select">
                                         <option value="cm">cm</option>
@@ -170,7 +170,7 @@ const CakePanConverterPage = () => {
                                         className="calc-input"
                                         value={recipeDim1}
                                         onChange={(e) => setRecipeDim1(e.target.value)}
-                                    />
+                                     onWheel={(e) => e.target.blur()} />
                                     <div className="unit-select-container">
                                         <select value={recipeUnit} onChange={(e) => setRecipeUnit(e.target.value)} className="unit-select">
                                             <option value="cm">cm</option>
@@ -189,7 +189,7 @@ const CakePanConverterPage = () => {
                                         className="calc-input"
                                         value={recipeDim2}
                                         onChange={(e) => setRecipeDim2(e.target.value)}
-                                    />
+                                     onWheel={(e) => e.target.blur()} />
                                     <div className="unit-select-container">
                                         <select value={recipeUnit} onChange={(e) => setRecipeUnit(e.target.value)} className="unit-select">
                                             <option value="cm">cm</option>
@@ -211,7 +211,7 @@ const CakePanConverterPage = () => {
                                 className="calc-input"
                                 value={recipeHeight}
                                 onChange={(e) => setRecipeHeight(e.target.value)}
-                            />
+                             onWheel={(e) => e.target.blur()} />
                             <div className="unit-select-container">
                                 <select value={recipeUnit} onChange={(e) => setRecipeUnit(e.target.value)} className="unit-select">
                                     <option value="cm">cm</option>
@@ -288,7 +288,7 @@ const CakePanConverterPage = () => {
                                     className="calc-input"
                                     value={yourDim1}
                                     onChange={(e) => setYourDim1(e.target.value)}
-                                />
+                                 onWheel={(e) => e.target.blur()} />
                                 <div className="unit-select-container">
                                     <select value={yourUnit} onChange={(e) => setYourUnit(e.target.value)} className="unit-select">
                                         <option value="cm">cm</option>
@@ -309,7 +309,7 @@ const CakePanConverterPage = () => {
                                         className="calc-input"
                                         value={yourDim1}
                                         onChange={(e) => setYourDim1(e.target.value)}
-                                    />
+                                     onWheel={(e) => e.target.blur()} />
                                     <div className="unit-select-container">
                                         <select value={yourUnit} onChange={(e) => setYourUnit(e.target.value)} className="unit-select">
                                             <option value="cm">cm</option>
@@ -328,7 +328,7 @@ const CakePanConverterPage = () => {
                                         className="calc-input"
                                         value={yourDim2}
                                         onChange={(e) => setYourDim2(e.target.value)}
-                                    />
+                                     onWheel={(e) => e.target.blur()} />
                                     <div className="unit-select-container">
                                         <select value={yourUnit} onChange={(e) => setYourUnit(e.target.value)} className="unit-select">
                                             <option value="cm">cm</option>
@@ -350,7 +350,7 @@ const CakePanConverterPage = () => {
                                 className="calc-input"
                                 value={yourHeight}
                                 onChange={(e) => setYourHeight(e.target.value)}
-                            />
+                             onWheel={(e) => e.target.blur()} />
                             <div className="unit-select-container">
                                 <select value={yourUnit} onChange={(e) => setYourUnit(e.target.value)} className="unit-select">
                                     <option value="cm">cm</option>

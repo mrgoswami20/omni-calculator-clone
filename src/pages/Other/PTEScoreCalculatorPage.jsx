@@ -145,7 +145,7 @@ const PTEScoreCalculatorPage = () => {
                             className="calc-input"
                             value={pteScore}
                             onChange={(e) => setPteScore(e.target.value)}
-                        />
+                         onWheel={(e) => e.target.blur()} />
                     </div>
 
                     {results && (
@@ -183,13 +183,6 @@ const PTEScoreCalculatorPage = () => {
                             </div>
                         </div>
 
-                        <div className="feedback-section">
-                            <span className="feedback-text">Did we solve your problem today?</span>
-                            <div>
-                                <button className="feedback-btn" style={{ marginRight: '0.5rem' }}>Yes</button>
-                                <button className="feedback-btn">No</button>
-                            </div>
-                        </div>
                     </div>
                 </div>
             </div>

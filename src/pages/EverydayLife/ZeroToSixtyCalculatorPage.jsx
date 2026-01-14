@@ -234,7 +234,7 @@ const ZeroToSixtyCalculatorPage = () => {
             articleContent={articleContent}
             similarCalculators={12}
         >
-            <div className="calculator-card zero-sixty-page">
+            <div className="calc-card zero-sixty-page">
 
                 {/* Power and Weight */}
                 <div className="collapsible-section no-border-top">
@@ -249,21 +249,21 @@ const ZeroToSixtyCalculatorPage = () => {
                             <div className="input-group">
                                 <div className="label-row"><label>Engine power <Info size={12} className="info-icon" /></label><span className="more-options">...</span></div>
                                 <div className="input-wrapper">
-                                    <input type="number" className="calc-input" value={power} onChange={(e) => setPower(e.target.value)} />
+                                    <input type="number" className="calc-input" value={power} onChange={(e) => setPower(e.target.value)}  onWheel={(e) => e.target.blur()} />
                                     <span className="unit-label-static">hp(I)</span>
                                 </div>
                             </div>
                             <div className="input-group">
                                 <div className="label-row"><label>Empty weight</label><span className="more-options">...</span></div>
                                 <div className="input-wrapper">
-                                    <input type="number" className="calc-input" value={emptyWeight} onChange={(e) => setEmptyWeight(e.target.value)} />
+                                    <input type="number" className="calc-input" value={emptyWeight} onChange={(e) => setEmptyWeight(e.target.value)}  onWheel={(e) => e.target.blur()} />
                                     <span className="unit-label-static">kg</span>
                                 </div>
                             </div>
                             <div className="input-group">
                                 <div className="label-row"><label>Payload weight <Info size={12} className="info-icon" /></label><span className="more-options">...</span></div>
                                 <div className="input-wrapper">
-                                    <input type="number" className="calc-input" value={payload} onChange={(e) => setPayload(e.target.value)} />
+                                    <input type="number" className="calc-input" value={payload} onChange={(e) => setPayload(e.target.value)}  onWheel={(e) => e.target.blur()} />
                                     <span className="unit-label-static">kg</span>
                                 </div>
                             </div>
@@ -390,13 +390,6 @@ const ZeroToSixtyCalculatorPage = () => {
                     </div>
                 </div>
 
-                <div className="feedback-section">
-                    <p>Did we solve your problem today?</p>
-                    <div className="feedback-btns">
-                        <button>Yes</button>
-                        <button>No</button>
-                    </div>
-                </div>
 
             </div>
         </CalculatorLayout>

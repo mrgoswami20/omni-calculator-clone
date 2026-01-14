@@ -1,7 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import CalculatorLayout from '../../components/CalculatorLayout';
-import { Share2, Info } from 'lucide-react';
+import { RotateCcw, Trash2, Info, AlertCircle } from 'lucide-react';
 import { periodicTable } from '../../data/periodicTable';
+import SimpleInputBar from '../../components/kit_components/SimpleInputBar';
+import InputBarWithDropDownOption from '../../components/kit_components/InputBarWithDropDownOption';
+import SimpleButton from '../../components/kit_components/SimpleButton';
 import './AtomicMassCalculatorPage.css';
 
 const AtomicMassCalculatorPage = () => {
@@ -9,9 +12,18 @@ const AtomicMassCalculatorPage = () => {
     const [neutrons, setNeutrons] = useState('6');
     const [massNumber, setMassNumber] = useState(12);
     const [atomicMassU, setAtomicMassU] = useState(12);
-    const [atomicMassKg, setAtomicMassKg] = useState(19.926); // x 10^-27
+    const [atomicMassKg, setAtomicMassKg] = useState(19.926);
+    // ^ Stores the mantissa for 10^-27 scale. e.g. 19.926 (means 19.926 x 10^-27)
+    // Wait, if I want to support variable exponent, I should store the ACTUAL value in kg, or derive it.
+    // Base calculation: atomicMassU * 1.6605e-27 = actual kg.
+    // display = actual kg / 10^exponent.
+
     const [symbol, setSymbol] = useState('C');
     const [isStable, setIsStable] = useState(true);
+
+    // Unit States
+    const [massUnit, setMassUnit] = useState('u');
+    const [siExponent, setSiExponent] = useState('-27'); // String for dropdown value
 
     const creators = [
         { name: "Steven Wooding", role: "" }
@@ -22,76 +34,168 @@ const AtomicMassCalculatorPage = () => {
         { name: "Jack Bowater", role: "" }
     ];
 
-    // Simple stability map for demo (Element Symbol -> Array of Stable Neutron counts or Mass Numbers)
-    // Ref: https://en.wikipedia.org/wiki/List_of_stable_isotopes
     const stableIsotopes = {
-        H: [0, 1], // H-1, H-2 (D)
-        He: [1, 2], // He-3, He-4
-        Li: [3, 4], // Li-6, Li-7
-        Be: [5], // Be-9
-        B: [5, 6], // B-10, B-11
-        C: [6, 7], // C-12, C-13
-        N: [7, 8], // N-14, N-15
-        O: [8, 9, 10], // O-16, O-17, O-18
-        F: [10], // F-19
-        Ne: [10, 11, 12], // Ne-20, Ne-21, Ne-22
-        Na: [12], // Na-23
-        Mg: [12, 13, 14], // Mg-24, Mg-25, Mg-26
-        Al: [14], // Al-27
-        Si: [14, 15, 16], // Si-28, Si-29, Si-30
-        P: [16], // P-31
-        S: [16, 17, 18, 20], // S-32, S-33, S-34, S-36
-        Cl: [18, 20], // Cl-35, Cl-37
-        Ar: [18, 20, 22] // Ar-36, Ar-38, Ar-40
-        // Add more if needed, default to "Unknown stability" or "Unstable" for others
+        H: [0, 1], He: [1, 2], Li: [3, 4], Be: [5], B: [5, 6], C: [6, 7], N: [7, 8],
+        O: [8, 9, 10], F: [10], Ne: [10, 11, 12], Na: [12], Mg: [12, 13, 14],
+        Al: [14], Si: [14, 15, 16], P: [16], S: [16, 17, 18, 20], Cl: [18, 20], Ar: [18, 20, 22]
+    };
+
+    const Conversions = {
+        u: 1,
+        ng: 1.66053906660e-15,
+        me: 1822.8885,
+        mp: 0.99274,
+        mn: 0.99140
+    };
+
+    const massOptions = [
+        { value: 'u', label: 'atomic mass units (u)' },
+        { value: 'ng', label: 'nanograms (ng)' },
+        { value: 'me', label: 'electron rest masses (me)' },
+        { value: 'mp', label: 'proton rest masses (mp)' },
+        { value: 'mn', label: 'neutron rest masses (mn)' }
+    ];
+
+    const siOptions = [
+        { value: '-28', label: '× 10⁻²⁸' }, // times 10 to the minus 28
+        { value: '-27', label: '× 10⁻²⁷' }, // times 10 to the minus 27 (Default)
+        { value: '-26', label: '× 10⁻²⁶' }, // times 10 to the minus 26
+        { value: '-25', label: '× 10⁻²⁵' }  // times 10 to the minus 25
+    ];
+
+    const getDisplayAtomicMass = () => {
+        if (atomicMassU === '' || isNaN(parseFloat(atomicMassU))) return '';
+        const valInU = parseFloat(atomicMassU);
+        const factor = Conversions[massUnit] || 1;
+        const converted = valInU * factor;
+
+        if (massUnit === 'ng') return converted.toExponential(6);
+        return parseFloat(converted.toFixed(6));
+    };
+
+    const getDisplaySiMass = () => {
+        if (atomicMassU === '' || isNaN(parseFloat(atomicMassU))) return '';
+        // 1 u = 1.660539e-27 kg
+        const massInKg = parseFloat(atomicMassU) * 1.66053906660e-27;
+
+        // displayed = massInKg / 10^exp
+        const exp = parseInt(siExponent);
+        const factor = Math.pow(10, exp);
+
+        const displayed = massInKg / factor;
+
+        // Avoid floating point precision issues?
+        // e.g. 1.66e-27 / 1e-27 = 1.66.
+
+        return parseFloat(displayed.toFixed(6));
     };
 
     useEffect(() => {
         const calculate = () => {
-            const z = parseInt(protons) || 0;
-            const n = parseInt(neutrons) || 0;
-            const a = z + n;
+            const z = parseFloat(protons);
+            const n = parseFloat(neutrons);
 
-            setMassNumber(a);
-            setAtomicMassU(a); // Approximation for this calculator's UI which usually sums them
+            if (!isNaN(z) && !isNaN(n)) {
+                const a = z + n;
+                setMassNumber(a);
+                setAtomicMassU(a);
+                // We don't need to manually set atomicMassKg state anymore for display, 
+                // we derive it from 'a' in getDisplaySiMass.
 
-            // 1 u = 1.66053906660e-27 kg
-            const kgVal = (a * 1.66053906660);
-            setAtomicMassKg(kgVal.toFixed(3));
-
-            if (periodicTable[z]) {
-                const sym = periodicTable[z].symbol;
-                setSymbol(sym);
-
-                // Check stability
-                if (stableIsotopes[sym] && stableIsotopes[sym].includes(n)) {
-                    setIsStable(true);
-                } else if (stableIsotopes[sym]) {
-                    setIsStable(false);
+                const zInt = Math.round(z);
+                if (periodicTable[zInt]) {
+                    const sym = periodicTable[zInt].symbol;
+                    setSymbol(sym);
+                    if (stableIsotopes[sym] && stableIsotopes[sym].includes(n)) {
+                        setIsStable(true);
+                    } else if (stableIsotopes[sym]) {
+                        setIsStable(false);
+                    } else {
+                        setIsStable(true);
+                    }
                 } else {
-                    // Default for elements we haven't mapped manually
-                    setIsStable(true); // Being optimistic for large Z for now, or could check N/Z ratio
+                    setSymbol('?');
+                    setIsStable(false);
                 }
             } else {
+                setMassNumber('');
+                setAtomicMassU('');
                 setSymbol('?');
-                setIsStable(false);
+                setIsStable(null);
             }
         };
-
         calculate();
     }, [protons, neutrons]);
 
-    const [showShareTooltip, setShowShareTooltip] = useState(false);
+    const preventScroll = (e) => e.target.blur();
 
-    const handleShare = async () => {
-        try {
-            await navigator.clipboard.writeText(window.location.href);
-            setShowShareTooltip(true);
-            setTimeout(() => setShowShareTooltip(false), 2000);
-        } catch (err) {
-            console.error('Failed to copy URL:', err);
-        }
+    const handleReload = () => window.location.reload();
+    const handleClear = () => {
+        setProtons('');
+        setNeutrons('');
+        setMassUnit('u');
+        setSiExponent('-27');
     };
+
+    // Validations (Errors - Red)
+    const validateProtonsError = () => {
+        if (protons === '') return null;
+        const z = parseFloat(protons);
+        if (isNaN(z) || z <= 0) return "Number of protons should be a positive value.";
+        return null;
+    };
+
+    const validateNeutronsError = () => {
+        if (neutrons === '') return null;
+        const n = parseFloat(neutrons);
+        if (isNaN(n) || n < 0) return "Number of neutrons should be zero or greater.";
+        return null;
+    };
+
+    const validateAtomicMassUError = () => {
+        if (atomicMassU === '') return null;
+        const val = parseFloat(atomicMassU);
+        if (val <= 0) return "Atomic mass should be a positive value.";
+        return null;
+    };
+
+    // Validate derived SI mass
+    const validateAtomicMassKgError = () => {
+        if (atomicMassU === '') return null;
+        if (parseFloat(atomicMassU) <= 0) return "Atomic mass (SI) should be a positive value.";
+        return null;
+    };
+
+    const validateMassNumberError = () => {
+        if (massNumber === '') return null;
+        const val = parseFloat(massNumber);
+        if (val <= 0) return "Mass number should be a positive value.";
+        return null;
+    };
+
+    // Observations (Warnings - Blue)
+    const validateProtonsWarning = () => {
+        if (protons === '') return [];
+        const z = parseFloat(protons);
+        if (!isNaN(z) && z > 118) return ["To date, the maximum number of protons observed in an atom are 118."];
+        return [];
+    };
+
+    const validateNeutronsWarning = () => {
+        if (neutrons === '') return [];
+        const n = parseFloat(neutrons);
+        if (!isNaN(n) && n > 177) return ["To date, the maximum number of neutrons observed in an atom are 177."];
+        return [];
+    };
+
+    const protonsError = validateProtonsError();
+    const neutronsError = validateNeutronsError();
+    const atomicMassUError = validateAtomicMassUError();
+    const atomicMassKgError = validateAtomicMassKgError();
+    const massNumberError = validateMassNumberError();
+
+    const protonsWarnings = validateProtonsWarning();
+    const neutronsWarnings = validateNeutronsWarning();
 
     const articleContent = (
         <>
@@ -115,124 +219,100 @@ const AtomicMassCalculatorPage = () => {
             articleContent={articleContent}
             similarCalculators={4}
         >
-            <div className="calculator-card atomic-mass-page">
-                {/* Inputs */}
-                <div className="input-group">
-                    <div className="label-row">
-                        <label>Number of protons (Z)</label>
-                        <span className="more-options">...</span>
-                    </div>
-                    <div className="input-wrapper">
-                        <input
-                            type="number"
-                            className="calc-input"
-                            value={protons}
-                            onChange={(e) => setProtons(e.target.value)}
-                        />
-                    </div>
-                </div>
+            <div className="atomic-mass-calculator-page">
+                <div className="calc-card">
+                    {/* Inputs */}
+                    <SimpleInputBar
+                        label="Number of protons (Z)"
+                        value={protons}
+                        onChange={(e) => setProtons(e.target.value)}
+                        type="number"
+                        placeholder="1"
+                        onWheel={preventScroll}
+                        error={!!protonsError}
+                        errorMessage={protonsError}
+                        warningMessages={protonsWarnings}
+                    />
 
-                <div className="input-group">
-                    <div className="label-row">
-                        <label>Number of neutrons (N)</label>
-                        <span className="more-options">...</span>
-                    </div>
-                    <div className="input-wrapper">
-                        <input
-                            type="number"
-                            className="calc-input"
-                            value={neutrons}
-                            onChange={(e) => setNeutrons(e.target.value)}
-                        />
-                    </div>
-                </div>
+                    <SimpleInputBar
+                        label="Number of neutrons (N)"
+                        value={neutrons}
+                        onChange={(e) => setNeutrons(e.target.value)}
+                        type="number"
+                        placeholder="0"
+                        onWheel={preventScroll}
+                        error={!!neutronsError}
+                        errorMessage={neutronsError}
+                        warningMessages={neutronsWarnings}
+                    />
 
-                {/* Outputs */}
-                <div className="input-group">
-                    <div className="label-row">
-                        <label>Atomic mass</label>
-                        <span className="more-options">...</span>
-                    </div>
-                    <div className="input-wrapper with-unit">
-                        <input
-                            type="number"
-                            className="calc-input"
-                            value={atomicMassU}
-                            readOnly
-                        />
-                        <span className="unit-label">u <Info size={14} /></span>
-                    </div>
-                </div>
+                    {/* Outputs */}
 
-                <div className="input-group">
-                    <div className="label-row">
-                        <label>Atomic mass (SI)</label>
-                        <span className="more-options">...</span>
-                    </div>
-                    <div className="input-wrapper with-unit scientific">
-                        <input
-                            type="number"
-                            className="calc-input"
-                            value={atomicMassKg}
-                            readOnly
-                        />
-                        <span className="scientific-part">× 10⁻²⁷</span>
-                        <span className="unit-label">kg</span>
-                    </div>
-                </div>
+                    <InputBarWithDropDownOption
+                        label="Atomic mass"
+                        value={getDisplayAtomicMass()}
+                        onChange={() => { }}
+                        unit={massUnit}
+                        onUnitChange={(e) => setMassUnit(e.target.value)}
+                        unitOptions={massOptions}
+                        error={atomicMassUError}
+                    />
 
-                <div className="input-group">
-                    <div className="label-row">
-                        <label>Mass number</label>
-                        <span className="more-options">...</span>
-                    </div>
-                    <div className="input-wrapper">
-                        <input
-                            type="number"
-                            className="calc-input"
-                            value={massNumber}
-                            readOnly
-                        />
-                    </div>
-                </div>
+                    {/* Atomic Mass (SI) with Exponent Dropdown and Suffix */}
+                    <InputBarWithDropDownOption
+                        label="Atomic mass (SI)"
+                        value={getDisplaySiMass()}
+                        onChange={() => { }}
+                        unit={siExponent}
+                        onUnitChange={(e) => setSiExponent(e.target.value)}
+                        unitOptions={siOptions}
+                        outerSuffix="kg"
+                        error={atomicMassKgError}
+                    />
 
-                {/* Symbol Display */}
-                <div className="symbol-section">
-                    <div className="label-row">
-                        <label>Atomic symbol</label>
-                    </div>
-                    <div className="aze-display">
-                        <div className="aze-numbers">
-                            <span className="aze-a">{massNumber}</span>
-                            <span className="aze-z">{protons}</span>
+
+                    <SimpleInputBar
+                        label="Mass number"
+                        value={massNumber}
+                        onChange={() => { }}
+                        className="simple-input-readonly"
+                        error={!!massNumberError}
+                        errorMessage={massNumberError}
+                        onWheel={preventScroll}
+                    />
+
+                    {/* Symbol Display */}
+                    <div style={{ marginTop: 12 }}>
+                        <div style={{ fontSize: '0.8125rem', fontWeight: 500, color: '#374151', marginBottom: 4 }}>Atomic symbol</div>
+                        <div className="aze-notation">
+                            <div className="aze-numbers">
+                                <span className="mass-number">{massNumber}</span>
+                                <span className="atomic-number">{protons}</span>
+                            </div>
+                            <div className="aze-symbol">
+                                {symbol}
+                            </div>
                         </div>
-                        <span className="aze-sym">{symbol}</span>
+                        {isStable !== null && (
+                            <div className="stability-text">
+                                This is a {isStable ? 'stable' : 'unstable'} atom.
+                            </div>
+                        )}
                     </div>
-                    {isStable !== null && (
-                        <div className="stability-text">
-                            This is a {isStable ? 'stable' : 'unstable'} atom.
+
+                    {/* Actions */}
+                    <div className="actions-section">
+                        <div className="utility-buttons" style={{ width: '100%', flexDirection: 'row', justifyContent: 'center' }}>
+                            <SimpleButton onClick={handleReload} variant="secondary">
+                                <RotateCcw size={16} style={{ marginRight: 8 }} /> Reload calculator
+                            </SimpleButton>
+                            <SimpleButton onClick={handleClear} variant="secondary">
+                                <Trash2 size={16} style={{ marginRight: 8 }} /> Clear all changes
+                            </SimpleButton>
                         </div>
-                    )}
-                </div>
-
-                <div className="calc-actions">
-                    {/* <button className="share-result-btn" onClick={handleShare}>
-                        <div className="share-icon-circle"><Share2 size={14} /></div>
-                        Share result
-                        {showShareTooltip && <span className="copied-tooltip">Copied!</span>}
-                    </button> */}
-                    <div className="secondary-actions">
-                        <button className="secondary-btn">Reload calculator</button>
-                        <button className="secondary-btn" onClick={() => { setProtons(''); setNeutrons(''); }}>Clear all changes</button>
                     </div>
-                </div>
 
-                <div className="feedback-section">
-                    <p>Did we solve your problem today?</p>
-                    <div className="feedback-btns">
-                        <button>Yes</button>
-                        <button>No</button>
-                    </div>
+
                 </div>
             </div>
         </CalculatorLayout>

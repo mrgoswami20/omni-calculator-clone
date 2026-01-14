@@ -129,7 +129,7 @@ const MilesToDollarsCalculatorPage = () => {
             articleContent={articleContent}
             similarCalculators={32}
         >
-            <div className="calculator-card miles-to-dollars-page">
+            <div className="calc-card miles-to-dollars-page">
 
                 {/* Section 1: Airline */}
                 <div className="collapsible-section no-border-top">
@@ -153,7 +153,7 @@ const MilesToDollarsCalculatorPage = () => {
                             <div className="input-group">
                                 <div className="label-row"><label>Miles value <Info size={12} className="info-icon" /></label><span className="more-options">...</span></div>
                                 <div className="input-wrapper">
-                                    <input type="number" className="calc-input" value={milesValue} onChange={(e) => setMilesValue(e.target.value)} />
+                                    <input type="number" className="calc-input" value={milesValue} onChange={(e) => setMilesValue(e.target.value)}  onWheel={(e) => e.target.blur()} />
                                     <span className="unit-label-static">cents</span>
                                 </div>
                             </div>
@@ -174,14 +174,14 @@ const MilesToDollarsCalculatorPage = () => {
                             <div className="input-group">
                                 <div className="label-row"><label>Cost in miles</label><span className="more-options">...</span></div>
                                 <div className="input-wrapper">
-                                    <input type="number" className="calc-input" value={costInMiles} onChange={(e) => setCostInMiles(e.target.value)} />
+                                    <input type="number" className="calc-input" value={costInMiles} onChange={(e) => setCostInMiles(e.target.value)}  onWheel={(e) => e.target.blur()} />
                                     <span className="unit-label-static">miles</span>
                                 </div>
                             </div>
                             <div className="input-group">
                                 <div className="label-row"><label>Additional cost in cash and fees (if any)</label><span className="more-options">...</span></div>
                                 <div className="input-wrapper">
-                                    <input type="number" className="calc-input" value={additionalFees} onChange={(e) => setAdditionalFees(e.target.value)} />
+                                    <input type="number" className="calc-input" value={additionalFees} onChange={(e) => setAdditionalFees(e.target.value)}  onWheel={(e) => e.target.blur()} />
                                     <span className="unit-label-static">$</span>
                                 </div>
                             </div>
@@ -209,7 +209,7 @@ const MilesToDollarsCalculatorPage = () => {
                             <div className="input-group">
                                 <div className="label-row"><label>Cost in cash</label><span className="more-options">...</span></div>
                                 <div className="input-wrapper">
-                                    <input type="number" className="calc-input" value={cashPrice} onChange={(e) => setCashPrice(e.target.value)} />
+                                    <input type="number" className="calc-input" value={cashPrice} onChange={(e) => setCashPrice(e.target.value)}  onWheel={(e) => e.target.blur()} />
                                     <span className="unit-label-static">$</span>
                                 </div>
                             </div>
@@ -254,13 +254,6 @@ const MilesToDollarsCalculatorPage = () => {
                     </div>
                 </div>
 
-                <div className="feedback-section">
-                    <p>Did we solve your problem today?</p>
-                    <div className="feedback-btns">
-                        <button>Yes</button>
-                        <button>No</button>
-                    </div>
-                </div>
 
             </div>
         </CalculatorLayout>

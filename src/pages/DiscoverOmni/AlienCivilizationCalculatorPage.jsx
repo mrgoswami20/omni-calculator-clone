@@ -461,7 +461,7 @@ const AlienCivilizationCalculatorPage = () => {
                                             onChange={(e) => setNStars(e.target.value)}
                                             readOnly={isReadOnly}
                                             style={inputStyle}
-                                        />
+                                         onWheel={(e) => e.target.blur()} />
                                         <div className="unit-label-fixed">billion</div>
                                     </div>
                                 </div>
@@ -477,7 +477,7 @@ const AlienCivilizationCalculatorPage = () => {
                                             onChange={(e) => setFL(e.target.value)}
                                             readOnly={isReadOnly}
                                             style={inputStyle}
-                                        />
+                                         onWheel={(e) => e.target.blur()} />
                                         <div className="unit-label-fixed">%</div>
                                     </div>
                                 </div>
@@ -493,7 +493,7 @@ const AlienCivilizationCalculatorPage = () => {
                                             onChange={(e) => setFHZ(e.target.value)}
                                             readOnly={isReadOnly}
                                             style={inputStyle}
-                                        />
+                                         onWheel={(e) => e.target.blur()} />
                                         <div className="unit-label-fixed">%</div>
                                     </div>
                                 </div>
@@ -509,7 +509,7 @@ const AlienCivilizationCalculatorPage = () => {
                                             onChange={(e) => setFM(e.target.value)}
                                             readOnly={isReadOnly}
                                             style={inputStyle}
-                                        />
+                                         onWheel={(e) => e.target.blur()} />
                                         <div className="unit-label-fixed">%</div>
                                     </div>
                                 </div>
@@ -525,7 +525,7 @@ const AlienCivilizationCalculatorPage = () => {
                                             onChange={(e) => setTime(e.target.value)}
                                             readOnly={isReadOnly}
                                             style={inputStyle}
-                                        />
+                                         onWheel={(e) => e.target.blur()} />
                                         <div className="unit-label-fixed">billion yrs</div>
                                     </div>
                                 </div>
@@ -541,7 +541,7 @@ const AlienCivilizationCalculatorPage = () => {
                                             onChange={(e) => setLifetime(e.target.value)}
                                             readOnly={isReadOnly}
                                             style={inputStyle}
-                                        />
+                                         onWheel={(e) => e.target.blur()} />
                                         <div className="unit-label-fixed">yrs</div>
                                     </div>
                                 </div>
@@ -564,7 +564,7 @@ const AlienCivilizationCalculatorPage = () => {
                                 <div className="input-group">
                                     <div className="label-row"><label>Star formation rate (R⁕) <Info size={14} className="info-icon" /></label><span className="more-options">...</span></div>
                                     <div className="input-with-unit">
-                                        <input className="calc-input" type="number" value={drakeR} onChange={(e) => setDrakeR(e.target.value)} />
+                                        <input className="calc-input" type="number" value={drakeR} onChange={(e) => setDrakeR(e.target.value)}  onWheel={(e) => e.target.blur()} />
                                         <div className="unit-label-fixed">/yr</div>
                                     </div>
                                 </div>
@@ -573,7 +573,7 @@ const AlienCivilizationCalculatorPage = () => {
                                 <div className="input-group">
                                     <div className="label-row"><label>Planets (fₚ) <Info size={14} className="info-icon" /></label><span className="more-options">...</span></div>
                                     <div className="input-with-unit">
-                                        <input className="calc-input" type="number" value={drakeFp} onChange={(e) => setDrakeFp(e.target.value)} />
+                                        <input className="calc-input" type="number" value={drakeFp} onChange={(e) => setDrakeFp(e.target.value)}  onWheel={(e) => e.target.blur()} />
                                         <div className="unit-label-fixed">%</div>
                                     </div>
                                 </div>
@@ -582,7 +582,7 @@ const AlienCivilizationCalculatorPage = () => {
                                 <div className="input-group">
                                     <div className="label-row"><label>Supports life (nₑ) <Info size={14} className="info-icon" /></label><span className="more-options">...</span></div>
                                     <div className="input-with-unit">
-                                        <input className="calc-input" type="number" value={drakeNe} onChange={(e) => setDrakeNe(e.target.value)} />
+                                        <input className="calc-input" type="number" value={drakeNe} onChange={(e) => setDrakeNe(e.target.value)}  onWheel={(e) => e.target.blur()} />
                                         <div className="unit-label-fixed">🌎</div>
                                     </div>
                                 </div>
@@ -591,7 +591,7 @@ const AlienCivilizationCalculatorPage = () => {
                                 <div className="input-group">
                                     <div className="label-row"><label>Develops life (fₗ) <Info size={14} className="info-icon" /></label><span className="more-options">...</span></div>
                                     <div className="input-with-unit">
-                                        <input className="calc-input" type="number" value={drakeFl} onChange={(e) => setDrakeFl(e.target.value)} />
+                                        <input className="calc-input" type="number" value={drakeFl} onChange={(e) => setDrakeFl(e.target.value)}  onWheel={(e) => e.target.blur()} />
                                         <div className="unit-label-fixed">%</div>
                                     </div>
                                 </div>
@@ -600,7 +600,7 @@ const AlienCivilizationCalculatorPage = () => {
                                 <div className="input-group">
                                     <div className="label-row"><label>Smart life (fₛ) <Info size={14} className="info-icon" /></label><span className="more-options">...</span></div>
                                     <div className="input-with-unit">
-                                        <input className="calc-input" type="number" value={drakeFi} onChange={(e) => setDrakeFi(e.target.value)} />
+                                        <input className="calc-input" type="number" value={drakeFi} onChange={(e) => setDrakeFi(e.target.value)}  onWheel={(e) => e.target.blur()} />
                                         <div className="unit-label-fixed">%</div>
                                     </div>
                                 </div>
@@ -609,7 +609,7 @@ const AlienCivilizationCalculatorPage = () => {
                                 <div className="input-group">
                                     <div className="label-row"><label>Develops technology (fₜ) <Info size={14} className="info-icon" /></label><span className="more-options">...</span></div>
                                     <div className="input-with-unit">
-                                        <input className="calc-input" type="number" value={drakeFc} onChange={(e) => setDrakeFc(e.target.value)} />
+                                        <input className="calc-input" type="number" value={drakeFc} onChange={(e) => setDrakeFc(e.target.value)}  onWheel={(e) => e.target.blur()} />
                                         <div className="unit-label-fixed">%</div>
                                     </div>
                                 </div>
@@ -618,7 +618,7 @@ const AlienCivilizationCalculatorPage = () => {
                                 <div className="input-group">
                                     <div className="label-row"><label>Lifetime of signals (L) <Info size={14} className="info-icon" /></label><span className="more-options">...</span></div>
                                     <div className="input-with-unit">
-                                        <input className="calc-input" type="number" value={drakeL} onChange={(e) => setDrakeL(e.target.value)} />
+                                        <input className="calc-input" type="number" value={drakeL} onChange={(e) => setDrakeL(e.target.value)}  onWheel={(e) => e.target.blur()} />
                                         <div className="unit-label-fixed">yrs</div>
                                     </div>
                                 </div>
@@ -694,7 +694,7 @@ const AlienCivilizationCalculatorPage = () => {
                                     type="number"
                                     value={userDistance}
                                     onChange={(e) => setUserDistance(e.target.value)}
-                                />
+                                 onWheel={(e) => e.target.blur()} />
                                 <div className="unit-select-wrapper" style={{ display: 'flex', alignItems: 'center', borderLeft: '1px solid #e5e7eb', paddingLeft: '8px' }}>
                                     <select
                                         value={userUnit}

@@ -274,23 +274,6 @@ const TestGradeCalculatorPage = () => {
                         </div>
                     </div>
 
-                    <div className="feedback-section">
-                        {feedbackGiven ? (
-                            <span className="feedback-text" style={{ color: '#10b981', fontWeight: 600 }}>Thanks for your feedback!</span>
-                        ) : (
-                            <>
-                                <span className="feedback-text">Did we solve your problem today?</span>
-                                <div style={{ display: 'flex', gap: '0.5rem' }}>
-                                    <button className="feedback-btn" onClick={() => handleFeedback('yes')}>
-                                        <span>Yes</span>
-                                    </button>
-                                    <button className="feedback-btn" onClick={() => handleFeedback('no')}>
-                                        <span>No</span>
-                                    </button>
-                                </div>
-                            </>
-                        )}
-                    </div>
                 </div>
             </div>
         </CalculatorLayout>

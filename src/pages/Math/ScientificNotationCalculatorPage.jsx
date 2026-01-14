@@ -39,11 +39,11 @@ const ScientificNotationCalculatorPage = () => {
             reviewers={[{ name: "Dominik Czernia" }]}
             tocItems={["Scientific notation definition", "E-notation"]}
         >
-            <div className="calculator-card">
+            <div className="calc-card">
                 <div className="input-group">
                     <label style={{ display: 'block', marginBottom: '4px' }}>Number</label>
                     <div className="input-wrapper">
-                        <input type="number" value={number} onChange={handleChange} />
+                        <input type="number" value={number} onChange={handleChange}  onWheel={(e) => e.target.blur()} />
                     </div>
                 </div>
                 <div className="input-group result-group">

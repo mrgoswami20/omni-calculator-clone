@@ -239,7 +239,7 @@ const GramsToTeaspoonsPage = () => {
                                 className="calc-input"
                                 value={grams}
                                 onChange={(e) => handleGramsChange(e.target.value)}
-                            />
+                             onWheel={(e) => e.target.blur()} />
                             <span className="input-suffix">g</span>
                         </div>
                     </div>
@@ -252,7 +252,7 @@ const GramsToTeaspoonsPage = () => {
                                 className="calc-input"
                                 value={spoons}
                                 onChange={(e) => handleSpoonsChange(e.target.value)}
-                            />
+                             onWheel={(e) => e.target.blur()} />
                             <div className="unit-select-container">
                                 <select value={spoonUnit} onChange={(e) => setSpoonUnit(e.target.value)} className="unit-select">
                                     <option value="tsp">tsp</option>
@@ -277,13 +277,6 @@ const GramsToTeaspoonsPage = () => {
                         </div>
                     </div>
 
-                    <div className="feedback-section">
-                        <p>Did we solve your problem today?</p>
-                        <div>
-                            <button className="feedback-btn">Yes</button>
-                            <button className="feedback-btn">No</button>
-                        </div>
-                    </div>
                 </div>
 
             </div>

@@ -232,7 +232,7 @@ const CookingMeasurementConverterPage = () => {
                                 className="calc-input"
                                 value={values.g || ''}
                                 onChange={(e) => handleUpdate('weight', 'g', e.target.value)}
-                            />
+                             onWheel={(e) => e.target.blur()} />
                             <span className="input-suffix">g</span>
                         </div>
                     </div>
@@ -245,7 +245,7 @@ const CookingMeasurementConverterPage = () => {
                                 className="calc-input"
                                 value={values.dag || ''}
                                 onChange={(e) => handleUpdate('weight', 'dag', e.target.value)}
-                            />
+                             onWheel={(e) => e.target.blur()} />
                             <span className="input-suffix">dag</span>
                         </div>
                     </div>
@@ -258,7 +258,7 @@ const CookingMeasurementConverterPage = () => {
                                 className="calc-input"
                                 value={values.kg || ''}
                                 onChange={(e) => handleUpdate('weight', 'kg', e.target.value)}
-                            />
+                             onWheel={(e) => e.target.blur()} />
                             <span className="input-suffix">kg</span>
                         </div>
                     </div>
@@ -271,7 +271,7 @@ const CookingMeasurementConverterPage = () => {
                                 className="calc-input"
                                 value={values.oz || ''}
                                 onChange={(e) => handleUpdate('weight', 'oz', e.target.value)}
-                            />
+                             onWheel={(e) => e.target.blur()} />
                             <span className="input-suffix">oz</span>
                         </div>
                     </div>
@@ -284,7 +284,7 @@ const CookingMeasurementConverterPage = () => {
                                 className="calc-input"
                                 value={values.lb || ''}
                                 onChange={(e) => handleUpdate('weight', 'lb', e.target.value)}
-                            />
+                             onWheel={(e) => e.target.blur()} />
                             <span className="input-suffix">lb</span>
                         </div>
                     </div>
@@ -306,7 +306,7 @@ const CookingMeasurementConverterPage = () => {
                                 className="calc-input"
                                 value={values.ml || ''}
                                 onChange={(e) => handleUpdate('volume', 'ml', e.target.value)}
-                            />
+                             onWheel={(e) => e.target.blur()} />
                             <span className="input-suffix">ml</span>
                         </div>
                     </div>
@@ -319,7 +319,7 @@ const CookingMeasurementConverterPage = () => {
                                 className="calc-input"
                                 value={values.cup || ''}
                                 onChange={(e) => handleUpdate('volume', 'cup', e.target.value)}
-                            />
+                             onWheel={(e) => e.target.blur()} />
                             <span className="input-suffix">US cups</span>
                         </div>
                     </div>
@@ -332,7 +332,7 @@ const CookingMeasurementConverterPage = () => {
                                 className="calc-input"
                                 value={values.floz || ''}
                                 onChange={(e) => handleUpdate('volume', 'floz', e.target.value)}
-                            />
+                             onWheel={(e) => e.target.blur()} />
                             <span className="input-suffix">US fl oz</span>
                         </div>
                     </div>
@@ -345,7 +345,7 @@ const CookingMeasurementConverterPage = () => {
                                 className="calc-input"
                                 value={values.tsp || ''}
                                 onChange={(e) => handleUpdate('volume', 'tsp', e.target.value)}
-                            />
+                             onWheel={(e) => e.target.blur()} />
                             <span className="input-suffix">tsp</span>
                         </div>
                     </div>
@@ -358,7 +358,7 @@ const CookingMeasurementConverterPage = () => {
                                 className="calc-input"
                                 value={values.tbsp || ''}
                                 onChange={(e) => handleUpdate('volume', 'tbsp', e.target.value)}
-                            />
+                             onWheel={(e) => e.target.blur()} />
                             <span className="input-suffix">tbsp</span>
                         </div>
                     </div>
@@ -371,7 +371,7 @@ const CookingMeasurementConverterPage = () => {
                                 className="calc-input"
                                 value={values.l || ''}
                                 onChange={(e) => handleUpdate('volume', 'l', e.target.value)}
-                            />
+                             onWheel={(e) => e.target.blur()} />
                             <div className="unit-select-container">
                                 <span className="input-suffix" style={{ right: '3rem', fontSize: '0.9rem', color: '#3b82f6', fontWeight: 600 }}>
                                     liters

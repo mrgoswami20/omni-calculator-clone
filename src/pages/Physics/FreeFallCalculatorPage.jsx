@@ -137,7 +137,7 @@ const FreeFallCalculatorPage = () => {
                     value={state.value}
                     onChange={(e) => calculate(type, e.target.value, state.unit)}
                     placeholder={placeholder}
-                />
+                 onWheel={(e) => e.target.blur()} />
                 <div className="unit-select-wrapper">
                     <select
                         className="unit-select"
@@ -184,13 +184,6 @@ const FreeFallCalculatorPage = () => {
                         </div>
                     </div>
 
-                    <div className="feedback-section">
-                        <p>Did we solve your problem today?</p>
-                        <div className="feedback-btns">
-                            <button>Yes</button>
-                            <button>No</button>
-                        </div>
-                    </div>
                 </div>
             </div>
         </CalculatorLayout>

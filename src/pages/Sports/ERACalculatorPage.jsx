@@ -164,7 +164,7 @@ const ERACalculatorPage = () => {
                                 className="calc-input"
                                 value={earnedRuns}
                                 onChange={(e) => handleEarnedRunsChange(e.target.value)}
-                            />
+                             onWheel={(e) => e.target.blur()} />
                         </div>
                     </div>
 
@@ -176,7 +176,7 @@ const ERACalculatorPage = () => {
                                 className="calc-input"
                                 value={inningsPitched}
                                 onChange={(e) => handleInningsChange(e.target.value)}
-                            />
+                             onWheel={(e) => e.target.blur()} />
                         </div>
                     </div>
 
@@ -188,7 +188,7 @@ const ERACalculatorPage = () => {
                                 className="calc-input"
                                 value={outsPitched}
                                 onChange={(e) => handleOutsChange(e.target.value)}
-                            />
+                             onWheel={(e) => e.target.blur()} />
                         </div>
                     </div>
 
@@ -201,7 +201,7 @@ const ERACalculatorPage = () => {
                                 value={era}
                                 onChange={(e) => handleEraChange(e.target.value)}
                                 style={{ backgroundColor: '#eff6ff', color: '#1e3a8a', fontWeight: 'bold' }}
-                            />
+                             onWheel={(e) => e.target.blur()} />
                         </div>
                     </div>
 
@@ -225,7 +225,7 @@ const ERACalculatorPage = () => {
                                         className="calc-input"
                                         value={inningsInGame}
                                         onChange={(e) => handleGameLenChange(e.target.value)}
-                                    />
+                                     onWheel={(e) => e.target.blur()} />
                                 </div>
                             </div>
 
@@ -246,13 +246,6 @@ const ERACalculatorPage = () => {
                 </div>
 
 
-                <div className="feedback-section" style={{ marginTop: '2rem', textAlign: 'center', paddingTop: '1.5rem', borderTop: '1px solid #f3f4f6' }}>
-                    <p style={{ marginBottom: '1rem', color: '#4b5563' }}>Did we solve your problem today?</p>
-                    <div>
-                        <button className="feedback-btn" style={{ padding: '0.5rem 1.5rem', border: '1px solid #e5e7eb', borderRadius: '0.25rem', background: 'white', cursor: 'pointer', margin: '0 0.5rem' }}>Yes</button>
-                        <button className="feedback-btn" style={{ padding: '0.5rem 1.5rem', border: '1px solid #e5e7eb', borderRadius: '0.25rem', background: 'white', cursor: 'pointer', margin: '0 0.5rem' }}>No</button>
-                    </div>
-                </div>
 
             </div>
         </CalculatorLayout>

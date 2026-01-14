@@ -156,7 +156,7 @@ const GallonsPerSquareFootCalculatorPage = () => {
                                         value={length.value}
                                         onChange={(e) => setLength({ ...length, value: e.target.value })}
                                         placeholder="0"
-                                    />
+                                     onWheel={(e) => e.target.blur()} />
                                     <select
                                         className="bar-unit-dropdown"
                                         value={length.unit}
@@ -183,7 +183,7 @@ const GallonsPerSquareFootCalculatorPage = () => {
                                         value={width.value}
                                         onChange={(e) => setWidth({ ...width, value: e.target.value })}
                                         placeholder="0"
-                                    />
+                                     onWheel={(e) => e.target.blur()} />
                                     <select
                                         className="bar-unit-dropdown"
                                         value={width.unit}
@@ -217,7 +217,7 @@ const GallonsPerSquareFootCalculatorPage = () => {
                                     value={area.value}
                                     onChange={(e) => setArea({ ...area, value: e.target.value })}
                                     placeholder="0"
-                                />
+                                 onWheel={(e) => e.target.blur()} />
                                 <select
                                     className="bar-unit-dropdown"
                                     value={area.unit}
@@ -243,7 +243,7 @@ const GallonsPerSquareFootCalculatorPage = () => {
                                     value={height.value}
                                     onChange={(e) => setHeight({ ...height, value: e.target.value })}
                                     placeholder="0"
-                                />
+                                 onWheel={(e) => e.target.blur()} />
                                 <select
                                     className="bar-unit-dropdown"
                                     value={height.unit}
@@ -322,13 +322,6 @@ const GallonsPerSquareFootCalculatorPage = () => {
                     </div>
                 </div>
 
-                <div className="feedback-section-new" style={{ borderTop: 'none', borderBottom: 'none', marginTop: '24px' }}>
-                    <p>Did we solve your problem today?</p>
-                    <div className="feedback-btns-new">
-                        <button className="feedback-btn"><span className="icon">👍</span> Yes</button>
-                        <button className="feedback-btn"><span className="icon">👎</span> No</button>
-                    </div>
-                </div>
             </div>
         </CalculatorLayout>
     );

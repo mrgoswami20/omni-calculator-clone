@@ -131,7 +131,7 @@ const AreaConverterPage = () => {
             ]}
             articleContent={articleContent}
         >
-            <div className="calculator-card area-converter-page">
+            <div className="calc-card area-converter-page">
                 {/* m² Fixed */}
                 <div className="input-group">
                     <div className="label-row">
@@ -144,7 +144,7 @@ const AreaConverterPage = () => {
                             className="calc-input"
                             value={getDisplayValue('m²')}
                             onChange={(e) => handleInputChange(e.target.value, 'm²')}
-                        />
+                         onWheel={(e) => e.target.blur()} />
                         <span className="unit-label-static">m²</span>
                     </div>
                 </div>
@@ -161,7 +161,7 @@ const AreaConverterPage = () => {
                             className="calc-input"
                             value={getDisplayValue('ft²')}
                             onChange={(e) => handleInputChange(e.target.value, 'ft²')}
-                        />
+                         onWheel={(e) => e.target.blur()} />
                         <span className="unit-label-static">ft²</span>
                     </div>
                 </div>
@@ -178,7 +178,7 @@ const AreaConverterPage = () => {
                             className="calc-input"
                             value={getDisplayValue(metricUnit)}
                             onChange={(e) => handleInputChange(e.target.value, metricUnit)}
-                        />
+                         onWheel={(e) => e.target.blur()} />
                         <UnitSelect value={metricUnit} onChange={setMetricUnit} options={MetricOptions} />
                     </div>
                 </div>
@@ -195,7 +195,7 @@ const AreaConverterPage = () => {
                             className="calc-input"
                             value={getDisplayValue(imperialUnit)}
                             onChange={(e) => handleInputChange(e.target.value, imperialUnit)}
-                        />
+                         onWheel={(e) => e.target.blur()} />
                         <UnitSelect value={imperialUnit} onChange={setImperialUnit} options={ImperialOptions} />
                     </div>
                 </div>
@@ -212,7 +212,7 @@ const AreaConverterPage = () => {
                             className="calc-input"
                             value={getDisplayValue(otherUnit)}
                             onChange={(e) => handleInputChange(e.target.value, otherUnit)}
-                        />
+                         onWheel={(e) => e.target.blur()} />
                         <UnitSelect value={otherUnit} onChange={setOtherUnit} options={OtherOptions} />
                     </div>
                 </div>
@@ -232,13 +232,6 @@ const AreaConverterPage = () => {
                     </div>
                 </div>
 
-                <div className="feedback-section">
-                    <p>Did we solve your problem today?</p>
-                    <div className="feedback-btns">
-                        <button>Yes</button>
-                        <button>No</button>
-                    </div>
-                </div>
             </div>
         </CalculatorLayout>
     );

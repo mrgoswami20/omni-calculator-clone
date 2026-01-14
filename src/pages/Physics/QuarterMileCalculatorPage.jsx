@@ -192,7 +192,7 @@ const QuarterMileCalculatorPage = () => {
                                 value={weight.value}
                                 onChange={(e) => calculate('weight', e.target.value, weight.unit)}
                                 placeholder="Enter vehicle weight"
-                            />
+                             onWheel={(e) => e.target.blur()} />
                             <div className="unit-select-wrapper">
                                 <select
                                     className="unit-select"
@@ -214,7 +214,7 @@ const QuarterMileCalculatorPage = () => {
                                 value={power.value}
                                 onChange={(e) => calculate('power', e.target.value, power.unit)}
                                 placeholder="Enter power"
-                            />
+                             onWheel={(e) => e.target.blur()} />
                             <div className="unit-select-wrapper">
                                 <select
                                     className="unit-select"
@@ -240,7 +240,7 @@ const QuarterMileCalculatorPage = () => {
                                 value={et.value}
                                 onChange={(e) => calculate('et', e.target.value, et.unit)}
                                 placeholder="Result"
-                            />
+                             onWheel={(e) => e.target.blur()} />
                             <div className="unit-select-wrapper">
                                 <select
                                     className="unit-select"
@@ -262,7 +262,7 @@ const QuarterMileCalculatorPage = () => {
                                 value={trapSpeed.value}
                                 onChange={(e) => calculate('trapSpeed', e.target.value, trapSpeed.unit)}
                                 placeholder="Result"
-                            />
+                             onWheel={(e) => e.target.blur()} />
                             <div className="unit-select-wrapper">
                                 <select
                                     className="unit-select"
@@ -286,13 +286,6 @@ const QuarterMileCalculatorPage = () => {
                         </div>
                     </div>
 
-                    <div className="feedback-section">
-                        <p>Did we solve your problem today?</p>
-                        <div className="feedback-btns">
-                            <button>Yes</button>
-                            <button>No</button>
-                        </div>
-                    </div>
                 </div>
             </div>
         </CalculatorLayout>

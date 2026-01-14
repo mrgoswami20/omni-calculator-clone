@@ -119,7 +119,7 @@ const BoardFootCalculatorPage = () => {
                                     value={state.val2}
                                     onChange={(e) => setState({ ...state, val2: e.target.value })}
                                     placeholder=" "
-                                />
+                                 onWheel={(e) => e.target.blur()} />
                                 <span className="inner-unit-label">{label2}</span>
                             </>
                         )}
@@ -191,7 +191,7 @@ const BoardFootCalculatorPage = () => {
                                 value={pieces}
                                 onChange={(e) => setPieces(e.target.value)}
                                 placeholder=" "
-                            />
+                             onWheel={(e) => e.target.blur()} />
                         </div>
                     </div>
 
@@ -232,7 +232,7 @@ const BoardFootCalculatorPage = () => {
                                         value={price}
                                         onChange={(e) => setPrice(e.target.value)}
                                         placeholder=" "
-                                    />
+                                     onWheel={(e) => e.target.blur()} />
                                     <div className="bar-main-divider"></div>
                                     <select
                                         className="bar-select currency-select"

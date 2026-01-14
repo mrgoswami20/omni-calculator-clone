@@ -159,7 +159,7 @@ const SquareYardsCalculatorPage = () => {
                                 className="bar-main-input"
                                 value={length.value}
                                 onChange={(e) => setLength({ ...length, value: e.target.value })}
-                            />
+                             onWheel={(e) => e.target.blur()} />
                             <select
                                 className="bar-unit-dropdown"
                                 value={length.unit}
@@ -187,7 +187,7 @@ const SquareYardsCalculatorPage = () => {
                                 className="bar-main-input"
                                 value={width.value}
                                 onChange={(e) => setWidth({ ...width, value: e.target.value })}
-                            />
+                             onWheel={(e) => e.target.blur()} />
                             <select
                                 className="bar-unit-dropdown"
                                 value={width.unit}
@@ -215,7 +215,7 @@ const SquareYardsCalculatorPage = () => {
                                 className="bar-main-input"
                                 value={cost.value}
                                 onChange={(e) => setCost({ ...cost, value: e.target.value })}
-                            />
+                             onWheel={(e) => e.target.blur()} />
                             <div className="cost-input-group">
                                 <select
                                     className="bar-unit-dropdown currency-select"

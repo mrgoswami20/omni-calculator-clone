@@ -252,7 +252,7 @@ const PercentagePointCalculatorPage = () => {
                                 className="calc-input"
                                 value={p1}
                                 onChange={(e) => handleP1Change(e.target.value)}
-                            />
+                             onWheel={(e) => e.target.blur()} />
                             <span className="input-suffix">%</span>
                         </div>
                     </div>
@@ -265,7 +265,7 @@ const PercentagePointCalculatorPage = () => {
                                 className="calc-input"
                                 value={p2}
                                 onChange={(e) => handleP2Change(e.target.value)}
-                            />
+                             onWheel={(e) => e.target.blur()} />
                             <span className="input-suffix">%</span>
                         </div>
                     </div>
@@ -279,7 +279,7 @@ const PercentagePointCalculatorPage = () => {
                                 value={diffPP}
                                 onChange={(e) => handleDiffPPChange(e.target.value)}
                                 style={{ backgroundColor: '#eff6ff', color: '#1e3a8a', fontWeight: 'bold' }}
-                            />
+                             onWheel={(e) => e.target.blur()} />
                             <span className="input-suffix">pp</span>
                         </div>
                     </div>
@@ -293,7 +293,7 @@ const PercentagePointCalculatorPage = () => {
                                 value={diffPct}
                                 onChange={(e) => handleDiffPctChange(e.target.value)}
                                 style={{ backgroundColor: '#eff6ff', color: '#1e3a8a', fontWeight: 'bold' }}
-                            />
+                             onWheel={(e) => e.target.blur()} />
                             <span className="input-suffix">%</span>
                         </div>
                     </div>
@@ -317,7 +317,7 @@ const PercentagePointCalculatorPage = () => {
                                         className="calc-input"
                                         value={total}
                                         onChange={(e) => handleTotalChange(e.target.value)}
-                                    />
+                                     onWheel={(e) => e.target.blur()} />
                                 </div>
                             </div>
 
@@ -329,7 +329,7 @@ const PercentagePointCalculatorPage = () => {
                                         className="calc-input"
                                         value={v1}
                                         onChange={(e) => handleV1Change(e.target.value)}
-                                    />
+                                     onWheel={(e) => e.target.blur()} />
                                 </div>
                             </div>
 
@@ -341,7 +341,7 @@ const PercentagePointCalculatorPage = () => {
                                         className="calc-input"
                                         value={v2}
                                         onChange={(e) => handleV2Change(e.target.value)}
-                                    />
+                                     onWheel={(e) => e.target.blur()} />
                                 </div>
                             </div>
 
@@ -354,7 +354,7 @@ const PercentagePointCalculatorPage = () => {
                                         value={vDiff}
                                         onChange={(e) => handleVDiffChange(e.target.value)}
                                         style={{ backgroundColor: '#eff6ff', color: '#1e3a8a', fontWeight: 'bold' }}
-                                    />
+                                     onWheel={(e) => e.target.blur()} />
                                 </div>
                             </div>
                         </div>
@@ -374,13 +374,6 @@ const PercentagePointCalculatorPage = () => {
                     </div>
                 </div>
 
-                <div className="feedback-section" style={{ marginTop: '2rem', textAlign: 'center', paddingTop: '1.5rem', borderTop: '1px solid #f3f4f6' }}>
-                    <p style={{ marginBottom: '1rem', color: '#4b5563' }}>Did we solve your problem today?</p>
-                    <div>
-                        <button className="feedback-btn" style={{ padding: '0.5rem 1.5rem', border: '1px solid #e5e7eb', borderRadius: '0.25rem', background: 'white', cursor: 'pointer', margin: '0 0.5rem' }}>Yes</button>
-                        <button className="feedback-btn" style={{ padding: '0.5rem 1.5rem', border: '1px solid #e5e7eb', borderRadius: '0.25rem', background: 'white', cursor: 'pointer', margin: '0 0.5rem' }}>No</button>
-                    </div>
-                </div>
 
             </div>
         </CalculatorLayout>

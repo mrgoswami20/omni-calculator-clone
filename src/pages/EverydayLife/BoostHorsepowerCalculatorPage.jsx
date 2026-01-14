@@ -102,7 +102,7 @@ const BoostHorsepowerCalculatorPage = () => {
             articleContent={articleContent}
             similarCalculators={32}
         >
-            <div className="calculator-card boost-horsepower-page">
+            <div className="calc-card boost-horsepower-page">
 
                 <div className="collapsible-section no-border-top">
                     <div className="collapsible-header" onClick={() => setIsOpen(!isOpen)}>
@@ -125,7 +125,7 @@ const BoostHorsepowerCalculatorPage = () => {
                                         className="calc-input"
                                         value={originalPower}
                                         onChange={(e) => setOriginalPower(e.target.value)}
-                                    />
+                                     onWheel={(e) => e.target.blur()} />
                                     <div className="unit-select-container">
                                         <select
                                             value={originalPowerUnit}
@@ -152,7 +152,7 @@ const BoostHorsepowerCalculatorPage = () => {
                                         className="calc-input"
                                         value={boost}
                                         onChange={(e) => setBoost(e.target.value)}
-                                    />
+                                     onWheel={(e) => e.target.blur()} />
                                     <div className="unit-select-container">
                                         <select
                                             value={boostUnit}
@@ -216,13 +216,6 @@ const BoostHorsepowerCalculatorPage = () => {
                     </div>
                 </div>
 
-                <div className="feedback-section">
-                    <p>Did we solve your problem today?</p>
-                    <div className="feedback-btns">
-                        <button>Yes</button>
-                        <button>No</button>
-                    </div>
-                </div>
 
                 <div className="check-out-box">
                     Check out <strong>32 similar</strong> transportation calculators

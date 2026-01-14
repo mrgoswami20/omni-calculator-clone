@@ -1,6 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import CalculatorLayout from '../../components/CalculatorLayout';
-import { Share2, RotateCcw, ChevronDown, ChevronUp } from 'lucide-react';
+import { ChevronDown, ChevronUp, RotateCcw } from 'lucide-react';
+import InputBarWithDropDownOption from '../../components/kit_components/InputBarWithDropDownOption';
+import SimpleInputBar from '../../components/kit_components/SimpleInputBar';
+import SimpleButton from '../../components/kit_components/SimpleButton';
 import './AcreageCalculatorPage.css';
 
 const AcreageCalculatorPage = () => {
@@ -14,7 +17,11 @@ const AcreageCalculatorPage = () => {
     const [area, setArea] = useState('');
     const [areaUnit, setAreaUnit] = useState('ac');
 
-    const [isPriceOpen, setIsPriceOpen] = useState(false);
+    // Price Section State
+    const [isPriceOpen, setIsPriceOpen] = useState(true);
+    const [unitPrice, setUnitPrice] = useState('');
+    const [priceUnit, setPriceUnit] = useState('yd²');
+    const [totalPrice, setTotalPrice] = useState('');
 
     const creators = [
         { name: "Piotr Małek", role: "" }
@@ -24,28 +31,6 @@ const AcreageCalculatorPage = () => {
         { name: "Jack Bowater", role: "" }
     ];
 
-    // Conversion factors to Meter
-    const lengthToMeter = {
-        'm': 1,
-        'cm': 0.01,
-        'mm': 0.001,
-        'ft': 0.3048,
-        'yd': 0.9144,
-        'in': 0.0254,
-        'km': 1000,
-        'mi': 1609.344
-    };
-
-    // Conversion factors from Sq Meter
-    const sqMeterToArea = {
-        'm²': 1,
-        'cm²': 10000, // 1 m2 = 10000 cm2 (Wait, div by this? No, factor to multiply m2 by to get unit. 1 m2 = 10000 cm2. Correct.)
-        // wait, let's stick to "To Base" (Meter) and "From Base" (Meter) pattern for less confusion.
-        // Actually, let's store: value in meters.
-    };
-
-    // Let's use standard Factors relative to base.
-    // Length Base: Meter
     const lFactors = {
         'm': 1,
         'cm': 0.01,
@@ -57,46 +42,122 @@ const AcreageCalculatorPage = () => {
         'mi': 1609.344
     };
 
-    // Area Base: Sq Meter
+    // Area Factors relative to Square Meter (m²)
+    // 1 unit = X m²
     const aFactors = {
-        'm²': 1,
+        'mm²': 0.000001,
         'cm²': 0.0001,
-        'ft²': 0.092903,
-        'yd²': 0.836127,
-        'ac': 4046.86,
-        'ha': 10000,
+        'dm²': 0.01,
+        'm²': 1,
         'km²': 1000000,
-        'mi²': 2589988
+        'in²': 0.00064516,
+        'ft²': 0.09290304,
+        'yd²': 0.83612736,
+        'mi²': 2589988.11,
+        'ha': 10000,
+        'ac': 4046.85642
     };
 
-    // Calculate Area when W or L changes
+    // --- Core Area Calculation ---
     useEffect(() => {
-        if (width && length) {
-            const wM = parseFloat(width) * lFactors[widthUnit];
-            const lM = parseFloat(length) * lFactors[lengthUnit];
+        const wVal = parseFloat(width);
+        const lVal = parseFloat(length);
+
+        if (!isNaN(wVal) && !isNaN(lVal) && width !== '' && length !== '' && wVal > 0 && lVal > 0) {
+            const wM = wVal * lFactors[widthUnit];
+            const lM = lVal * lFactors[lengthUnit];
             const areaM2 = wM * lM;
-
-            // Convert to selected area unit
-            // val * factor = m2.  So m2 / factor = val.
             const aVal = areaM2 / aFactors[areaUnit];
-
-            // Avoid infinite loops or overwriting user input if they are typing area? 
-            // For this clone, strict W*L = A flow is safer given the screenshot shows W/L first.
-            setArea(aVal.toPrecision(6).replace(/\.0+$/, '').replace(/(\.\d*[1-9])0+$/, '$1')); // Cleaner formatting
+            setArea(aVal.toPrecision(6).replace(/\.0+$/, '').replace(/(\.\d*[1-9])0+$/, '$1'));
         } else {
-            setArea('');
+            if (width === '' || length === '') {
+                setArea('');
+            }
         }
     }, [width, length, widthUnit, lengthUnit, areaUnit]);
 
+    // Helper: Get Area in Square Meters
+    const getAreaInSqMeters = () => {
+        const aVal = parseFloat(area);
+        if (isNaN(aVal) || !aVal) return 0;
+        return aVal * aFactors[areaUnit];
+    };
+
+    const handleUnitPriceChange = (val) => {
+        setUnitPrice(val);
+        const uP = parseFloat(val);
+        const areaSqM = getAreaInSqMeters();
+
+        if (!isNaN(uP) && areaSqM > 0) {
+            const areaInPriceUnit = areaSqM / aFactors[priceUnit];
+            const total = uP * areaInPriceUnit;
+            setTotalPrice(total.toFixed(2));
+        } else {
+            if (val === '') setTotalPrice('');
+        }
+    };
+
+    const handleTotalPriceChange = (val) => {
+        setTotalPrice(val);
+        const tP = parseFloat(val);
+        const areaSqM = getAreaInSqMeters();
+
+        if (!isNaN(tP) && areaSqM > 0) {
+            const areaInPriceUnit = areaSqM / aFactors[priceUnit];
+            if (areaInPriceUnit !== 0) {
+                const unitP = tP / areaInPriceUnit;
+                setUnitPrice(unitP.toPrecision(6).replace(/\.0+$/, '').replace(/(\.\d*[1-9])0+$/, '$1'));
+            }
+        }
+    };
+
+    useEffect(() => {
+        const areaSqM = getAreaInSqMeters();
+        const uP = parseFloat(unitPrice);
+        if (areaSqM > 0 && !isNaN(uP)) {
+            const areaInPriceUnit = areaSqM / aFactors[priceUnit];
+            const total = uP * areaInPriceUnit;
+            setTotalPrice(total.toFixed(2));
+        }
+    }, [area, areaUnit]);
+
+    const [prevPriceUnit, setPrevPriceUnit] = useState(priceUnit);
+    if (priceUnit !== prevPriceUnit) {
+        // Convert Unit Price when unit changes
+        const uP = parseFloat(unitPrice);
+        if (!isNaN(uP)) {
+            // New Price = Old Price * (New Factor / Old Factor)
+            // Because price per unit scales with unit size.
+            const ratio = aFactors[priceUnit] / aFactors[prevPriceUnit];
+            const newPrice = uP * ratio;
+            setUnitPrice(newPrice.toPrecision(6).replace(/\.0+$/, '').replace(/(\.\d*[1-9])0+$/, '$1'));
+        }
+        setPrevPriceUnit(priceUnit);
+    }
+
+    // Validation
+    const getWidthError = () => {
+        if (width === '') return null;
+        if (parseFloat(width) <= 0) return "The width must be a positive number.";
+        return null;
+    };
+    const getLengthError = () => {
+        if (length === '') return null;
+        if (parseFloat(length) <= 0) return "The length must be a positive number.";
+        return null;
+    };
+    const getAreaError = () => {
+        if (area === '') return null;
+        if (parseFloat(area) <= 0) return "The area must be a positive number.";
+        return null;
+    };
+
     const articleContent = (
         <>
-            <p>
-                This acreage calculator helps you measure a piece of land or quickly convert between the imperial and the metric system's units for area.
-            </p>
+            <p>This acreage calculator helps you measure a piece of land or quickly convert between the imperial and the metric system's units for area.</p>
         </>
     );
 
-    // Units options for dropdowns
     const lengthOptions = [
         { value: 'm', label: 'm' },
         { value: 'cm', label: 'cm' },
@@ -108,37 +169,27 @@ const AcreageCalculatorPage = () => {
         { value: 'mi', label: 'mi' },
     ];
 
+    // Requested Order: mm2, cm2, dm2, m2, km2, in2, ft2, yd2, mi2, ha, ac
     const areaOptions = [
-        { value: 'ac', label: 'ac' },
-        { value: 'm²', label: 'm²' },
-        { value: 'ft²', label: 'ft²' },
-        { value: 'yd²', label: 'yd²' },
-        { value: 'ha', label: 'ha' },
-        { value: 'km²', label: 'km²' },
-        { value: 'mi²', label: 'mi²' },
+        { value: 'mm²', label: 'square millimeter (mm²)' },
+        { value: 'cm²', label: 'square centimeter (cm²)' },
+        { value: 'dm²', label: 'square decimeter (dm²)' },
+        { value: 'm²', label: 'square meter (m²)' },
+        { value: 'km²', label: 'square kilometer (km²)' },
+        { value: 'in²', label: 'square inch (in²)' },
+        { value: 'ft²', label: 'square foot (ft²)' },
+        { value: 'yd²', label: 'square yard (yd²)' },
+        { value: 'mi²', label: 'square mile (mi²)' },
+        { value: 'ha', label: 'hectare (ha)' },
+        { value: 'ac', label: 'acre (ac)' }
     ];
 
-    const UnitSelect = ({ value, onChange, options }) => (
-        <div className="unit-select-container">
-            <select value={value} onChange={(e) => onChange(e.target.value)} className="unit-select">
-                {options.map(opt => (
-                    <option key={opt.value} value={opt.value}>{opt.label}</option>
-                ))}
-            </select>
-            <ChevronDown size={14} className="unit-arrow" />
-        </div>
-    );
-
-    const [showShareTooltip, setShowShareTooltip] = useState(false);
-
-    const handleShare = async () => {
-        try {
-            await navigator.clipboard.writeText(window.location.href);
-            setShowShareTooltip(true);
-            setTimeout(() => setShowShareTooltip(false), 2000);
-        } catch (err) {
-            console.error('Failed to copy URL:', err);
-        }
+    const handleClear = () => {
+        setWidth('');
+        setLength('');
+        setArea('');
+        setUnitPrice('');
+        setTotalPrice('');
     };
 
     return (
@@ -156,59 +207,39 @@ const AcreageCalculatorPage = () => {
             articleContent={articleContent}
             similarCalculators={12}
         >
-            <div className="calculator-card acreage-page">
-                {/* Width */}
-                <div className="input-group">
-                    <div className="label-row">
-                        <label>Width</label>
-                        <span className="more-options">...</span>
-                    </div>
-                    <div className="input-wrapper">
-                        <input
-                            type="number"
-                            className="calc-input"
-                            value={width}
-                            onChange={(e) => setWidth(e.target.value)}
-                        />
-                        <UnitSelect value={widthUnit} onChange={setWidthUnit} options={lengthOptions} />
-                    </div>
-                </div>
+            <div className="calc-card acreage-page">
+                <InputBarWithDropDownOption
+                    label="Width"
+                    value={width}
+                    onChange={(e) => setWidth(e.target.value)}
+                    unit={widthUnit}
+                    onUnitChange={(e) => setWidthUnit(e.target.value)}
+                    unitOptions={lengthOptions}
+                    error={getWidthError()}
+                    type="number"
+                />
+                <InputBarWithDropDownOption
+                    label="Length"
+                    value={length}
+                    onChange={(e) => setLength(e.target.value)}
+                    unit={lengthUnit}
+                    onUnitChange={(e) => setLengthUnit(e.target.value)}
+                    unitOptions={lengthOptions}
+                    error={getLengthError()}
+                    type="number"
+                />
+                <InputBarWithDropDownOption
+                    label="Area"
+                    value={area}
+                    onChange={(e) => setArea(e.target.value)}
+                    unit={areaUnit}
+                    onUnitChange={(e) => setAreaUnit(e.target.value)}
+                    unitOptions={areaOptions}
+                    error={getAreaError()}
+                    type="number"
+                    selectedDisplayProp="value" // Show only symbol (value) when selected
+                />
 
-                {/* Length */}
-                <div className="input-group">
-                    <div className="label-row">
-                        <label>Length</label>
-                        <span className="more-options">...</span>
-                    </div>
-                    <div className="input-wrapper">
-                        <input
-                            type="number"
-                            className="calc-input"
-                            value={length}
-                            onChange={(e) => setLength(e.target.value)}
-                        />
-                        <UnitSelect value={lengthUnit} onChange={setLengthUnit} options={lengthOptions} />
-                    </div>
-                </div>
-
-                {/* Area */}
-                <div className="input-group result-group">
-                    <div className="label-row">
-                        <label>Area</label>
-                        <span className="more-options">...</span>
-                    </div>
-                    <div className="input-wrapper">
-                        <input
-                            type="number"
-                            className="calc-input"
-                            value={area}
-                            readOnly
-                        />
-                        <UnitSelect value={areaUnit} onChange={setAreaUnit} options={areaOptions} />
-                    </div>
-                </div>
-
-                {/* Collapsible Section */}
                 <div className="collapsible-section">
                     <div className="collapsible-header" onClick={() => setIsPriceOpen(!isPriceOpen)}>
                         <div className="header-left">
@@ -216,54 +247,58 @@ const AcreageCalculatorPage = () => {
                             <span>Unit and total price</span>
                         </div>
                     </div>
+
                     {isPriceOpen && (
                         <div className="collapsible-content">
-                            {/* Placeholder inputs matching style */}
-                            <div className="input-group">
-                                <label style={{ fontSize: '0.85rem', marginBottom: '4px', display: 'block' }}>Price per unit</label>
-                                <div className="input-wrapper">
-                                    <input type="number" className="calc-input" placeholder="" />
-                                    <span className="unit-label text-sm text-gray-500 pr-3">$/unit</span>
-                                </div>
-                            </div>
-                            <div className="input-group">
-                                <label style={{ fontSize: '0.85rem', marginBottom: '4px', display: 'block' }}>Total price</label>
-                                <div className="input-wrapper">
-                                    <input type="number" className="calc-input" placeholder="" />
-                                    <span className="unit-label text-sm text-gray-500 pr-3">$</span>
-                                </div>
-                            </div>
+                            <p style={{ fontSize: '0.85rem', color: '#374151', margin: '0 0 12px 0' }}>
+                                Once you've obtained the area, input one of the quantities below to get the other.
+                            </p>
+
+                            <InputBarWithDropDownOption
+                                label="Unit price"
+                                value={unitPrice}
+                                onChange={(e) => handleUnitPriceChange(e.target.value)}
+                                unit={priceUnit}
+                                onUnitChange={(e) => setPriceUnit(e.target.value)}
+                                unitOptions={areaOptions}
+                                type="number"
+                                unitPrefix="USD /"
+                                selectedDisplayProp="value" // Show only symbol when selected
+                            />
+
+                            <SimpleInputBar
+                                label="Total price"
+                                value={totalPrice}
+                                onChange={(e) => handleTotalPriceChange(e.target.value)}
+                                type="number"
+                                suffix="USD"
+                            />
                         </div>
                     )}
                 </div>
 
-                <div className="calc-actions">
-                    {/* <button className="share-result-btn" onClick={handleShare}>
-                        <div className="share-icon-circle"><Share2 size={14} /></div>
-                        Share result
-                        {showShareTooltip && <span className="copied-tooltip">Copied!</span>}
-                    </button> */}
-                    <div className="secondary-actions">
-                        <button className="secondary-btn">Reload calculator</button>
-                        <button className="secondary-btn" onClick={() => {
-                            setWidth('');
-                            setLength('');
-                            setArea('');
-                            setAreaUnit('ac'); // Reset to default? Or keep choice. Let's keep.
-                            setWidthUnit('yd');
-                        }}>Clear all changes</button>
+                <div className="actions-section">
+                    <div className="utility-buttons" style={{ width: '100%', flexDirection: 'row', justifyContent: 'center' }}>
+                        <SimpleButton onClick={() => window.location.reload()} variant="secondary">
+                            <RotateCcw size={16} style={{ marginRight: 8 }} /> Reload calculator
+                        </SimpleButton>
+                        <SimpleButton onClick={handleClear} variant="secondary">
+                            Clear all changes
+                        </SimpleButton>
                     </div>
                 </div>
 
-                <div className="feedback-section">
-                    <p>Did we solve your problem today?</p>
-                    <div className="feedback-btns">
-                        <button>Yes</button>
-                        <button>No</button>
-                    </div>
-                </div>
 
-                <div className="check-out-box">
+
+                <div className="check-out-box" style={{
+                    marginTop: '2rem',
+                    backgroundColor: '#fefce8',
+                    padding: '1rem',
+                    borderRadius: '8px',
+                    fontSize: '0.9rem',
+                    color: '#111827',
+                    borderLeft: '4px solid #facc15'
+                }}>
                     Check out <strong>12 similar</strong> length and area converters
                 </div>
             </div>

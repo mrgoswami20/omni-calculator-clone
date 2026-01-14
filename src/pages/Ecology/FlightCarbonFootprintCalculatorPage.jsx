@@ -183,7 +183,7 @@ const FlightCarbonFootprintCalculatorPage = () => {
                                 className="input-invisible"
                                 value={duration}
                                 onChange={(e) => setDuration(e.target.value)}
-                            />
+                             onWheel={(e) => e.target.blur()} />
 
                             {/* Interactive Dropdown for Duration */}
                             <div className="relative-dropdown-container">
@@ -243,7 +243,7 @@ const FlightCarbonFootprintCalculatorPage = () => {
                                 className="input-invisible"
                                 value={occupancy}
                                 onChange={(e) => setOccupancy(e.target.value)}
-                            />
+                             onWheel={(e) => e.target.blur()} />
                             <div className="unit-dropdown">
                                 %
                             </div>

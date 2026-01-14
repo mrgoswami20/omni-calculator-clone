@@ -142,7 +142,7 @@ const AdjustedBodyWeightCalculatorPage = () => {
                                 value={height.value}
                                 onChange={(e) => setHeight({ ...height, value: e.target.value })}
                                 placeholder=" "
-                            />
+                             onWheel={(e) => e.target.blur()} />
                             <div className="unit-select-wrapper">
                                 <select className="unit-select" value={height.unit} onChange={(e) => setHeight({ ...height, unit: e.target.value })}>
                                     <option value="cm">cm</option>
@@ -163,7 +163,7 @@ const AdjustedBodyWeightCalculatorPage = () => {
                                 value={actualWeight.value}
                                 onChange={(e) => setActualWeight({ ...actualWeight, value: e.target.value })}
                                 placeholder=" "
-                            />
+                             onWheel={(e) => e.target.blur()} />
                             <div className="unit-select-wrapper">
                                 <select className="unit-select" value={actualWeight.unit} onChange={(e) => setActualWeight({ ...actualWeight, unit: e.target.value })}>
                                     <option value="kg">kg</option>
@@ -201,13 +201,6 @@ const AdjustedBodyWeightCalculatorPage = () => {
                         </div>
                     </div>
 
-                    <div className="feedback-section-new">
-                        <p>Did we solve your problem today?</p>
-                        <div className="feedback-btns-new">
-                            <button className="feedback-btn"><span className="icon">👍</span> Yes</button>
-                            <button className="feedback-btn"><span className="icon">👎</span> No</button>
-                        </div>
-                    </div>
                 </div>
             </div>
         </CalculatorLayout>

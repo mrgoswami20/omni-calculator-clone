@@ -203,13 +203,6 @@ const KayaIdentityCalculatorPage = () => {
                     </div>
 
                     {/* Feedback */}
-                    <div className="feedback-section">
-                        <p>Did we solve your problem today?</p>
-                        <div className="feedback-btngroup">
-                            <button>Yes</button>
-                            <button>No</button>
-                        </div>
-                    </div>
 
                 </div>
             </div>

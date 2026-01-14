@@ -83,9 +83,9 @@ const CalculatorLayout = ({
                             <ul>
                                 {tocItems.map((item, index) => (
                                     <li key={index}>
-                                        <a href={item.id ? `#${item.id}` : '#'}>
+                                        <span>
                                             {typeof item === 'object' ? item.label : item}
-                                        </a>
+                                        </span>
                                     </li>
                                 ))}
                             </ul>

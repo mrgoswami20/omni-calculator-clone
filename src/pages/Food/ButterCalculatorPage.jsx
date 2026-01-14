@@ -154,7 +154,7 @@ const ButterCalculatorPage = () => {
             articleContent={articleContent}
             similarCalculators={14}
         >
-            <div className="calculator-card butter-calculator-page">
+            <div className="calc-card butter-calculator-page">
                 {/* Weight in sticks */}
                 <div className="input-group">
                     <div className="label-row"><label>Weight in sticks</label><span className="more-options">...</span></div>
@@ -164,7 +164,7 @@ const ButterCalculatorPage = () => {
                             className="calc-input"
                             value={values.sticks}
                             onChange={(e) => handleChange('sticks', e.target.value)}
-                        />
+                         onWheel={(e) => e.target.blur()} />
                         <span className="input-suffix">sticks</span>
                     </div>
                 </div>
@@ -178,7 +178,7 @@ const ButterCalculatorPage = () => {
                             className="calc-input"
                             value={values.cups}
                             onChange={(e) => handleChange('cups', e.target.value)}
-                        />
+                         onWheel={(e) => e.target.blur()} />
                         <span className="input-suffix">cups</span>
                     </div>
                 </div>
@@ -192,7 +192,7 @@ const ButterCalculatorPage = () => {
                             className="calc-input"
                             value={values.tbsp}
                             onChange={(e) => handleChange('tbsp', e.target.value)}
-                        />
+                         onWheel={(e) => e.target.blur()} />
                         <span className="input-suffix">tbsp</span>
                     </div>
                 </div>
@@ -206,7 +206,7 @@ const ButterCalculatorPage = () => {
                             className="calc-input"
                             value={values.grams}
                             onChange={(e) => handleChange('grams', e.target.value)}
-                        />
+                         onWheel={(e) => e.target.blur()} />
                         <span className="input-suffix">g</span>
                     </div>
                 </div>
@@ -220,7 +220,7 @@ const ButterCalculatorPage = () => {
                             className="calc-input"
                             value={values.tsp}
                             onChange={(e) => handleChange('tsp', e.target.value)}
-                        />
+                         onWheel={(e) => e.target.blur()} />
                         <span className="input-suffix">tsp</span>
                     </div>
                 </div>
@@ -234,7 +234,7 @@ const ButterCalculatorPage = () => {
                             className="calc-input"
                             value={values.oz}
                             onChange={(e) => handleChange('oz', e.target.value)}
-                        />
+                         onWheel={(e) => e.target.blur()} />
                         <span className="input-suffix">oz</span>
                     </div>
                 </div>
@@ -248,7 +248,7 @@ const ButterCalculatorPage = () => {
                             className="calc-input"
                             value={values.lb}
                             onChange={(e) => handleChange('lb', e.target.value)}
-                        />
+                         onWheel={(e) => e.target.blur()} />
                         <span className="input-suffix">lb</span>
                     </div>
                 </div>
@@ -262,7 +262,7 @@ const ButterCalculatorPage = () => {
                             className="calc-input"
                             value={values.ml}
                             onChange={(e) => handleChange('ml', e.target.value)}
-                        />
+                         onWheel={(e) => e.target.blur()} />
                         <span className="input-suffix">ml</span>
                     </div>
                 </div>
@@ -281,13 +281,6 @@ const ButterCalculatorPage = () => {
                     </div>
                 </div>
 
-                <div className="feedback-section">
-                    <p>Did we solve your problem today?</p>
-                    <div className="feedback-btns">
-                        <button>Yes</button>
-                        <button>No</button>
-                    </div>
-                </div>
 
             </div>
         </CalculatorLayout>

@@ -95,7 +95,7 @@ const MilesPerYearCalculatorPage = () => {
             articleContent={articleContent}
             similarCalculators={32}
         >
-            <div className="calculator-card miles-per-year-page">
+            <div className="calc-card miles-per-year-page">
 
                 {/* Period Selector */}
                 <div className="input-group">
@@ -129,7 +129,7 @@ const MilesPerYearCalculatorPage = () => {
                             className="calc-input"
                             value={distance}
                             onChange={(e) => setDistance(e.target.value)}
-                        />
+                         onWheel={(e) => e.target.blur()} />
                         <div className="unit-select-container">
                             <select
                                 value={unit}
@@ -183,13 +183,6 @@ const MilesPerYearCalculatorPage = () => {
                     </div>
                 </div>
 
-                <div className="feedback-section">
-                    <p>Did we solve your problem today?</p>
-                    <div className="feedback-btns">
-                        <button>Yes</button>
-                        <button>No</button>
-                    </div>
-                </div>
 
                 <div className="check-out-box">
                     Check out <strong>32 similar</strong> transportation calculators

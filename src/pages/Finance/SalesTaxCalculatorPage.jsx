@@ -88,7 +88,7 @@ const SalesTaxCalculatorPage = () => {
                 "Economic implications"
             ]}
         >
-            <div className="calculator-card">
+            <div className="calc-card">
                 <div className="input-group">
                     <div className="label-row">
                         <label>Sales tax</label>
@@ -104,7 +104,7 @@ const SalesTaxCalculatorPage = () => {
                             value={salesTaxRate}
                             onChange={handleRateChange}
                             placeholder=" "
-                        />
+                         onWheel={(e) => e.target.blur()} />
                         <div className="unit-display">% ▾</div>
                     </div>
                 </div>
@@ -121,7 +121,7 @@ const SalesTaxCalculatorPage = () => {
                             value={netPrice}
                             onChange={handleNetChange}
                             placeholder=" "
-                        />
+                         onWheel={(e) => e.target.blur()} />
                         <div className="unit-display">INR ▾</div>
                     </div>
                 </div>
@@ -138,7 +138,7 @@ const SalesTaxCalculatorPage = () => {
                             value={grossPrice}
                             onChange={handleGrossChange}
                             placeholder=" "
-                        />
+                         onWheel={(e) => e.target.blur()} />
                         <div className="unit-display">INR ▾</div>
                     </div>
                 </div>
@@ -155,7 +155,7 @@ const SalesTaxCalculatorPage = () => {
                             value={taxAmount}
                             readOnly
                             className="result-input"
-                        />
+                         onWheel={(e) => e.target.blur()} />
                         <div className="unit-display">INR ▾</div>
                     </div>
                 </div>
@@ -172,13 +172,6 @@ const SalesTaxCalculatorPage = () => {
                     </div>
                 </div>
 
-                <div className="feedback-section">
-                    <p>Did we solve your problem today?</p>
-                    <div className="feedback-btns">
-                        <button>Yes</button>
-                        <button>No</button>
-                    </div>
-                </div>
             </div>
         </CalculatorLayout>
     );

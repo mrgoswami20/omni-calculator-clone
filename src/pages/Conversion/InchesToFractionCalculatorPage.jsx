@@ -203,7 +203,7 @@ const InchesToFractionCalculatorPage = () => {
             articleContent={articleContent}
             similarCalculators={12}
         >
-            <div className="calculator-card inches-to-fraction-page">
+            <div className="calc-card inches-to-fraction-page">
                 <h3>Enter distance (decimal or fraction)</h3>
 
                 <div className="inputs-row">
@@ -219,7 +219,7 @@ const InchesToFractionCalculatorPage = () => {
                                 className="calc-input"
                                 value={distance}
                                 onChange={(e) => setDistance(e.target.value)}
-                            />
+                             onWheel={(e) => e.target.blur()} />
                             <div className="unit-select-container">
                                 <select
                                     value={unit}
@@ -284,7 +284,7 @@ const InchesToFractionCalculatorPage = () => {
                             <div className="input-group">
                                 <label style={{ fontSize: '0.85rem', marginBottom: '4px', display: 'block' }}>Distance in cm</label>
                                 <div className="input-wrapper">
-                                    <input type="number" className="calc-input" readOnly value={distance && unit === 'cm' ? distance : ''} placeholder={distance ? (parseFloat(distance) * 2.54).toFixed(4) : ''} />
+                                    <input type="number" className="calc-input" readOnly value={distance && unit === 'cm' ? distance : ''} placeholder={distance ? (parseFloat(distance) * 2.54).toFixed(4) : ''}  onWheel={(e) => e.target.blur()} />
                                     {/* Simple placeholders logic for now */}
                                     <span className="unit-label-static">cm</span>
                                 </div>
@@ -308,13 +308,6 @@ const InchesToFractionCalculatorPage = () => {
                     </div>
                 </div>
 
-                <div className="feedback-section">
-                    <p>Did we solve your problem today?</p>
-                    <div className="feedback-btns">
-                        <button>Yes</button>
-                        <button>No</button>
-                    </div>
-                </div>
 
                 <div className="check-out-box">
                     Check out <strong>12 similar</strong> length and area converters

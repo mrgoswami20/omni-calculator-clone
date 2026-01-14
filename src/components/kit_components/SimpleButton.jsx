@@ -17,19 +17,18 @@ const SimpleButton = ({
         display: 'inline-flex',
         alignItems: 'center',
         justifyContent: 'center',
-        padding: '0 16px',   // Balanced width (User feedback)
-        height: '38px',      // Exact match for InputBar height
+        padding: '0 16px',
+        height: '38px',
         borderRadius: '6px',
         fontWeight: 600,
-        fontSize: '0.85rem', // Smaller font (~13.6px)
+        fontSize: '0.85rem',
         cursor: disabled ? 'not-allowed' : 'pointer',
         transition: 'all 0.2s',
         userSelect: 'none',
         opacity: disabled ? 0.6 : 1,
         fontFamily: 'inherit',
         transform: isActive && !disabled ? 'translateY(1px)' : 'translateY(0)',
-        width: fullWidth ? '100%' : 'auto',
-        ...style
+        width: fullWidth ? '100%' : 'auto'
     };
 
     const variants = {
@@ -65,7 +64,8 @@ const SimpleButton = ({
     const mergedStyles = {
         ...baseStyles,
         ...currentVariant,
-        ...(isHovered && !disabled ? currentHover : {})
+        ...(isHovered && !disabled ? currentHover : {}),
+        ...style
     };
 
     return (

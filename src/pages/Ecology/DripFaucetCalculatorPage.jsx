@@ -289,13 +289,6 @@ const DripFaucetCalculatorPage = () => {
                         </div>
                     </div>
 
-                    <div className="feedback-section">
-                        <p>Did we solve your problem today?</p>
-                        <div className="feedback-btngroup">
-                            <SimpleButton variant="secondary" style={{ width: 80 }}>Yes</SimpleButton>
-                            <SimpleButton variant="secondary" style={{ width: 80 }}>No</SimpleButton>
-                        </div>
-                    </div>
                 </div>
             </div>
         </CalculatorLayout>

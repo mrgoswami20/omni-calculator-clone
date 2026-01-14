@@ -307,17 +307,6 @@ const JointProbabilityCalculatorPage = () => {
                 </div>
 
                 {/* Feedback */}
-                <div className="feedback-section">
-                    <p>Did we solve your problem today?</p>
-                    <div className="feedback-btns">
-                        <button className="feedback-btn">
-                            Yes
-                        </button>
-                        <button className="feedback-btn">
-                            No
-                        </button>
-                    </div>
-                </div>
 
             </div>
         </CalculatorLayout>

@@ -184,16 +184,7 @@
     top: 2px;
 }
 
-.toc a {
-    text-decoration: none;
-    color: #2563eb;
-    font-size: 0.9rem;
-    font-weight: 500;
-}
-
-.toc a:hover {
-    text-decoration: underline;
-}
+/* .toc a removed as it is now plain text spans */
 
 .article-content {
     font-size: 0.95rem;
@@ -222,6 +213,125 @@
 .article-content li {
     margin-bottom: 4px;
 }
+
+/* --- GLOBAL CALCULATOR CARD STYLES --- */
+/* These styles are standard for all 'Drip Faucet' style calculators */
+
+.calc-card {
+    background: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    max-width: 380px;
+    margin: 0 auto;
+    border: 1px solid #f1f5f9;
+}
+
+/* Actions Section */
+.actions-section {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 4px;
+    padding-top: 12px;
+    border-top: 1px solid #f1f5f9;
+}
+
+.utility-buttons {
+    display: flex;
+    width: 100%;
+    flex-direction: row;
+    justify-content: center;
+    gap: 10px;
+}
+
+/* Feedback Section */
+.feedback-section {
+    margin-top: 0;
+    text-align: center;
+    padding-top: 12px;
+    border-top: 1px solid #f1f5f9;
+}
+
+.feedback-section p {
+    font-size: 0.8rem;
+    color: #64748b;
+    margin-bottom: 6px;
+}
+
+.feedback-btngroup {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+.simple-input-readonly {
+    opacity: 0.95;
+    background-color: #f8fafc;
+}
+
+/* Result separator */
+.result-space {
+    margin-top: 4px !important;
+    padding-top: 8px !important;
+    border-top: 1px dashed #e2e8f0;
+}
+
+/* Atom/AZE specific styles (Shared) */
+.aze-notation {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-family: 'Inter', sans-serif;
+    margin: 4px 0 8px;
+    background: #f8fafc;
+    padding: 8px 16px;
+    border-radius: 8px;
+    border: 1px solid #e2e8f0;
+    justify-content: center;
+    width: 100%;
+}
+
+.aze-numbers {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    font-size: 0.9rem;
+    line-height: 1.1;
+    font-weight: 500;
+    color: #4b5563;
+}
+
+.aze-symbol {
+    font-size: 2rem;
+    font-weight: 800;
+    line-height: 1;
+    color: #111827;
+}
+
+.result-text {
+    font-size: 0.9rem;
+    color: #374151;
+    margin-bottom: 4px;
+    text-align: center;
+}
+
+.result-text strong {
+    color: #111827;
+    font-weight: 700;
+}
+
+.stability-text {
+    font-size: 0.85rem;
+    color: #6b7280;
+    text-align: center;
+    margin-top: -4px;
+    margin-bottom: 8px;
+}
+
 
 /* --- Responsive --- */
 @media (max-width: 1024px) {
@@ -254,5 +364,14 @@
 
     .calc-main-title {
         font-size: 1.75rem;
+    }
+
+    .calc-card {
+        max-width: 100%;
+        padding: 14px;
+        border-radius: 0;
+        background: transparent;
+        box-shadow: none;
+        border: none;
     }
 }

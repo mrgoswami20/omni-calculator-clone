@@ -137,7 +137,7 @@ const SqFtToCuYdsCalculatorPage = () => {
                     onChange={(e) => setState({ ...state, value: e.target.value })}
                     readOnly={isResult}
                     placeholder=" "
-                />
+                 onWheel={(e) => e.target.blur()} />
                 <div className="bar-divider"></div>
                 <select
                     className="bar-select"
@@ -158,7 +158,7 @@ const SqFtToCuYdsCalculatorPage = () => {
             articleContent={articleContent}
         >
             <div className="sqft-to-cuyds-wrapper">
-                <div className="calculator-card-premium">
+                <div className="calc-card-premium">
                     {/* Area Input */}
                     <UnifiedBar
                         label="Area"

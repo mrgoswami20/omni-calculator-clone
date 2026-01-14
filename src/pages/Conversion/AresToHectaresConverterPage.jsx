@@ -75,7 +75,7 @@ const AresToHectaresConverterPage = () => {
             articleContent={articleContent}
             similarCalculators={12}
         >
-            <div className="calculator-card ares-to-hectares-page">
+            <div className="calc-card ares-to-hectares-page">
                 {/* Ares Input */}
                 <div className="input-group">
                     <div className="label-row">
@@ -88,7 +88,7 @@ const AresToHectaresConverterPage = () => {
                             className="calc-input"
                             value={ares}
                             onChange={(e) => handleAresChange(e.target.value)}
-                        />
+                         onWheel={(e) => e.target.blur()} />
                         <span className="unit-label-static">a</span>
                     </div>
                 </div>
@@ -105,7 +105,7 @@ const AresToHectaresConverterPage = () => {
                             className="calc-input"
                             value={hectares}
                             onChange={(e) => handleHectaresChange(e.target.value)}
-                        />
+                         onWheel={(e) => e.target.blur()} />
                         <span className="unit-label-static">ha</span>
                     </div>
                 </div>
@@ -123,14 +123,14 @@ const AresToHectaresConverterPage = () => {
                             <div className="input-group">
                                 <label style={{ fontSize: '0.85rem', marginBottom: '4px', display: 'block' }}>Square meters</label>
                                 <div className="input-wrapper">
-                                    <input type="number" className="calc-input" readOnly value={ares ? (parseFloat(ares) * 100).toFixed(2) : ''} placeholder="" />
+                                    <input type="number" className="calc-input" readOnly value={ares ? (parseFloat(ares) * 100).toFixed(2) : ''} placeholder=""  onWheel={(e) => e.target.blur()} />
                                     <span className="unit-label-static">m²</span>
                                 </div>
                             </div>
                             <div className="input-group">
                                 <label style={{ fontSize: '0.85rem', marginBottom: '4px', display: 'block' }}>Acres</label>
                                 <div className="input-wrapper">
-                                    <input type="number" className="calc-input" readOnly value={ares ? (parseFloat(ares) * 0.0247105).toFixed(4) : ''} placeholder="" />
+                                    <input type="number" className="calc-input" readOnly value={ares ? (parseFloat(ares) * 0.0247105).toFixed(4) : ''} placeholder=""  onWheel={(e) => e.target.blur()} />
                                     <span className="unit-label-static">ac</span>
                                 </div>
                             </div>
@@ -153,13 +153,6 @@ const AresToHectaresConverterPage = () => {
                     </div>
                 </div>
 
-                <div className="feedback-section">
-                    <p>Did we solve your problem today?</p>
-                    <div className="feedback-btns">
-                        <button>Yes</button>
-                        <button>No</button>
-                    </div>
-                </div>
 
                 <div className="check-out-box">
                     Check out <strong>12 similar</strong> length and area converters

@@ -143,7 +143,7 @@ const HeightInInchesCalculatorPage = () => {
             articleContent={articleContent}
             similarCalculators={12}
         >
-            <div className="calculator-card height-in-inches-page">
+            <div className="calc-card height-in-inches-page">
                 {/* Height Input */}
                 <div className="input-group">
                     <div className="label-row">
@@ -160,7 +160,7 @@ const HeightInInchesCalculatorPage = () => {
                                 value={feet}
                                 onChange={(e) => setFeet(e.target.value)}
                                 placeholder=""
-                            />
+                             onWheel={(e) => e.target.blur()} />
                             <span className="unit-label-static">ft</span>
 
                             {/* Inches */}
@@ -170,7 +170,7 @@ const HeightInInchesCalculatorPage = () => {
                                 value={inches}
                                 onChange={(e) => setInches(e.target.value)}
                                 placeholder=""
-                            />
+                             onWheel={(e) => e.target.blur()} />
 
                             <div className="unit-select-container">
                                 <select
@@ -195,7 +195,7 @@ const HeightInInchesCalculatorPage = () => {
                                 className="calc-input"
                                 value={singleVal}
                                 onChange={(e) => setSingleVal(e.target.value)}
-                            />
+                             onWheel={(e) => e.target.blur()} />
                             <div className="unit-select-container">
                                 <select
                                     value={unitMode}
@@ -248,13 +248,6 @@ const HeightInInchesCalculatorPage = () => {
                     </div>
                 </div>
 
-                <div className="feedback-section">
-                    <p>Did we solve your problem today?</p>
-                    <div className="feedback-btns">
-                        <button>Yes</button>
-                        <button>No</button>
-                    </div>
-                </div>
 
                 <div className="check-out-box">
                     Check out <strong>12 similar</strong> length and area converters

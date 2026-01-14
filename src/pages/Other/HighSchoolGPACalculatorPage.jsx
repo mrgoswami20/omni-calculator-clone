@@ -252,14 +252,14 @@ const HighSchoolGPACalculatorPage = () => {
                         <div className="input-field-group">
                             <div className="label-row"><label>Prior GPA <Info size={14} className="inline ml-1 text-gray-400" /></label><span className="more-options">...</span></div>
                             <div className="input-wrapper">
-                                <input type="number" className="calc-input" value={priorGPA} onChange={(e) => setPriorGPA(e.target.value)} />
+                                <input type="number" className="calc-input" value={priorGPA} onChange={(e) => setPriorGPA(e.target.value)}  onWheel={(e) => e.target.blur()} />
                             </div>
                         </div>
 
                         <div className="input-field-group" style={{ marginTop: '1rem' }}>
                             <div className="label-row"><label>Previous number of courses completed</label><span className="more-options">...</span></div>
                             <div className="input-wrapper">
-                                <input type="number" className="calc-input" value={priorCoursesCount} onChange={(e) => setPriorCoursesCount(e.target.value)} />
+                                <input type="number" className="calc-input" value={priorCoursesCount} onChange={(e) => setPriorCoursesCount(e.target.value)}  onWheel={(e) => e.target.blur()} />
                             </div>
                         </div>
                     </div>

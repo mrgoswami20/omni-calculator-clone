@@ -194,19 +194,6 @@ const TimeUntilCalculatorPage = () => {
                 </div>
 
                 {/* Feedback */}
-                <div className="feedback-section">
-                    {feedbackGiven ? (
-                        <span className="feedback-thanks">Thanks for your feedback!</span>
-                    ) : (
-                        <>
-                            <span className="feedback-text">Did we solve your problem today?</span>
-                            <div className="feedback-buttons">
-                                <button className="feedback-btn" onClick={() => handleFeedback('yes')}>Yes</button>
-                                <button className="feedback-btn" onClick={() => handleFeedback('no')}>No</button>
-                            </div>
-                        </>
-                    )}
-                </div>
             </div>
         </CalculatorLayout>
     );

@@ -164,7 +164,7 @@ const MlToGramsCalculatorPage = () => {
                                 className="calc-input"
                                 value={ml}
                                 onChange={(e) => handleMlChange(e.target.value)}
-                            />
+                             onWheel={(e) => e.target.blur()} />
                             <span className="input-suffix">ml</span>
                         </div>
                     </div>
@@ -177,7 +177,7 @@ const MlToGramsCalculatorPage = () => {
                                 className="calc-input"
                                 value={grams}
                                 onChange={(e) => handleGramsChange(e.target.value)}
-                            />
+                             onWheel={(e) => e.target.blur()} />
                             <span className="input-suffix">g</span>
                         </div>
                     </div>
@@ -197,13 +197,6 @@ const MlToGramsCalculatorPage = () => {
                         </div>
                     </div>
 
-                    <div className="feedback-section">
-                        <p>Did we solve your problem today?</p>
-                        <div>
-                            <button className="feedback-btn">Yes</button>
-                            <button className="feedback-btn">No</button>
-                        </div>
-                    </div>
                 </div>
 
             </div>

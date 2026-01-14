@@ -111,7 +111,7 @@ const BAICalculatorPage = () => {
                                 value={height.value}
                                 onChange={(e) => setHeight({ ...height, value: e.target.value })}
                                 placeholder=" "
-                            />
+                             onWheel={(e) => e.target.blur()} />
                             <div className="unit-select-wrapper">
                                 <select className="unit-select" value={height.unit} onChange={(e) => setHeight({ ...height, unit: e.target.value })}>
                                     <option value="cm">cm</option>
@@ -131,7 +131,7 @@ const BAICalculatorPage = () => {
                                 value={hip.value}
                                 onChange={(e) => setHip({ ...hip, value: e.target.value })}
                                 placeholder=" "
-                            />
+                             onWheel={(e) => e.target.blur()} />
                             <div className="unit-select-wrapper">
                                 <select className="unit-select" value={hip.unit} onChange={(e) => setHip({ ...hip, unit: e.target.value })}>
                                     <option value="cm">cm</option>
@@ -159,13 +159,6 @@ const BAICalculatorPage = () => {
                         </div>
                     </div>
 
-                    <div className="feedback-section-new">
-                        <p>Did we solve your problem today?</p>
-                        <div className="feedback-btns-new">
-                            <button className="feedback-btn"><span className="icon">👍</span> Yes</button>
-                            <button className="feedback-btn"><span className="icon">👎</span> No</button>
-                        </div>
-                    </div>
                 </div>
             </div>
         </CalculatorLayout>

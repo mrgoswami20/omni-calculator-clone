@@ -173,14 +173,14 @@ const SemesterGradeCalculatorPage = () => {
                         <div className="input-col">
                             <div className="label-row"><label>Grade</label><span className="more-options">...</span></div>
                             <div className="input-wrapper">
-                                <input type="number" className="calc-input" value={q1Grade} onChange={(e) => setQ1Grade(e.target.value)} />
+                                <input type="number" className="calc-input" value={q1Grade} onChange={(e) => setQ1Grade(e.target.value)}  onWheel={(e) => e.target.blur()} />
                                 <span className="suffix">%</span>
                             </div>
                         </div>
                         <div className="input-col">
                             <div className="label-row"><label>Weight <Info size={14} className="inline ml-1 text-gray-400" /></label><span className="more-options">...</span></div>
                             <div className="input-wrapper">
-                                <input type="number" className="calc-input" value={q1Weight} onChange={(e) => setQ1Weight(e.target.value)} />
+                                <input type="number" className="calc-input" value={q1Weight} onChange={(e) => setQ1Weight(e.target.value)}  onWheel={(e) => e.target.blur()} />
                                 <span className="suffix">%</span>
                             </div>
                         </div>
@@ -199,14 +199,14 @@ const SemesterGradeCalculatorPage = () => {
                         <div className="input-col">
                             <div className="label-row"><label>Grade</label><span className="more-options">...</span></div>
                             <div className="input-wrapper">
-                                <input type="number" className="calc-input" value={q2Grade} onChange={(e) => setQ2Grade(e.target.value)} />
+                                <input type="number" className="calc-input" value={q2Grade} onChange={(e) => setQ2Grade(e.target.value)}  onWheel={(e) => e.target.blur()} />
                                 <span className="suffix">%</span>
                             </div>
                         </div>
                         <div className="input-col">
                             <div className="label-row"><label>Weight <Info size={14} className="inline ml-1 text-gray-400" /></label><span className="more-options">...</span></div>
                             <div className="input-wrapper">
-                                <input type="number" className="calc-input" value={q2Weight} onChange={(e) => setQ2Weight(e.target.value)} />
+                                <input type="number" className="calc-input" value={q2Weight} onChange={(e) => setQ2Weight(e.target.value)}  onWheel={(e) => e.target.blur()} />
                                 <span className="suffix">%</span>
                             </div>
                         </div>
@@ -226,14 +226,14 @@ const SemesterGradeCalculatorPage = () => {
                         <div className="input-col">
                             <div className="label-row"><label>Grade</label><span className="more-options">...</span></div>
                             <div className="input-wrapper">
-                                <input type="number" className="calc-input" value={finalGrade} onChange={(e) => setFinalGrade(e.target.value)} />
+                                <input type="number" className="calc-input" value={finalGrade} onChange={(e) => setFinalGrade(e.target.value)}  onWheel={(e) => e.target.blur()} />
                                 <span className="suffix">%</span>
                             </div>
                         </div>
                         <div className="input-col">
                             <div className="label-row"><label>Weight <Info size={14} className="inline ml-1 text-gray-400" /></label><span className="more-options">...</span></div>
                             <div className="input-wrapper">
-                                <input type="number" className="calc-input" value={finalWeight} onChange={(e) => setFinalWeight(e.target.value)} />
+                                <input type="number" className="calc-input" value={finalWeight} onChange={(e) => setFinalWeight(e.target.value)}  onWheel={(e) => e.target.blur()} />
                                 <span className="suffix">%</span>
                             </div>
                         </div>

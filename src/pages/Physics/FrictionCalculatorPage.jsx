@@ -142,7 +142,7 @@ const FrictionCalculatorPage = () => {
                                 value={mu.value}
                                 onChange={(e) => calculate('mu', e.target.value)}
                                 placeholder="Enter coefficient"
-                            />
+                             onWheel={(e) => e.target.blur()} />
                         </div>
                     </div>
 
@@ -155,7 +155,7 @@ const FrictionCalculatorPage = () => {
                                 value={normalForce.value}
                                 onChange={(e) => calculate('normalForce', e.target.value, normalForce.unit)}
                                 placeholder="Enter normal force"
-                            />
+                             onWheel={(e) => e.target.blur()} />
                             <div className="unit-select-wrapper">
                                 <select
                                     className="unit-select"
@@ -179,7 +179,7 @@ const FrictionCalculatorPage = () => {
                                 value={frictionForce.value}
                                 onChange={(e) => calculate('frictionForce', e.target.value, frictionForce.unit)}
                                 placeholder="Result"
-                            />
+                             onWheel={(e) => e.target.blur()} />
                             <div className="unit-select-wrapper">
                                 <select
                                     className="unit-select"
@@ -203,13 +203,6 @@ const FrictionCalculatorPage = () => {
                         </div>
                     </div>
 
-                    <div className="feedback-section">
-                        <p>Did we solve your problem today?</p>
-                        <div className="feedback-btns">
-                            <button>Yes</button>
-                            <button>No</button>
-                        </div>
-                    </div>
                 </div>
             </div>
         </CalculatorLayout>

@@ -1,158 +1,116 @@
-.atom-calculator-page .calculator-card {
-    background: white;
-    border-radius: 8px;
-    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-    padding: 24px;
-    max-width: 100%;
-}
+/* AtomCalculatorPage.css */
 
-.section-header {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    cursor: pointer;
-    padding: 12px 0;
-    margin-top: 16px;
-    border-top: 1px solid #f3f4f6;
-    color: #111827;
-    font-weight: 600;
-}
-
-.section-header:first-of-type {
-    border-top: none;
-    margin-top: 0;
-}
-
-.section-header .chevron {
-    transition: transform 0.2s;
-    color: #2563eb;
-}
-
-.section-header.collapsed .chevron {
-    transform: rotate(-90deg);
-}
-
-.input-group {
-    margin-bottom: 20px;
-}
-
-.label-row {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 8px;
-}
-
-.label-row label {
-    font-size: 0.9rem;
-    color: #374151;
-    font-weight: 500;
-}
-
-.more-options {
-    color: #9ca3af;
-    cursor: pointer;
-    letter-spacing: 1px;
-    font-size: 0.8rem;
-}
-
-.input-wrapper {
-    position: relative;
-    display: flex;
-    align-items: center;
-}
-
-.input-wrapper input {
+.atom-calculator-page {
     width: 100%;
-    padding: 10px 12px;
-    border: 1px solid #d1d5db;
-    border-radius: 6px;
-    font-size: 1rem;
-    color: #111827;
-    transition: border-color 0.2s, box-shadow 0.2s;
-    background-color: #f9fafb;
+    margin: 0 auto;
 }
 
-.input-wrapper input:focus {
-    outline: none;
-    border-color: #2563eb;
-    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
-    background-color: white;
-}
-
-.calc-actions {
-    margin-top: 32px;
+.calc-card {
+    background: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    padding: 16px;
+    /* Tight padding */
     display: flex;
     flex-direction: column;
-    gap: 16px;
-}
-
-.share-result-btn {
-    width: 100%;
-    padding: 12px;
-    background-color: transparent;
-    border: 1px solid #e5e7eb;
-    border-radius: 6px;
-    color: #374151;
-    font-weight: 600;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
-    transition: background 0.2s;
-}
-
-.share-result-btn:hover {
-    background-color: #f3f4f6;
-    color: #111827;
-}
-
-.share-icon-circle {
-    width: 24px;
-    height: 24px;
-    background-color: #ef4444;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: white;
-}
-
-.secondary-actions {
-    display: flex;
     gap: 12px;
+    /* Tight gap */
+    max-width: 380px;
+    /* Even smaller max-width for "compact" look */
+    margin: 0 auto;
+    border: 1px solid #f1f5f9;
+    /* Subtle border for definition */
 }
 
-.secondary-btn {
-    flex: 1;
-    padding: 10px;
-    background-color: transparent;
-    border: 1px solid #e5e7eb;
-    border-radius: 6px;
-    color: #6b7280;
+/* Actions Section */
+.actions-section {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 4px;
+    /* Minimal margin */
+    padding-top: 12px;
+    border-top: 1px solid #f1f5f9;
+}
+
+.utility-buttons {
+    display: flex;
+    width: 100%;
+    flex-direction: row;
+    justify-content: center;
+    gap: 10px;
+}
+
+/* Feedback Section */
+.feedback-section {
+    margin-top: 0;
+    text-align: center;
+    padding-top: 12px;
+    border-top: 1px solid #f1f5f9;
+}
+
+.feedback-section p {
+    font-size: 0.8rem;
+    /* Smaller text */
+    color: #64748b;
+    margin-bottom: 6px;
+}
+
+.feedback-btngroup {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+.simple-input-readonly {
+    opacity: 0.95;
+    background-color: #f8fafc;
+}
+
+/* Result separator */
+.result-space {
+    margin-top: 4px !important;
+    padding-top: 8px !important;
+    border-top: 1px dashed #e2e8f0;
+}
+
+/* Atom specific styles */
+.aze-notation {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-family: 'Inter', sans-serif;
+    margin: 4px 0 8px;
+    background: #f8fafc;
+    padding: 8px 16px;
+    border-radius: 8px;
+    border: 1px solid #e2e8f0;
+    justify-content: center;
+    width: 100%;
+}
+
+.aze-numbers {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
     font-size: 0.9rem;
-    cursor: pointer;
-    transition: all 0.2s;
+    line-height: 1.1;
+    font-weight: 500;
+    color: #4b5563;
 }
 
-.secondary-btn:hover {
-    border-color: #d1d5db;
-    color: #374151;
-}
-
-/* Atom Result Section */
-.atom-result-section {
-    margin-top: 32px;
-    padding-top: 24px;
-    border-top: 1px solid #e5e7eb;
-    text-align: left;
+.aze-symbol {
+    font-size: 2rem;
+    font-weight: 800;
+    line-height: 1;
+    color: #111827;
 }
 
 .result-text {
-    font-size: 1rem;
+    font-size: 0.9rem;
     color: #374151;
-    margin-bottom: 16px;
+    margin-bottom: 4px;
+    text-align: center;
 }
 
 .result-text strong {
@@ -160,36 +118,17 @@
     font-weight: 700;
 }
 
-.aze-notation {
-    display: inline-flex;
-    align-items: center;
-    gap: 4px;
-    font-family: 'Inter', sans-serif;
-    margin: 16px 0 24px;
-    background: #f9fafb;
-    padding: 12px 24px;
-    border-radius: 8px;
-    border: 1px solid #f3f4f6;
-}
+@media (max-width: 640px) {
+    .calc-card {
+        max-width: 100%;
+        padding: 14px;
+        border-radius: 0;
+        background: transparent;
+        box-shadow: none;
+        border: none;
+    }
 
-.aze-numbers {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-end;
-    font-size: 1rem;
-    line-height: 1.1;
-    font-weight: 500;
-    color: #4b5563;
-}
-
-.aze-symbol {
-    font-size: 2.5rem;
-    font-weight: 800;
-    line-height: 1;
-    color: #111827;
-}
-
-.mass-text {
-    margin-top: 8px;
-    font-size: 1.05rem;
+    .atom-calculator-page {
+        padding: 0;
+    }
 }

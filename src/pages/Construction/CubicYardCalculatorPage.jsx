@@ -20,7 +20,7 @@ const InputRow = ({ label, state, setState, units = 'length' }) => (
                 className="bar-main-input"
                 value={state.value}
                 onChange={(e) => setState({ ...state, value: e.target.value })}
-            />
+             onWheel={(e) => e.target.blur()} />
             <select
                 className="bar-unit-dropdown"
                 value={state.unit}
@@ -484,7 +484,7 @@ const CubicYardCalculatorPage = () => {
                                 value={cost.value}
                                 onChange={(e) => setCost({ ...cost, value: e.target.value })}
                                 placeholder="0"
-                            />
+                             onWheel={(e) => e.target.blur()} />
                             <div className="cost-input-group">
                                 <select
                                     className="bar-unit-dropdown currency-select"
@@ -559,13 +559,6 @@ const CubicYardCalculatorPage = () => {
                 </CollapsibleCard>
 
                 {/* Feedback */}
-                <div className="feedback-section-new">
-                    <p>Did we solve your problem today?</p>
-                    <div className="feedback-btns-new">
-                        <button className="feedback-btn">Yes</button>
-                        <button className="feedback-btn">No</button>
-                    </div>
-                </div>
 
             </div>
         </CalculatorLayout>

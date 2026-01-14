@@ -129,7 +129,7 @@ const AverageAtomicMassCalculatorPage = () => {
             ]}
             articleContent={articleContent}
         >
-            <div className="calculator-card average-atomic-mass-page">
+            <div className="calc-card average-atomic-mass-page">
                 {/* Num Isotopes Dropdown */}
                 <div className="input-group">
                     <div className="label-row">
@@ -167,7 +167,7 @@ const AverageAtomicMassCalculatorPage = () => {
                                         value={iso.percent}
                                         onChange={(e) => handleInputChange(idx, 'percent', e.target.value)}
                                         placeholder=""
-                                    />
+                                     onWheel={(e) => e.target.blur()} />
                                     <span className="unit-label">%</span>
                                 </div>
                             </div>
@@ -185,7 +185,7 @@ const AverageAtomicMassCalculatorPage = () => {
                                         value={iso.mass}
                                         onChange={(e) => handleInputChange(idx, 'mass', e.target.value)}
                                         placeholder=""
-                                    />
+                                     onWheel={(e) => e.target.blur()} />
                                     <span className="unit-label">amu</span>
                                 </div>
                             </div>
@@ -232,13 +232,6 @@ const AverageAtomicMassCalculatorPage = () => {
                     </div>
                 </div>
 
-                <div className="feedback-section">
-                    <p>Did we solve your problem today?</p>
-                    <div className="feedback-btns">
-                        <button>Yes</button>
-                        <button>No</button>
-                    </div>
-                </div>
             </div>
         </CalculatorLayout>
     );

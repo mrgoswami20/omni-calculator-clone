@@ -201,12 +201,12 @@ const VampireApocalypseCalculatorPage = () => {
                             <div className="section-content">
                                 <div className="input-row">
                                     <label>Initial population</label>
-                                    <input type="number" value={humanPop} onChange={e => setHumanPop(parseInt(e.target.value))} />
+                                    <input type="number" value={humanPop} onChange={e => setHumanPop(parseInt(e.target.value))}  onWheel={(e) => e.target.blur()} />
                                 </div>
                                 <div className="input-row">
                                     <label>Annual population growth</label>
                                     <div className="input-with-unit">
-                                        <input type="number" value={humanGrowth} onChange={e => setHumanGrowth(parseFloat(e.target.value))} />
+                                        <input type="number" value={humanGrowth} onChange={e => setHumanGrowth(parseFloat(e.target.value))}  onWheel={(e) => e.target.blur()} />
                                         <span>%</span>
                                     </div>
                                 </div>
@@ -221,7 +221,7 @@ const VampireApocalypseCalculatorPage = () => {
                             <div className="section-content">
                                 <div className="input-row">
                                     <label>Initial population</label>
-                                    <input type="number" value={vampirePop} onChange={e => setVampirePop(parseInt(e.target.value))} />
+                                    <input type="number" value={vampirePop} onChange={e => setVampirePop(parseInt(e.target.value))}  onWheel={(e) => e.target.blur()} />
                                 </div>
                                 <div className="param-desc">
                                     <strong>vs. humans:</strong> common attacks (<span>{vampireAttackRef.toLocaleString()}</span> vampires kill <span>{vampireKillPercent}%</span> of the human population per day)

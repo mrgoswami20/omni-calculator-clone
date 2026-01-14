@@ -132,7 +132,7 @@ const LeanBodyMassCalculatorPage = () => {
                                 value={weight.value}
                                 onChange={(e) => setWeight({ ...weight, value: e.target.value })}
                                 placeholder=" "
-                            />
+                             onWheel={(e) => e.target.blur()} />
                             <div className="unit-select-wrapper">
                                 <select className="unit-select" value={weight.unit} onChange={(e) => setWeight({ ...weight, unit: e.target.value })}>
                                     <option value="kg">kg</option>
@@ -152,7 +152,7 @@ const LeanBodyMassCalculatorPage = () => {
                                 value={height.value}
                                 onChange={(e) => setHeight({ ...height, value: e.target.value })}
                                 placeholder=" "
-                            />
+                             onWheel={(e) => e.target.blur()} />
                             <div className="unit-select-wrapper">
                                 <select className="unit-select" value={height.unit} onChange={(e) => setHeight({ ...height, unit: e.target.value })}>
                                     <option value="cm">cm</option>
@@ -191,13 +191,6 @@ const LeanBodyMassCalculatorPage = () => {
                         </div>
                     </div>
 
-                    <div className="feedback-section-new">
-                        <p>Did we solve your problem today?</p>
-                        <div className="feedback-btns-new">
-                            <button className="feedback-btn"><span className="icon">👍</span> Yes</button>
-                            <button className="feedback-btn"><span className="icon">👎</span> No</button>
-                        </div>
-                    </div>
                 </div>
             </div>
         </CalculatorLayout>

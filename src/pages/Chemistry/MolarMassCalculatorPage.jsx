@@ -116,7 +116,7 @@ const MolarMassCalculatorPage = () => {
             ]}
             articleContent={articleContent}
         >
-            <div className="calculator-card molar-mass-page">
+            <div className="calc-card molar-mass-page">
                 {/* Element Rows */}
                 {rows.map((row, index) => (
                     <div key={index} className="element-row-card">
@@ -164,7 +164,7 @@ const MolarMassCalculatorPage = () => {
                                         className="calc-input"
                                         value={row.quantity}
                                         onChange={(e) => updateRow(index, 'quantity', e.target.value)}
-                                    />
+                                     onWheel={(e) => e.target.blur()} />
                                     <ChevronDown className="select-arrow" size={16} /> {/* Visual only as per screenshot style often used for numbers in Omni but could be select too. Using input for flexibility. */}
                                 </div>
                             </div>
@@ -225,13 +225,6 @@ const MolarMassCalculatorPage = () => {
                     </div>
                 </div>
 
-                <div className="feedback-section">
-                    <p>Did we solve your problem today?</p>
-                    <div className="feedback-btns">
-                        <button>Yes</button>
-                        <button>No</button>
-                    </div>
-                </div>
             </div>
         </CalculatorLayout>
     );

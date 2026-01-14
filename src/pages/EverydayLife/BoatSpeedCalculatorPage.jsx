@@ -127,13 +127,13 @@ const BoatSpeedCalculatorPage = () => {
             articleContent={articleContent}
             similarCalculators={32}
         >
-            <div className="calculator-card boat-speed-page">
+            <div className="calc-card boat-speed-page">
 
                 {/* Power */}
                 <div className="input-group">
                     <div className="label-row"><label>Shaft horsepower (P)</label><span className="more-options">...</span></div>
                     <div className="input-wrapper">
-                        <input type="number" className="calc-input" value={power} onChange={(e) => setPower(e.target.value)} />
+                        <input type="number" className="calc-input" value={power} onChange={(e) => setPower(e.target.value)}  onWheel={(e) => e.target.blur()} />
                         <div className="unit-select-container">
                             <select value={powerUnit} onChange={(e) => setPowerUnit(e.target.value)} className="unit-select">
                                 <option value="kW">kW</option>
@@ -148,7 +148,7 @@ const BoatSpeedCalculatorPage = () => {
                 <div className="input-group">
                     <div className="label-row"><label>Boat displacement (D)</label><span className="more-options">...</span></div>
                     <div className="input-wrapper">
-                        <input type="number" className="calc-input" value={displacement} onChange={(e) => setDisplacement(e.target.value)} />
+                        <input type="number" className="calc-input" value={displacement} onChange={(e) => setDisplacement(e.target.value)}  onWheel={(e) => e.target.blur()} />
                         <div className="unit-select-container">
                             <select value={displacementUnit} onChange={(e) => setDisplacementUnit(e.target.value)} className="unit-select">
                                 <option value="kg">kg</option>
@@ -176,7 +176,7 @@ const BoatSpeedCalculatorPage = () => {
                 <div className="input-group">
                     <div className="label-row"><label>Crouch’s constant (C)</label><span className="more-options">...</span></div>
                     <div className="input-wrapper">
-                        <input type="number" className="calc-input" value={crouchC} onChange={(e) => setCrouchC(e.target.value)} placeholder="Enter C value" />
+                        <input type="number" className="calc-input" value={crouchC} onChange={(e) => setCrouchC(e.target.value)} placeholder="Enter C value"  onWheel={(e) => e.target.blur()} />
                     </div>
                 </div>
 
@@ -215,13 +215,6 @@ const BoatSpeedCalculatorPage = () => {
                     </div>
                 </div>
 
-                <div className="feedback-section">
-                    <p>Did we solve your problem today?</p>
-                    <div className="feedback-btns">
-                        <button>Yes</button>
-                        <button>No</button>
-                    </div>
-                </div>
 
             </div>
         </CalculatorLayout>
