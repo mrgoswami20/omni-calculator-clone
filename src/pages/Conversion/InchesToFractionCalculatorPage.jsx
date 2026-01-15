@@ -219,7 +219,7 @@ const InchesToFractionCalculatorPage = () => {
                                 className="calc-input"
                                 value={distance}
                                 onChange={(e) => setDistance(e.target.value)}
-                             onWheel={(e) => e.target.blur()} />
+                                onWheel={(e) => e.target.blur()} />
                             <div className="unit-select-container">
                                 <select
                                     value={unit}
@@ -284,7 +284,7 @@ const InchesToFractionCalculatorPage = () => {
                             <div className="input-group">
                                 <label style={{ fontSize: '0.85rem', marginBottom: '4px', display: 'block' }}>Distance in cm</label>
                                 <div className="input-wrapper">
-                                    <input type="number" className="calc-input" readOnly value={distance && unit === 'cm' ? distance : ''} placeholder={distance ? (parseFloat(distance) * 2.54).toFixed(4) : ''}  onWheel={(e) => e.target.blur()} />
+                                    <input type="number" className="calc-input" readOnly value={distance && unit === 'cm' ? distance : ''} placeholder={distance ? (parseFloat(distance) * 2.54).toFixed(4) : ''} onWheel={(e) => e.target.blur()} />
                                     {/* Simple placeholders logic for now */}
                                     <span className="unit-label-static">cm</span>
                                 </div>
@@ -300,7 +300,7 @@ const InchesToFractionCalculatorPage = () => {
                         {showShareTooltip && <span className="copied-tooltip">Copied!</span>}
                     </button> */}
                     <div className="secondary-actions">
-                        <button className="secondary-btn">Reload calculator</button>
+                        <button className="secondary-btn" onClick={() => window.location.reload()}>Reload calculator</button>
                         <button className="secondary-btn" onClick={() => {
                             setDistance('');
                             setFractionResult('');

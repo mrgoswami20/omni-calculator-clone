@@ -160,7 +160,7 @@ const HeightInInchesCalculatorPage = () => {
                                 value={feet}
                                 onChange={(e) => setFeet(e.target.value)}
                                 placeholder=""
-                             onWheel={(e) => e.target.blur()} />
+                                onWheel={(e) => e.target.blur()} />
                             <span className="unit-label-static">ft</span>
 
                             {/* Inches */}
@@ -170,7 +170,7 @@ const HeightInInchesCalculatorPage = () => {
                                 value={inches}
                                 onChange={(e) => setInches(e.target.value)}
                                 placeholder=""
-                             onWheel={(e) => e.target.blur()} />
+                                onWheel={(e) => e.target.blur()} />
 
                             <div className="unit-select-container">
                                 <select
@@ -195,7 +195,7 @@ const HeightInInchesCalculatorPage = () => {
                                 className="calc-input"
                                 value={singleVal}
                                 onChange={(e) => setSingleVal(e.target.value)}
-                             onWheel={(e) => e.target.blur()} />
+                                onWheel={(e) => e.target.blur()} />
                             <div className="unit-select-container">
                                 <select
                                     value={unitMode}
@@ -238,7 +238,7 @@ const HeightInInchesCalculatorPage = () => {
                         {showShareTooltip && <span className="copied-tooltip">Copied!</span>}
                     </button> */}
                     <div className="secondary-actions">
-                        <button className="secondary-btn">Reload calculator</button>
+                        <button className="secondary-btn" onClick={() => window.location.reload()}>Reload calculator</button>
                         <button className="secondary-btn" onClick={() => {
                             setFeet('');
                             setInches('');

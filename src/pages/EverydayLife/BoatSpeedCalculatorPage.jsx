@@ -1,22 +1,29 @@
 import React, { useState, useEffect } from 'react';
 import CalculatorLayout from '../../components/CalculatorLayout';
-import { Share2, ChevronDown, ChevronUp, Info } from 'lucide-react';
-import './BoatSpeedCalculatorPage.css';
+import { ChevronDown, ChevronUp } from 'lucide-react';
+import InputGroup from '../../components/StandardCalculator/InputGroup';
+import SelectGroup from '../../components/StandardCalculator/SelectGroup';
+import ResultRow from '../../components/StandardCalculator/ResultRow';
+import ActionPanel from '../../components/StandardCalculator/ActionPanel';
+import FeedbackRow from '../../components/StandardCalculator/FeedbackRow';
+import '../../components/StandardCalculator/StandardCalculator.css';
 
 const BoatSpeedCalculatorPage = () => {
+    // Section States
+    const [isDimensionsOpen, setIsDimensionsOpen] = useState(true);
+    const [isResultOpen, setIsResultOpen] = useState(true);
+
     // Inputs
     const [power, setPower] = useState('');
-    const [powerUnit, setPowerUnit] = useState('kW');
-
+    const [powerUnit, setPowerUnit] = useState('kW'); // Default requested
     const [displacement, setDisplacement] = useState('');
-    const [displacementUnit, setDisplacementUnit] = useState('kg');
-
-    const [boatType, setBoatType] = useState('select');
+    const [displacementUnit, setDisplacementUnit] = useState('kg'); // Default requested
+    const [boatType, setBoatType] = useState('');
     const [crouchC, setCrouchC] = useState('');
 
     // Result
     const [speed, setSpeed] = useState('');
-    const [speedUnit, setSpeedUnit] = useState('km/h');
+    const [speedUnit, setSpeedUnit] = useState('km/h'); // Default requested
 
     const creators = [
         { name: "Rahul Dhari", role: "" },
@@ -26,41 +33,37 @@ const BoatSpeedCalculatorPage = () => {
         { name: "Steven Wooding", role: "" }
     ];
 
-    // Boat Types and Crouch Constants (Approximate ranges)
-    // Formula usually uses Imperial: V(mph) = C / sqrt( Weight(lbs) / Power(hp) )
-    // Wait, Crouch formula is: V = C * sqrt( P / D ) ?? 
-    // Let's verify standard Crouch Formula form.
-    // "Crouch's formula, which is V = C / (LB/HP)^.5"  => V = C / sqrt(LB/HP) => V = C * sqrt(HP/LB).
-    // Yes. V_mph = C * sqrt( HP / Weight_lbs )
+    // Options Arrays
+    const powerUnitOptions = ['W', 'kW', 'MW', 'hp']; // hp assumed mechanical/imperial based on formula usage usually, but listed as hp(I) in request? Request said 'hp(1)' probably typo for I.
+    const displacementUnitOptions = ['kg', 't', 'lb', 'US ton', 'long ton'];
+    const speedUnitOptions = ['m/s', 'km/h', 'mph', 'knots'];
 
     const boatTypes = [
-        { value: 'select', label: 'Select', c: '' },
-        { value: 'racing_hydroplane', label: 'Racing Hydroplane', c: 220 },
-        { value: 'racing_catamaran', label: 'Racing Catamaran', c: 210 },
-        { value: 'planing_hull', label: 'Average Planing Hull', c: 150 },
-        { value: 'high_speed_runabout', label: 'High Speed Runabout', c: 190 },
-        { value: 'pontoons', label: 'Pontoons', c: 100 }, // Guess
-        { value: 'displacement_hull', label: 'Displacement Hull', c: 90 }, // Usually much lower
-        { value: 'heavy_cruiser', label: 'Heavy Cruiser', c: 130 },
+        { value: '', label: 'Select', c: '' },
+        { value: 'cruisers', label: 'Cruisers', c: 150 },
+        { value: 'passenger_vessels', label: 'Passenger vessels', c: 150 },
+        { value: 'average_runabouts', label: 'Average runabouts', c: 150 },
+        { value: 'light_high_speed_cruisers', label: 'Light high-speed cruisers', c: 190 },
+        { value: 'high_speed_runabouts', label: 'High speed runabouts', c: 190 },
+        { value: 'racing_boats', label: 'Racing boats', c: 210 },
+        { value: 'hydroplanes', label: 'Hydroplanes', c: 220 },
+        { value: 'racing_catamarans', label: 'Racing catamarans', c: 210 },
+        { value: 'sea_sleds', label: 'Sea sleds', c: 210 },
     ];
-    // Based on common tables:
-    // Planing hulls: 150-230
-    // Displacement: much lower logic usually but Crouch is mostly for planing.
-    // Let's use decent defaults.
 
+    // --- Handling C Update ---
     useEffect(() => {
-        // Update C when Boat Type changes
         const selected = boatTypes.find(b => b.value === boatType);
-        if (selected && selected.c) {
+        if (selected && selected.value !== '') {
             setCrouchC(selected.c.toString());
+        } else if (boatType === '') {
+            setCrouchC(''); // Clear if select is chosen
         }
     }, [boatType]);
 
-    useEffect(() => {
-        calculateSpeed();
-    }, [power, powerUnit, displacement, displacementUnit, crouchC, speedUnit]);
 
-    const calculateSpeed = () => {
+    // --- Calculation Logic ---
+    useEffect(() => {
         if (!power || !displacement || !crouchC) {
             setSpeed('');
             return;
@@ -70,45 +73,85 @@ const BoatSpeedCalculatorPage = () => {
         const D_val = parseFloat(displacement);
         const C_val = parseFloat(crouchC);
 
-        if (isNaN(P_val) || isNaN(D_val) || isNaN(C_val)) return;
+        if (isNaN(P_val) || isNaN(D_val) || isNaN(C_val) || D_val === 0) {
+            setSpeed('');
+            return;
+        }
 
-        // Convert to Imperial for Formula: HP and lbs
-        let P_hp = P_val;
-        if (powerUnit === 'kW') P_hp = P_val * 1.34102;
+        // 1. Convert Power to Horsepower (hp - Imperial/Mechanical)
+        // 1 kW = 1.34102 hp
+        // 1 W = 0.00134102 hp
+        // 1 MW = 1341.02 hp
+        // 1 hp = 1 hp
+        let P_hp = 0;
+        switch (powerUnit) {
+            case 'W': P_hp = P_val * 0.00134102; break;
+            case 'kW': P_hp = P_val * 1.34102; break;
+            case 'MW': P_hp = P_val * 1341.02; break;
+            case 'hp': P_hp = P_val; break;
+            default: P_hp = P_val;
+        }
 
-        let D_lbs = D_val;
-        if (displacementUnit === 'kg') D_lbs = D_val * 2.20462;
+        // 2. Convert Displacement to Pounds (lbs)
+        // 1 kg = 2.20462 lbs
+        // 1 t (metric) = 2204.62 lbs
+        // 1 lb = 1 lb
+        // 1 US ton = 2000 lbs
+        // 1 long ton (imperial) = 2240 lbs
+        let D_lbs = 0;
+        switch (displacementUnit) {
+            case 'kg': D_lbs = D_val * 2.20462; break;
+            case 't': D_lbs = D_val * 2204.62; break;
+            case 'lb': D_lbs = D_val; break;
+            case 'US ton': D_lbs = D_val * 2000; break;
+            case 'long ton': D_lbs = D_val * 2240; break;
+            default: D_lbs = D_val;
+        }
 
-        // V_mph = C * sqrt( HP / Lbs )
+        // 3. Calculate Speed in MPH
+        // Formula: V_mph = C * sqrt( HP / Lbs )
         const V_mph = C_val * Math.sqrt(P_hp / D_lbs);
 
-        // Convert result to selected unit
-        let finalSpeed = V_mph;
-        if (speedUnit === 'km/h') finalSpeed = V_mph * 1.60934;
-        if (speedUnit === 'knots') finalSpeed = V_mph * 0.868976;
-        if (speedUnit === 'm/s') finalSpeed = V_mph * 0.44704;
+        // 4. Convert Speed to Selected Unit
+        // 1 mph = 1.60934 km/h
+        // 1 mph = 0.868976 knots
+        // 1 mph = 0.44704 m/s
+        let resultSpeed = 0;
+        switch (speedUnit) {
+            case 'mph': resultSpeed = V_mph; break;
+            case 'km/h': resultSpeed = V_mph * 1.60934; break;
+            case 'knots': resultSpeed = V_mph * 0.868976; break;
+            case 'm/s': resultSpeed = V_mph * 0.44704; break;
+            default: resultSpeed = V_mph;
+        }
 
-        setSpeed(finalSpeed.toLocaleString(undefined, { maximumFractionDigits: 2 }));
+        if (isFinite(resultSpeed) && resultSpeed > 0) {
+            setSpeed(resultSpeed.toLocaleString(undefined, { maximumFractionDigits: 2 }));
+        } else {
+            setSpeed('');
+        }
+
+    }, [power, powerUnit, displacement, displacementUnit, crouchC, speedUnit]);
+
+
+    const handleReset = () => {
+        setPower('');
+        setDisplacement('');
+        setBoatType('');
+        setCrouchC('');
+        setSpeed('');
     };
 
-    const [showShareTooltip, setShowShareTooltip] = useState(false);
-
-    const handleShare = async () => {
-        try {
-            await navigator.clipboard.writeText(window.location.href);
-            setShowShareTooltip(true);
-            setTimeout(() => setShowShareTooltip(false), 2000);
-        } catch (err) {
-            console.error('Failed to copy URL:', err);
-        }
+    const handleReload = () => {
+        window.location.reload();
     };
 
     const articleContent = (
-        <>
+        <div style={{ color: '#374151', lineHeight: '1.6' }}>
             <p>
                 The <strong>boat speed calculator</strong> determines the <strong>top speed of a boat</strong> based on the boat's <strong>power</strong> and <strong>displacement</strong>. If you wonder how fast a boat can go, this calculator will help you answer that.
             </p>
-        </>
+        </div>
     );
 
     return (
@@ -127,95 +170,75 @@ const BoatSpeedCalculatorPage = () => {
             articleContent={articleContent}
             similarCalculators={32}
         >
-            <div className="calc-card boat-speed-page">
+            <div className="std-calculator">
+                <div className="std-section-card">
 
-                {/* Power */}
-                <div className="input-group">
-                    <div className="label-row"><label>Shaft horsepower (P)</label><span className="more-options">...</span></div>
-                    <div className="input-wrapper">
-                        <input type="number" className="calc-input" value={power} onChange={(e) => setPower(e.target.value)}  onWheel={(e) => e.target.blur()} />
-                        <div className="unit-select-container">
-                            <select value={powerUnit} onChange={(e) => setPowerUnit(e.target.value)} className="unit-select">
-                                <option value="kW">kW</option>
-                                <option value="hp">hp</option>
-                            </select>
-                            <ChevronDown size={14} className="unit-arrow" />
+                    {/* Dimensions & Power Section */}
+                    <div className="std-collapsible-section">
+                        <div className="std-collapsible-header" onClick={() => setIsDimensionsOpen(!isDimensionsOpen)}>
+                            <div className="std-header-left">
+                                {isDimensionsOpen ? <ChevronUp size={18} color="#436cfe" /> : <ChevronDown size={18} color="#436cfe" />}
+                                <span>Boat Dimensions & Power</span>
+                            </div>
                         </div>
+                        {isDimensionsOpen && (
+                            <div className="std-collapsible-content">
+                                <InputGroup
+                                    label="Shaft horsepower (P)"
+                                    value={power}
+                                    onChange={setPower}
+                                    unit={powerUnit}
+                                    onUnitChange={setPowerUnit}
+                                    isUnitDropdown={true}
+                                    unitOptions={powerUnitOptions}
+                                />
+                                <InputGroup
+                                    label="Boat displacement (D)"
+                                    value={displacement}
+                                    onChange={setDisplacement}
+                                    unit={displacementUnit}
+                                    onUnitChange={setDisplacementUnit}
+                                    isUnitDropdown={true}
+                                    unitOptions={displacementUnitOptions}
+                                />
+                                <SelectGroup
+                                    label="Boat type"
+                                    value={boatType}
+                                    onChange={setBoatType}
+                                    options={boatTypes}
+                                />
+                                <InputGroup
+                                    label="Crouch’s constant (C)"
+                                    value={crouchC}
+                                    onChange={setCrouchC}
+                                    placeholder="Enter C value"
+                                />
+                            </div>
+                        )}
                     </div>
-                </div>
 
-                {/* Displacement */}
-                <div className="input-group">
-                    <div className="label-row"><label>Boat displacement (D)</label><span className="more-options">...</span></div>
-                    <div className="input-wrapper">
-                        <input type="number" className="calc-input" value={displacement} onChange={(e) => setDisplacement(e.target.value)}  onWheel={(e) => e.target.blur()} />
-                        <div className="unit-select-container">
-                            <select value={displacementUnit} onChange={(e) => setDisplacementUnit(e.target.value)} className="unit-select">
-                                <option value="kg">kg</option>
-                                <option value="lbs">lbs</option>
-                            </select>
-                            <ChevronDown size={14} className="unit-arrow" />
+                    {/* Result Section */}
+                    {isResultOpen && (
+                        <div style={{ marginTop: '24px' }}>
+                            <ResultRow
+                                label="Speed (S)"
+                                value={speed}
+                                unit={speedUnit}
+                                onUnitChange={setSpeedUnit}
+                                isUnitDropdown={true}
+                                unitOptions={speedUnitOptions}
+                            />
                         </div>
-                    </div>
+                    )}
+
+                    <ActionPanel
+                        onReload={handleReload}
+                        onReset={handleReset}
+                    />
+
+                    <FeedbackRow />
+
                 </div>
-
-                {/* Boat Type */}
-                <div className="input-group">
-                    <div className="label-row"><label>Boat type</label><span className="more-options">...</span></div>
-                    <div className="select-wrapper">
-                        <select value={boatType} onChange={(e) => setBoatType(e.target.value)} className="calc-select">
-                            {boatTypes.map(b => (
-                                <option key={b.value} value={b.value}>{b.label}</option>
-                            ))}
-                        </select>
-                        <ChevronDown size={14} className="select-arrow" />
-                    </div>
-                </div>
-
-                {/* Crouch Constant */}
-                <div className="input-group">
-                    <div className="label-row"><label>Crouch’s constant (C)</label><span className="more-options">...</span></div>
-                    <div className="input-wrapper">
-                        <input type="number" className="calc-input" value={crouchC} onChange={(e) => setCrouchC(e.target.value)} placeholder="Enter C value"  onWheel={(e) => e.target.blur()} />
-                    </div>
-                </div>
-
-                {/* Result: Speed */}
-                <div className="input-group" style={{ marginTop: '1.5rem', borderTop: '1px solid #e5e7eb', paddingTop: '1rem' }}>
-                    <div className="label-row"><label>Speed (S)</label><span className="more-options">...</span></div>
-                    <div className="input-wrapper">
-                        <input type="text" className="calc-input" readOnly value={speed} placeholder="Result" />
-                        <div className="unit-select-container">
-                            <select value={speedUnit} onChange={(e) => setSpeedUnit(e.target.value)} className="unit-select">
-                                <option value="km/h">km/h</option>
-                                <option value="mph">mph</option>
-                                <option value="knots">knots</option>
-                                <option value="m/s">m/s</option>
-                            </select>
-                            <ChevronDown size={14} className="unit-arrow" />
-                        </div>
-                    </div>
-                </div>
-
-                <div className="calc-actions">
-                    {/* <button className="share-result-btn" onClick={handleShare}>
-                        <div className="share-icon-circle"><Share2 size={14} /></div>
-                        Share result
-                        {showShareTooltip && <span className="copied-tooltip">Copied!</span>}
-                    </button> */}
-                    <div className="secondary-actions">
-                        <button className="secondary-btn">Reload calculator</button>
-                        <button className="secondary-btn" onClick={() => {
-                            setPower('');
-                            setDisplacement('');
-                            setBoatType('select');
-                            setCrouchC('');
-                            setSpeed('');
-                        }}>Clear all changes</button>
-                    </div>
-                </div>
-
-
             </div>
         </CalculatorLayout>
     );

@@ -96,7 +96,7 @@
 /* --- Action Section Grid (Consistent with Flight Calc) --- */
 .bag-actions-grid {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr;
     gap: 16px;
     margin-top: 32px;
     padding-top: 24px;

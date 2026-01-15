@@ -115,6 +115,7 @@ import FlightCarbonFootprintCalculatorPage from './pages/Ecology/FlightCarbonFoo
 import BagFootprintCalculatorPage from './pages/Ecology/BagFootprintCalculatorPage';
 import KayaIdentityCalculatorPage from './pages/Ecology/KayaIdentityCalculatorPage';
 import DripFaucetCalculatorPage from './pages/Ecology/DripFaucetCalculatorPage';
+import VeganFootprintCalculatorPage from './pages/Ecology/VeganFootprintCalculatorPage';
 
 // --- Physics ---
 import ArrowSpeedCalculatorPage from './pages/Physics/ArrowSpeedCalculatorPage';
@@ -289,6 +290,7 @@ function App() {
           <Route path="/ecology/bag-footprint-calculator" element={<BagFootprintCalculatorPage />} />
           <Route path="/ecology/kaya-identity-calculator" element={<KayaIdentityCalculatorPage />} />
           <Route path="/ecology/drip-faucet-calculator" element={<DripFaucetCalculatorPage />} />
+          <Route path="/ecology/vegan-footprint-calculator" element={<VeganFootprintCalculatorPage />} />
 
           {/* Health */}
           <Route path="/health/absi-calculator" element={<ABSICalculatorPage />} />

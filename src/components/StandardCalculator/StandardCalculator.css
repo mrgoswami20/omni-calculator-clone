@@ -1,14 +1,24 @@
-/* --- Flight Carbon Footprint Calculator Styles --- */
+/* --- Standard Calculator Shared Styles --- */
 
-.flight-carbon-calculator {
+.std-calculator {
     display: flex;
     flex-direction: column;
     gap: 1.5rem;
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
 }
 
-/* --- Input Fields Styling (Unified Bar) --- */
-.unified-input-group {
+/* --- Section Card --- */
+.std-section-card {
+    background: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    border: 1px solid #e5e7eb;
+    padding: 24px;
+    margin-bottom: 24px;
+}
+
+/* --- Input Group (Unified Bar) --- */
+.std-input-group {
     display: flex;
     align-items: center;
     background-color: #f9fafb;
@@ -17,15 +27,16 @@
     padding: 2px 2px 2px 12px;
     transition: all 0.2s;
     height: 42px;
+    width: 100%;
 }
 
-.unified-input-group:focus-within {
+.std-input-group:focus-within {
     border-color: #3b82f6;
     box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
     background-color: white;
 }
 
-.input-invisible {
+.std-input-invisible {
     flex: 1;
     border: none;
     outline: none;
@@ -35,56 +46,61 @@
     width: 100%;
 }
 
-.unit-dropdown {
+/* Chrome, Safari, Edge, Opera */
+.std-input-invisible::-webkit-outer-spin-button,
+.std-input-invisible::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+/* Firefox */
+.std-input-invisible[type=number] {
+    -moz-appearance: textfield;
+    appearance: textfield;
+}
+
+/* --- Unit Dropdown --- */
+.std-unit-trigger {
     display: flex;
     align-items: center;
     gap: 4px;
-    padding: 0 8px;
+    padding: 0 12px;
     cursor: pointer;
     font-size: 0.85rem;
     color: #2563eb;
     font-weight: 500;
     border-left: 1px solid transparent;
+    /* placeholder for potential divider */
     height: 100%;
+    white-space: nowrap;
+    user-select: none;
 }
 
-/* --- Radio Group (Custom) --- */
-.flight-radio-group {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-    margin-top: 8px;
-}
-
-.flight-radio-option {
+.std-unit-static {
     display: flex;
     align-items: center;
-    gap: 8px;
-    font-size: 0.95rem;
-    color: #374151;
-    cursor: pointer;
+    padding: 0 12px;
+    font-size: 0.85rem;
+    color: #6b7280;
+    /* Gray for static units */
+    font-weight: 500;
+    height: 100%;
+    white-space: nowrap;
 }
 
-.flight-radio-option input[type="radio"] {
-    accent-color: #3b82f6;
-    width: 18px;
-    height: 18px;
-}
-
-
-/* --- Result Fields --- */
-.result-field-group {
+/* --- Result Group --- */
+.std-result-group {
     display: flex;
     align-items: center;
     background-color: #f9fafb;
-    /* Light gray for read-only */
     border: 1px solid #e5e7eb;
     border-radius: 6px;
     padding: 2px 12px;
     height: 42px;
+    width: 100%;
 }
 
-.result-value-input {
+.std-result-input {
     flex: 1;
     border: none;
     outline: none;
@@ -94,18 +110,38 @@
     font-weight: 600;
 }
 
-/* --- Action Section Grid --- */
-.flight-actions-grid {
+/* --- Labels --- */
+.std-label-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 6px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: #374151;
+}
+
+.std-more-dots {
+    color: #9ca3af;
+    cursor: pointer;
+}
+
+/* --- Action Grid --- */
+.std-actions-grid {
     display: grid;
-    grid-template-columns: 1fr;
+    grid-template-columns: 1fr 1fr;
     gap: 16px;
     margin-top: 32px;
     padding-top: 24px;
     border-top: 1px solid #f3f4f6;
 }
 
-/* Left: Share Button */
-.share-result-large-btn {
+/* Modifier for no share button */
+.std-actions-grid.std-no-share {
+    grid-template-columns: 1fr;
+}
+
+.std-share-btn {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -117,19 +153,19 @@
     cursor: pointer;
     transition: all 0.2s;
     height: 100%;
+    width: 100%;
 }
 
-.share-result-large-btn:hover {
+.std-share-btn:hover {
     background-color: #f9fafb;
     border-color: #d1d5db;
 }
 
-.share-icon-circle {
+.std-share-icon {
     width: 40px;
     height: 40px;
     border-radius: 50%;
     background-color: #ff4d6d;
-    /* Pink/Red from screenshot */
     color: white;
     display: flex;
     align-items: center;
@@ -137,26 +173,24 @@
     margin-bottom: 8px;
 }
 
-.share-text {
+.std-share-text {
     font-weight: 600;
     color: #111827;
     font-size: 0.9rem;
 }
 
-/* Right: Stacked Buttons */
-.right-action-stack {
+.std-action-stack {
     display: flex;
     flex-direction: column;
     gap: 12px;
 }
 
-.action-btn-secondary {
+.std-action-btn-secondary {
     display: flex;
     align-items: center;
     justify-content: center;
     width: 100%;
     height: 44px;
-    /* Match height */
     background: white;
     border: 1px solid #e5e7eb;
     border-radius: 8px;
@@ -167,67 +201,26 @@
     transition: all 0.2s;
 }
 
-.action-btn-secondary:hover {
+.std-action-btn-secondary:hover {
     background-color: #f9fafb;
     border-color: #d1d5db;
     color: #111827;
 }
 
-/* --- Dropdowns --- */
-.relative-dropdown-container {
-    position: relative;
-    height: 100%;
-    display: flex;
-    align-items: center;
-}
-
-.dropdown-menu {
-    position: absolute;
-    top: 100%;
-    right: 0;
-    margin-top: 4px;
-    background: white;
-    border: 1px solid #e5e7eb;
-    border-radius: 6px;
-    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-    z-index: 20;
-    min-width: 80px;
-    overflow: hidden;
-}
-
-.dropdown-item {
-    padding: 8px 12px;
-    font-size: 0.9rem;
-    color: #374151;
-    cursor: pointer;
-    transition: background 0.1s;
-    text-align: right;
-}
-
-.dropdown-item:hover {
-    background-color: #f3f4f6;
-    color: #111827;
-}
-
 /* --- Feedback --- */
-.feedback-box {
+.std-feedback-box {
     margin-top: 24px;
     display: flex;
     align-items: center;
     justify-content: space-between;
 }
 
-.feedback-label {
-    font-size: 0.85rem;
+.std-feedback-label {
     color: #6b7280;
+    font-size: 0.85rem;
 }
 
-.feedback-btn-group {
-    display: flex;
-    gap: 8px;
-}
-
-.feedback-sm-btn {
+.std-feedback-btn {
     border: 1px solid #e5e7eb;
     background: white;
     border-radius: 4px;
@@ -235,24 +228,64 @@
     font-size: 0.85rem;
     cursor: pointer;
     color: #374151;
+    margin-left: 8px;
 }
 
-.feedback-sm-btn:hover {
+.std-feedback-btn:hover {
     background-color: #f9fafb;
 }
 
-/* --- Misc Helper --- */
-.label-flex {
+/* --- Dropdown Rendering --- */
+.std-relative-container {
+    position: relative;
+    height: 100%;
     display: flex;
-    justify-content: space-between;
     align-items: center;
-    margin-bottom: 6px;
-    font-size: 0.9rem;
-    font-weight: 500;
-    color: #374151;
 }
 
-.more-dots {
-    color: #9ca3af;
+.std-dropdown-menu {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    margin-top: 4px;
+    background: white;
+    border: 1px solid #e5e7eb;
+    border-radius: 6px;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    z-index: 50;
+    min-width: 100px;
+    max-height: 240px;
+    overflow-y: auto;
+}
+
+.std-dropdown-item {
+    padding: 8px 12px;
+    font-size: 0.9rem;
+    color: #374151;
     cursor: pointer;
+    text-align: right;
+    white-space: nowrap;
+}
+
+.std-dropdown-item:hover {
+    background-color: #f3f4f6;
+    color: #111827;
+}
+
+/* Error States */
+.std-input-error {
+    border-color: #ef4444 !important;
+}
+
+.std-error-message {
+    background-color: #fef2f2;
+    color: #b91c1c;
+    padding: 10px 12px;
+    border-radius: 8px;
+    margin-top: 10px;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    line-height: 1.4;
 }

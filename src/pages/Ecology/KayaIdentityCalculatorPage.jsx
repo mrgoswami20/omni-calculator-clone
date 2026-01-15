@@ -186,12 +186,14 @@ const KayaIdentityCalculatorPage = () => {
 
                     {/* Standardized Actions */}
                     <div className="actions-section">
+                        {/*
                         <button className="main-share-btn" onClick={handleShare}>
                             <div className="share-circle">
                                 <Share2 size={22} />
                             </div>
                             <span>Share result</span>
                         </button>
+                        */}
                         <div className="utility-buttons">
                             <button className="util-btn" onClick={handleReload}>
                                 <RotateCcw size={16} /> Reload calculator

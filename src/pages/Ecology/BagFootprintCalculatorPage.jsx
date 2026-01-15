@@ -244,7 +244,7 @@ const BagFootprintCalculatorPage = () => {
                                 className="input-invisible"
                                 value={uses}
                                 onChange={(e) => setUses(e.target.value)}
-                             onWheel={(e) => e.target.blur()} />
+                                onWheel={(e) => e.target.blur()} />
                             <div className="unit-static">
                                 times
                             </div>
@@ -263,7 +263,7 @@ const BagFootprintCalculatorPage = () => {
                                 className="input-invisible"
                                 value={consumption}
                                 onChange={(e) => setConsumption(e.target.value)}
-                             onWheel={(e) => e.target.blur()} />
+                                onWheel={(e) => e.target.blur()} />
                             <div className="relative-dropdown-container">
                                 <div
                                     className="unit-static"
@@ -301,12 +301,14 @@ const BagFootprintCalculatorPage = () => {
 
                     {/* Action Buttons */}
                     <div className="bag-actions-grid">
+                        {/*
                         <button className="share-result-large-btn" onClick={handleShare}>
                             <div className="share-icon-circle">
                                 <Share2 size={20} />
                             </div>
                             <span className="share-text">Share result</span>
                         </button>
+                        */}
                         <div className="right-action-stack">
                             <button className="action-btn-secondary" onClick={handleReload}>
                                 Reload calculator

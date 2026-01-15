@@ -87,7 +87,7 @@
 /* Actions Section */
 .actions-section {
     display: grid;
-    grid-template-columns: 1fr 1.5fr;
+    grid-template-columns: 1fr;
     gap: 16px;
     margin-top: 32px;
     padding-top: 24px;
